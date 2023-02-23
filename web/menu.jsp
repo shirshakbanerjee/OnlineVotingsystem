@@ -8,8 +8,8 @@
 
 
         <nav id="navbar" class="navbar">
-            <c:if test="${User.roleId==2}">
-               <img src="assets/img/menuLogo.png" alt="" width="100" height="150"></a>
+          
+               
           <h1><b style="color:red">VOTE INDIA</b></h1>
                 <ul>
                     <li><a class="nav-link scrollto active text-white" href="#hero">Home</a></li>
@@ -35,10 +35,10 @@
                     <li><a class="nav-link scrollto text-white" href="#contact">Contact</a></li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
-                 </c:if>
+                 
            
  
-          
+            <c:if test="${User.roleId==2}">
           <h1><b style="color:red">VOTE INDIA</b></h1>
                 <ul>
 
@@ -47,7 +47,7 @@
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
            
-            
+            </c:if>
                
              <c:if test="${User==1}">
                     <img src="assets/img/menuLogo.png" alt="" width="100" height="150"></a>
