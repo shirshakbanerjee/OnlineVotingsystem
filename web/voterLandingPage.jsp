@@ -8,8 +8,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Voter Landing</title>
+
+        <style>
+
+        </style>
         <meta charset="utf-8">
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -31,77 +33,97 @@
         <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
         <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
         <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+        <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
         <!-- Template Main CSS File -->
         <link href="assets/css/style.css" rel="stylesheet">
+        <link href="assets/css/voterLanding.css" rel="stylesheet">
+
+        <!-- =======================================================
+        * Template Name: BizLand - v3.10.0
+        * Template URL: https://bootstrapmade.com/bizland-bootstrap-business-template/
+        * Author: BootstrapMade.com
+        * License: https://bootstrapmade.com/license/
+        ======================================================== -->
     </head>
+
+
     <body>
-          <header id="header" class="d-flex align-items-center">
-            <jsp:include page="menu.jsp"></jsp:include>
-            </header><!-- End Header -->
-        <header>
-            
-             <div class="container d-flex align-items-lg-start justify-content-between">
-        <a href="index.html" class="logo"><img src="assets/img/menuLogo.png" alt="" width="100" height="150"></a>
-        <h1 class="logo"><a href="index.html"><span> <b>CAST YOUR VOTE WISELY</b> </span></a></h1>
-        <!-- Uncomment below if you prefer to use an image logo -->
 
 
-        <nav id="navbar" class="navbar" >
-            
-            <i class="bi bi-list mobile-nav-toggle"></i>
-        </nav><!-- .navbar -->
 
-    </div>
-        </header>
-       <section id="featured-services" class="featured-services">
-            <div class="container" data-aos="fade-up">
+        <!-- ======= Header ======= -->
 
-                <div class="row">
-                     <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-                        <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
-                            <div class="icon"><i class="bx bx-world"></i></div>
-                            <h4 class="title"><a href="">CANDIDATE-1</a></h4>
-                            
-                            <button type="button" class="btn btn-danger">VOTE</button>
+        <header id="header" class="d-flex align-items-center" style="color:blue">       
+
+            <jsp:include page="menu.jsp"/>
+
+        </header><!-- End Header -->
+
+        <div class="bg-container">
+
+
+            <section id="featured-services" class="featured-services">
+                <div class="container" data-aos="fade-up">
+
+
+
+                    <div class="row">  
+                        <div class="col">
+                            <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+
+                                <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
+
+                                    <img src="assets/img/nm-1177027-1672590352.jpg"><!-- comment -->
+                                    <h4 class="title"><a href="">CANDIDATE-1</a></h4>
+
+                                    <button type="button" class="btn btn-danger">VOTE</button>
+                                </div>
+                                <br>
+
+                            </div>
                         </div>
-                         <br>
-                         
-                    </div>
-                   
-                     <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-                        <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
-                            <div class="icon"><i class="bx bx-world"></i></div>
-                            <h4 class="title"><a href="">CANDIDATE-2</a></h4>
-                            <button type="button" class="btn btn-danger">VOTE</button>
-                           
-                        </div>
-                    </div>
-                        
-                         
-                     <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-                        <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
-                            <div class="icon"><i class="bx bx-world"></i></div>
-                            <h4 class="title"><a href="">CANDIDATE-3</a></h4>
-                            <button type="button" class="btn btn-danger">VOTE</button>
-                            
-                        </div>
-                    </div>
-                     <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-                        <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
-                            <div class="icon"><i class="bx bx-world"></i></div>
-                            <h4 class="title"><a href="">CANDIDATE-4</a></h4>
-                           <button type="button" class="btn btn-danger">VOTE</button>
-                        </div>
-                    </div>
-                    
 
-                   
 
-                </div>
+                        <div class="col">
+                            <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+                                <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
+                                    <img src="assets/img/nm-1177027-1672590352.jpg"><!-- comment -->
+                                    <h4 class="title"><a href="">CANDIDATE-2</a></h4>
+                                    <button type="button" class="btn btn-danger">VOTE</button>
 
-            </div>
-        </section><!-- End Featured Services Section -->
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col"> 
+                            <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+                                <div class="icon-box" data-aos="fade-up" data-aos-delay="400">                                    
+                                    <img src="assets/img/nm-1177027-1672590352.jpg"><!-- comment -->
+                                    <h4 class="title"><a href="">CANDIDATE-3</a></h4>
+                                    <button type="button" class="btn btn-danger">VOTE</button>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col"> 
+                            <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+                                <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
+                                    <img src="assets/img/nm-1177027-1672590352.jpg"><!-- comment -->
+                                    <h4 class="title"><a href="">CANDIDATE-4</a></h4>
+                                    <button type="button" class="btn btn-danger">VOTE</button>
+                                </div>
+                            </div>  
+                        </div>     
+
+
+                    </div>
+
+
+            </section><!-- End Featured Services Section -->
+        </div>
     </body>
     <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
     <script src="assets/vendor/aos/aos.js"></script>
