@@ -21,31 +21,50 @@
 <!doctype html>
 <html lang="en">
     <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="description" content="">
-        <meta name="author" content="">
-        <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Sign Up</title>
 
-        <title>Sign up</title>
-
-        <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/jumbotron/">
-
-        <!-- Bootstrap core CSS -->
+        <link href="assets/vendor/aos/aos.css" rel="stylesheet">
         <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+        <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+        <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+        <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">    
+        <!-- Template Main CSS File -->
+        <link href="assets/css/style.css" rel="stylesheet">
         <link href="assets/css/signup.css" rel="stylesheet">
-        <link href="assets/vendor/bootstrap/js/bootstrap.min.js" rel="stylesheet">
 
-
-        <!-- Custom styles for this template -->
-        <!--<link href="jumbotron.css" rel="stylesheet">-->
-        <!--<link href="" rel="stylesheet">-->
+        <!-- <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="assets/vendor/bootstrap/css/bootstrap.min.css"> 
+        <!--===============================================================================================-->
+        <!-- <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css"> -->
+        <!--===============================================================================================-->
+        <!-- <link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css"> -->
+        <!--===============================================================================================-->
+        <!-- <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css"> -->
+        <!--===============================================================================================-->	
+        <!-- <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css"> -->
+        <!--===============================================================================================-->
+        <!-- <link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css"> -->
+        <!--===============================================================================================-->
+        <!-- <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css"> -->
+        <!--===============================================================================================-->	
+        <!-- <link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css"> -->
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="assets/css/login2.css">
+        <link rel="stylesheet" type="text/css" href="assets/css/login1.css">
+        <!--===============================================================================================-->
     </head>
 
+    <header>
+        <jsp:include page="menu.jsp"></jsp:include>
+    </header>
     <body style="overflow-x:hidden;">
-        <header id="header" class="d-flex align-items-center">
-            <jsp:include page="menu.jsp"></jsp:include>
-            </header><!-- End Header -->
+        
+            
+            
 
             <!--
                <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
@@ -82,124 +101,124 @@
                </nav>
                  Main jumbotron for a primary marketing message or call to action -->
 
-           
 
 
-                <div class="jumbotron"  ">
 
-                    <div class="container" >  
-                        <h1 class="display-3">Welcome! Come Be a Voter!</h1>
-                        <p>This is a responsibility.</p>
-                    </div>
+            <div class="jumbotron"  ">
+
+                <div class="container" >  
+                    <h1 class="display-3">Welcome! Come Be a Voter!</h1>
+                    <p>This is a responsibility.</p>
                 </div>
+            </div>
 
-                <div class="container">
-                    <!-- Example row of columns -->
+            <div class="container">
+                <!-- Example row of columns -->
 
-                    <div class="row">
-                        <div class="col-md-6" style="width: 550px">
-                            <h2 class="h2 mb-3 fw-normal" style="text-align: center;">Voter Sign-up</h2>
-                            <main class="form-signin w-100 m-auto" >
-                                <div class="bordered">
-                                    <table>
-                                        <tr>
-                                        <form action="Signup" method="post"> 
-                                            <div class="form-floating">
-                                                <input type="text" class="form-control" id="aadhar" placeholder="AadharNumber" name="voterId">
-                                                <label for="aadhar">Aadhar Card Number</label>
-                                            </div>
-
-                                            <div class="form-floating">
-                                                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="emailAddress">
-                                                <label for="floatingInput">Email address</label>
-                                            </div>
-                                            <div class="form-floating">
-                                                <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password">
-                                                <label for="floatingPassword">Password</label>
-                                            </div>
-                                            <div class="form-floating">
-                                                <input type="text" class="form-control" id="firstName" placeholder="first name" name="firstName" >
-                                                <label for="firstName">First Name</label>
-                                            </div>
-                                            <div class="form-floating">
-                                                <input type="text" class="form-control" id="lastName" placeholder="last name" name="lastName" >
-                                                <label for="firstName">Last Name</label>
-                                            </div>
-                                            <div class="form-floating">
-                                                <input class="form-control" name="dob" type="date" id="dateofbirth" placeholder="dd/mm/yyyy">
-                                                <label for="address">DOB</label>
-                                            </div>
-                                            <select name="gender" class="form-control" id="gender" required>
-                                                <option value="" hidden>Select Gender</option>
-                                                <option value="male"> Male  </option>
-                                                <option value="female"> Female  </option>
-                                            </select>
-                                            <div class="form-floating">
-                                                <input type="text" class="form-control" id="age" placeholder="Age" name="age">
-                                                <label for="age">Age</label>
-                                            </div>
-
-
-                                            <div class="form-floating">
-                                                <select name="state" class="form-control " id="stateName">
-                                                    <option value="">Select State</option>
-                                                <c:forEach var="state" items="${StateList}">
-                                                    <option value="${state.getStateName()}">
-                                                        ${state.getStateName()}
-                                                    </option>
-                                                </c:forEach>
-                                            </select>
-                                            <label for="floatingInput">State Name</label>
+                <div class="row">
+                    <div class="col-md-6" style="width: 550px">
+                        <h2 class="h2 mb-3 fw-normal" style="text-align: center;">Voter Sign-up</h2>
+                        <main class="form-signin w-100 m-auto" >
+                            <div class="bordered">
+                                <table>
+                                    <tr>
+                                    <form action="Signup" method="post"> 
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control" id="aadhar" placeholder="AadharNumber" name="voterId">
+                                            <label for="aadhar">Aadhar Card Number</label>
                                         </div>
 
-                                        
-                                        <button class="w-100 btn btn-lg btn-info mb-2" type="submit">Sign Up</button>
-                                        <a href="Logout">
-                                            <button type="button" class="w-100 btn btn-lg btn-secondary">Cancel</button>
-                                        </a>
-                                    </form>
-                                    </tr>
-                                </table>
-                            </div>
-                        </main>
-                    </div>
-                        <div class="col-md-6" style="padding-left: 50px; background-size: cover; object-fit: none;">
-                            <img src="assets/img/map.png" style="height: 694px; opacity :0.6;" >
-            </div>
+                                        <div class="form-floating">
+                                            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="emailAddress">
+                                            <label for="floatingInput">Email address</label>
+                                        </div>
+                                        <div class="form-floating">
+                                            <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password">
+                                            <label for="floatingPassword">Password</label>
+                                        </div>
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control" id="firstName" placeholder="first name" name="firstName" >
+                                            <label for="firstName">First Name</label>
+                                        </div>
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control" id="lastName" placeholder="last name" name="lastName" >
+                                            <label for="firstName">Last Name</label>
+                                        </div>
+                                        <div class="form-floating">
+                                            <input class="form-control" name="dob" type="date" id="dateofbirth" placeholder="dd/mm/yyyy">
+                                            <label for="address">DOB</label>
+                                        </div>
+                                        <select name="gender" class="form-control" id="gender" required>
+                                            <option value="" hidden>Select Gender</option>
+                                            <option value="male"> Male  </option>
+                                            <option value="female"> Female  </option>
+                                        </select>
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control" id="age" placeholder="Age" name="age">
+                                            <label for="age">Age</label>
+                                        </div>
+
+
+                                        <div class="form-floating">
+                                            <select name="state" class="form-control " id="stateName">
+                                                <option value="">Select State</option>
+                                            <c:forEach var="state" items="${StateList}">
+                                                <option value="${state.getStateName()}">
+                                                    ${state.getStateName()}
+                                                </option>
+                                            </c:forEach>
+                                        </select>
+                                        <label for="floatingInput">State Name</label>
+                                    </div>
+
+
+                                    <button class="w-100 btn btn-lg btn-info mb-2" type="submit">Sign Up</button>
+                                    <a href="Logout">
+                                        <button type="button" class="w-100 btn btn-lg btn-secondary">Cancel</button>
+                                    </a>
+                                </form>
+                                </tr>
+                            </table>
+                        </div>
+                    </main>
                 </div>
+                <div class="col-md-6" style="padding-left: 50px; background-size: cover; object-fit: none;">
+                    <img src="assets/img/map.png" style="height: 694px; opacity :0.6;" >
+                </div>
+            </div>
 
 
-                <!-- <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                 <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-               
-               <div class="col-md-4">
-                 <h2>Heading</h2>
-                 <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                 <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-               </div>
-               <div class="col-md-4">
-                 <h2>Heading</h2>
-                 <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-                 <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-               </div>
-             
-     
-             <hr>
-     
-           </div>  /container -->
+            <!-- <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+             <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+           
+           <div class="col-md-4">
+             <h2>Heading</h2>
+             <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+             <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+           </div>
+           <div class="col-md-4">
+             <h2>Heading</h2>
+             <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+             <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+           </div>
+         
+ 
+         <hr>
+ 
+       </div>  /container -->
 
 
 
-                <footer class="container" style="text-align: center;">
-                    <p> &copy;Vote india   2017-2018</p>
-                </footer>
+            <footer class="container" style="text-align: center;">
+                <p> &copy;Vote india   2017-2018</p>
+            </footer>
 
-                <!-- Bootstrap core JavaScript
-                ================================================== -->
-                <!-- Placed at the end of the document so the pages load faster -->
-                <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-                <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
-                <script src="../../assets/js/vendor/popper.min.js"></script>
-                <script src="../../dist/js/bootstrap.min.js"></script>
-                </body>
-                </html>
+            <!-- Bootstrap core JavaScript
+            ================================================== -->
+            <!-- Placed at the end of the document so the pages load faster -->
+            <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+            <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+            <script src="../../assets/js/vendor/popper.min.js"></script>
+            <script src="../../dist/js/bootstrap.min.js"></script>
+    </body>
+</html>

@@ -29,7 +29,7 @@
     
     <!<!-- I want to check my session before showing any content to the user -->
     <c:set var='admin' value='${Admin}'/>
-    <c:if test = "${admin == null}">  
+    <c:if test = "${admin == null && voter == null}">  
         <c:redirect url = "login.jsp"/>
     </c:if>
     
