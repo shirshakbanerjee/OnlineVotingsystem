@@ -156,6 +156,42 @@ public class VoterService {
         return result;
     }
     
+    public static ArrayList getAllVoters()
+    {
+        ArrayList voterList = new ArrayList();
+        String sql = "Select * from voters";
+        try {
+            Connection con = JDBCConnectionManager.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next())
+            {
+                Voter voter = new Voter();
+                
+                voter.setVoterId(rs.getInt("voterId"));
+                voter.setFirstName(rs.getString("firstName"));
+                voter.setLastName(rs.getString("lastName"));
+                voter.setEmailAddress(rs.getString("emailAddress"));
+                voter.setPassword(rs.getString("password"));
+                voter.setAge(rs.getString("age"));
+                voter.setGender(rs.getString("gender"));
+                voter.setState(rs.getString("state"));
+                voter.setAdminStatus(rs.getString("adminStatus"));
+                voter.setVotingStatus(rs.getString("votingStatus"));
+                voter.setDob(rs.getString("dob"));
+                
+                voterList.add(voter);
+            }
+            
+            
+        }
+        catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        System.err.println("Total rows:"+voterList.size());
+        return voterList;
+    }
 }
     
 

@@ -9,11 +9,13 @@ package com.exavalu.models;
  * @author SHIRSHAK
  */
 import com.exavalu.services.AdminService;
+import com.exavalu.services.CandidateService;
 import com.exavalu.services.UserService;
 import com.exavalu.services.VoterService;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Map;
 import org.apache.struts2.dispatcher.ApplicationMap;
 import org.apache.struts2.dispatcher.SessionMap;
@@ -110,6 +112,10 @@ public class User extends ActionSupport implements ApplicationAware, SessionAwar
                 return "FAILURE";
             }
             sessionMap.put("Admin",admin);
+            ArrayList candidateList = CandidateService.getAllCandidates();
+            sessionMap.put("CandidateList",candidateList);
+            ArrayList voterList = VoterService.getAllVoters();
+            sessionMap.put("VoterList",voterList);
         }
         else if(x==1 && !this.voterId.equalsIgnoreCase(""))
         {
@@ -127,6 +133,8 @@ public class User extends ActionSupport implements ApplicationAware, SessionAwar
                 return "FAILURE";
             }
             sessionMap.put("Voter",voter);
+            ArrayList candidateList = CandidateService.getAllCandidates();
+            sessionMap.put("CandidateList",candidateList);
         }
         
         return result;
