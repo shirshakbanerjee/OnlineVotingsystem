@@ -167,7 +167,13 @@ public class Voter extends ActionSupport implements ApplicationAware, SessionAwa
     
     public String doSignup() throws Exception {
         String result = "FAILURE";
-
+        
+        Voter voter = VoterService.getVoter(String.valueOf(this.voterId));
+        if(voter.getFirstName()==null)
+        {
+            System.out.println("returning Failure from doSignup method");
+            return "FAILURE";
+        }
         boolean success = VoterService.doSignup1(this.emailAddress,this.password,this.firstName,this.lastName,1,this.voterId);
         boolean success1 = VoterService.doSignup2(this);
 
