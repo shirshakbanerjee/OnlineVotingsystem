@@ -38,7 +38,9 @@
         * License: https://bootstrapmade.com/license/
         ======================================================== -->
     </head>
-
+<header>
+        <jsp:include page="menu.jsp"></jsp:include>
+    </header>
     <body>
 
         <!-- ======= Top Bar ======= -->
@@ -58,13 +60,8 @@
     </section>
 
     <!-- ======= Header ======= -->
-    <header id="header" class="d-flex align-items-center" >
+    
         
-
-        <jsp:include page="menu.jsp"/>
-    </header><!-- End Header -->
-
-
 
     <!-- ======= Hero Section ======= -->
     <section id="hero" class="d-flex align-items-center">
