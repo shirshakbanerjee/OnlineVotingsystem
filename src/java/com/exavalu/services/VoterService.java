@@ -192,6 +192,37 @@ public class VoterService {
         System.err.println("Total rows:"+voterList.size());
         return voterList;
     }
+
+    public static boolean doVoteService(Voter voter) {
+        boolean result = false;
+        Connection con = JDBCConnectionManager.getConnection();
+        
+        String sql="INSERT INTO votes(voterId,state,candidateId)"
+                + "VALUES(? ,? ,? );";
+        
+        try {
+            
+            PreparedStatement preparedStatement=con.prepareStatement(sql);
+            preparedStatement.setInt(1, voter.getVoterId());
+            preparedStatement.setString(2, voter.getState());
+            preparedStatement.setString(3, voter.getCandidateId());
+            
+            int rs = preparedStatement.executeUpdate();
+
+            if(rs!=0)
+            {
+                result=true;
+            }
+            
+            
+        } catch (SQLException ex) {
+            
+            ex.printStackTrace();
+            
+        }
+        
+        return result;
+    }
 }
     
 

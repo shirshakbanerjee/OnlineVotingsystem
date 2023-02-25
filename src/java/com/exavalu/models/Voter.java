@@ -38,6 +38,7 @@ public class Voter extends ActionSupport implements ApplicationAware, SessionAwa
     private String dob;
     private String stateCode;
     private String stateName;
+    private String candidateId;
     
     private SessionMap<String, Object> sessionMap = (SessionMap) ActionContext.getContext().getSession();
 
@@ -156,6 +157,14 @@ public class Voter extends ActionSupport implements ApplicationAware, SessionAwa
     public void setStateName(String stateName) {
         this.stateName = stateName;
     }
+
+    public String getCandidateId() {
+        return candidateId;
+    }
+
+    public void setCandidateId(String candidateId) {
+        this.candidateId = candidateId;
+    }
     
     public String doPreSignup() throws Exception {
         String result = "SUCCESS";
@@ -185,6 +194,21 @@ public class Voter extends ActionSupport implements ApplicationAware, SessionAwa
             System.out.println("returning Failure from doSignup method");
         }
 
+        return result;
+    }
+    
+    public String doVote()
+    {
+        String result="FAILURE";
+        boolean success = VoterService.doVoteService(this);
+        if(success)
+        {
+            sessionMap.put("VoteMsg", "Your vote has been registered");
+            result="SUCCESS";
+        }
+        else{
+            sessionMap.put("VoteMsg", "Some Problem has Occured");
+        }
         return result;
     }
 }
