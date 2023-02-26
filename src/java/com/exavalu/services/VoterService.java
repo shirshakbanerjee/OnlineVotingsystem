@@ -223,6 +223,29 @@ public class VoterService {
         
         return result;
     }
+    
+    public static boolean doVerification(String voterId) {
+        boolean result = false;
+        try {
+            Connection con = JDBCConnectionManager.getConnection();
+            String sql = "UPDATE voters SET adminStatus = 1 WHERE voterId = ?";
+
+            PreparedStatement preparedStatement = con.prepareStatement(sql);
+
+            preparedStatement.setString(1, voterId);
+
+            int row = preparedStatement.executeUpdate();
+
+            if (row == 1) {
+                result = true;
+            }
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return result;
+    }
 }
     
 

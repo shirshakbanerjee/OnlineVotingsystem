@@ -211,4 +211,25 @@ public class Voter extends ActionSupport implements ApplicationAware, SessionAwa
         }
         return result;
     }
+    
+    public String doVerifiedByAdmin() {
+        String result = "FAILURE";
+        boolean verification = VoterService.doVerification(String.valueOf(this.voterId));
+        if (verification) {
+
+            //String updateMsg = "FNOL ID =" + this.fnolId + "::processed successfully";
+            //sessionMap.put("UpdateMsg", updateMsg);
+//            sessionMap.put("ApiResultMsg",null);
+//            sessionMap.put("HideAnchorTag", null);
+//            sessionMap.put("RejectionMsg", null);
+            Voter voter = new Voter();
+            voter = VoterService.getVoter(String.valueOf(this.voterId));
+            sessionMap.put("Voter", voter);
+
+            result = "SUCCESS";
+        }
+        //this.dogetAllFNOL();
+        return result;
+    }
+    
 }

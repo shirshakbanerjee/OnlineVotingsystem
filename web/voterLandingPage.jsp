@@ -70,11 +70,11 @@
 
                     <div>
                         <div class="row" >
-                            <div class="col-md-6 col-lg-20 d-flex align-items-stretch mb-5 mb-lg-0">
+                            <div class="col-md-6 col-lg-12 d-flex align-items-stretch mb-5 mb-lg-0">
                                 <c:forEach var="candidate" items="${CandidateList}">
                                     <div class="row">  
                                         <div class="col">
-                                            <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+                                            <div class="col-md-6 col-lg-12 d-flex align-items-stretch mb-5 mb-lg-0">
                                                 <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
                                                     <img src="assets/img/nm-1177027-1672590352.jpg"><!-- comment -->
                                                     <h4 class="title">${candidate.getFirstName()} ${candidate.getLastName()}</h4>

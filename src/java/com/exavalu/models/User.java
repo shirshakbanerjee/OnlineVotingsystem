@@ -21,22 +21,24 @@ import org.apache.struts2.dispatcher.ApplicationMap;
 import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.ApplicationAware;
 import org.apache.struts2.interceptor.SessionAware;
+
 /**
  *
  * @author Admin
  */
-public class User extends ActionSupport implements ApplicationAware, SessionAware, Serializable{
+public class User extends ActionSupport implements ApplicationAware, SessionAware, Serializable {
+
     private String emailAddress;
     private String firstName;
     private String lastName;
     private String password;
     private String roleId;
     private String voterId;
-    
+
     private SessionMap<String, Object> sessionMap = (SessionMap) ActionContext.getContext().getSession();
 
     private ApplicationMap map = (ApplicationMap) ActionContext.getContext().getApplication();
-    
+
     @Override
     public void setApplication(Map<String, Object> application) {
         map = (ApplicationMap) application;
@@ -94,49 +96,56 @@ public class User extends ActionSupport implements ApplicationAware, SessionAwar
     public void setVoterId(String voterId) {
         this.voterId = voterId;
     }
-    
-    
-    
+
     public String doLogin() throws Exception {
-        String result="FAILURE";
-        int x=UserService.doLogin(this);
-        if(x==0)
-            sessionMap.put("Error","Wrong data");
-        else if(x==2)
-        {
-            result="ADMIN";
+        String result = "FAILURE";
+        int x = UserService.doLogin(this);
+        if (x == 0) {
+            sessionMap.put("Error", "Wrong data");
+        } else if (x == 2) {
+            result = "ADMIN";
             Admin admin = AdminService.getAdmin(this.emailAddress);
-            if(admin.getFirstName()==null)
-            {
-                sessionMap.put("Error","Wrong data");
+            if (admin.getFirstName() == null) {
+                sessionMap.put("Error", "Wrong data");
                 return "FAILURE";
             }
-            sessionMap.put("Admin",admin);
+            sessionMap.put("Admin", admin);
             ArrayList candidateList = CandidateService.getAllCandidates();
-            sessionMap.put("CandidateList",candidateList);
+            sessionMap.put("CandidateList", candidateList);
             ArrayList voterList = VoterService.getAllVoters();
-            sessionMap.put("VoterList",voterList);
-        }
-        else if(x==1 && !this.voterId.equalsIgnoreCase(""))
-        {
-            result="VOTER";
+            sessionMap.put("VoterList", voterList);
+        } else if (x == 1 && !this.voterId.equalsIgnoreCase("")) {
+            result = "VOTER";
             Voter voter = VoterService.getVoter(this.voterId);
             System.out.println(voter.getFirstName());
-            if(voter.getFirstName()==null)
-            {
-                sessionMap.put("Error","Wrong data");
+            if (voter.getFirstName() == null) {
+                sessionMap.put("Error", "Wrong data");
                 return "FAILURE";
             }
-            if(Integer.parseInt(voter.getAdminStatus())==0)
-            {
-                sessionMap.put("Error","Admin has not approved you profile yet!!");
+            if (Integer.parseInt(voter.getAdminStatus()) == 0) {
+                sessionMap.put("Error", "Admin has not approved you profile yet!!");
                 return "FAILURE";
             }
-            sessionMap.put("Voter",voter);
+            sessionMap.put("Voter", voter);
             ArrayList candidateList = CandidateService.getAllCandidates();
-            sessionMap.put("CandidateList",candidateList);
+            sessionMap.put("CandidateList", candidateList);
         }
-        
+
         return result;
     }
+
+    public String dogetParticularVoter() {
+        String result = "DETAILSOFVOTER";
+        Voter voter = new Voter();
+        voter = VoterService.getVoter(this.voterId);
+
+        if (voter != null) {
+            sessionMap.put("Voter", voter);
+//            System.out.println("fnolid from underwrier if fnol!= null = " + this.voterId);
+            result = "DETAILSOFVOTER";
+        }
+
+        return result;
+    }
+
 }
