@@ -203,6 +203,9 @@ public class Voter extends ActionSupport implements ApplicationAware, SessionAwa
         boolean success = VoterService.doVoteService(this);
         if(success)
         {
+            VoterService.voted(this.voterId);
+            Voter voter=VoterService.getVoter(String.valueOf(this.voterId));
+            sessionMap.put("Voter", voter);
             sessionMap.put("VoteMsg", "Your vote has been registered");
             result="SUCCESS";
         }

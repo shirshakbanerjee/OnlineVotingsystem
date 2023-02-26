@@ -246,6 +246,35 @@ public class VoterService {
 
         return result;
     }
+    
+    public static boolean voted(int voterId) {
+        boolean result = false;
+        Connection con = JDBCConnectionManager.getConnection();
+        
+        String sql="UPDATE voters SET votingStatus = ? WHERE voterId = ?";
+        
+        try {
+            
+            PreparedStatement preparedStatement=con.prepareStatement(sql);
+            preparedStatement.setString(1, "1");
+            preparedStatement.setInt(2, voterId);
+            
+            int rs = preparedStatement.executeUpdate();
+
+            if(rs!=0)
+            {
+                result=true;
+            }
+            
+            
+        } catch (SQLException ex) {
+            
+            ex.printStackTrace();
+            
+        }
+        
+        return result;
+    }
 }
     
 
