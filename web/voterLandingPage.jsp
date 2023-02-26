@@ -51,7 +51,10 @@
 
     <body>
 
-
+        <c:set var='voter' value='${Voter}'/>
+        <c:if test = "${voter == null}">  
+            <c:redirect url = "login.jsp"/>
+        </c:if>
 
         <!-- ======= Header ======= -->
 
@@ -63,14 +66,24 @@
 
         <div class="bg-container">
 
-
+            <c:set var="error" value="${VoteMsg}"/>
+            <c:if test="${error!=null}">
+                <div class="error-message" style="color: skyblue">
+                    ${error}
+                </div>
+            </c:if>
+            <c:if test="${error==null && voter.getVotingStatus()==1}">
+                <div class="error-message" style="color: skyblue">
+                    You have already voted!!
+                </div>
+            </c:if>
             <section id="featured-services" class="featured-services">
                 <div class="container" data-aos="fade-up">
 
 
                     <div>
                         <div class="row" >
-                            <div class="col-md-6 col-lg-12 d-flex align-items-stretch mb-5 mb-lg-0">
+                            <div class="col-md-6 col-lg-20 d-flex align-items-stretch mb-5 mb-lg-0">
                                 <c:forEach var="candidate" items="${CandidateList}">
                                     <div class="row">  
                                         <div class="col">
@@ -79,7 +92,9 @@
                                                     <img src="assets/img/nm-1177027-1672590352.jpg"><!-- comment -->
                                                     <h4 class="title">${candidate.getFirstName()} ${candidate.getLastName()}</h4>
                                                     <h4 class="title">Party: ${candidate.getPartyName()}</h4>
-                                                    <button type="button" class="btn btn-danger">VOTE</button>
+                                                    <button type="button" class="btn btn-danger"<c:if test="${voter.getVotingStatus()==1}">disabled</c:if>>
+                                                        <a href="VoteAction?voterId=${voter.getVoterId()}&candidateId=${candidate.getCandidateId()}&state=${voter.getState()}">VOTE</a>
+                                                    </button>
                                                 </div>
                                                 <br>
                                             </div>
