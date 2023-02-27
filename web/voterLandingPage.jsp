@@ -78,7 +78,7 @@
                 </div>
             </c:if>
             <section id="featured-services" class="featured-services">
-                <div class="container" data-aos="fade-up">
+                <div class="container" data-aos="fade-up" style="opacity: 1">
 
 
                     <div>
@@ -154,6 +154,8 @@
 
                             </div>
                         </div>
+                        </div>
+                    </div>
 
                         </section><!-- End Featured Services Section -->
                     </div>
