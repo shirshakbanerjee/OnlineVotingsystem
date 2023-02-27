@@ -48,7 +48,7 @@ public class VoterService {
                 voter.setVotingStatus(rs.getString("votingStatus"));
                 voter.setDob(rs.getString("dob"));
                 voter.setEmailAddress(rs.getString("emailAddress"));
-                System.out.println(voter.getVoterId()+" Found!!!");
+                System.out.println(voter.getVoterId() + " Found!!!");
             }
 
         } catch (SQLException ex) {
@@ -88,47 +88,45 @@ public class VoterService {
     public static boolean doSignup1(String emailAddress, String password, String firstName, String lastName, int roleId, int voterId) {
         boolean result = false;
         Connection con = JDBCConnectionManager.getConnection();
-        
-        String sql="INSERT INTO users(emailAddress,firstName,lastName,password,roleId,voterId)"
+
+        String sql = "INSERT INTO users(emailAddress,firstName,lastName,password,roleId,voterId)"
                 + "VALUES(? ,? ,? ,? ,? ,? );";
-        
+
         try {
-            
-            PreparedStatement preparedStatement=con.prepareStatement(sql);
+
+            PreparedStatement preparedStatement = con.prepareStatement(sql);
             preparedStatement.setString(1, emailAddress);
             preparedStatement.setString(2, firstName);
             preparedStatement.setString(3, lastName);
             preparedStatement.setString(4, password);
             preparedStatement.setInt(5, roleId);
             preparedStatement.setInt(6, voterId);
-            
+
             int rs = preparedStatement.executeUpdate();
 
-            if(rs!=0)
-            {
-                result=true;
+            if (rs != 0) {
+                result = true;
             }
-            
-            
+
         } catch (SQLException ex) {
-            
+
             ex.printStackTrace();
-            
+
         }
-        
+
         return result;
     }
 
     public static boolean doSignup2(Voter voter) {
         boolean result = false;
         Connection con = JDBCConnectionManager.getConnection();
-        
-        String sql="INSERT INTO voters(voterId,firstName,lastName,emailAddress,password,age,dob,gender,state)"
+
+        String sql = "INSERT INTO voters(voterId,firstName,lastName,emailAddress,password,age,dob,gender,state)"
                 + "VALUES(? ,? ,? ,? ,? ,?, ?, ?, ?);";
-        
+
         try {
-            
-            PreparedStatement preparedStatement=con.prepareStatement(sql);
+
+            PreparedStatement preparedStatement = con.prepareStatement(sql);
             preparedStatement.setInt(1, voter.getVoterId());
             preparedStatement.setString(2, voter.getFirstName());
             preparedStatement.setString(3, voter.getLastName());
@@ -138,37 +136,33 @@ public class VoterService {
             preparedStatement.setString(7, voter.getDob());
             preparedStatement.setString(8, voter.getGender());
             preparedStatement.setString(9, voter.getState());
-            
+
             int rs = preparedStatement.executeUpdate();
 
-            if(rs!=0)
-            {
-                result=true;
+            if (rs != 0) {
+                result = true;
             }
-            
-            
+
         } catch (SQLException ex) {
-            
+
             ex.printStackTrace();
-            
+
         }
-        
+
         return result;
     }
-    
-    public static ArrayList getAllVoters()
-    {
+
+    public static ArrayList getAllVoters() {
         ArrayList voterList = new ArrayList();
         String sql = "Select * from voters";
         try {
             Connection con = JDBCConnectionManager.getConnection();
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
-            
-            while(rs.next())
-            {
+
+            while (rs.next()) {
                 Voter voter = new Voter();
-                
+
                 voter.setVoterId(rs.getInt("voterId"));
                 voter.setFirstName(rs.getString("firstName"));
                 voter.setLastName(rs.getString("lastName"));
@@ -180,50 +174,46 @@ public class VoterService {
                 voter.setAdminStatus(rs.getString("adminStatus"));
                 voter.setVotingStatus(rs.getString("votingStatus"));
                 voter.setDob(rs.getString("dob"));
-                
+
                 voterList.add(voter);
             }
-            
-            
-        }
-        catch (SQLException ex) {
+
+        } catch (SQLException ex) {
             ex.printStackTrace();
         }
-        System.err.println("Total rows:"+voterList.size());
+        System.err.println("Total rows:" + voterList.size());
         return voterList;
     }
 
     public static boolean doVoteService(Voter voter) {
         boolean result = false;
         Connection con = JDBCConnectionManager.getConnection();
-        
-        String sql="INSERT INTO votes(voterId,state,candidateId)"
+
+        String sql = "INSERT INTO votes(voterId,state,candidateId)"
                 + "VALUES(? ,? ,? );";
-        
+
         try {
-            
-            PreparedStatement preparedStatement=con.prepareStatement(sql);
+
+            PreparedStatement preparedStatement = con.prepareStatement(sql);
             preparedStatement.setInt(1, voter.getVoterId());
             preparedStatement.setString(2, voter.getState());
             preparedStatement.setString(3, voter.getCandidateId());
-            
+
             int rs = preparedStatement.executeUpdate();
 
-            if(rs!=0)
-            {
-                result=true;
+            if (rs != 0) {
+                result = true;
             }
-            
-            
+
         } catch (SQLException ex) {
-            
+
             ex.printStackTrace();
-            
+
         }
-        
+
         return result;
     }
-    
+
     public static boolean doVerification(String voterId) {
         boolean result = false;
         try {
@@ -252,12 +242,9 @@ public class VoterService {
         boolean result = false;
         try {
             Connection con = JDBCConnectionManager.getConnection();
-           
-            
+
             String sql = "UPDATE voters SET adminStatus = 2 WHERE voterId = ?";
-            
-           
-            
+
             PreparedStatement preparedStatement = con.prepareStatement(sql);
 
             preparedStatement.setString(1, voterId);
@@ -271,37 +258,33 @@ public class VoterService {
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
+        return result;
+    }
 
-    
     public static boolean voted(int voterId) {
         boolean result = false;
         Connection con = JDBCConnectionManager.getConnection();
-        
-        String sql="UPDATE voters SET votingStatus = ? WHERE voterId = ?";
-        
+
+        String sql = "UPDATE voters SET votingStatus = ? WHERE voterId = ?";
+
         try {
-            
-            PreparedStatement preparedStatement=con.prepareStatement(sql);
+
+            PreparedStatement preparedStatement = con.prepareStatement(sql);
             preparedStatement.setString(1, "1");
             preparedStatement.setInt(2, voterId);
-            
+
             int rs = preparedStatement.executeUpdate();
 
-            if(rs!=0)
-            {
-                result=true;
+            if (rs != 0) {
+                result = true;
             }
-            
-            
+
         } catch (SQLException ex) {
-            
+
             ex.printStackTrace();
-            
+
         }
-        
 
         return result;
     }
 }
-    
-
