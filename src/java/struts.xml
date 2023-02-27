@@ -30,6 +30,14 @@
             <result name="SUCCESS">detailsOfVoter.jsp</result>
             <result name="FAILURE">detailsOfVoter.jsp</result>
         </action>
+        <action name="VoteAction" class="com.exavalu.models.Voter" method="doVote">
+            <result name="SUCCESS">voterLandingPage.jsp</result>
+            <result name="FAILURE">landingPage.jsp</result>
+        </action>
+        <action name="AdminRejected" class="com.exavalu.models.Voter" method="doRejectByAdmin">
+            <result name="SUCCESS">detailsOfVoter.jsp</result>
+            <result name="FAILURE">detailsOfVoter.jsp</result>
+        </action>
     </package>
 </struts>
 
