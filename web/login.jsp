@@ -134,12 +134,20 @@
                                     <label for="floatingInput2">VoterId</label>
                                 </div>
 
-                                <div class="checkbox mb-3">
+<!--                                <div class="checkbox mb-3">
                                     <label style="color: white">
                                         <input type="checkbox" value="remember-me"> Remember me
                                     </label>
-                                </div>
+                                </div>-->
+                                
+                                
+                                
                                 <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+                                <p></p>
+                                <div class="form-floating align-items-center" style="font-size: 20px;text-align: center">
+                                    <a class="nav-link scrollto link-primary" href="PreSignup">Create New Account</a>
+                                </div>
+                                
                                 <p class="mt-5 mb-3 text-muted" style="color: white">&copy; 2017?2022</p>
                             </form>
 

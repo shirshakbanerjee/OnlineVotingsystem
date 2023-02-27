@@ -79,7 +79,7 @@
                 <div class="row">
                      <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
                         <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
-                            <div class="icon"><i class="bx bx-world"></i></div>
+                            <div class="icon"><i class="bi bi-bicycle"></i></div>
                             <h4 class="title"><a href="">PARTY-1</a></h4>
                             <p class="description">
                                 FREE ELECTRICITY <br><!-- comment -->
@@ -91,7 +91,7 @@
                    
                      <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
                         <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
-                            <div class="icon"><i class="bx bx-world"></i></div>
+                            <div class="icon"><i class="bi bi-bus-front"></i></div>
                             <h4 class="title"><a href="">PARTY-2</a></h4>
                             <p class="description">
                                 FREE WATER <br><!-- comment -->
@@ -104,7 +104,7 @@
                          
                      <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
                         <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
-                            <div class="icon"><i class="bx bx-world"></i></div>
+                            <div class="icon"><i class="bi bi-flower1"></i></div>
                             <h4 class="title"><a href="">PARTY-3</a></h4>
                             <p class="description">
                                 REDUCTION IN INFLATION <br><!-- comment -->
