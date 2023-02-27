@@ -92,7 +92,9 @@
                                             <img src="assets/img/nm-1177027-1672590352.jpg"><!-- comment -->
                                             <h4 class="title">${candidate.getFirstName()} ${candidate.getLastName()}</h4>
                                             <h4 class="title">Party: ${candidate.getPartyName()}</h4>
-                                            <button type="button" class="btn btn-danger">VOTE</button>
+                                            <button type="button" class="btn btn-danger"<c:if test="${voter.getVotingStatus()==1}">disabled</c:if>>
+                                                        <a href="VoteAction?voterId=${voter.getVoterId()}&candidateId=${candidate.getCandidateId()}&state=${voter.getState()}">VOTE</a>
+                                            </button>
                                         </div>
                                         <br>
                                     </div>
