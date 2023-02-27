@@ -26,10 +26,13 @@
                     </tr>
                     <tr>
                         <td>ADMIN STATUS :<strong> 
+
                                 <c:if test="${PVoter.adminStatus ==1}">
-                                    <p  style="color:green">Verified</p></c:if>
+                                    <p  style="color:green">Approved</p></c:if>
                                     <c:if test="${PVoter.adminStatus==0}">
-                                    <p  style="color:red">not Verified</p></c:if>
+                                    <p  style="color:blue">Pending</p></c:if>
+                                     <c:if test="${PVoter.adminStatus==2}">
+                                    <p  style="color:red">Rejected</p></c:if>
                                 </strong></td>
 
                         </tr>
