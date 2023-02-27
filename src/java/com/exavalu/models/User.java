@@ -140,7 +140,7 @@ public class User extends ActionSupport implements ApplicationAware, SessionAwar
         voter = VoterService.getVoter(this.voterId);
 
         if (voter != null) {
-            sessionMap.put("Voter", voter);
+            sessionMap.put("PVoter", voter);
 //            System.out.println("fnolid from underwrier if fnol!= null = " + this.voterId);
             result = "DETAILSOFVOTER";
         }

@@ -204,7 +204,7 @@
                     </tbody>
                 </table>
             </div>
-                        <div class="scroll">
+                        <!--<div class="scroll">-->
             <table id="tableId" class="table-borderless">
 
                 <td rowspan = "2">

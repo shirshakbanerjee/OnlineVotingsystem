@@ -227,7 +227,7 @@ public class Voter extends ActionSupport implements ApplicationAware, SessionAwa
 //            sessionMap.put("RejectionMsg", null);
             Voter voter = new Voter();
             voter = VoterService.getVoter(String.valueOf(this.voterId));
-            sessionMap.put("Voter", voter);
+            sessionMap.put("PVoter", voter);
 
             result = "SUCCESS";
         }
