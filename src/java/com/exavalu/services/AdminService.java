@@ -44,6 +44,31 @@ public class AdminService {
             ex.printStackTrace();
         }
         return admin;
-    }  
+    }
+    
+    public static boolean approveVoter(String status,String voterId) {
+        boolean result = false;
+        try {
+
+            Connection con = JDBCConnectionManager.getConnection();
+
+            String sql = "UPDATE voters SET adminStatus = ? WHERE (voterId = ?);";
+
+            PreparedStatement preparedStatement = con.prepareStatement(sql);
+            preparedStatement.setString(1, status);
+            preparedStatement.setString(2, voterId);
+            
+
+            int row = preparedStatement.executeUpdate();
+            if (row == 1) {
+                result = true;
+            }
+
+        } catch (SQLException ex) {
+            //logger.error(ex.getMessage());
+        }
+
+        return result;
+    }
 }
 

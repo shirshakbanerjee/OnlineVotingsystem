@@ -192,6 +192,89 @@ public class VoterService {
         System.err.println("Total rows:"+voterList.size());
         return voterList;
     }
+
+    public static boolean doVoteService(Voter voter) {
+        boolean result = false;
+        Connection con = JDBCConnectionManager.getConnection();
+        
+        String sql="INSERT INTO votes(voterId,state,candidateId)"
+                + "VALUES(? ,? ,? );";
+        
+        try {
+            
+            PreparedStatement preparedStatement=con.prepareStatement(sql);
+            preparedStatement.setInt(1, voter.getVoterId());
+            preparedStatement.setString(2, voter.getState());
+            preparedStatement.setString(3, voter.getCandidateId());
+            
+            int rs = preparedStatement.executeUpdate();
+
+            if(rs!=0)
+            {
+                result=true;
+            }
+            
+            
+        } catch (SQLException ex) {
+            
+            ex.printStackTrace();
+            
+        }
+        
+        return result;
+    }
+    
+    public static boolean doVerification(String voterId) {
+        boolean result = false;
+        try {
+            Connection con = JDBCConnectionManager.getConnection();
+            String sql = "UPDATE voters SET adminStatus = 1 WHERE voterId = ?";
+
+            PreparedStatement preparedStatement = con.prepareStatement(sql);
+
+            preparedStatement.setString(1, voterId);
+
+            int row = preparedStatement.executeUpdate();
+
+            if (row == 1) {
+                result = true;
+            }
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return result;
+    }
+    
+    public static boolean voted(int voterId) {
+        boolean result = false;
+        Connection con = JDBCConnectionManager.getConnection();
+        
+        String sql="UPDATE voters SET votingStatus = ? WHERE voterId = ?";
+        
+        try {
+            
+            PreparedStatement preparedStatement=con.prepareStatement(sql);
+            preparedStatement.setString(1, "1");
+            preparedStatement.setInt(2, voterId);
+            
+            int rs = preparedStatement.executeUpdate();
+
+            if(rs!=0)
+            {
+                result=true;
+            }
+            
+            
+        } catch (SQLException ex) {
+            
+            ex.printStackTrace();
+            
+        }
+        
+        return result;
+    }
 }
     
 

@@ -4,20 +4,32 @@
  */
 package com.exavalu.models;
 
+import com.exavalu.services.AdminService;
+import com.exavalu.services.VoterService;
+import com.opensymphony.xwork2.ActionContext;
+import com.opensymphony.xwork2.ActionSupport;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Map;
+import org.apache.struts2.dispatcher.ApplicationMap;
+import org.apache.struts2.dispatcher.SessionMap;
+import org.apache.struts2.interceptor.ApplicationAware;
+import org.apache.struts2.interceptor.SessionAware;
+
 /**
  *
  * @author SHIRSHAK
  */
-public class Admin {
-    
+public class Admin extends ActionSupport implements ApplicationAware, SessionAware, Serializable {
+
     private int adminId;
     private String emailAddress;
     private String password;
     private String firstName;
     private String lastName;
+    private String adminStatus;
+    private String voterId;
 
-    //private int candidateId;
-    
     public int getAdminId() {
         return adminId;
     }
@@ -57,5 +69,57 @@ public class Admin {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-    
+
+    public String getAdminStatus() {
+        return adminStatus;
+    }
+
+    public void setAdminStatus(String adminStatus) {
+        this.adminStatus = adminStatus;
+    }
+
+    public String getVoterId() {
+        return voterId;
+    }
+
+    public void setVoterId(String voterId) {
+        this.voterId = voterId;
+    }
+
+    private SessionMap<String, Object> sessionMap = (SessionMap) ActionContext.getContext().getSession();
+
+    private ApplicationMap map = (ApplicationMap) ActionContext.getContext().getApplication();
+
+    @Override
+    public void setApplication(Map<String, Object> application) {
+        map = (ApplicationMap) application;
+    }
+
+    @Override
+    public void setSession(Map<String, Object> session) {
+        sessionMap = (SessionMap) session;
+    }
+
+    public String doVerifyVoter() throws Exception {
+        String result = "FAILURE";
+        boolean success = AdminService.approveVoter(this.adminStatus, this.voterId);
+        if (success) {
+            System.out.println("Returning Success from doVerifyVoter method");
+
+//            if (Integer.parseInt(this.getAdminStatus()) == 1) {           
+//                result = "APPROVED";
+//            } else if (Integer.parseInt(this.getAdminStatus()) == 2) {
+//                result = "FAILURE";
+//            }
+            ArrayList voterList = VoterService.getAllVoters();
+            sessionMap.put("VoterList", voterList);
+            result = "SUCCESS";
+
+        } else {
+            System.out.println("Returning Failure from doSanctionClaim method");
+        }
+
+        return result;
+    }
+
 }

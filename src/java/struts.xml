@@ -8,7 +8,7 @@
         
         <action name="Login" class="com.exavalu.models.User" method="doLogin">
             <result name="VOTER">voterLandingPage.jsp</result>
-            <result name="ADMIN">adminLandingPage.jsp</result>
+            <result name="ADMIN">voterList.jsp</result>
             <result name="FAILURE">login.jsp</result>
         </action>
         <action name="PreSignup" class="com.exavalu.models.Voter" method="doPreSignup">
@@ -17,6 +17,21 @@
         </action>
         <action name="Signup" class="com.exavalu.models.Voter" method="doSignup">
             <result name="SUCCESS">login.jsp</result>
+            <result name="FAILURE">landingPage.jsp</result>
+        </action>
+         <action name="FetchParticularVoter" class="com.exavalu.models.User" method="dogetParticularVoter">           
+            <result name="DETAILSOFVOTER">detailsOfVoter.jsp</result>   
+        </action>
+        <action name="FetchApi" class="com.exavalu.models.VoterAPI" method="dofetchVoterApi">
+            <result name="VOTERDETAILS">voterIdentityDetails.jsp</result>
+            
+        </action>
+        <action name="AdminVerified" class="com.exavalu.models.Voter" method="doVerifiedByAdmin">
+            <result name="SUCCESS">detailsOfVoter.jsp</result>
+            <result name="FAILURE">detailsOfVoter.jsp</result>
+        </action>
+        <action name="VoteAction" class="com.exavalu.models.Voter" method="doVote">
+            <result name="SUCCESS">voterLandingPage.jsp</result>
             <result name="FAILURE">landingPage.jsp</result>
         </action>
     </package>

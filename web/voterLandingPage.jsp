@@ -51,7 +51,10 @@
 
     <body>
 
-
+        <c:set var='voter' value='${Voter}'/>
+        <c:if test = "${voter == null}">  
+            <c:redirect url = "login.jsp"/>
+        </c:if>
 
         <!-- ======= Header ======= -->
 
@@ -63,8 +66,19 @@
 
         <div class="bg-container">
 
-
+            <c:set var="error" value="${VoteMsg}"/>
+            <c:if test="${error!=null}">
+                <div class="error-message" style="color: skyblue">
+                    ${error}
+                </div>
+            </c:if>
+            <c:if test="${error==null && voter.getVotingStatus()==1}">
+                <div class="error-message" style="color: skyblue">
+                    You have already voted!!
+                </div>
+            </c:if>
             <section id="featured-services" class="featured-services">
+
                 <div class="container" data-aos="fade-up" style="margin-top: 50px;">
 
 
@@ -109,9 +123,10 @@
                                     <h4 class="title"><a href="">CANDIDATE-2</a></h4>
                                     <button type="button" class="btn btn-danger">VOTE</button>
 
-                                </div>
+
                             </div>
                         </div>
+
 
 
                         <div class="col"> 
@@ -136,22 +151,21 @@
                         </div>     -->
 
 
+
+                        </section><!-- End Featured Services Section -->
+
                     </div>
+                    </body>
+                    <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+                    <script src="assets/vendor/aos/aos.js"></script>
+                    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+                    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+                    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+                    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+                    <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+                    <script src="assets/vendor/php-email-form/validate.js"></script>
 
 
-            </section><!-- End Featured Services Section -->
-        </div>
-    </body>
-    <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-    <script src="assets/vendor/aos/aos.js"></script>
-    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-    <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-    <script src="assets/vendor/php-email-form/validate.js"></script>
+                    <script src="assets/js/main.js"></script>
 
-
-    <script src="assets/js/main.js"></script>
-
-</html>
+                    </html>

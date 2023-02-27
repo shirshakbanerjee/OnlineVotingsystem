@@ -12,9 +12,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
   width:50%;
   height:50%; 
   box-sizing:border-box;
+
   opacity: 1;
   background-size: 100% 100%;
   background-repeat: no-repeat;
+
 }
 .bg-container {
   width:100%;
