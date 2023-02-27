@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -64,17 +65,33 @@
 
 
             <section id="featured-services" class="featured-services">
-                <div class="container" data-aos="fade-up">
+                <div class="container" data-aos="fade-up" style="margin-top: 50px;">
 
 
-
-                    <div class="row">  
-                        <div class="col">
+                    
+                    <div class="row">
+                        <c:forEach var="candidate" items="${CandidateList}">
+                            <!--<div class="row">-->  
+                                <div class="col">
+                                    <div class="col-md-6 col-lg-12 d-flex align-items-stretch mb-5 mb-lg-0">
+                                        <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
+                                            <img src="assets/img/nm-1177027-1672590352.jpg"><!-- comment -->
+                                            <h4 class="title">${candidate.getFirstName()} ${candidate.getLastName()}</h4>
+                                            <h4 class="title">Party: ${candidate.getPartyName()}</h4>
+                                            <button type="button" class="btn btn-danger">VOTE</button>
+                                        </div>
+                                        <br>
+                                    </div>
+                                <!--</div>-->
+                            </div>
+                        </c:forEach>
+                      
+<!--                        <div class="col">
                             <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
 
                                 <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
 
-                                    <img src="assets/img/nm-1177027-1672590352.jpg"><!-- comment -->
+                                    <img src="assets/img/nm-1177027-1672590352.jpg"> comment 
                                     <h4 class="title"><a href="">CANDIDATE-1</a></h4>
 
                                     <button type="button" class="btn btn-danger">VOTE</button>
@@ -88,7 +105,7 @@
                         <div class="col">
                             <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
                                 <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
-                                    <img src="assets/img/nm-1177027-1672590352.jpg"><!-- comment -->
+                                    <img src="assets/img/nm-1177027-1672590352.jpg"> comment 
                                     <h4 class="title"><a href="">CANDIDATE-2</a></h4>
                                     <button type="button" class="btn btn-danger">VOTE</button>
 
@@ -100,7 +117,7 @@
                         <div class="col"> 
                             <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
                                 <div class="icon-box" data-aos="fade-up" data-aos-delay="400">                                    
-                                    <img src="assets/img/nm-1177027-1672590352.jpg"><!-- comment -->
+                                    <img src="assets/img/nm-1177027-1672590352.jpg"> comment 
                                     <h4 class="title"><a href="">CANDIDATE-3</a></h4>
                                     <button type="button" class="btn btn-danger">VOTE</button>
 
@@ -111,12 +128,12 @@
                         <div class="col"> 
                             <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
                                 <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
-                                    <img src="assets/img/nm-1177027-1672590352.jpg"><!-- comment -->
+                                    <img src="assets/img/nm-1177027-1672590352.jpg"> comment 
                                     <h4 class="title"><a href="">CANDIDATE-4</a></h4>
                                     <button type="button" class="btn btn-danger">VOTE</button>
                                 </div>
                             </div>  
-                        </div>     
+                        </div>     -->
 
 
                     </div>
