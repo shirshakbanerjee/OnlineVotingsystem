@@ -74,9 +74,9 @@
                 xmlhttp.send();
             }
 
-            function fetchVapi()
+            function fetchVapi(voterId)
             {
-                alert("check approval");
+                alert(voterId);
                 var xmlhttp = new XMLHttpRequest();
                 xmlhttp.onreadystatechange = function ()
                 {
@@ -84,7 +84,7 @@
                 };
 
 
-                xmlhttp.open("POST", "FetchApi", true);
+                xmlhttp.open("POST", "FetchApi?voterId=" + voterId, true);
                 xmlhttp.send();
                 //FetchApi
             }
