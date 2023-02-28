@@ -43,7 +43,7 @@
             <tr>
                 <td>
 
-                    <button type="button" class="btn btn-primary text-light mt-3 w-100" onclick="fetchVapi()">Check voter's identity</button>
+                    <button type="button" class="btn btn-primary text-light mt-3 w-100" onclick="fetchVapi(${PVoter.voterId})">Check voter's identity</button>
 
                 </td>
             </tr>
