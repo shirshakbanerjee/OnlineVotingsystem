@@ -8,6 +8,7 @@ package com.exavalu.models;
  *
  * @author SHIRSHAK
  */
+import com.exavalu.services.UserService;
 import com.exavalu.services.VoterService;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -201,8 +202,10 @@ public class Voter extends ActionSupport implements ApplicationAware, SessionAwa
     {
         String result="FAILURE";
         boolean success = VoterService.doVoteService(this);
+        User user=UserService.getUser(this.voterId);
         if(success)
         {
+            Email.sendEmailToRegisterUser(user.getEmailAddress());
             VoterService.voted(this.voterId);
             Voter voter=VoterService.getVoter(String.valueOf(this.voterId));
             sessionMap.put("Voter", voter);

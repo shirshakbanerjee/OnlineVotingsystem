@@ -125,14 +125,17 @@
                                     <input name="emailAddress" type="emailAddress" class="form-control" id="floatingInput" placeholder="name@example.com" required>
                                     <label for="floatingInput">Email address</label>
                                 </div>
+                                <br><!-- comment -->
                                 <div class="form-floating">
                                     <input name="password" type="password" class="form-control" id="floatingPassword" placeholder="Password" required>
                                     <label for="floatingPassword">Password</label>
                                 </div>
+                                <br><!-- comment -->
                                 <div class="form-floating">
                                     <input name="voterId" type="number" class="form-control" id="floatingInput2" placeholder="VoterId">
                                     <label for="floatingInput2">VoterId</label>
                                 </div>
+                                <br><!-- comment -->
 
 <!--                                <div class="checkbox mb-3">
                                     <label style="color: white">
@@ -148,7 +151,7 @@
                                     <a class="nav-link scrollto link-primary" href="PreSignup">Create New Account</a>
                                 </div>
                                 
-                                <p class="mt-5 mb-3 text-muted" style="color: white">&copy; 2017?2022</p>
+                                <p class="mt-5 mb-3 text-muted" style="color: white"></p>
                             </form>
 
                         </main>
