@@ -470,7 +470,7 @@ h6 {
 #hero {
   width: 100%;
   height: 75vh;
-  background: url("../img/votePic.jpg") center;
+  background: url("../img/testimonials.png") center;
    background-size: 1040px 500px;
    background-repeat: no-repeat;
   position: relative;
@@ -990,7 +990,7 @@ section {
 --------------------------------------------------------------*/
 .testimonials {
   padding: 80px 0;
-  background: url("../img/testimonials-bg.jpg") no-repeat;
+  background: url("../img/newlanding.png") no-repeat;
   background-position: center center;
   background-size: cover;
   position: relative;
