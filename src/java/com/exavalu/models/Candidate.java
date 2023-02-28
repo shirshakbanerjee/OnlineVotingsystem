@@ -11,6 +11,7 @@ package com.exavalu.models;
 import com.exavalu.services.CandidateService;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import java.io.File;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Map;
@@ -28,6 +29,7 @@ public class Candidate extends ActionSupport implements ApplicationAware, Sessio
     private String gender;
     private String region;
     private int candidateStatus;
+    private File image;
     
     private SessionMap<String, Object> sessionMap = (SessionMap) ActionContext.getContext().getSession();
 
@@ -106,7 +108,7 @@ public class Candidate extends ActionSupport implements ApplicationAware, Sessio
     public void setCandidateStatus(int candidateStatus) {
         this.candidateStatus = candidateStatus;
     }
-    
+      
     public String doInsertCandidate() throws Exception {
         String result = "FAILURE";
         boolean success = CandidateService.doSaveCandidate(this);
@@ -123,5 +125,24 @@ public class Candidate extends ActionSupport implements ApplicationAware, Sessio
         }
         return result;
     }
+
+    public File getImage() {
+        return image;
+    }
+
+    public void setImage(File image) {
+        this.image = image;
+    }
+
+   private String imageData;
+
+    public void setImageData(String imageData) {
+        this.imageData = imageData;
+    }
+
+    public String getImageData() {
+        return imageData;
+    }
+
     
 }

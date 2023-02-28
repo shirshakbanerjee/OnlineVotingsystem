@@ -89,7 +89,8 @@
                                         <div class="col">
                                             <div class="col-md-6 col-lg-12 d-flex align-items-stretch mb-5 mb-lg-0">
                                                 <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
-                                                    <img src="assets/img/nm-1177027-1672590352.jpg"><!-- comment -->
+                                                    <!--                                                    <img src="assets/img/nm-1177027-1672590352.jpg"> comment -->
+                                                    <img src="data:image/png;base64,${candidate.imageData}" style="max-width: 150px; max-height: 150px;">
                                                     <h4 class="title">${candidate.getFirstName()} ${candidate.getLastName()}</h4>
                                                     <h4 class="title">Party: ${candidate.getPartyName()}</h4>
                                                     <button type="button" class="btn btn-danger"<c:if test="${voter.getVotingStatus()==1}">disabled</c:if>>

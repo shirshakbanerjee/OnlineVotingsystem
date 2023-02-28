@@ -81,7 +81,7 @@
 
                     <ul>
                         <li><a class="nav-link scrollto text-white" href="#contact">SHOW VOTERS</a></li>
-                        <li><a class="nav-link scrollto text-white" href="#login">ADD CANDIDATE</a></li>              
+                        <li><a class="nav-link scrollto text-white" href="candidateInput.jsp">ADD CANDIDATE</a></li>              
                         <li><a class="nav-link scrollto text-white" href="#contact">PENDING REQUESTS</a></li>                    
                         <li><a class="nav-link scrollto text-white" href="logout.jsp">Logout</a></li>                
                     </ul>
