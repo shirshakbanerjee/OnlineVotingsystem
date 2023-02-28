@@ -116,7 +116,7 @@ public class User extends ActionSupport implements ApplicationAware, SessionAwar
             sessionMap.put("VoterList", voterList);
         } else if (x == 1 && !this.voterId.equalsIgnoreCase("")) {
             result = "VOTER";
-            Voter voter = VoterService.getVoter(this.voterId);
+            Voter voter = VoterService.getVoter2(this.voterId,this.emailAddress);
             System.out.println(voter.getFirstName());
             if (voter.getFirstName() == null) {
                 sessionMap.put("Error", "Wrong data");

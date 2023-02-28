@@ -56,6 +56,41 @@ public class VoterService {
         }
         return voter;
     }
+    
+    public static Voter getVoter2(String voterId, String emailAddress) {
+        Voter voter = new Voter();
+
+        try {
+            Connection con = JDBCConnectionManager.getConnection();
+            String sql = "select * from voters "
+                    + "where voterId = ? and emailAddress = ?";
+
+            PreparedStatement preparedStatement = con.prepareStatement(sql);
+            preparedStatement.setInt(1, Integer.parseInt(voterId));
+            preparedStatement.setString(2, emailAddress);
+            ResultSet rs = preparedStatement.executeQuery();
+
+            if (rs.next()) {
+
+                voter.setVoterId(rs.getInt("voterId"));
+                voter.setFirstName(rs.getString("firstName"));
+                voter.setLastName(rs.getString("lastName"));
+                voter.setPassword(rs.getString("password"));
+                voter.setAge(rs.getString("age"));
+                voter.setGender(rs.getString("gender"));
+                voter.setState(rs.getString("state"));
+                voter.setAdminStatus(rs.getString("adminStatus"));
+                voter.setVotingStatus(rs.getString("votingStatus"));
+                voter.setDob(rs.getString("dob"));
+                voter.setEmailAddress(rs.getString("emailAddress"));
+                System.out.println(voter.getVoterId() + " Found!!!");
+            }
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return voter;
+    }
 
     public static ArrayList getStates() {
         ArrayList stateList = new ArrayList();
