@@ -50,5 +50,33 @@ public class UserService {
         
         return success;
     }
+
+    public static User getUser(int voterId) {
+         String sql = "Select * from users where voterId=? ";
+        User user = new User();
+        try {
+            Connection con = JDBCConnectionManager.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, voterId);
+            
+            
+            System.out.println("LoginService :: "+ps);
+            
+            ResultSet rs = ps.executeQuery();
+            
+            if(rs.next())
+            {
+                
+                user.setEmailAddress(rs.getString("emailAddress"));
+                
+            }
+            
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        
+        
+        return user;
+    }
     
 }
