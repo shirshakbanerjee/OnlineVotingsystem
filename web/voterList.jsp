@@ -115,7 +115,19 @@
                 xmlhttp.open("POST", "AdminRejected?voterId=" + voterId, true);
                 xmlhttp.send();
             }
+            function newfetchContent(urls)
+            {
+//                alert("Triggered");
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function ()
+                {
+                    document.getElementById("adminLanding").innerHTML = xmlhttp.responseText;
+                };
 
+
+                xmlhttp.open("POST", urls, true);
+                xmlhttp.send();
+            }
 
         </script>
     </head>
@@ -125,105 +137,108 @@
     <!-- I want to check my session before showing any content to the user -->
 
 
-
+    <c:set var='admin' value='${Admin}'/>
+    <c:if test = "${admin == null && voter == null}">  
+        <c:redirect url = "login.jsp"/>
+    </c:if>
 
     <jsp:include page="menu.jsp"></jsp:include>
+        <div id="adminLanding">
+            <div id="example">
 
-        <div id="example">
+            <c:if test="${UpdateMsg != null}">
+                <div class="alert alert-success" role="alert">
+                    ${UpdateMsg}
+                </div>
+            </c:if>
 
-        <c:if test="${UpdateMsg != null}">
-            <div class="alert alert-success" role="alert">
-                ${UpdateMsg}
-            </div>
-        </c:if>
+            <div class="fixed-table-toolbar"><div class="bs-bars float-left">
 
-        <div class="fixed-table-toolbar"><div class="bs-bars float-left">
-
-            </div><div class="columns columns-right btn-group float-right"><div class="keep-open btn-group" title="Columns">
-                    <div class="dropdown-menu dropdown-menu-right" style=""><label class="dropdown-item dropdown-item-marker"><input type="checkbox" data-field="id" value="0" checked="checked"> <span>ID</span></label><label class="dropdown-item dropdown-item-marker"><input type="checkbox" data-field="name" value="1" checked="checked"> <span>Item Name</span></label><label class="dropdown-item dropdown-item-marker"><input type="checkbox" data-field="price" value="2" checked="checked"> <span>Item Price</span></label></div></div></div></div>
-        <div>
-            <div class="table-wrapper-scroll-y my-custom-scrollbar" > 
-                <table class="table table-responsive table-striped "  data-virtual-scroll="true">
-                    <thead>
-                        <c:choose>
-                            <c:when test = "${requestScope.noData != null}">
-                                <tr>
-                                    <td colspan="5">
-                                        <h2 style="border:2px solid rgb(255, 99, 71); background-color:rgba(255, 99, 71, 0.5); font-size:15px;">
-                                            <c:out value="${requestScope.noData}"> </c:out>
-                                            </h2>
-                                        </td>
-                                    </tr>
-                            </c:when>
-                        </c:choose>
-                        <tr>
-                            <th>VOTER ID</th>
-                            <th>Email ADDRESS</th>
-                            <th>FIRST NAME</th>
-                            <th>LAST NAME</th>
-                            <th>AGE</th>
-                            <th>DOB</th>
-                            <th>GENDER</th>
-                            <th>STATE</th>
-                            <th>VOTING STATUS</th>
-                            <th>ADMIN STATUS</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-
-                        <c:forEach items="${VoterList}" var="voterList">
-
-                            <tr data-index="0">
-                                <td>${voterList.voterId}</td>
-                                <td>${voterList.emailAddress}</td>
-                                <td>${voterList.firstName}</td>
-                                <td>${voterList.lastName}</td>
-                                <td>${voterList.age}</td>
-                                <td>${voterList.dob }</td>
-                                <td>${voterList.gender}</td>
-                                <td>${voterList.state}</td>
-                                <td><c:if test="${voterList.getVotingStatus()==1}">
-                                        <p  style="color:green">Voted</p></c:if>
-                                    <c:if test="${voterList.getVotingStatus()==0}">
-                                        <p  style="color:red">Not Voted</p></c:if></td>
-                                    <td>
-                                    <c:if test="${voterList.getAdminStatus()==1}">
-                                        <p  style="color:green">Approved</p></c:if>
-                                    <c:if test="${voterList.getAdminStatus()==2}">
-                                        <p  style="color:red">Rejected </p></c:if>
-                                    <c:if test="${voterList.getAdminStatus()==0}">
-                                        <p  style="color:blue">Pending</p></c:if>
-                                    </td>
-                                    <td>
-                                        <button type="button" class="btn btn-dark" onclick="fetchContent(${voterList.voterId})">View</button>
-                                </td>
+                </div><div class="columns columns-right btn-group float-right"><div class="keep-open btn-group" title="Columns">
+                        <div class="dropdown-menu dropdown-menu-right" style=""><label class="dropdown-item dropdown-item-marker"><input type="checkbox" data-field="id" value="0" checked="checked"> <span>ID</span></label><label class="dropdown-item dropdown-item-marker"><input type="checkbox" data-field="name" value="1" checked="checked"> <span>Item Name</span></label><label class="dropdown-item dropdown-item-marker"><input type="checkbox" data-field="price" value="2" checked="checked"> <span>Item Price</span></label></div></div></div></div>
+            <div>
+                <div class="table-wrapper-scroll-y my-custom-scrollbar" > 
+                    <table class="table table-responsive table-striped "  data-virtual-scroll="true">
+                        <thead>
+                            <c:choose>
+                                <c:when test = "${requestScope.noData != null}">
+                                    <tr>
+                                        <td colspan="5">
+                                            <h2 style="border:2px solid rgb(255, 99, 71); background-color:rgba(255, 99, 71, 0.5); font-size:15px;">
+                                                <c:out value="${requestScope.noData}"> </c:out>
+                                                </h2>
+                                            </td>
+                                        </tr>
+                                </c:when>
+                            </c:choose>
+                            <tr>
+                                <th>VOTER ID</th>
+                                <th>Email ADDRESS</th>
+                                <th>FIRST NAME</th>
+                                <th>LAST NAME</th>
+                                <th>AGE</th>
+                                <th>DOB</th>
+                                <th>GENDER</th>
+                                <th>STATE</th>
+                                <th>VOTING STATUS</th>
+                                <th>ADMIN STATUS</th>
+                                <th>Action</th>
                             </tr>
-                        </c:forEach>
+                        </thead>
+                        <tbody>
 
-                    </tbody>
+                            <c:forEach items="${VoterList}" var="voterList">
+
+                                <tr data-index="0">
+                                    <td>${voterList.voterId}</td>
+                                    <td>${voterList.emailAddress}</td>
+                                    <td>${voterList.firstName}</td>
+                                    <td>${voterList.lastName}</td>
+                                    <td>${voterList.age}</td>
+                                    <td>${voterList.dob }</td>
+                                    <td>${voterList.gender}</td>
+                                    <td>${voterList.state}</td>
+                                    <td><c:if test="${voterList.getVotingStatus()==1}">
+                                            <p  style="color:green">Voted</p></c:if>
+                                        <c:if test="${voterList.getVotingStatus()==0}">
+                                            <p  style="color:red">Not Voted</p></c:if></td>
+                                        <td>
+                                        <c:if test="${voterList.getAdminStatus()==1}">
+                                            <p  style="color:green">Approved</p></c:if>
+                                        <c:if test="${voterList.getAdminStatus()==2}">
+                                            <p  style="color:red">Rejected </p></c:if>
+                                        <c:if test="${voterList.getAdminStatus()==0}">
+                                            <p  style="color:blue">Pending</p></c:if>
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-dark" onclick="fetchContent(${voterList.voterId})">View</button>
+                                    </td>
+                                </tr>
+                            </c:forEach>
+
+                        </tbody>
+                    </table>
+                </div>
+                <!--<div class="scroll">-->
+                <table id="tableId" class="table-borderless">
+
+                    <td rowspan = "2">
+                        <div id="onclickViewVoter">
+
+                        </div>
+                    </td>
+                    <td>
+                        <div id="voterIdentityDetails">
+
+
+                        </div>
+
+                    </td>
+
                 </table>
             </div>
-                        <!--<div class="scroll">-->
-            <table id="tableId" class="table-borderless">
 
-                <td rowspan = "2">
-                    <div id="onclickViewVoter">
-
-                    </div>
-                </td>
-                <td>
-                    <div id="voterIdentityDetails">
-
-
-                    </div>
-
-                </td>
-
-            </table>
         </div>
-
     </div>
-
 </html>
 

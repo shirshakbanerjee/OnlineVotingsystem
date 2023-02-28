@@ -38,6 +38,10 @@
             <result name="SUCCESS">detailsOfVoter.jsp</result>
             <result name="FAILURE">detailsOfVoter.jsp</result>
         </action>
+        <action name="ShowResult" class="com.exavalu.models.Result" method="getResult">
+            <result name="SUCCESS">adminResult.jsp</result>
+            <result name="FAILURE">voterList.jsp</result>
+        </action>
     </package>
 </struts>
 

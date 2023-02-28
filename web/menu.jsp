@@ -82,7 +82,8 @@
                     <ul>
                         <li><a class="nav-link scrollto text-white" href="voterList.jsp">SHOW VOTERS</a></li>
                         <li><a class="nav-link scrollto text-white" href="#login">Add Candidate</a></li>              
-                        <li><a class="nav-link scrollto text-white" href="#contact">Declare Result</a></li>                    
+                        <!--<li><a class="nav-link scrollto text-white" onclick="newfetchContent('ShowResult')">Declare Result</a></li>--> 
+                        <li><a class="nav-link scrollto text-white" href="ShowResult">Declare Result</a></li>
                         <li><a class="nav-link scrollto text-white" href="logout.jsp">Logout</a></li>                
                     </ul>
                     <i class="bi bi-list mobile-nav-toggle"></i>
