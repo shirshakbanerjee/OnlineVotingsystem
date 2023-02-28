@@ -6,6 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@taglib uri="/struts-tags" prefix="s"%>
 <!--<!DOCTYPE html>
 <html>
     <head>
@@ -57,6 +58,21 @@
         <link rel="stylesheet" type="text/css" href="assets/css/login1.css">
         <!--===============================================================================================-->
     </head>
+
+
+    <script>
+        function previewImage(event) {
+            var input = event.target;
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    var imagePreview = document.getElementById("image-preview");
+                    imagePreview.src = e.target.result;
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
 
     <header>
         <jsp:include page="menu.jsp"></jsp:include>
@@ -120,29 +136,26 @@
                         <div class="bordered">
                             <table>
                                 <tr>
-                                <form enctype="multipart/form-data" action="Signup" method="post"> 
-                                    <div class="form-floating "action="imageUpload">
-                                        <label for="image">Candidate Image:</label>
-                                        <input type="file" name="image" id="image" required><br><br>
-                                        <input type="submit" value="Upload">                                        
+                                <form  enctype="multipart/form-data" action="AddCandidate" method="post"> 
+                                    <div class="form-floating text-center">                                        
+                                        <input type="file" id="image-file" name="image" onchange="previewImage(event)">
+                                        <br>
+                                        <img id="image-preview" style="max-width: 200px; max-height: 200px;">
                                     </div>
 
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control" id="aadhar" placeholder="AadharNumber" name="voterId">
-                                        <label for="aadhar">candidateId</label>
-                                    </div>
+
 
                                     <div class="form-floating">
-                                        <input type="email" class="form-control" id="floatingInput" placeholder="first name" name="first name">
-                                        <label for="floatingInput">firstName</label>
+                                        <input type="text" class="form-control" id="floatingInput" placeholder="First Name" name="firstName">
+                                        <label for="floatingInput">First Name</label>
                                     </div>
                                     <div class="form-floating">
-                                        <input type="password" class="form-control" id="floatingPassword" placeholder="last name" name="last name">
-                                        <label for="floatingPassword">lastName</label>
+                                        <input type="text" class="form-control" id="floatingPassword" placeholder="Last Name" name="lastName">
+                                        <label for="floatingPassword">Last Name</label>
                                     </div>
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" id="firstName" placeholder="first name" name="firstName" >
-                                        <label for="firstName">partyName </label>
+                                        <input type="text" class="form-control" id="partyName" placeholder="Party Name" name="partyName" >
+                                        <label for="firstName">Party Name </label>
                                     </div>
                                     <div class="form-floating">
                                         <input type="text" class="form-control" id="age" placeholder="Age" name="age">
@@ -155,10 +168,9 @@
                                     </select>
 
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" id="lastName" placeholder="last name" name="lastName" >
-                                        <label for="firstName">region</label>
+                                        <input type="text" class="form-control" id="region" placeholder="region" name="region" >
+                                        <label for="Region">Region</label>
                                     </div>
-
 
 
 
