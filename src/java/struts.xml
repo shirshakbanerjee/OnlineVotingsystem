@@ -41,8 +41,7 @@
         <action name="AddCandidate" class="com.exavalu.models.Candidate" method="doInsertCandidate">
             <result name="SUCCESS">candidateInput.jsp</result> 
             <result name="FAILURE">detailsOfVoter.jsp</result>          
-        </action>
-        
+        </action>        
     </package>
 </struts>
 

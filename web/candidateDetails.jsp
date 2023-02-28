@@ -157,46 +157,33 @@
                             </c:when>
                         </c:choose>
                         <tr>
-                            <th>VOTER ID</th>
-                            <th>Email ADDRESS</th>
-                            <th>FIRST NAME</th>
-                            <th>LAST NAME</th>
-                            <th>AGE</th>
-                            <th>DOB</th>
-                            <th>GENDER</th>
-                            <th>STATE</th>
-                            <th>VOTING STATUS</th>
-                            <th>ADMIN STATUS</th>
-                            <th>Action</th>
+                            
+                            <th>firstName</th>
+                            <th>lastName</th>
+                            <th>partyName</th>
+                            <th>age</th>
+                            <th>gender</th>
+                            <th>region</th>
+                            <th>candidateStatus</th>
+                           
                         </tr>
                     </thead>
                     <tbody>
 
-                        <c:forEach items="${VoterList}" var="voterList">
+                        <c:forEach items="${CandidateList}" var="candidateList">
 
                             <tr data-index="0">
-                                <td>${voterList.voterId}</td>
-                                <td>${voterList.emailAddress}</td>
-                                <td>${voterList.firstName}</td>
-                                <td>${voterList.lastName}</td>
-                                <td>${voterList.age}</td>
-                                <td>${voterList.dob }</td>
-                                <td>${voterList.gender}</td>
-                                <td>${voterList.state}</td>
-                                <td><c:if test="${voterList.getVotingStatus()==1}">
-                                        <p  style="color:green">Voted</p></c:if>
-                                    <c:if test="${voterList.getVotingStatus()==0}">
-                                        <p  style="color:red">Not Voted</p></c:if></td>
+                                <td>${candidateList.firstName}</td>
+                                <td>${candidateList.lastName}</td>
+                                <td>${candidateList.partyName}</td>
+                                <td>${candidateList.age}</td>
+                                <td>${candidateList.gender}</td>
+                                <td>${candidateList.region }</td>
+                                <td>${candidateList.candidateStatus}</td>
+                                
                                     <td>
-                                    <c:if test="${voterList.getAdminStatus()==1}">
-                                        <p  style="color:green">Approved</p></c:if>
-                                    <c:if test="${voterList.getAdminStatus()==2}">
-                                        <p  style="color:red">Rejected </p></c:if>
-                                    <c:if test="${voterList.getAdminStatus()==0}">
-                                        <p  style="color:blue">Pending</p></c:if>
-                                    </td>
-                                    <td>
-                                        <button type="button" class="btn btn-dark" onclick="fetchContent(${voterList.voterId})">View</button>
+                                        <button type="button" class="btn btn-dark" onclick="fetchContent(${candidateList.candidateId
+                                                })">View</button>
                                 </td>
                             </tr>
                         </c:forEach>
@@ -204,7 +191,7 @@
                     </tbody>
                 </table>
             </div>
-                        <!--<div class="scroll">-->
+<!--                        <div class="scroll">-->
             <table id="tableId" class="table-borderless">
 
                 <td rowspan = "2">
