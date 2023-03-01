@@ -12,6 +12,7 @@
         <link rel="stylesheet" href="assets/css/docs.min.css">
         <link rel="stylesheet" href="assets/css/index.css">
         <link rel="stylesheet" href="assets/css/customstyle.css" >
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
         <link href="assets/vendor/aos/aos.css" rel="stylesheet">
         <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -20,7 +21,7 @@
         <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
         <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
         <link href="assets/css/style.css" rel="stylesheet">
-        <title>VOTER LIST</title>
+        <title>CANDIDATE LIST</title>
         <style>
             #table {
                 display: block;
@@ -50,7 +51,7 @@
 
             .my-custom-scrollbar {
                 position: relative;
-                height: 300px;
+                height: 600px;
                 overflow: auto;
             }
             .table-wrapper-scroll-y {
@@ -118,6 +119,7 @@
 
 
         </script>
+    
     </head>
 
 
@@ -143,8 +145,8 @@
                     <div class="dropdown-menu dropdown-menu-right" style=""><label class="dropdown-item dropdown-item-marker"><input type="checkbox" data-field="id" value="0" checked="checked"> <span>ID</span></label><label class="dropdown-item dropdown-item-marker"><input type="checkbox" data-field="name" value="1" checked="checked"> <span>Item Name</span></label><label class="dropdown-item dropdown-item-marker"><input type="checkbox" data-field="price" value="2" checked="checked"> <span>Item Price</span></label></div></div></div></div>
         <div>
             <div class="table-wrapper-scroll-y my-custom-scrollbar" > 
-                <table class="table table-responsive table-striped "  data-virtual-scroll="true">
-                    <thead>
+                <table class="table table-responsive table-striped table-secondary "  data-virtual-scroll="true">
+                    <thead class="table-bordered table-dark">
                         <c:choose>
                             <c:when test = "${requestScope.noData != null}">
                                 <tr>
@@ -157,41 +159,44 @@
                             </c:when>
                         </c:choose>
                         <tr>
-                            
-                            <th>firstName</th>
-                            <th>lastName</th>
-                            <th>partyName</th>
-                            <th>age</th>
-                            <th>gender</th>
-                            <th>region</th>
-                            <th>candidateStatus</th>
-                           
+                            <th>Profile Pic</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Party Name</th>
+                            <th>Age</th>
+                            <th>Gender</th>
+                            <th>Region</th>
+                            <th>Action</th>
+
                         </tr>
                     </thead>
                     <tbody>
 
                         <c:forEach items="${CandidateList}" var="candidateList">
-
                             <tr data-index="0">
-                                <td>${candidateList.firstName}</td>
+                                <td>
+                                    <c:if test="${not empty candidateList.imageData}">
+                                        <img src="data:image/png;base64,${candidateList.imageData}" style="width: auto; height: auto; max-width: 150px; max-height: 150px;">
+                                    </c:if>
+                                </td>
+                                <td>${candidateList.firstName}</td>                                
                                 <td>${candidateList.lastName}</td>
                                 <td>${candidateList.partyName}</td>
                                 <td>${candidateList.age}</td>
                                 <td>${candidateList.gender}</td>
-                                <td>${candidateList.region }</td>
-                                <td>${candidateList.candidateStatus}</td>
-                                
-                                    <td>
-                                        <button type="button" class="btn btn-dark" onclick="fetchContent(${candidateList.candidateId
-                                                })">View</button>
+                                <td>${candidateList.region}</td>
+                                <td>
+                                    <button type="button" class="btn btn-info" onclick="fetchContent(${candidateList.candidateId})"> <i class="fa fa-pencil"></i></button>
+                                    <button type="button" class="btn btn-danger" onclick="fetchContent(${candidateList.candidateId})"><i class="fa fa-trash"></i></button>
                                 </td>
                             </tr>
                         </c:forEach>
 
+
                     </tbody>
                 </table>
             </div>
-<!--                        <div class="scroll">-->
+            <!--                        <div class="scroll">-->
             <table id="tableId" class="table-borderless">
 
                 <td rowspan = "2">

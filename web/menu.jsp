@@ -78,12 +78,14 @@
 
                 <c:if test="${Admin!=null}">
 
-
                     <ul>
+
                         <li><a class="nav-link scrollto text-white" href="voterList.jsp">SHOW VOTERS</a></li>
-                        <li><a class="nav-link scrollto text-white" href="candidateInput.jsp">ADD CANDIDATE</a></li>              
+                        <li><a class="nav-link scrollto text-white" href="candidateInput.jsp">ADD CANDIDATE</a></li>   
+                        <li><a class="nav-link scrollto text-white" href="candidateDetails.jsp">SHOW CANDIDATES</a></li>   
                         <li><a class="nav-link scrollto text-white" href="ShowResult">DECLARE RESULT</a></li>                    
                         <!--<li><a class="nav-link scrollto text-white" onclick="newfetchContent('ShowResult')">Declare Result</a></li>--> 
+
                         <li><a class="nav-link scrollto text-white" href="logout.jsp">Logout</a></li>                
                     </ul>
                     <i class="bi bi-list mobile-nav-toggle"></i>
