@@ -144,5 +144,14 @@ public class Candidate extends ActionSupport implements ApplicationAware, Sessio
         return imageData;
     }
 
-    
+     public String showCandidate() throws Exception {
+        String res = "FAILURE";
+        ArrayList candidate = CandidateService.getAllCandidates();
+        
+        if (!candidate.isEmpty()) {
+            sessionMap.put("CandidateList", candidate);
+            res = "SUCCESS";
+        }
+        return res;
+    }
 }
