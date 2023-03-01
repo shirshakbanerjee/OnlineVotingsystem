@@ -43,62 +43,10 @@
 
 
             <div class="limiter">
-                <div class="container-login100" style="background-image: url('assets/img/map.png');">
+                <div class="container-login100" style="background-image: url('assets/img/map.jpg');">
                     <div class="col-md-6">
                         <div class="wrap-login100 p-l-110 p-r-110 p-t-62 p-b-33" style="opacity: 0.9;">
-                            <!--                    <form class="login100-form validate-form flex-sb flex-w">
-                                                    <span class="login100-form-title p-b-53">
-                                                        Sign In With
-                                                    </span>
-                            
-                                                    <a href="#" class="btn-face m-b-20">
-                                                        <i class="fa fa-facebook-official"></i>
-                                                        Facebook
-                                                    </a>
-                            
-                                                    <a href="#" class="btn-google m-b-20">
-                                                        <img src="assets/img/login/icons/icon-google.png" alt="GOOGLE">
-                                                        Google
-                                                    </a>
-                            
-                            
-                                                    <div class="form-floating">
-                                                        <input type="text" class="form-control"  placeholder="Voter Id" name="voterId">
-                                                        <label for="floatingPassword">VoterId</label>
-                                                    </div>
-                            
-                                                    <div class="p-t-13 p-b-9">
-                                                        <span class="txt1">
-                                                            Password
-                                                        </span>
-                            
-                                                        <a href="#" class="txt2 bo1 m-l-5">
-                                                            Forgot?
-                                                        </a>
-                                                    </div>
-                                                    <div class="wrap-input100 validate-input" data-validate = "Password is required">
-                                                        <input class="input100" type="password" name="pass" >
-                                                        <span class="focus-input100"></span>
-                                                    </div>
-                            
-                                                    <div class="container-login100-form-btn m-t-17">
-                                                        <button class="login100-form-btn">
-                                                            Sign In
-                                                        </button>
-                                                    </div>
-                            
-                                                    <div class="w-full text-center p-t-55">
-                                                        <span class="txt2">
-                                                            Not a member?
-                                                        </span>
-                            
-                                                        <a href="#" class="txt2 bo1">
-                                                            Sign up now
-                                                        </a>
-                                                    </div>
-                                                </form>-->
-
-
+                           
                             <main class="form-signin w-100 m-auto ">
 
                                 <form action="Login" method="post">
@@ -135,16 +83,7 @@
                                     <input name="voterId" type="number" class="form-control" id="floatingInput2" placeholder="VoterId">
                                     <label for="floatingInput2">VoterId</label>
                                 </div>
-                                <br><!-- comment -->
-
-<!--                                <div class="checkbox mb-3">
-                                    <label style="color: white">
-                                        <input type="checkbox" value="remember-me"> Remember me
-                                    </label>
-                                </div>-->
-                                
-                                
-                                
+                                <br>
                                 <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
                                 <p></p>
                                 <div class="form-floating align-items-center" style="font-size: 20px;text-align: center">
