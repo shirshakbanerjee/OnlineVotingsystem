@@ -4,31 +4,38 @@
  */
 package com.exavalu.models;
 
-import com.google.gson.Gson;
+import com.exavalu.utils.JDBCUtility;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.io.Serializable;
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.ArrayList;
 import java.util.Map;
+
 import org.apache.struts2.dispatcher.ApplicationMap;
 import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.ApplicationAware;
 import org.apache.struts2.interceptor.SessionAware;
+import java.util.ArrayList;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 
 /**
  *
  * @author ANKIT
  */
 public class VoterAPI extends ActionSupport implements ApplicationAware, SessionAware, Serializable {
+
     private String voterId, firstName, lastName, gender, dob, state;
-    
-private SessionMap<String, Object> sessionMap = (SessionMap) ActionContext.getContext().getSession();
+
+    private SessionMap<String, Object> sessionMap = (SessionMap) ActionContext.getContext().getSession();
 
     private ApplicationMap map = (ApplicationMap) ActionContext.getContext().getApplication();
-    
+
     @Override
     public void setApplication(Map<String, Object> application) {
         map = (ApplicationMap) application;
@@ -38,6 +45,7 @@ private SessionMap<String, Object> sessionMap = (SessionMap) ActionContext.getCo
     public void setSession(Map<String, Object> session) {
         sessionMap = (SessionMap) session;
     }
+
     /**
      * @return the voterId
      */
@@ -121,31 +129,86 @@ private SessionMap<String, Object> sessionMap = (SessionMap) ActionContext.getCo
     public void setState(String state) {
         this.state = state;
     }
-     public String dofetchVoterApi() throws Exception {
+
+//    public String dofetchVoterApi() throws Exception {
+//        List<VoterAPI> arrPersons = new ArrayList<VoterAPI>();
+//        String result = "VOTERDETAILS";
+//        System.out.println(this.voterId);
+//        String url = "https://retoolapi.dev/Xc0N4Z/data";
+//
+//        HttpRequest postRequest = HttpRequest.newBuilder().uri(new URI(url)).build();
+//
+//        //creating client object to send request
+//        HttpClient httpClient = HttpClient.newHttpClient();
+//
+//        HttpResponse<String> postResponse = httpClient.send(postRequest, HttpResponse.BodyHandlers.ofString());
+//        //to get body of response
+//        
+//        System.out.println(postResponse.body());
+//        
+//        Gson gson = new Gson();
+//        JsonElement element = gson.toJsonTree(arrPersons, new TypeToken<List<Person>>() {
+//        }.getType());
+//
+//        if (!element.isJsonArray()) {
+//// fail appropriately
+//            throw new Exception();
+//        }
+//
+//        JsonArray jsonArray = element.getAsJsonArray();
+//        VoterAPI voterapi = new VoterAPI();
+//        System.out.println(jsonArray.size());
+//        voterapi = gson.fromJson(postResponse.body(), VoterAPI.class);
+//        System.out.println(voterapi);
+//        sessionMap.put("VoterAPI", voterapi);
+////        mapping,object
+//        return result;
+//    }
+    public String dofetchVoterApi() throws Exception {
         String result = "VOTERDETAILS";
-        System.out.println("ho rha hai");
-        String url = "https://mocki.io/v1/deea167d-b9bd-423e-962b-863764785a5e";
+        JDBCUtility jdbcUtility = JDBCUtility.getInstanceOfJDBCUtility();
+        String apiUrl = "https://retoolapi.dev/1fHrBM/data";
 
-        HttpRequest postRequest = HttpRequest.newBuilder().uri(new URI(url)).build();
+        URL obj = new URL(apiUrl);
+        HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+        // optional default is GET
+        con.setRequestMethod("GET");
+        //add request header
+        con.setRequestProperty("Accept", "application/json");
+        int responseCode = con.getResponseCode();
+        System.out.println(this.voterId);
+        System.out.println("\nSending 'GET' request to URL : " + apiUrl);
+        System.out.println("Response Code : " + responseCode);
+        BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+        String inputLine;
+        StringBuffer response = new StringBuffer();
+        int c = 0;
+        ArrayList userList = new ArrayList<>();
+        JSONParser parse = new JSONParser();
 
-        //creating client object to send request
-        HttpClient httpClient = HttpClient.newHttpClient();
+        while ((inputLine = in.readLine()) != null) {
 
-        HttpResponse<String> postResponse = httpClient.send(postRequest, HttpResponse.BodyHandlers.ofString());
-        //to get body of response
-        System.out.println(postResponse.body());
-        Gson gson = new Gson();
-         VoterAPI voterapi = new VoterAPI();
-        voterapi = gson.fromJson(postResponse.body(), VoterAPI.class);
-        System.out.println(voterapi);
-        sessionMap.put("VoterAPI", voterapi);
-//        mapping,object
+            response.append(inputLine);
+        }
+        JSONArray jsonArray = (JSONArray) parse.parse(response.toString());
+        System.out.println(jsonArray.size());
+        for (int i = 0; i < jsonArray.size(); i++) {
+            JSONObject myResponse = (JSONObject) jsonArray.get(i);
+
+            VoterAPI voterAPI = new VoterAPI();
+            voterAPI.setVoterId(myResponse.get("voterId").toString());
+            System.out.println(voterAPI.getVoterId());
+            voterAPI.setFirstName(myResponse.get("firstName").toString());
+            voterAPI.setLastName(myResponse.get("lastName").toString());
+            voterAPI.setGender(myResponse.get("gender").toString());
+            voterAPI.setDob(myResponse.get("dob").toString());
+            voterAPI.setState(myResponse.get("state").toString());
+
+            if (voterAPI.getVoterId().equals(this.voterId)) {
+                sessionMap.put("VoterAPI", voterAPI);
+            }
+        }
+        System.out.println(sessionMap);
         return result;
     }
-
-    
-    
-    
 }
-
-

@@ -23,8 +23,7 @@
             <result name="DETAILSOFVOTER">detailsOfVoter.jsp</result>   
         </action>
         <action name="FetchApi" class="com.exavalu.models.VoterAPI" method="dofetchVoterApi">
-            <result name="VOTERDETAILS">voterIdentityDetails.jsp</result>
-            
+            <result name="VOTERDETAILS">voterIdentityDetails.jsp</result>            
         </action>
         <action name="AdminVerified" class="com.exavalu.models.Voter" method="doVerifiedByAdmin">
             <result name="SUCCESS">detailsOfVoter.jsp</result>
@@ -37,6 +36,10 @@
         <action name="AdminRejected" class="com.exavalu.models.Voter" method="doRejectByAdmin">
             <result name="SUCCESS">detailsOfVoter.jsp</result>
             <result name="FAILURE">detailsOfVoter.jsp</result>
+        </action>
+        <action name="ShowResult" class="com.exavalu.models.Result" method="getResult">
+            <result name="SUCCESS">adminResult.jsp</result>
+            <result name="FAILURE">voterList.jsp</result>
         </action>
         <action name="AddCandidate" class="com.exavalu.models.Candidate" method="doInsertCandidate">
             <result name="SUCCESS">candidateInput.jsp</result> 
