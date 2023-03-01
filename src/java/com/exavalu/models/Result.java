@@ -26,9 +26,12 @@ public class Result extends ActionSupport implements ApplicationAware, SessionAw
     private String candidateId;
     private String candidateName;
     private String firstName;
+    private String lastName;
     private String votes;
     private String states;
     private String count;
+    private ArrayList stateNames;
+    private ArrayList stateVote;
     
     private SessionMap<String, Object> sessionMap = (SessionMap) ActionContext.getContext().getSession();
 
@@ -76,6 +79,14 @@ public class Result extends ActionSupport implements ApplicationAware, SessionAw
         this.firstName = firstName;
     }
 
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
     public String getStates() {
         return states;
     }
@@ -90,6 +101,22 @@ public class Result extends ActionSupport implements ApplicationAware, SessionAw
 
     public void setCount(String count) {
         this.count = count;
+    }
+
+    public ArrayList getStateNames() {
+        return stateNames;
+    }
+
+    public void setStateNames(ArrayList stateNames) {
+        this.stateNames = stateNames;
+    }
+
+    public ArrayList getStateVote() {
+        return stateVote;
+    }
+
+    public void setStateVote(ArrayList stateVote) {
+        this.stateVote = stateVote;
     }
     
     public String getResult()
@@ -108,6 +135,23 @@ public class Result extends ActionSupport implements ApplicationAware, SessionAw
         }
         else{
             System.out.println("Some Error occured in results!!");
+//            sessionMap.put("VoteMsg", "Some Problem has Occured");
+        }
+        return result;
+    }
+    
+    public String getCandidateResult()
+    {
+        String result="FAILURE";
+        Result candidateResult = ResultService.candidateResult(this.firstName);
+        if(candidateResult.getStateVote()!=null)
+        {
+            System.out.println("Returning success from Candidate results!!");
+            sessionMap.put("CandidateResults", candidateResult);
+            result="SUCCESS";
+        }
+        else{
+            System.out.println("Some Error occured in Candidate results!!");
 //            sessionMap.put("VoteMsg", "Some Problem has Occured");
         }
         return result;

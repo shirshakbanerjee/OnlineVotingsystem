@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  *
@@ -34,6 +35,7 @@ public class ResultService {
                 String firstName = rs.getString("firstName");
                 result.setFirstName(firstName);
                 String lastName = rs.getString("lastName");
+                result.setLastName(lastName);
                 result.setCandidateName(firstName+" "+lastName);
                 result.setVotes(String.valueOf(rs.getInt("votes")));
                 
@@ -71,6 +73,40 @@ public class ResultService {
         }
         System.err.println("Total rows:" + stateList.size());
         return stateList;
+    }
+
+    public static Result candidateResult(String canName) {
+        Result candidateResult = new Result();
+        ArrayList state = new ArrayList();
+        ArrayList vote = new ArrayList();
+        String sql = "SELECT V.state,count(*) as count FROM votes as V,candidates as C "
+                + "where V.candidateId=C.candidateId and firstName= ? and state in (SELECT stateName FROM states) group by V.state";
+        try {
+            Connection con = JDBCConnectionManager.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, canName);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+
+                state.add(rs.getString("state"));
+                vote.add(rs.getString("count"));
+
+            }
+            candidateResult.setStateNames(state);
+            candidateResult.setStateVote(vote);
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        Iterator itr = candidateResult.getStateNames().iterator();
+        System.out.println();
+        while(itr.hasNext())
+        {
+            System.out.print(itr.next()+" ");
+        }
+        System.out.println();
+        return candidateResult;
     }
     
 }
