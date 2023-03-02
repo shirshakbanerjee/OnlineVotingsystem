@@ -1,9 +1,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
-<body width="30">
+<body>
     <c:set var="voterAPI" value="${VoterAPI}"></c:set>
-        <div>
+    <div class="row" style="position: relative;width: 100%">
+      <div class="col-md-6 ms-auto" style="width: 100%">
             <table class="table table-striped"  >
                 <th>Details of voter identity:</th>
                 <tr>
@@ -31,5 +32,6 @@
                 <td><input class="form-control" name="state" type="text" class="form-control" id="state" placeholder="state" readonly value="${voterAPI.state}"></td>
             </tr>
         </table>
+        </div>
     </div>
 </body><!-- comment -->
