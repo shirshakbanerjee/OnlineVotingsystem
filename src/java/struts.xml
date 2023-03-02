@@ -51,7 +51,19 @@
         </action>
         <action name="CandidateResult" class="com.exavalu.models.Result" method="getCandidateResult">
             <result name="SUCCESS">candidateResult.jsp</result>
-        </action>    
+        </action> 
+        <action name="EditCandidate" class="com.exavalu.models.Candidate" method="editCandidate">
+            <result name="SUCCESS">candidateEdit.jsp</result>
+            <result name="FAILURE">error.jsp</result>
+        </action>  
+        <action name="DeleteCandidate" class="com.exavalu.models.Candidate" method="deleteCandidate">
+            <result name="SUCCESS">candidateDetails.jsp</result>
+            <result name="FAILURE">voterList.jsp</result>
+        </action>  
+        <action name="SaveCandidate" class="com.exavalu.models.Candidate" method="doSave">
+            <result name="SUCCESS">candidateDetails.jsp</result>
+            <result name="FAILURE">voterList.jsp</result>
+        </action>      
     </package>
 </struts>
 
