@@ -183,8 +183,9 @@
                     </main>
                 </div>
                 <div class="col-md-6" style="padding-left: 50px; background-size: cover; object-fit: none;">
-                    <img src="assets/img/map.png" style="height: 694px; opacity :0.6;" >
+                    <img src="assets/img/signUps.jpeg" style="height: 694px; opacity :0.6;" >
                 </div>
+            </div>
             </div>
 
 

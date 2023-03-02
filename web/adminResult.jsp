@@ -95,10 +95,6 @@
     <!-- I want to check my session before showing any content to the user -->
 
     <body style="overflow: visible">
-        <c:set var='admin' value='${Admin}'/>
-        <c:if test = "${admin == null && voter == null}">  
-            <c:redirect url = "login.jsp"/>
-        </c:if>
 
         <jsp:include page="menu.jsp"></jsp:include>
             <!--            <div><h3 style="text-align: center; padding: 50px;text-decoration: underline">Voting Data</h3></div>
@@ -139,19 +135,22 @@
 </div>-->
         <div class="align-content-center bg-light" style="padding: 50px">
             <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-
-            <div><h3 style="text-align: center; padding: 50px;text-decoration: underline">Candidate Vote Chart</h3></div>
-            <div class="text-center d-flex align-items-center">
+            <div class="card" style="border: 15px">
+                <div><h3 class="card-title" style="text-align: center; padding: 50px">Candidate Vote Chart</h3></div>
+                <div class="text-center d-flex align-items-center">
                 <canvas style="width: 800px" id="myChart"></canvas>
             </div>
-
+            </div>
+            
+            <div class="card">
             <div><h3 style="text-align: center; padding: 50px;text-decoration: underline">State Vote Chart</h3></div>
             <div class="text-center d-flex align-items-center">
                 <canvas id="pieChart"></canvas>
             </div>
+            </div>
             <p></p>
             <div>
-                <h3 style="text-align: center; padding: 20px;text-decoration: underline">State Analysis Of Perticular Voter</h3>
+                <h3 style="text-align: center; padding: 20px;text-decoration: underline">State Analysis Of Particular Candidate</h3>
                 <select class="form-control text-center" id="nameC" onchange="fetchContent('CandidateResult')" style="width: 500px; margin: 0 auto">
                     <option value="">Select Candidate</option>
                     <c:forEach var="results" items="${ResultList}">

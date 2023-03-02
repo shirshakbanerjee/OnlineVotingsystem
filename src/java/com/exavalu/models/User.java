@@ -119,11 +119,12 @@ public class User extends ActionSupport implements ApplicationAware, SessionAwar
             Voter voter = VoterService.getVoter2(this.voterId,this.emailAddress);
             System.out.println(voter.getFirstName());
             if (voter.getFirstName() == null) {
-                sessionMap.put("Error", "Wrong data");
+                sessionMap.put("Error", "Wrong data!!");
                 return "FAILURE";
             }
             if (Integer.parseInt(voter.getAdminStatus()) == 0) {
                 sessionMap.put("Error", "Admin has not approved you profile yet!!");
+                System.out.println("Not approved!!");
                 return "FAILURE";
             }
             sessionMap.put("Voter", voter);
