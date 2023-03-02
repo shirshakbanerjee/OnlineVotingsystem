@@ -20,7 +20,8 @@ import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.ApplicationAware;
 import org.apache.struts2.interceptor.SessionAware;
 
-public class Candidate extends ActionSupport implements ApplicationAware, SessionAware, Serializable{
+public class Candidate extends ActionSupport implements ApplicationAware, SessionAware, Serializable {
+
     private int candidateId;
     private String firstName;
     private String lastName;
@@ -30,11 +31,11 @@ public class Candidate extends ActionSupport implements ApplicationAware, Sessio
     private String region;
     private int candidateStatus;
     private File image;
-    
+
     private SessionMap<String, Object> sessionMap = (SessionMap) ActionContext.getContext().getSession();
 
     private ApplicationMap map = (ApplicationMap) ActionContext.getContext().getApplication();
-    
+
     @Override
     public void setApplication(Map<String, Object> application) {
         map = (ApplicationMap) application;
@@ -108,19 +109,16 @@ public class Candidate extends ActionSupport implements ApplicationAware, Sessio
     public void setCandidateStatus(int candidateStatus) {
         this.candidateStatus = candidateStatus;
     }
-      
+
     public String doInsertCandidate() throws Exception {
         String result = "FAILURE";
         boolean success = CandidateService.doSaveCandidate(this);
-        if(success)
-        {
+        if (success) {
             result = "SUCCESS";
             System.out.println("Returning success from doInsert candidate");
             ArrayList candidateList = CandidateService.getAllCandidates();
-            sessionMap.put("CandidateList",candidateList);
-        }
-        else
-        {
+            sessionMap.put("CandidateList", candidateList);
+        } else {
             System.out.println("Returning failure from doInsert candidate");
         }
         return result;
@@ -134,7 +132,7 @@ public class Candidate extends ActionSupport implements ApplicationAware, Sessio
         this.image = image;
     }
 
-   private String imageData;
+    private String imageData;
 
     public void setImageData(String imageData) {
         this.imageData = imageData;
@@ -144,14 +142,71 @@ public class Candidate extends ActionSupport implements ApplicationAware, Sessio
         return imageData;
     }
 
-     public String showCandidate() throws Exception {
+    public String showCandidate() throws Exception {
         String res = "FAILURE";
         ArrayList candidate = CandidateService.getAllCandidates();
-        
+
         if (!candidate.isEmpty()) {
             sessionMap.put("CandidateList", candidate);
             res = "SUCCESS";
         }
         return res;
     }
+
+    public String editCandidate() throws Exception {
+        String res = "FAILURE";
+        Candidate candidate = CandidateService.getCandidateById(this.candidateId);
+        System.out.println(candidate.getCandidateId());
+        System.out.println(this.candidateId);
+
+        if (candidateId != 0) {
+            sessionMap.put("Candidate", candidate);
+            res = "SUCCESS";
+        }
+        return res;
+    }
+
+    public String deleteCandidate() throws Exception {
+        String res = "FAILURE";
+        boolean result = CandidateService.deleteCandidate(this.candidateId);
+
+        ArrayList candidateList = CandidateService.getAllCandidates();
+        System.out.println(result);
+        if (result) {
+            sessionMap.put("CandidateList", candidateList);
+            res = "SUCCESS";
+        }
+        return res;
+    }
+
+    public String doSave() throws Exception {
+        String result = "FAILURE";
+//        Employee emp = (Employee) sessionMap.get("Emp");
+        System.out.println("LORD SHOUVIK TEAM LEAD");
+        boolean success=false;
+        if(this.image!=null)
+        {
+             System.out.println("IF____LORD SHOUVIK TEAM LEAD");
+            success = CandidateService.updateCandidate(this, this.candidateId);
+        }
+        else
+        {
+             System.out.println("ELSE_____LORD SHOUVIK TEAM LEAD");
+            success = CandidateService.updateCandidate2(this, this.candidateId);
+        }
+        if (success) {
+            System.out.println("returning Success from doSave method");
+            result = "SUCCESS";
+            ArrayList candidateList = CandidateService.getAllCandidates();
+            sessionMap.put("CandidateList", candidateList);
+        } else {
+            System.out.println("returning Failure from doSave method");
+        }
+
+        return result;
+    }
 }
+
+
+
+
