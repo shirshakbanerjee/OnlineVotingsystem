@@ -3,9 +3,7 @@
 <html lang="en">
 
     <head>
-        <style>
-
-        </style>
+        
         <meta charset="utf-8">
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -14,7 +12,7 @@
         <meta content="" name="keywords">
 
         <!-- Favicons -->
-        <link href="assets/img/favicon.png" rel="icon">
+        <link href="assets/img/favicon1.png" rel="icon">
         <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
         <!-- Google Fonts -->
@@ -68,6 +66,7 @@
         <div class="container" data-aos="zoom-out" data-aos-delay="100">
             <h1>Welcome </h1>     
         </div>
+               
     </section><!-- End Hero -->
 
     <main id="main">

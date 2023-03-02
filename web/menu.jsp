@@ -5,7 +5,7 @@
 
     <head>
         <!-- Favicons -->
-        <link href="assets/img/favicon.png" rel="icon">
+        <link href="assets/img/favicon1.png" rel="icon">
         <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
         <!-- Google Fonts -->
