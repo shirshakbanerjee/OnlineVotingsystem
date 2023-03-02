@@ -4,7 +4,7 @@
         <title>Login </title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
+        <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         <link href="assets/vendor/aos/aos.css" rel="stylesheet">
         <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
@@ -43,7 +43,7 @@
 
 
             <div class="limiter">
-                <div class="container-login100" style="background-image: url('assets/img/map.jpg');">
+                <div class="container-login100" style="background-image: url('assets/img/newlanding.png');">
                     <div class="col-md-6">
                         <div class="wrap-login100 p-l-110 p-r-110 p-t-62 p-b-33" style="opacity: 0.9;">
                            
@@ -64,10 +64,11 @@
                                         </a>
                                     </div>
 
-                                    <h3 class="alert-danger">
-                                        <c:set var='error' value='${Error}'/>
-                                    ${error}
-                                </h3>
+                                    <div class="alert-danger" style="color: red">
+                                    <c:set var='error' value='${Error}'/>
+                                        ${error}
+                                    </div>
+                                    <p></p>
 
                                 <div class="form-floating">
                                     <input name="emailAddress" type="emailAddress" class="form-control" id="floatingInput" placeholder="name@example.com" required>
