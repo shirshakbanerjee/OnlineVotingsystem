@@ -158,7 +158,7 @@
                         <div class="dropdown-menu dropdown-menu-right" style=""><label class="dropdown-item dropdown-item-marker"><input type="checkbox" data-field="id" value="0" checked="checked"> <span>ID</span></label><label class="dropdown-item dropdown-item-marker"><input type="checkbox" data-field="name" value="1" checked="checked"> <span>Item Name</span></label><label class="dropdown-item dropdown-item-marker"><input type="checkbox" data-field="price" value="2" checked="checked"> <span>Item Price</span></label></div></div></div></div>
             <div>
                 <div class="table-wrapper-scroll-y my-custom-scrollbar" > 
-                    <table class="table table-responsive table-striped "  data-virtual-scroll="true">
+                    <table class="table table-responsive table-striped "  data-virtual-scroll="true" style="background-color:#DDFBFE">
                         <thead>
                             <c:choose>
                                 <c:when test = "${requestScope.noData != null}">
@@ -171,7 +171,7 @@
                                         </tr>
                                 </c:when>
                             </c:choose>
-                            <tr>
+                                        <tr style="background-color:#B4F8E6">
                                 <th>VOTER ID</th>
                                 <th>Email ADDRESS</th>
                                 <th>FIRST NAME</th>
@@ -185,7 +185,7 @@
                                 <th>Action</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody style="font-family:verdana"">
 
                             <c:forEach items="${VoterList}" var="voterList">
 
@@ -199,19 +199,19 @@
                                     <td>${voterList.gender}</td>
                                     <td>${voterList.state}</td>
                                     <td><c:if test="${voterList.getVotingStatus()==1}">
-                                            <p  style="color:green">Voted</p></c:if>
+                                            <p  style="color:#13F048">Voted</p></c:if>
                                         <c:if test="${voterList.getVotingStatus()==0}">
-                                            <p  style="color:red">Not Voted</p></c:if></td>
+                                            <p  style="color:#AD1FE8">Not Voted</p></c:if></td>
                                         <td>
                                         <c:if test="${voterList.getAdminStatus()==1}">
-                                            <p  style="color:green">Approved</p></c:if>
+                                            <p  style="color:blue">Approved</p></c:if>
                                         <c:if test="${voterList.getAdminStatus()==2}">
                                             <p  style="color:red">Rejected </p></c:if>
                                         <c:if test="${voterList.getAdminStatus()==0}">
                                             <p  style="color:blue">Pending</p></c:if>
                                         </td>
                                         <td>
-                                            <button type="button" class="btn btn-dark" onclick="fetchContent(${voterList.voterId})">View</button>
+                                            <button type="button" class="btn btn-warning" onclick="fetchContent(${voterList.voterId})">View</button>
                                     </td>
                                 </tr>
                             </c:forEach>
@@ -236,6 +236,14 @@
                     </td>
 
                 </table>
+<!--                <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('#example').DataTable();
+            });
+        </script>-->
             </div>
 
         </div>

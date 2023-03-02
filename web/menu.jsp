@@ -54,6 +54,7 @@
                         <li><a class="nav-link scrollto active text-white" href="landingPage.jsp">Home</a></li>
                         <li><a class="nav-link scrollto text-white" href="login.jsp">Login</a></li>
                         <!--<li><a class="nav-link scrollto text-white" href="PreSignup">Sign-up</a></li>-->
+                        <li><a class="nav-link scrollto text-white" href="ShowResult">Declare Result</a></li>  
                         <li class="dropdown text-white"><a href="#"><span class="text-white">About us</span> <i class="bi bi-chevron-down"></i></a>
                             <ul>
                                 <li><a href="#services">Services</a></li>
@@ -83,7 +84,7 @@
                         <li><a class="nav-link scrollto text-white" href="voterList.jsp">SHOW VOTERS</a></li>
                         <li><a class="nav-link scrollto text-white" href="candidateInput.jsp">ADD CANDIDATE</a></li>   
                         <li><a class="nav-link scrollto text-white" href="candidateDetails.jsp">SHOW CANDIDATES</a></li>   
-                        <li><a class="nav-link scrollto text-white" href="ShowResult">DECLARE RESULT</a></li>                    
+                                          
                         <!--<li><a class="nav-link scrollto text-white" onclick="newfetchContent('ShowResult')">Declare Result</a></li>--> 
 
                         <li><a class="nav-link scrollto text-white" href="logout.jsp">Logout</a></li>                

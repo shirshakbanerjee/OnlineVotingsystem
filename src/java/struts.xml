@@ -61,6 +61,10 @@
             <result name="SUCCESS">candidateDetails.jsp</result>
             <result name="FAILURE">voterList.jsp</result>
         </action>     
+        </action>
+        <action name="CandidateResult" class="com.exavalu.models.Result" method="getCandidateResult">
+            <result name="SUCCESS">candidateResult.jsp</result>
+        </action>    
     </package>
 </struts>
 

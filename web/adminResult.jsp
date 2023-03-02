@@ -61,19 +61,31 @@
                 width: 500px;
             }
         </style>
+        <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous">
+        </script>
         <script>
             function newfetchContent(urls)
             {
-//                alert("Triggered");
+                alert(urls+'?firstName='+document.getElementById("nameC").value);
                 var xmlhttp = new XMLHttpRequest();
                 xmlhttp.onreadystatechange = function ()
                 {
-                    document.getElementById("adminLanding").innerHTML = xmlhttp.responseText;
+                    document.getElementById("displayResult").innerHTML = xmlhttp.responseText;
                 };
 
 
                 xmlhttp.open("POST", urls, true);
                 xmlhttp.send();
+            }
+            function fetchContent(urls) {
+//                alert(urls+'?firstName='+document.getElementById("nameC").value);
+                $.ajax({
+                    url: urls+'?firstName='+document.getElementById("nameC").value,
+                    success: function (responseText) {
+    //                    alert(responseText);
+                        $("#" + 'displayResult').html(responseText);
+                    }
+                });
             }
         </script>
     </head>
@@ -83,10 +95,6 @@
     <!-- I want to check my session before showing any content to the user -->
 
     <body style="overflow: visible">
-        <c:set var='admin' value='${Admin}'/>
-        <c:if test = "${admin == null && voter == null}">  
-            <c:redirect url = "login.jsp"/>
-        </c:if>
 
         <jsp:include page="menu.jsp"></jsp:include>
             <!--            <div><h3 style="text-align: center; padding: 50px;text-decoration: underline">Voting Data</h3></div>
@@ -125,19 +133,36 @@
     </tr>
 </table>
 </div>-->
-            <div class="align-content-center bg-light" style="padding: 50px">
+        <div class="align-content-center bg-light" style="padding: 50px">
             <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-
-            <div><h3 style="text-align: center; padding: 50px;text-decoration: underline">Candidate Vote Chart</h3></div>
-            <div class="text-center d-flex align-items-center">
+            <div class="card" style="border: 15px">
+                <div><h3 class="card-title" style="text-align: center; padding: 50px">Candidate Vote Chart</h3></div>
+                <div class="text-center d-flex align-items-center">
                 <canvas style="width: 800px" id="myChart"></canvas>
             </div>
-
+            </div>
+            
+            <div class="card">
             <div><h3 style="text-align: center; padding: 50px;text-decoration: underline">State Vote Chart</h3></div>
             <div class="text-center d-flex align-items-center">
                 <canvas id="pieChart"></canvas>
             </div>
-
+            </div>
+            <p></p>
+            <div>
+                <h3 style="text-align: center; padding: 20px;text-decoration: underline">State Analysis Of Particular Candidate</h3>
+                <select class="form-control text-center" id="nameC" onchange="fetchContent('CandidateResult')" style="width: 500px; margin: 0 auto">
+                    <option value="">Select Candidate</option>
+                    <c:forEach var="results" items="${ResultList}">
+                        <option value="${results.getFirstName()}">
+                            ${results.getFirstName()} ${results.getLastName()}
+                        </option>
+                    </c:forEach>
+                </select>
+            </div>
+            <div id="displayResult">
+                
+            </div>
             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
             <script>
