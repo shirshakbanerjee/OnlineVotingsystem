@@ -39,7 +39,7 @@
         </action>
         <action name="ShowResult" class="com.exavalu.models.Result" method="getResult">
             <result name="SUCCESS">adminResult.jsp</result>
-            <result name="FAILURE">resultNotDeclared.jsp</result>
+            <result name="FAILURE">landingPage.jsp</result>
         </action>
         <action name="AddCandidate" class="com.exavalu.models.Candidate" method="doInsertCandidate">
             <result name="SUCCESS">candidateInput.jsp</result> 
@@ -63,15 +63,6 @@
         <action name="SaveCandidate" class="com.exavalu.models.Candidate" method="doSave">
             <result name="SUCCESS">candidateDetails.jsp</result>
             <result name="FAILURE">voterList.jsp</result>
-        </action>
-        <action name="StartElection" class="com.exavalu.models.Result" method="beginVoting">
-            <result name="SUCCESS">voterList.jsp</result>
-            <result name="FAILURE">voterList.jsp</result>
-        </action>
-        <action name="EndElection" class="com.exavalu.models.Result" method="declareResult">
-            <result name="SUCCESS">logout.jsp</result>
-            <result name="FAILURE">voterList.jsp</result>
-        </action>     
         </action>          
         <action name="FetchCandidateApi" class="com.exavalu.models.CandidateAPI" method="dofetchCandidateApi">
             <result name="SUCCESS">candidateIdentityDetails.jsp</result>            
