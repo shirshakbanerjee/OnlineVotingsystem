@@ -27,7 +27,8 @@ import org.json.simple.parser.JSONParser;
  * @author ANKIT
  */
 public class CandidateAPI extends ActionSupport implements ApplicationAware, SessionAware, Serializable {
-    private String candidateId, firstName, lastName, partyName, age, gender, region;
+
+    private String candidateId, firstName, lastName, partyName, age, gender, region, candidateEmail;
 
     private SessionMap<String, Object> sessionMap = (SessionMap) ActionContext.getContext().getSession();
 
@@ -42,8 +43,6 @@ public class CandidateAPI extends ActionSupport implements ApplicationAware, Ses
     public void setSession(Map<String, Object> session) {
         setSessionMap((SessionMap<String, Object>) (SessionMap) session);
     }
-    
-    
 
     /**
      * @return the candidateId
@@ -142,6 +141,20 @@ public class CandidateAPI extends ActionSupport implements ApplicationAware, Ses
     public void setRegion(String region) {
         this.region = region;
     }
+    
+    /**
+     * @return the candidateEmail
+     */
+    public String getCandidateEmail() {
+        return candidateEmail;
+    }
+
+    /**
+     * @param candidateEmail the candidateEmail to set
+     */
+    public void setCandidateEmail(String candidateEmail) {
+        this.candidateEmail = candidateEmail;
+    }
 
     /**
      * @return the sessionMap
@@ -170,10 +183,11 @@ public class CandidateAPI extends ActionSupport implements ApplicationAware, Ses
     public void setMap(ApplicationMap map) {
         this.map = map;
     }
-        public String dofetchCandidateApi() throws Exception {
-        String result = "CANDIDATEDETAILS";
+
+    public String dofetchCandidateApi() throws Exception {
+        String result = "SUCCESS";
         JDBCUtility jdbcUtility = JDBCUtility.getInstanceOfJDBCUtility();
-        String apiUrl = "https://retoolapi.dev/5U3gIB/data";
+        String apiUrl = "https://retoolapi.dev/PLn26f/data";
 
         URL obj = new URL(apiUrl);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
@@ -182,7 +196,7 @@ public class CandidateAPI extends ActionSupport implements ApplicationAware, Ses
         //add request header
         con.setRequestProperty("Accept", "application/json");
         int responseCode = con.getResponseCode();
-        System.out.println(this.candidateId);
+        System.out.println(this.candidateEmail);
         System.out.println("\nSending 'GET' request to URL : " + apiUrl);
         System.out.println("Response Code : " + responseCode);
         BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
@@ -209,16 +223,17 @@ public class CandidateAPI extends ActionSupport implements ApplicationAware, Ses
             candidateAPI.setGender(myResponse.get("gender").toString());
             candidateAPI.setPartyName(myResponse.get("partyName").toString());
             candidateAPI.setAge(myResponse.get("age").toString());
-             candidateAPI.setRegion(myResponse.get("region").toString());
+            candidateAPI.setRegion(myResponse.get("region").toString());
+            candidateAPI.setCandidateEmail(myResponse.get("candidateEmail").toString());
 
-            if (candidateAPI.getCandidateId().equals(this.candidateId)) {
-                sessionMap.put("CandidateAPI", candidateAPI);
+            if (candidateAPI.getCandidateEmail().equals(this.getCandidateEmail())) {
+                getSessionMap().put("CandidateAPI", candidateAPI);
             }
         }
-        System.out.println(sessionMap);
+        System.out.println(getSessionMap());
 
         return result;
     }
 
-    
+
 }
