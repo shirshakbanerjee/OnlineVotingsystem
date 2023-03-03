@@ -83,15 +83,9 @@
 
                         <li><a class="nav-link scrollto text-white" href="voterList.jsp">SHOW VOTERS</a></li>
                         <li><a class="nav-link scrollto text-white" href="candidateInput.jsp">ADD CANDIDATE</a></li>   
-                        <li><a class="nav-link scrollto text-white" href="candidateDetails.jsp">SHOW CANDIDATES</a></li>
-                        <li class="dropdown text-white"><a href="#"><span class="text-white">Election Control</span> <i class="bi bi-chevron-down"></i></a>
-                            <ul>
-                                <li><a href="StartElection">Start Election</a></li>
-                                <li><a href="EndElection">End Election and Declare Result</a></li>              
-                            </ul>
-                        </li>
-
-                        <!--<li><a class="nav-link scrollto text-white" onclick="newfetchContent('AddCandidate')">ADD CANDIDATE</a></li>--> 
+                        <li><a class="nav-link scrollto text-white" href="candidateDetails.jsp">SHOW CANDIDATES</a></li>   
+                                          
+                        <!--<li><a class="nav-link scrollto text-white" onclick="newfetchContent('ShowResult')">Declare Result</a></li>--> 
 
                         <li><a class="nav-link scrollto text-white" href="logout.jsp">Logout</a></li>                
                     </ul>
