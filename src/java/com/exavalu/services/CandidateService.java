@@ -43,7 +43,7 @@ public class CandidateService {
                 candidate.setAge(rs.getString("age"));
                 candidate.setRegion(rs.getString("region"));
                 candidate.setCandidateStatus(rs.getInt("candidateStatus"));
-
+                candidate.setCandidateEmail(rs.getString("candidateEmail"));
                 // retrieve image data as blob
                 Blob imageBlob = rs.getBlob("image");
                 if (imageBlob != null) {
@@ -67,8 +67,8 @@ public class CandidateService {
         boolean result = false;
         Connection con = JDBCConnectionManager.getConnection();
 
-        String sql = "INSERT INTO candidates(candidateId,firstName,lastName,partyName,age,gender,region,candidateStatus,image)"
-                + "VALUES(? ,? ,? ,? ,? ,?, ?, ?,?);";
+        String sql = "INSERT INTO candidates(candidateId,firstName,lastName,partyName,age,gender,region,candidateStatus,image,candidateEmail)"
+                + "VALUES(? ,? ,? ,? ,? ,?, ?, ?,?,?);";
 
         try {
             FileInputStream inputStream = new FileInputStream(candidate.getImage());
@@ -82,7 +82,8 @@ public class CandidateService {
             preparedStatement.setString(7, candidate.getRegion());
             preparedStatement.setInt(8, candidate.getCandidateStatus());
             preparedStatement.setBinaryStream(9, inputStream);
-
+            preparedStatement.setString(10, candidate.getCandidateEmail());
+            
             int rs = preparedStatement.executeUpdate();
 
             if (rs != 0) {
@@ -101,7 +102,7 @@ public class CandidateService {
         return result;
     }
 
-      public static Candidate getCandidateById(int candidateId) {
+    public static Candidate getCandidateById(int candidateId) {
         Candidate candidate = new Candidate();
         try {
             Connection con = JDBCConnectionManager.getConnection();
@@ -110,7 +111,7 @@ public class CandidateService {
             preparedStatement.setInt(1, candidateId);
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
-                
+
                 candidate.setCandidateId(rs.getInt("candidateId"));
                 candidate.setFirstName(rs.getString("firstName"));
                 candidate.setLastName(rs.getString("lastName"));
@@ -118,7 +119,7 @@ public class CandidateService {
                 candidate.setGender(rs.getString("gender"));
                 candidate.setAge(rs.getString("age"));
                 candidate.setRegion(rs.getString("region"));
-                //candidate.setCandidateStatus(rs.getInt("candidateStatus"));
+                candidate.setCandidateEmail(rs.getString("candidateEmail"));
 
                 // retrieve image data as blob
                 Blob imageBlob = rs.getBlob("image");
@@ -130,18 +131,16 @@ public class CandidateService {
             }
 
         } catch (SQLException ex) {
-            
+
             //logger.error("An error occurred for function getEmployee: ", ex);
-            
         }
         return candidate;
     }
-    
-    
-    public static boolean updateCandidate(Candidate candidate,int candidateId) {
+
+    public static boolean updateCandidate(Candidate candidate, int candidateId) {
 
         boolean result = false;
-       
+
         try (Connection con = JDBCConnectionManager.getConnection()) {
 
             String sql = "UPDATE candidates SET firstName = ? ,lastName=?, partyName = ? ,region = ?, gender = ? ,age = ? ,image= ? WHERE candidateId = ? and candidateStatus=0";
@@ -167,22 +166,20 @@ public class CandidateService {
         } catch (SQLException ex) {
             //logger.error("An error occurred for function updateEmployee: ", ex);
             ex.printStackTrace();
-        } 
-        catch (FileNotFoundException ex) {
+        } catch (FileNotFoundException ex) {
             Logger.getLogger(CandidateService.class.getName()).log(Level.SEVERE, null, ex);
         }
         return result;
     }
-    
-    public static boolean updateCandidate2(Candidate candidate,int candidateId) {
+
+    public static boolean updateCandidate2(Candidate candidate, int candidateId) {
 
         boolean result = false;
-       
+
         try (Connection con = JDBCConnectionManager.getConnection()) {
 
             String sql = "UPDATE candidates SET firstName = ? ,lastName=?, partyName = ? ,region = ?, gender = ? ,age = ? WHERE candidateId = ? and candidateStatus=0";
 
-            
             PreparedStatement preparedStatement = con.prepareStatement(sql);
             preparedStatement.setString(1, candidate.getFirstName());
             preparedStatement.setString(2, candidate.getLastName());
@@ -190,7 +187,7 @@ public class CandidateService {
             preparedStatement.setString(4, candidate.getRegion());
             preparedStatement.setString(5, candidate.getGender());
             preparedStatement.setString(6, candidate.getAge());
-            
+
             preparedStatement.setInt(7, candidateId);
 
             int row = preparedStatement.executeUpdate();
@@ -202,8 +199,8 @@ public class CandidateService {
         } catch (SQLException ex) {
             //logger.error("An error occurred for function updateEmployee: ", ex);
             ex.printStackTrace();
-        } 
-        
+        }
+
         return result;
     }
 
@@ -216,7 +213,7 @@ public class CandidateService {
             PreparedStatement preparedStatement = con.prepareStatement(sql);
             //preparedStatement.setInt(1, 1);
             preparedStatement.setInt(1, candidateId);
-            
+
             System.out.println("candidate ID: " + candidateId);
             int row = preparedStatement.executeUpdate();
             System.out.println("Rows now: " + row);

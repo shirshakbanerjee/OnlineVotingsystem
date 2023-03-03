@@ -143,6 +143,11 @@
                                         <br>
                                         <img id="image-preview" style="max-width: 200px; max-height: 200px;">
                                     </div>
+                                       
+                                         <div class="form-floating">
+                                            <input type="text" class="form-control" id="candidateEmail" placeholder="candidateEmail" name="candidateEmail" value="${candidate.getCandidateEmail()}" readonly>
+                                            <label for="candidateEmail">Email</label>
+                                        </div>
                                         
                                         <div class="form-floating">
                                             <input type="text" class="form-control" id="candidateId" placeholder="candidateId" name="candidateId" value="${candidate.getCandidateId()}" readonly>

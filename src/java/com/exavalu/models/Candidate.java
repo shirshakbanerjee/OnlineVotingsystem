@@ -205,6 +205,16 @@ public class Candidate extends ActionSupport implements ApplicationAware, Sessio
 
         return result;
     }
+    
+    private String candidateEmail;
+
+    public String getCandidateEmail() {
+        return candidateEmail;
+    }
+
+    public void setCandidateEmail(String candidateEmail) {
+        this.candidateEmail = candidateEmail;
+    }
 }
 
 
