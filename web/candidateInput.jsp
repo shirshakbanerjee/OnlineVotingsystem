@@ -72,6 +72,48 @@
                 reader.readAsDataURL(input.files[0]);
             }
         }
+
+        function fetchCandidateApi()
+        {
+            alert(document.getElementById("candidateEmail").value);
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function ()
+            {
+                document.getElementById("candidateIdentityDetails").innerHTML = xmlhttp.responseText;
+            };
+
+
+            xmlhttp.open("POST", "FetchCandidateApi?candidateEmail=" + document.getElementById("candidateEmail").value, true);
+            xmlhttp.send();
+            //FetchApi
+        }
+
+        function functionCandidateApprove(candidateEmail)
+        {
+            //alert(fnolId);
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function ()
+            {
+                document.getElementById("onclickViewVoter").innerHTML = xmlhttp.responseText;
+            };
+
+
+            xmlhttp.open("POST", "AdminAprove?candidateEmail=" + candidateEmail, true);
+            xmlhttp.send();
+        }
+        function functionCandidateReject(candidateEmail)
+        {
+            //alert(fnolId);
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function ()
+            {
+                document.getElementById("onclickViewVoter").innerHTML = xmlhttp.responseText;
+            };
+
+
+            xmlhttp.open("POST", "AdminCandidateRejected?voterId=" + candidateEmail, true);
+            xmlhttp.send();
+        }
     </script>
 
     <header>
@@ -119,10 +161,10 @@
 
 
 
-        <div class="jumbotron"  ">
+        <div class="jumbotron"  >
 
             <div class="container" >  
-
+                <h2 class="h2 mb-3 fw-normal" style="text-align: center;">Add new candidates</h2>
             </div>
         </div>
 
@@ -131,50 +173,61 @@
 
             <div class="row">
                 <div class="col-md-6" style="width: 550px">
-                    <h2 class="h2 mb-3 fw-normal" style="text-align: center;">Add new candidates</h2>
+
                     <main class="form-signin w-100 m-auto" >
                         <div class="bordered">
                             <table>
                                 <tr>
                                 <form  enctype="multipart/form-data" action="AddCandidate" method="post"> 
-                                    <div class="form-floating text-center">                                        
+                                    <div class="form-floating text-center">    
+                                        <br>
                                         <input type="file" id="image-file" name="image" onchange="previewImage(event)">
                                         <br>
                                         <img id="image-preview" style="max-width: 200px; max-height: 200px;">
                                     </div>
+                                    <p></p>
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="candidateEmail" placeholder="Email Address" name="candidateEmail">
+                                        <label for="floatingInput">Email Address                                                                                    
+                                    </div>
 
-
-
+                                    <p></p>
                                     <div class="form-floating">
                                         <input type="text" class="form-control" id="floatingInput" placeholder="First Name" name="firstName">
                                         <label for="floatingInput">First Name</label>
                                     </div>
+                                    <p></p>
                                     <div class="form-floating">
                                         <input type="text" class="form-control" id="floatingPassword" placeholder="Last Name" name="lastName">
                                         <label for="floatingPassword">Last Name</label>
                                     </div>
+                                    <p></p>
                                     <div class="form-floating">
                                         <input type="text" class="form-control" id="partyName" placeholder="Party Name" name="partyName" >
                                         <label for="firstName">Party Name </label>
                                     </div>
+                                    <p></p>
                                     <div class="form-floating">
                                         <input type="text" class="form-control" id="age" placeholder="Age" name="age">
                                         <label for="age">Age</label>
                                     </div>
+                                    <p></p>
                                     <select name="gender" class="form-control" id="gender" required>
                                         <option value="" hidden>Select Gender</option>
                                         <option value="male"> Male  </option>
                                         <option value="female"> Female  </option>
                                     </select>
-
+                                    <p></p>
                                     <div class="form-floating">
                                         <input type="text" class="form-control" id="region" placeholder="region" name="region" >
                                         <label for="Region">Region</label>
                                     </div>
 
+                                    <p></p>
 
 
-
+                                    <button type="button" class="w-100 btn btn-danger" onclick="fetchCandidateApi()">Verify</button>
+                                    <p></p>
 
 
                                     <button class="w-100 btn btn-lg btn-info mb-2" type="submit">Submit</button>
@@ -187,8 +240,9 @@
                         </div>
                     </main>
                 </div>
-                <div class="col-md-6" style="padding-left: 50px; background-size: cover; object-fit: none;">
-                    <img src="https://cdn-eaekd.nitrocdn.com/CxTeoSPKdjdqTSxLEEGaKiGroHlKASqH/assets/mobile/optimized/rev-27fb8ed/6QqafditRy1VJCNIi5OmNgG8MUn6ZnYlaMjbjy1obKuuwxKeb8EVmZ_NiPk3HjjQa8QVbUpdQWaemGSNCMUDHm9IXrUO7FE8lEyZmGnnIltGisKG6ccLV_2xeXo67S2dNm23UlHsIPRGk7zo4FNhEVYraeu68ov1dkL-7i2O3Ju0Wq9gZkfNGrlLGg" style="height: 694px; opacity :0.6;" >
+                <div class="col-md-6" style="padding-left: 50px; background-size: cover; object-fit: none; background-image: url(https://cdn-eaekd.nitrocdn.com/CxTeoSPKdjdqTSxLEEGaKiGroHlKASqH/assets/mobile/optimized/rev-27fb8ed/6QqafditRy1VJCNIi5OmNgG8MUn6ZnYlaMjbjy1obKuuwxKeb8EVmZ_NiPk3HjjQa8QVbUpdQWaemGSNCMUDHm9IXrUO7FE8lEyZmGnnIltGisKG6ccLV_2xeXo67S2dNm23UlHsIPRGk7zo4FNhEVYraeu68ov1dkL-7i2O3Ju0Wq9gZkfNGrlLGg); width: 100%" id="candidateIdentityDetails">                    
+                    <!--<img src="https://cdn-eaekd.nitrocdn.com/CxTeoSPKdjdqTSxLEEGaKiGroHlKASqH/assets/mobile/optimized/rev-27fb8ed/6QqafditRy1VJCNIi5OmNgG8MUn6ZnYlaMjbjy1obKuuwxKeb8EVmZ_NiPk3HjjQa8QVbUpdQWaemGSNCMUDHm9IXrUO7FE8lEyZmGnnIltGisKG6ccLV_2xeXo67S2dNm23UlHsIPRGk7zo4FNhEVYraeu68ov1dkL-7i2O3Ju0Wq9gZkfNGrlLGg" style="height: 694px; opacity :0.6;" >-->
+
                 </div>
             </div>
 

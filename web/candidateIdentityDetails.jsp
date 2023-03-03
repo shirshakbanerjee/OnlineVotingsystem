@@ -10,8 +10,8 @@
     <table class="table table-sm  " >
     <th>Details of candidate identity:</th>
     <tr>
-        <td>CANDIDATE ID : </td>
-        <td><input class="form-control" name="voterId" type="text" class="form-control" id="voterId" placeholder="voterId" readonly value="${candidateAPI.candidateId}"></td>
+        <td>EMAIL ADDRESS : </td>
+        <td><input class="form-control" name="candidateEmail" type="text" class="form-control" id="candidateEmail" placeholder="candidateEmail" readonly value="${candidateAPI.candidateEmail}"></td>
     </tr>
     <tr>
         <td>FIRST NAME  : </td>
@@ -35,8 +35,8 @@
         <td><input class="form-control" name="age" type="text" class="form-control" id="age" placeholder="age" readonly value="${candidateAPI.age}"></td>
     </tr>
     <tr>
-        <td>AGE : </td>
-        <td><input class="form-control" name="region" type="text" class="form-control" id="region" placeholder="region" readonly value="${voterAPI.region}"></td>
+        <td>REGION : </td>
+        <td><input class="form-control" name="region" type="text" class="form-control" id="region" placeholder="region" readonly value="${candidateAPI.region}"></td>
     </tr>
 </table>
     </div>
