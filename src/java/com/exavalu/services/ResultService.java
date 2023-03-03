@@ -74,6 +74,31 @@ public class ResultService {
         System.err.println("Total rows:" + stateList.size());
         return stateList;
     }
+    
+    public static ArrayList calculateParty() {
+        ArrayList partyList = new ArrayList();
+        String sql = "SELECT partyName,count(*) as count FROM votes as V,candidates as C "
+                + "where V.candidateId=C.candidateId group by partyName";
+        try {
+            Connection con = JDBCConnectionManager.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Result result = new Result();
+
+                result.setPartyName(rs.getString("partyName"));
+                result.setCount(rs.getString("count"));
+
+                partyList.add(result);
+            }
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        System.err.println("Total rows:" + partyList.size());
+        return partyList;
+    }
 
     public static Result candidateResult(String canName) {
         Result candidateResult = new Result();
@@ -107,6 +132,82 @@ public class ResultService {
         }
         System.out.println();
         return candidateResult;
+    }
+
+    public static boolean setAdminStatus() {
+        boolean result = false;
+        Connection con = JDBCConnectionManager.getConnection();
+
+        String sql = "UPDATE voters SET adminStatus = 0";
+
+        try {
+
+            PreparedStatement preparedStatement = con.prepareStatement(sql);
+
+            int rs = preparedStatement.executeUpdate();
+
+            if (rs != 0) {
+                result = true;
+            }
+
+        } catch (SQLException ex) {
+
+            ex.printStackTrace();
+
+        }
+
+        return result;
+    }
+
+    public static boolean setAdminResultStatus(int i) {
+        boolean result = false;
+        Connection con = JDBCConnectionManager.getConnection();
+
+        String sql = "UPDATE admins SET adminResultStatus = ?";
+
+        try {
+
+            PreparedStatement preparedStatement = con.prepareStatement(sql);
+            preparedStatement.setInt(1, i);
+            int rs = preparedStatement.executeUpdate();
+
+            if (rs != 0) {
+                result = true;
+            }
+
+        } catch (SQLException ex) {
+
+            ex.printStackTrace();
+
+        }
+
+        return result;
+    }
+    
+    public static int getAdminResultStatus() {
+        int result=999;
+
+        String sql = "SELECT adminResultStatus from admins";
+
+        try {
+
+            Connection con = JDBCConnectionManager.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+
+                result = rs.getInt("adminResultStatus");
+                
+            }
+
+        } catch (SQLException ex) {
+
+            ex.printStackTrace();
+
+        }
+
+        return result;
     }
     
 }

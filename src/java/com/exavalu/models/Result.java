@@ -32,6 +32,7 @@ public class Result extends ActionSupport implements ApplicationAware, SessionAw
     private String count;
     private ArrayList stateNames;
     private ArrayList stateVote;
+    private String partyName;
     
     private SessionMap<String, Object> sessionMap = (SessionMap) ActionContext.getContext().getSession();
 
@@ -118,19 +119,33 @@ public class Result extends ActionSupport implements ApplicationAware, SessionAw
     public void setStateVote(ArrayList stateVote) {
         this.stateVote = stateVote;
     }
+
+    public String getPartyName() {
+        return partyName;
+    }
+
+    public void setPartyName(String partyName) {
+        this.partyName = partyName;
+    }
     
     public String getResult()
     {
         String result="FAILURE";
+        int adminResultStatus = ResultService.getAdminResultStatus();
+        if(adminResultStatus == 1 || adminResultStatus == 999)
+            return "FAILURE";
         ArrayList resultList = ResultService.calculateResult();
         Iterator itr=resultList.iterator();
         ArrayList stateList = ResultService.calculateState();
         Iterator itr2=stateList.iterator();
-        if(itr.hasNext() && itr2.hasNext())
+        ArrayList partyList = ResultService.calculateParty();
+        Iterator itr3=partyList.iterator();
+        if(itr.hasNext() && itr2.hasNext() && itr3.hasNext())
         {
             System.out.println("Returning success from results!!");
             sessionMap.put("ResultList", resultList);
             sessionMap.put("StateList", stateList);
+            sessionMap.put("PartyList", partyList);
             result="SUCCESS";
         }
         else{
@@ -153,6 +168,31 @@ public class Result extends ActionSupport implements ApplicationAware, SessionAw
         else{
             System.out.println("Some Error occured in Candidate results!!");
 //            sessionMap.put("VoteMsg", "Some Problem has Occured");
+        }
+        return result;
+    }
+    
+    public String declareResult()
+    {
+        String result="FAILURE";
+        boolean success = ResultService.setAdminStatus();
+        boolean success2 = ResultService.setAdminResultStatus(0);
+        if(success && success2)
+        {
+            sessionMap.put("DeclareResultMsg", "Result Declared!!");
+            result = "SUCCESS";
+        }
+        return result;
+    }
+    
+    public String beginVoting()
+    {
+        String result="FAILURE";
+        boolean success = ResultService.setAdminResultStatus(1);
+        if(success)
+        {
+            sessionMap.put("DeclareResultMsg", "Result Declared!!");
+            result = "SUCCESS";
         }
         return result;
     }

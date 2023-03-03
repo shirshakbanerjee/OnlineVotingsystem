@@ -39,7 +39,7 @@
         </action>
         <action name="ShowResult" class="com.exavalu.models.Result" method="getResult">
             <result name="SUCCESS">adminResult.jsp</result>
-            <result name="FAILURE">voterList.jsp</result>
+            <result name="FAILURE">landingPage.jsp</result>
         </action>
         <action name="AddCandidate" class="com.exavalu.models.Candidate" method="doInsertCandidate">
             <result name="SUCCESS">candidateInput.jsp</result> 

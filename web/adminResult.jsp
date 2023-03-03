@@ -135,22 +135,32 @@
 </div>-->
         <div class="align-content-center bg-light" style="padding: 50px">
             <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-            <div class="card" style="border: 15px">
+            <div class="card" style="padding-bottom: 20px; margin: 20px;margin-left: 100px;margin-right: 100px">
                 <div><h3 class="card-title" style="text-align: center; padding: 50px">Candidate Vote Chart</h3></div>
                 <div class="text-center d-flex align-items-center">
                 <canvas style="width: 800px" id="myChart"></canvas>
             </div>
             </div>
             
-            <div class="card">
-            <div><h3 style="text-align: center; padding: 50px;text-decoration: underline">State Vote Chart</h3></div>
+            <div class="card" style="padding-bottom: 20px;margin-left: 100px;margin-right: 100px">
+            <div><h3 style="text-align: center; padding: 50px">State Vote Chart</h3></div>
             <div class="text-center d-flex align-items-center">
                 <canvas id="pieChart"></canvas>
             </div>
             </div>
             <p></p>
+            
+            <div class="card" style="padding-bottom: 20px;margin-left: 100px;margin-right: 100px">
+            <div><h3 style="text-align: center; padding: 50px">Party Based Analysis Chart</h3></div>
+            <div class="text-center d-flex align-items-center">
+                <canvas id="lineChart" style="width: 800px"></canvas>
+            </div>
+            </div>
+            
+            <p></p>
+            <div class="card" style="padding-bottom: 20px;margin-left: 100px;margin-right: 100px">
             <div>
-                <h3 style="text-align: center; padding: 20px;text-decoration: underline">State Analysis Of Particular Candidate</h3>
+                <h3 style="text-align: center; padding: 20px">State Analysis Of Particular Candidate</h3>
                 <select class="form-control text-center" id="nameC" onchange="fetchContent('CandidateResult')" style="width: 500px; margin: 0 auto">
                     <option value="">Select Candidate</option>
                     <c:forEach var="results" items="${ResultList}">
@@ -162,6 +172,7 @@
             </div>
             <div id="displayResult">
                 
+            </div>
             </div>
             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -265,6 +276,53 @@
                     },
                     options: {
                         responsive: true
+                    }
+                });
+            </script>
+            <script>
+                const parties = [];
+                const countss = [];
+                <c:forEach items='${PartyList}' var='party'>
+                parties.push("${party.getPartyName()}");
+                countss.push("${party.getCount()}");
+                </c:forEach>
+                const btl = document.getElementById('lineChart');
+                new Chart(btl, {
+                    type: 'line',
+                    data: {
+                        labels: parties,
+                        datasets: [{
+                                label: 'Number of Votes to States',
+                                data: countss,
+                                backgroundColor: [
+                                    'rgba(255, 99, 132, 0.2)',
+                                    'rgba(255, 159, 64, 0.2)',
+                                    'rgba(255, 205, 86, 0.2)',
+                                    'rgba(75, 192, 192, 0.2)',
+                                    'rgba(54, 162, 235, 0.2)',
+                                    'rgba(153, 102, 255, 0.2)',
+                                    'rgba(201, 203, 207, 0.2)'
+                                ],
+                                borderColor: [
+                                    'rgb(255, 99, 132)',
+                                    'rgb(255, 159, 64)',
+                                    'rgb(255, 205, 86)',
+                                    'rgb(75, 192, 192)',
+                                    'rgb(54, 162, 235)',
+                                    'rgb(153, 102, 255)',
+                                    'rgb(201, 203, 207)'
+                                ],
+                                borderWidth: 2,
+                                borderRadius: 10
+                            }]
+                    },
+                    options: {
+                        responsive: true,
+                        scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
                     }
                 });
             </script>
