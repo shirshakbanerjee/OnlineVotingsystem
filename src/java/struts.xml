@@ -72,6 +72,9 @@
             <result name="SUCCESS">logout.jsp</result>
             <result name="FAILURE">voterList.jsp</result>
         </action>     
+        <action name="FetchCandidateApi" class="com.exavalu.models.CandidateAPI" method="dofetchCandidateApi">
+            <result name="SUCCESS">candidateIdentityDetails.jsp</result>            
+        </action> 
     </package>
 </struts>
 
