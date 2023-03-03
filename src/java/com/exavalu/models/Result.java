@@ -179,6 +179,7 @@ public class Result extends ActionSupport implements ApplicationAware, SessionAw
         boolean success2 = ResultService.setAdminResultStatus(0);
         if(success && success2)
         {
+            System.out.println("Returning success from seclare results");
             sessionMap.put("DeclareResultMsg", "Result Declared!!");
             result = "SUCCESS";
         }
