@@ -191,6 +191,7 @@ public class Result extends ActionSupport implements ApplicationAware, SessionAw
         boolean success = ResultService.setAdminResultStatus(1);
         if(success)
         {
+            System.out.println("Returning success from start voting");
             sessionMap.put("DeclareResultMsg", "Result Declared!!");
             result = "SUCCESS";
         }
