@@ -5,15 +5,26 @@
     box-sizing: border-box;
     
 }
-.container{
+nav{
+    width: 30px;
+    margin-top: 0px;
+    position: sticky;
+    background: #191970;
+}
+body{
+    overflow: hidden;
     width: 100vw;
     height: 100vh;
     background-image: url("../img/background.jpg");
     background-position: center;
-   background-size: cover;
-   padding: 15%;
+   background-size: 100% 100%;
+   object-fit: cover;
+/*   padding: 15%;*/
    position: relative;
-    
+   height: 100%;   
+}
+.container{
+    padding: 15%;
 }
 .logo{
     width:120px;
