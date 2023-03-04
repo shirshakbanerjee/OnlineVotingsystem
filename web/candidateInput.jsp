@@ -35,7 +35,7 @@
         <!-- Template Main CSS File -->
         <link href="assets/css/style.css" rel="stylesheet">
         <link href="assets/css/signup.css" rel="stylesheet">
-
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <!-- <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
         <!--===============================================================================================-->
         <link rel="stylesheet" type="text/css" href="assets/vendor/bootstrap/css/bootstrap.min.css"> 
@@ -118,93 +118,101 @@
 
     <header>
         <jsp:include page="menu.jsp"></jsp:include>
-    </header>
-    <body style="overflow-x:hidden;">
+        </header>
+        <body style="overflow-x:hidden;">
 
 
 
 
-        <!--
-           <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-             <a class="navbar-brand" href="#">Navbar</a>
-             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-               <span class="navbar-toggler-icon"></span>
-             </button>
-       
-             <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-               <ul class="navbar-nav mr-auto">
-                 <li class="nav-item active">
-                   <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                 </li>
-                 <li class="nav-item">
-                   <a class="nav-link" href="#">Link</a>
-                 </li>
-                 <li class="nav-item">
-                   <a class="nav-link disabled" href="#">Disabled</a>
-                 </li>
-                 <li class="nav-item dropdown">
-                   <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                   <div class="dropdown-menu" aria-labelledby="dropdown01">
-                     <a class="dropdown-item" href="#">Action</a>
-                     <a class="dropdown-item" href="#">Another action</a>
-                     <a class="dropdown-item" href="#">Something else here</a>
-                   </div>
-                 </li>
-               </ul>
-               <form class="form-inline my-2 my-lg-0">
-                 <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-               </form>
-             </div>
-           </nav>
-             Main jumbotron for a primary marketing message or call to action -->
+            <!--
+               <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+                 <a class="navbar-brand" href="#">Navbar</a>
+                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+                   <span class="navbar-toggler-icon"></span>
+                 </button>
+           
+                 <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                   <ul class="navbar-nav mr-auto">
+                     <li class="nav-item active">
+                       <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                     </li>
+                     <li class="nav-item">
+                       <a class="nav-link" href="#">Link</a>
+                     </li>
+                     <li class="nav-item">
+                       <a class="nav-link disabled" href="#">Disabled</a>
+                     </li>
+                     <li class="nav-item dropdown">
+                       <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                       <div class="dropdown-menu" aria-labelledby="dropdown01">
+                         <a class="dropdown-item" href="#">Action</a>
+                         <a class="dropdown-item" href="#">Another action</a>
+                         <a class="dropdown-item" href="#">Something else here</a>
+                       </div>
+                     </li>
+                   </ul>
+                   <form class="form-inline my-2 my-lg-0">
+                     <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                   </form>
+                 </div>
+               </nav>
+                 Main jumbotron for a primary marketing message or call to action -->
 
 
 
-        <div class="jumbotron"  >
+            <div class="jumbotron"  >
 
-            <div class="container" >  
-                <h2 class="h2 mb-3 fw-normal" style="text-align: center;">Add new candidates</h2>
+                <div class="container" >  
+                    <h2 class="h2 mb-3 fw-normal" style="text-align: center;">Add new candidates</h2>
+                </div>
             </div>
-        </div>
 
-        <div class="container">
-            <!-- Example row of columns -->
+            <div class="container">
+                <!-- Example row of columns -->
 
-            <div class="row">
-                <div class="col-md-6" style="width: 550px">
+                <div class="row">
+                    <div class="col-md-6" style="width: 550px">
 
-                    <main class="form-signin w-100 m-auto" >
-                        <div class="bordered">
-                            <table>
-                                <tr>
-                                <form  enctype="multipart/form-data" action="AddCandidate" method="post"> 
-                                    <div class="form-floating text-center">    
-                                        <br>
-                                        <input type="file" id="image-file" name="image" onchange="previewImage(event)">
-                                        <br>
-                                        <img id="image-preview" style="max-width: 200px; max-height: 200px;">
-                                    </div>
-                                    <p></p>
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control" id="candidateEmail" placeholder="Email Address" name="candidateEmail">
-                                        <label for="floatingInput">Email Address                                                                                    
-                                    </div>
+                        <main class="form-signin w-100 m-auto" >
+                            <div class="bordered">
+                                <table>
+                                    <tr>
+                                    <form  enctype="multipart/form-data" action="AddCandidate" method="post"> 
+                                        <div class="form-floating text-center">    
+                                            <br>
+                                            <input type="file" class="form-control" placeholder="Image" id="image-file" name="image" onchange="previewImage(event)">
+                                            <label for="floatingInput">Upload photo</label>
+                                            <p> </p>
+                                            <br>
+                                            <img id="image-preview" style="max-width: 200px; max-height: 200px;">
+                                        </div>
+                                        <p></p>
+                                        <div class="form-floating position-relative">
+                                            <input type="text" class="form-control" id="candidateEmail" placeholder="Email Address" name="candidateEmail">
+                                            <label for="floatingInput">Email Address</label>                                            
+                                            <button type="button" id="verifyButton" class="btn btn-primary position-absolute end-0 top-50 translate-middle-y btn-danger" onclick="fetchCandidateApi(); document.getElementById('submitButton').disabled = false; "> Verify</button>
+                                        </div>
 
-                                    <p></p>
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control" id="floatingInput" placeholder="First Name" name="firstName">
-                                        <label for="floatingInput">First Name</label>
-                                    </div>
-                                    <p></p>
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control" id="floatingPassword" placeholder="Last Name" name="lastName">
-                                        <label for="floatingPassword">Last Name</label>
-                                    </div>
-                                    <p></p>
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control" id="partyName" placeholder="Party Name" name="partyName" >
-                                        <label for="firstName">Party Name </label>
+
+                                        <p></p>
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control" id="floatingInput" placeholder="First Name" name="firstName">
+                                            <label for="floatingInput">First Name</label>
+                                        </div>
+                                        <p></p>
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control" id="floatingPassword" placeholder="Last Name" name="lastName">
+                                            <label for="floatingPassword">Last Name</label>
+                                        </div>
+                                        <p></p>
+                                        <div class="form-floating">
+                                            <select name="partyName" class="form-control" id="partyName" required>
+                                                <option value="" hidden> Select your Party</option>
+                                            <c:forEach var="party" items="${PartyList}">
+                                                <option value="${party.getPartyName()}"> ${party.getPartyName()}  </option>
+                                            </c:forEach>
+                                        </select><label for="floatingInput">Party Name</label>
                                     </div>
                                     <p></p>
                                     <div class="form-floating">
@@ -212,25 +220,29 @@
                                         <label for="age">Age</label>
                                     </div>
                                     <p></p>
-                                    <select name="gender" class="form-control" id="gender" required>
-                                        <option value="" hidden>Select Gender</option>
-                                        <option value="male"> Male  </option>
-                                        <option value="female"> Female  </option>
-                                    </select>
+                                    <div class="form-floating">
+                                        <select name="gender" class="form-control" id="gender" required>
+                                            <option value="" hidden>Select Gender</option>
+                                            <option value="male"> Male  </option>
+                                            <option value="female"> Female  </option>
+                                        </select>
+                                    </div>
                                     <p></p>
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" id="region" placeholder="region" name="region" >
-                                        <label for="Region">Region</label>
+                                        <select name="region" class="form-control " id="stateName">
+                                            <option value="">Select State</option>
+                                            <c:forEach var="state" items="${StateList}">
+                                                <option value="${state.getStateName()}">
+                                                    ${state.getStateName()}
+                                                </option>
+                                            </c:forEach>
+                                        </select><label for="floatingInput">State Name</label>
                                     </div>
 
                                     <p></p>
 
-
-                                    <button type="button" class="w-100 btn btn-danger" onclick="fetchCandidateApi()">Verify</button>
                                     <p></p>
-
-
-                                    <button class="w-100 btn btn-lg btn-info mb-2" type="submit">Submit</button>
+                                    <button class="w-100 btn btn-lg btn-info mb-2" id="submitButton" type="submit" disabled>Submit</button>
                                     <!--                                    <a href="Logout">
                                                                             <button type="button" class="w-100 btn btn-lg btn-secondary">Cancel</button>
                                                                         </a>-->
@@ -240,10 +252,10 @@
                         </div>
                     </main>
                 </div>
-                <div class="col-md-6" style="padding-left: 50px; background-size: cover; object-fit: none; background-image: url(https://cdn-eaekd.nitrocdn.com/CxTeoSPKdjdqTSxLEEGaKiGroHlKASqH/assets/mobile/optimized/rev-27fb8ed/6QqafditRy1VJCNIi5OmNgG8MUn6ZnYlaMjbjy1obKuuwxKeb8EVmZ_NiPk3HjjQa8QVbUpdQWaemGSNCMUDHm9IXrUO7FE8lEyZmGnnIltGisKG6ccLV_2xeXo67S2dNm23UlHsIPRGk7zo4FNhEVYraeu68ov1dkL-7i2O3Ju0Wq9gZkfNGrlLGg); width: 100%" id="candidateIdentityDetails">                    
+                <div class="col-md-6" style="float: right;  background-size: cover; object-fit: none; background-image: url(https://cdn-eaekd.nitrocdn.com/CxTeoSPKdjdqTSxLEEGaKiGroHlKASqH/assets/mobile/optimized/rev-27fb8ed/6QqafditRy1VJCNIi5OmNgG8MUn6ZnYlaMjbjy1obKuuwxKeb8EVmZ_NiPk3HjjQa8QVbUpdQWaemGSNCMUDHm9IXrUO7FE8lEyZmGnnIltGisKG6ccLV_2xeXo67S2dNm23UlHsIPRGk7zo4FNhEVYraeu68ov1dkL-7i2O3Ju0Wq9gZkfNGrlLGg); " id="candidateIdentityDetails">                    
                     <!--<img src="https://cdn-eaekd.nitrocdn.com/CxTeoSPKdjdqTSxLEEGaKiGroHlKASqH/assets/mobile/optimized/rev-27fb8ed/6QqafditRy1VJCNIi5OmNgG8MUn6ZnYlaMjbjy1obKuuwxKeb8EVmZ_NiPk3HjjQa8QVbUpdQWaemGSNCMUDHm9IXrUO7FE8lEyZmGnnIltGisKG6ccLV_2xeXo67S2dNm23UlHsIPRGk7zo4FNhEVYraeu68ov1dkL-7i2O3Ju0Wq9gZkfNGrlLGg" style="height: 694px; opacity :0.6;" >-->
-
                 </div>
+
             </div>
 
 
@@ -276,7 +288,7 @@
             ================================================== -->
             <!-- Placed at the end of the document so the pages load faster -->
             <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-            <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+        <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
             <script src="../../assets/js/vendor/popper.min.js"></script>
             <script src="../../dist/js/bootstrap.min.js"></script>
     </body>

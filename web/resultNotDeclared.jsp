@@ -1,9 +1,3 @@
-<%-- 
-    Document   : resultNotDeclared
-    Created on : 02-Mar-2023, 2:26:44 pm
-    Author     : ASUS
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -17,7 +11,7 @@
         <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
         <meta name="viewport" content="width=device-width,initial-scale=1.0">
         <title>Coming Soon</title>
-    <nav><button class="btn btn-primary"><i></i>Back</button></nav>
+    <nav><button class="btn btn-primary" ><a href="landingPage.jsp" style="color: white">Back</a></button></nav>
 
     </head>
     <body>
