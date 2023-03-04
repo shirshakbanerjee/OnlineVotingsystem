@@ -76,11 +76,17 @@
                                 <div class="col-md-6 col-lg-12 d-flex align-items-stretch mb-5 mb-lg-0">
                                     <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
                                         <h4 class="title">Candidate ID: ${candidate.getCandidateId()}</h4>
+                                        
                                         <img src="data:image/png;base64,${candidate.imageData}" style="max-width: 150px; max-height: 150px;">
+                                        
                                         <h4 class="title">${candidate.getFirstName()} ${candidate.getLastName()}</h4>
+                                        
                                         <h5 class="title">Party: ${candidate.getPartyName()}</h5>
+                                        
                                         <h5 class="title">Gender: ${candidate.getGender()}</h5>
-                                        <h5 class="title">State: ${candidate.getRegion()}</h5>
+                                        
+                                        <h5 class="title">State: ${candidate.getRegion()}</h5>                                                                                                                    
+                                        
                                         <button class="btn btn-info" onclick="editCandidate(${candidate.getCandidateId()})"><i class="fa fa-pencil"></i></button>
                                         <button class="btn btn-danger" onclick="deleteCandidate(${candidate.getCandidateId()})"><i class="fa fa-trash"></i></button>
                                         <!--<button type="button" class="btn btn-info" > <i class="fa fa-pencil"></i></button>-->

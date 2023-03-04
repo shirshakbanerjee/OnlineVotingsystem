@@ -51,7 +51,7 @@ public class Email {
             mailMessage.setRecipients(Message.RecipientType.TO,
                     InternetAddress.parse(toEmail));
             mailMessage.setSubject("Vote Confirmation");
-            mailMessage.setText("Thanks for voting ");
+            mailMessage.setText(message);
 
             Transport.send(mailMessage);
             

@@ -7,8 +7,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="candidateAPI" value="${CandidateAPI}"></c:set>
 <div>
+    <h4>Details of Candidate </h4>
     <table class="table table-sm  " >
-    <th>Details of candidate identity:</th>
+    
     <tr>
         <td>EMAIL ADDRESS : </td>
         <td><input class="form-control" name="candidateEmail" type="text" class="form-control" id="candidateEmail" placeholder="candidateEmail" readonly value="${candidateAPI.candidateEmail}"></td>

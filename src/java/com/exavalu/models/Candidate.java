@@ -9,6 +9,8 @@ package com.exavalu.models;
  * @author SHIRSHAK
  */
 import com.exavalu.services.CandidateService;
+import com.exavalu.services.PartyService;
+import com.exavalu.services.VoterService;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.io.File;
@@ -112,12 +114,12 @@ public class Candidate extends ActionSupport implements ApplicationAware, Sessio
 
     public String doInsertCandidate() throws Exception {
         String result = "FAILURE";
-        boolean success = CandidateService.doSaveCandidate(this);
+        boolean success = CandidateService.doSaveCandidate(this);           
         if (success) {
             result = "SUCCESS";
             System.out.println("Returning success from doInsert candidate");
-            ArrayList candidateList = CandidateService.getAllCandidates();
-            sessionMap.put("CandidateList", candidateList);
+            ArrayList candidateList = CandidateService.getAllCandidates();           
+            sessionMap.put("CandidateList", candidateList);            
         } else {
             System.out.println("Returning failure from doInsert candidate");
         }
@@ -214,6 +216,14 @@ public class Candidate extends ActionSupport implements ApplicationAware, Sessio
 
     public void setCandidateEmail(String candidateEmail) {
         this.candidateEmail = candidateEmail;
+    }
+    
+    public String doPreInsertCandidate() throws Exception {
+        String result = "SUCCESS";
+        ArrayList stateList = VoterService.getStates();
+        sessionMap.put("StateList", stateList);
+        
+        return result;
     }
 }
 

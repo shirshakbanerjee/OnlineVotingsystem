@@ -10,6 +10,7 @@ package com.exavalu.models;
  */
 import com.exavalu.services.AdminService;
 import com.exavalu.services.CandidateService;
+import com.exavalu.services.PartyService;
 import com.exavalu.services.UserService;
 import com.exavalu.services.VoterService;
 import com.opensymphony.xwork2.ActionContext;
@@ -111,7 +112,9 @@ public class User extends ActionSupport implements ApplicationAware, SessionAwar
             }
             sessionMap.put("Admin", admin);
             ArrayList candidateList = CandidateService.getAllCandidates();
+            ArrayList partyList = PartyService.getAllParty();
             sessionMap.put("CandidateList", candidateList);
+            sessionMap.put("PartyList", partyList);
             ArrayList voterList = VoterService.getAllVoters();
             sessionMap.put("VoterList", voterList);
         } else if (x == 1 && !this.voterId.equalsIgnoreCase("")) {

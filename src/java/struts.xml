@@ -42,8 +42,8 @@
             <result name="FAILURE">resultNotDeclared.jsp</result>
         </action>
         <action name="AddCandidate" class="com.exavalu.models.Candidate" method="doInsertCandidate">
-            <result name="SUCCESS">candidateInput.jsp</result> 
-            <result name="FAILURE">detailsOfVoter.jsp</result>          
+            <result name="SUCCESS">candidateDetails.jsp</result> 
+            <result name="FAILURE">candidateInput.jsp</result>          
         </action>    
         <action name="tableShow" class="com.exavalu.models.Candidate" method="showCandidate">
             <result name="SUCCESS">candidateDetails.jsp</result>
@@ -75,6 +75,9 @@
         <action name="FetchCandidateApi" class="com.exavalu.models.CandidateAPI" method="dofetchCandidateApi">
             <result name="SUCCESS">candidateIdentityDetails.jsp</result>            
         </action> 
+        <action name="PreInsertCandidate" class="com.exavalu.models.Candidate" method="doPreInsertCandidate">
+            <result name="SUCCESS">candidateInput.jsp</result>            
+        </action>
     </package>
 </struts>
 
