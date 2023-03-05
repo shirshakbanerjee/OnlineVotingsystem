@@ -4,6 +4,7 @@
  */
 package com.exavalu.models;
 
+import com.exavalu.services.CandidateService;
 import com.exavalu.services.ResultService;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -172,15 +173,20 @@ public class Result extends ActionSupport implements ApplicationAware, SessionAw
         return result;
     }
     
-    public String declareResult()
-    {
-        String result="FAILURE";
+    public String declareResult() {
+        String result = "FAILURE";
         boolean success = ResultService.setAdminStatus();
         boolean success2 = ResultService.setAdminResultStatus(0);
-        if(success && success2)
-        {
+        if (success && success2) {
             System.out.println("Returning success from seclare results");
             sessionMap.put("DeclareResultMsg", "Result Declared!!");
+            ArrayList candidateEmail = CandidateService.getAllCandidates();
+            Iterator itr = candidateEmail.iterator();
+            while (itr.hasNext()) {
+                Candidate candidate = (Candidate) itr.next();
+                System.out.println(candidate.getCandidateEmail());
+                Email.sendEmailToCandidate(candidate.getCandidateEmail());
+            }
             result = "SUCCESS";
         }
         return result;

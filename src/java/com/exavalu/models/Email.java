@@ -51,7 +51,45 @@ public class Email {
             mailMessage.setRecipients(Message.RecipientType.TO,
                     InternetAddress.parse(toEmail));
             mailMessage.setSubject("Vote Confirmation");
-            mailMessage.setText("Thanks for voting ");
+            mailMessage.setText(message);
+
+            Transport.send(mailMessage);
+            
+        } catch (AddressException ex) {
+            
+        } catch (MessagingException ex) {
+            
+        }
+    }
+    
+    
+    public static void sendEmailToCandidate(String toEmail) {
+         String message ="The results have been released !!\n Go check it out:http://localhost:8080/OnlineVotingSystem/ShowResult";
+        try {
+            Properties props = new Properties();
+            props.put("mail.smtp.host", "smtp.gmail.com");
+            props.put("mail.smtp.socketFactory.port", "465");
+            props.put("mail.smtp.socketFactory.class",
+                    "javax.net.ssl.SSLSocketFactory");
+            props.put("mail.smtp.auth", "true");
+            props.put("mail.smtp.port", "25");
+            
+            Session session = Session.getDefaultInstance(props,
+                    new javax.mail.Authenticator() {
+                @Override
+                protected PasswordAuthentication getPasswordAuthentication() {
+                    return new PasswordAuthentication(userName, password);
+                }
+            });
+            
+            Message mailMessage = new MimeMessage(session);
+
+            //setting up all the messages
+            mailMessage.setFrom(new InternetAddress(fromEmail));
+            mailMessage.setRecipients(Message.RecipientType.TO,
+                    InternetAddress.parse(toEmail));
+            mailMessage.setSubject("RESULT DECLARED!!");
+            mailMessage.setText(message);
 
             Transport.send(mailMessage);
             

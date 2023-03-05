@@ -60,11 +60,11 @@
 
     <header>
         <jsp:include page="menu.jsp"></jsp:include>
-    </header>
-    <body style="overflow-x:hidden;">
-        
-            
-            
+        </header>
+        <body style="overflow-x:hidden;">
+
+
+
 
             <!--
                <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
@@ -127,37 +127,46 @@
                                             <input type="text" class="form-control" id="aadhar" placeholder="AadharNumber" name="voterId">
                                             <label for="aadhar">Aadhar Card Number</label>
                                         </div>
+                                        <p></p>
 
                                         <div class="form-floating">
                                             <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="emailAddress">
                                             <label for="floatingInput">Email address</label>
                                         </div>
+                                        <p></p>
                                         <div class="form-floating">
                                             <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password">
                                             <label for="floatingPassword">Password</label>
                                         </div>
+                                        <p></p>
                                         <div class="form-floating">
                                             <input type="text" class="form-control" id="firstName" placeholder="first name" name="firstName" >
                                             <label for="firstName">First Name</label>
                                         </div>
+                                        <p></p>
                                         <div class="form-floating">
                                             <input type="text" class="form-control" id="lastName" placeholder="last name" name="lastName" >
                                             <label for="firstName">Last Name</label>
                                         </div>
+                                        <p></p>
                                         <div class="form-floating">
                                             <input class="form-control" name="dob" type="date" id="dateofbirth" placeholder="dd/mm/yyyy">
                                             <label for="address">DOB</label>
                                         </div>
-                                        <select name="gender" class="form-control" id="gender" required>
-                                            <option value="" hidden>Select Gender</option>
-                                            <option value="male"> Male  </option>
-                                            <option value="female"> Female  </option>
-                                        </select>
+                                        <p></p>
+                                        <div class="form-floating">
+                                            <select name="gender" class="form-control" id="gender" required>
+                                                <option value="" hidden>Select Gender</option>
+                                                <option value="male"> Male  </option>
+                                                <option value="female"> Female  </option>
+                                            </select>
+                                        </div>
+                                        <p></p>
                                         <div class="form-floating">
                                             <input type="text" class="form-control" id="age" placeholder="Age" name="age">
                                             <label for="age">Age</label>
                                         </div>
-
+                                        <p></p>
 
                                         <div class="form-floating">
                                             <select name="state" class="form-control " id="stateName">
@@ -170,10 +179,12 @@
                                         </select>
                                         <label for="floatingInput">State Name</label>
                                     </div>
+                                    <p></p>
 
 
                                     <button class="w-100 btn btn-lg btn-info mb-2" type="submit">Sign Up</button>
-                                    <a href="Logout">
+                                    <p></p>
+                                    <a href="logout.jsp">
                                         <button type="button" class="w-100 btn btn-lg btn-secondary">Cancel</button>
                                     </a>
                                 </form>
@@ -186,40 +197,40 @@
                     <img src="assets/img/signUps.jpeg" style="height: 694px; opacity :0.6;" >
                 </div>
             </div>
-            </div>
+        </div>
 
 
-            <!-- <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-             <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-           
-           <div class="col-md-4">
-             <h2>Heading</h2>
-             <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-             <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-           </div>
-           <div class="col-md-4">
-             <h2>Heading</h2>
-             <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-             <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-           </div>
-         
- 
-         <hr>
- 
-       </div>  /container -->
+        <!-- <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+         <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+       
+       <div class="col-md-4">
+         <h2>Heading</h2>
+         <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+         <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+       </div>
+       <div class="col-md-4">
+         <h2>Heading</h2>
+         <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+         <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+       </div>
+     
+
+     <hr>
+
+   </div>  /container -->
 
 
 
-            <footer class="container" style="text-align: center;">
-                <p> &copy;Vote india   2017-2018</p>
-            </footer>
+        <footer class="container" style="text-align: center;">
+            <p> &copy;Vote india   2017-2018</p>
+        </footer>
 
-            <!-- Bootstrap core JavaScript
-            ================================================== -->
-            <!-- Placed at the end of the document so the pages load faster -->
-            <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-            <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
-            <script src="../../assets/js/vendor/popper.min.js"></script>
-            <script src="../../dist/js/bootstrap.min.js"></script>
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+        <script src="../../assets/js/vendor/popper.min.js"></script>
+        <script src="../../dist/js/bootstrap.min.js"></script>
     </body>
 </html>
