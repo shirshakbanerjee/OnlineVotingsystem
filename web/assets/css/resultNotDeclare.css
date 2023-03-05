@@ -15,7 +15,7 @@ body{
     overflow: hidden;
     width: 100vw;
     height: 100vh;
-    background-image: url("../img/background.jpg");
+    background-image: url("../img/votePic.jpg");
     background-position: center;
    background-size: 100% 100%;
    object-fit: cover;
@@ -58,6 +58,7 @@ body{
     margin-bottom: -14px;
     padding-left: 50px;
     color:#40F724;
+	-webkit-text-stroke: 2px white;
     
 }
 

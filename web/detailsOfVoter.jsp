@@ -9,7 +9,7 @@
     <div class="row" >
       <div class="col-md-6" style="width: 100%">
     
-        <table class="table table-striped" >
+        <table class="table table-striped table-bordered" >
             <br><!-- comment -->
             <th>Details of voter</th>
             <tr>
