@@ -47,7 +47,7 @@
                 width: 100%;
                 height: 200px;
                 overflow-x: hidden;
-                overflow-y: auto;
+/*                overflow-y: auto;*/
                 text-align: justify-all;
                 padding: 20px;
             }
@@ -80,7 +80,7 @@
 
             function fetchVapi(voterId)
             {
-                alert(voterId);
+                //alert(voterId);
                 var xmlhttp = new XMLHttpRequest();
                 xmlhttp.onreadystatechange = function ()
                 {
