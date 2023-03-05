@@ -64,7 +64,7 @@ public class Email {
     
     
     public static void sendEmailToCandidate(String toEmail) {
-         String message ="The results have been released !!\n Go check it out:http://localhost:8080/OnlineVotingSystem/ ";
+         String message ="The results have been released !!\n Go check it out:http://localhost:8080/OnlineVotingSystem/ShowResult";
         try {
             Properties props = new Properties();
             props.put("mail.smtp.host", "smtp.gmail.com");
