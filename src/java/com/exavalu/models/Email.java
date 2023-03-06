@@ -5,6 +5,7 @@
 package com.exavalu.models;
 
 import java.util.Properties;
+import java.util.Random;
 import java.util.logging.Level;
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -99,4 +100,61 @@ public class Email {
             
         }
     }
+    
+//    Random random = new Random(); 
+//     int otp = random.nextInt(999999);
+// 
+    
+    public void sendOTPToRegisterUser(String toEmail, int otp) {
+        System.out.println("OTP"+otp);
+        try {
+            Properties props = new Properties();
+            props.put("mail.smtp.host", "smtp.gmail.com");
+            props.put("mail.smtp.socketFactory.port", "465");
+            props.put("mail.smtp.socketFactory.class",
+                    "javax.net.ssl.SSLSocketFactory");
+            props.put("mail.smtp.auth", "true");
+            props.put("mail.smtp.port", "25");
+            
+            Session session = Session.getDefaultInstance(props,
+                    new javax.mail.Authenticator() {
+                @Override
+                protected PasswordAuthentication getPasswordAuthentication() {
+                    return new PasswordAuthentication(userName, password);
+                }
+            });
+            
+            Message mailMessage = new MimeMessage(session);
+
+            //setting up all the messages
+            mailMessage.setFrom(new InternetAddress(fromEmail));
+            mailMessage.setRecipients(Message.RecipientType.TO,
+                    InternetAddress.parse(toEmail));
+            mailMessage.setSubject("Vote Confirmation");
+            mailMessage.setText("Your OTP is: "+otp);
+
+            Transport.send(mailMessage);
+            
+        } catch (AddressException ex) {
+            
+        } catch (MessagingException ex) {
+            
+        }
+    }
+    
+     private static Email email = null;
+
+    public static Email getInstance() {
+        if (email == null) {
+            email = new Email();
+        }
+
+        return email;
+    }
+    
+//    public int getOTP()
+//    {
+//        return otp;
+//    }
+    
 }

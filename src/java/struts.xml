@@ -78,6 +78,9 @@
         <action name="PreInsertCandidate" class="com.exavalu.models.Candidate" method="doPreInsertCandidate">
             <result name="SUCCESS">candidateInput.jsp</result>            
         </action>
+        <action name="SendOTP" class="com.exavalu.models.User" method="sendOtp">
+            <result name="SUCCESS">login.jsp</result>            
+        </action>
     </package>
 </struts>
 

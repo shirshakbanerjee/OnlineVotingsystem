@@ -18,6 +18,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.Random;
 import org.apache.struts2.dispatcher.ApplicationMap;
 import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.ApplicationAware;
@@ -35,6 +36,7 @@ public class User extends ActionSupport implements ApplicationAware, SessionAwar
     private String password;
     private String roleId;
     private String voterId;
+    private int otp;
 
     private SessionMap<String, Object> sessionMap = (SessionMap) ActionContext.getContext().getSession();
 
@@ -98,6 +100,14 @@ public class User extends ActionSupport implements ApplicationAware, SessionAwar
         this.voterId = voterId;
     }
 
+    public int getOtp() {
+        return otp;
+    }
+
+    public void setOtp(int otp) {
+        this.otp = otp;
+    }
+
     public String doLogin() throws Exception {
         String result = "FAILURE";
         int x = UserService.doLogin(this);
@@ -119,15 +129,20 @@ public class User extends ActionSupport implements ApplicationAware, SessionAwar
             sessionMap.put("VoterList", voterList);
         } else if (x == 1 && !this.voterId.equalsIgnoreCase("")) {
             result = "VOTER";
-            Voter voter = VoterService.getVoter2(this.voterId,this.emailAddress);
+            Voter voter = VoterService.getVoter2(this.voterId, this.emailAddress);
+            //Email.getInstance().sendOTPToRegisterUser(this.emailAddress);
             System.out.println(voter.getFirstName());
             if (voter.getFirstName() == null) {
                 sessionMap.put("Error", "Wrong data!!");
                 return "FAILURE";
             }
             if (Integer.parseInt(voter.getAdminStatus()) == 0) {
-                sessionMap.put("Error", "Admin has not approved you profile yet!!");
+                sessionMap.put("Error", "Admin has not approved your profile yet!!");
                 System.out.println("Not approved!!");
+                return "FAILURE";
+            } else if (Integer.parseInt(voter.getAdminStatus()) == 2) {
+                sessionMap.put("Error", "Admin has rejected your profile!!");
+                System.out.println("Rejected");
                 return "FAILURE";
             }
             sessionMap.put("Voter", voter);
@@ -150,6 +165,20 @@ public class User extends ActionSupport implements ApplicationAware, SessionAwar
         }
 
         return result;
+    }
+
+    public String sendOtp() {
+        Random random = new Random();
+        int otp1 = random.nextInt(999999);
+
+        Email.getInstance().sendOTPToRegisterUser(this.emailAddress,otp1);
+        //int otp = Email.getInstance().getOTP();
+        System.out.println("send OTP Triggered");
+        System.out.println("OTP " + otp1);
+        sessionMap.put("OTP", otp1);
+        sessionMap.put("User", this);
+
+        return "SUCCESS";
     }
 
 }
