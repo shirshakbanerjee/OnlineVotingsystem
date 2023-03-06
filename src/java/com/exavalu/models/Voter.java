@@ -13,6 +13,7 @@ import com.exavalu.services.VoterService;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Map;
 import org.apache.struts2.dispatcher.ApplicationMap;
@@ -40,6 +41,7 @@ public class Voter extends ActionSupport implements ApplicationAware, SessionAwa
     private String stateCode;
     private String stateName;
     private String candidateId;
+    private LocalDateTime voteTime;
 
     private SessionMap<String, Object> sessionMap = (SessionMap) ActionContext.getContext().getSession();
 
@@ -165,6 +167,14 @@ public class Voter extends ActionSupport implements ApplicationAware, SessionAwa
 
     public void setCandidateId(String candidateId) {
         this.candidateId = candidateId;
+    }
+
+    public LocalDateTime getVoteTime() {
+        return voteTime;
+    }
+
+    public void setVoteTime(LocalDateTime voteTime) {
+        this.voteTime = voteTime;
     }
 
     public String doPreSignup() throws Exception {
