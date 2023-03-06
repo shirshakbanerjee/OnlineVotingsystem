@@ -10,6 +10,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Time;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -208,6 +210,30 @@ public class ResultService {
         }
 
         return result;
+    }
+
+    public static int calculateTime(String start, String end) {
+        int time = 999;
+        String sql = "SELECT count(*) as count FROM votes where time between ? and ?";
+                
+        try {
+            Connection con = JDBCConnectionManager.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, start);
+            ps.setString(2, end);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+
+                time = rs.getInt("count");
+                
+            }
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        System.err.println("Total rows:" + time);
+        return time;
     }
     
 }

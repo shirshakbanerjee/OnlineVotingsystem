@@ -9,6 +9,8 @@ import com.exavalu.services.ResultService;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.io.Serializable;
+import java.sql.Time;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
@@ -34,6 +36,7 @@ public class Result extends ActionSupport implements ApplicationAware, SessionAw
     private ArrayList stateNames;
     private ArrayList stateVote;
     private String partyName;
+    private Time voteTime;
     
     private SessionMap<String, Object> sessionMap = (SessionMap) ActionContext.getContext().getSession();
 
@@ -128,6 +131,14 @@ public class Result extends ActionSupport implements ApplicationAware, SessionAw
     public void setPartyName(String partyName) {
         this.partyName = partyName;
     }
+
+    public Time getVoteTime() {
+        return voteTime;
+    }
+
+    public void setVoteTime(Time voteTime) {
+        this.voteTime = voteTime;
+    }
     
     public String getResult()
     {
@@ -141,12 +152,22 @@ public class Result extends ActionSupport implements ApplicationAware, SessionAw
         Iterator itr2=stateList.iterator();
         ArrayList partyList = ResultService.calculateParty();
         Iterator itr3=partyList.iterator();
-        if(itr.hasNext() && itr2.hasNext() && itr3.hasNext())
+        ArrayList timeList = new ArrayList();
+        timeList.add(ResultService.calculateTime("06:00:00","08:00:00"));
+        timeList.add(ResultService.calculateTime("08:00:00","10:00:00"));
+        timeList.add(ResultService.calculateTime("10:00:00","12:00:00"));
+        timeList.add(ResultService.calculateTime("12:00:00","14:00:00"));
+        timeList.add(ResultService.calculateTime("14:00:00","16:00:00"));
+        timeList.add(ResultService.calculateTime("16:00:00","18:00:00"));
+        
+        Iterator itr4 = timeList.iterator();
+        if(itr.hasNext() && itr2.hasNext() && itr3.hasNext() && itr4.hasNext())
         {
             System.out.println("Returning success from results!!");
             sessionMap.put("ResultList", resultList);
             sessionMap.put("StateList", stateList);
             sessionMap.put("PartyList", partyList);
+            sessionMap.put("TimeList",timeList);
             result="SUCCESS";
         }
         else{
