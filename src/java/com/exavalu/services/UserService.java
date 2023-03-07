@@ -79,4 +79,33 @@ public class UserService {
         return user;
     }
     
+    public static int doLogin2(User user) {
+        
+        int success = 0;
+        
+        String sql = "Select * from users where emailAddress=?";
+        
+        try {
+            Connection con = JDBCConnectionManager.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, user.getEmailAddress());
+           
+            
+            System.out.println("LoginService :: "+ps);
+            
+            ResultSet rs = ps.executeQuery();
+            
+            if(rs.next())
+            {
+                success = rs.getInt("roleId");
+            }
+            
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        
+        
+        return success;
+    }
+    
 }

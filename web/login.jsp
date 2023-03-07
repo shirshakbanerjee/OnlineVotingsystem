@@ -147,7 +147,7 @@
                             <c:set var="user" value="${User}" /> 
 
                             <form action="Login" method="post">
-                                <h1 class="h3 mb-3 fw-normal " style="text-align: center;">Please sign in</h1>
+                                <h1 class="h3 mb-3 fw-normal" style="text-align: center;">Please sign in</h1>
                                 <p></p>
                                 <div class="form-floating">
                                     <input name="emailAddress" type="emailAddress" class="form-control" id="emailAddress" placeholder="name@example.com" value="${user.emailAddress}" required>
@@ -155,34 +155,99 @@
                                 </div>
                                 <br>
                                 <div class="form-floating">
-                                    <input name="password" type="password" class="form-control" id="password" placeholder="Password" value="${user.password}" required>
-                                    <label for="floatingPassword">Password</label>
-                                </div>
-                                <br>
-                                <div class="form-floating">
                                     <input name="voterId" type="number" class="form-control" id="voterId" placeholder="VoterId" value="${user.voterId}">
-                                    <label for="floatingInput2">VoterId</label>
+                                    <label for="floatingInput2">Voter Id</label>
                                 </div>
                                 <br>
-                                <div class="form-floating">
-                                    <input name="otp" type="number" class="form-control" id="otp" placeholder="OTP" required>
-                                    <label for="floatingInput3">One-time password</label>
-                                    <button class="btn btn-lg btn-block btn-outline-warning" type="button" onclick="sendOTP()">Send OTP</button>
-                                    <p></p>
+                                <!--                                <div class="form-floating">
+                                                                    <input name="password" type="password" class="form-control" id="password" placeholder="Password" value="${user.password}" >
+                                                                    <label for="floatingPassword">Password</label>
+                                                                </div>
+                                                                <br>
+                                                                
+                                                                <div class="form-check form-switch">
+                                                                    <input class="form-check-input" type="checkbox" id="otpCheckbox" name="otpCheckbox" value="true">
+                                                                    <label class="form-check-label" for="otpCheckbox">Login with OTP</label>
+                                                                </div>
+                                                                <br>
+                                                                <div class="form-floating otp-input" style="display: none;">
+                                                                    <input name="otp" type="number" class="form-control" id="otp" placeholder="OTP">
+                                                                    <label for="floatingInput3">One-time password</label>
+                                                                    <button class="btn btn-lg btn-block btn-outline-warning" type="button" onclick="sendOTP()">Send OTP</button>
+                                                                    <p id="timer"></p>
+                                                                    <p></p>
+                                                                </div>
+                                
+                                                                <script>
+                                                                    const otpCheckbox = document.getElementById('otpCheckbox');
+                                                                    const otpInput = document.querySelector('.otp-input');
+                                
+                                                                    otpCheckbox.addEventListener('change', function () {
+                                                                        if (otpCheckbox.checked) {
+                                                                            otpInput.style.display = 'block';
+                                                                        } else {
+                                                                            otpInput.style.display = 'none';
+                                                                        }
+                                                                    });
+                                                                </script>                               -->
+                                <div class="form-group">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="loginOption" id="passwordOption" value="password" checked>
+                                        <label class="form-check-label" for="passwordOption">Password</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="loginOption" id="otpOption" value="otp">
+                                        <label class="form-check-label" for="otpOption">OTP</label>
+                                    </div>
                                 </div>
+                                <br>
+                                <div class="form-group password-input">
+                                    <div class="form-floating">
+                                        <input name="password" type="password" class="form-control" id="password" placeholder="Password">
+                                        <label for="password">Password</label>
+                                    </div>
+                                </div>
+                                <div class="form-group otp-input" style="display: none;">
+                                    <div class="form-floating">
+                                        <input name="otp" type="number" class="form-control" id="otp" placeholder="OTP">
+                                        <label for="otp">One-time password</label>
+                                        <button class="btn btn-lg btn-block btn-outline-warning" type="button" onclick="sendOTP()">Send OTP</button>
+                                        <p id="timer"></p>
+                                        <p></p>
+                                    </div>
+                                </div>
+
+                                <script>
+                                    const passwordOption = document.getElementById('passwordOption');
+                                    const passwordInput = document.querySelector('.password-input');
+                                    const otpOption = document.getElementById('otpOption');
+                                    const otpInput = document.querySelector('.otp-input');
+
+                                    passwordOption.addEventListener('click', function () {
+                                        passwordInput.style.display = 'block';
+                                        otpInput.style.display = 'none';
+                                    });
+
+                                    otpOption.addEventListener('click', function () {
+                                        otpInput.style.display = 'block';
+                                        passwordInput.style.display = 'none';
+                                    });
+                                </script>
                                 <br>
                                 <c:set var='error' value='${Error}'/>
                                 <c:if  test="${error!=null}">
-                                <div class="alert-danger text-center btn-outline-dark bg-danger" style="color: #ccffff; border-radius: 10px; padding: 20px">                                                                        
-                                    ${error}
-                                </div>
+                                    <div class="alert-danger text-center btn-outline-dark bg-danger" style="color: #ccffff; border-radius: 10px; padding: 20px">
+                                        ${error}
+                                    </div>
                                 </c:if>
                                 <br>
-                                <button class="w-100 btn btn-lg btn-face btn-outline-dark text-center " type="submit" onclick="return verifyOTP();">Sign in</button>
+                                <button class="w-100 btn btn-lg btn-face btn-outline-dark text-center " type="submit" onclick="return verifyForm();">Sign in</button>
                                 <p></p>
                                 <a href="logout.jsp">
                                     <button type="button" class="w-100 btn btn-lg btn-secondary">Cancel</button>
                                 </a>
+
+
                                 <p></p>
                                 <div class="form-floating align-items-center" style="font-size: 20px;text-align: center">
                                     <a class="nav-link scrollto link-primary" href="PreSignup">Create New Account</a>
@@ -193,21 +258,33 @@
 
                             <script>
                                 function sendOTP() {
+                                    var count = 70;
+                                    var timer = setInterval(function () {
+                                        document.getElementById("timer").innerHTML = "You have " + count + " seconds left to enter OTP.";
+                                        count--;
+                                        if (count < 0) {
+                                            clearInterval(timer);
+                                            document.getElementById("timer").innerHTML = "Time's up! Please request a new OTP.";
+                                        }
+                                    }, 1000);
+
                                     var email = document.getElementById("emailAddress").value;
                                     var password = document.getElementById("password").value;
                                     var voterId = document.getElementById("voterId").value;
                                     if (email === "") {
                                         alert("Please enter an email address.");
                                     } else {
+
                                         // Send an AJAX request to the server to generate and send the OTP via email
-                                        alert(email);
                                         var xmlhttp = new XMLHttpRequest();
                                         xmlhttp.onreadystatechange = function () {
                                             if (this.readyState === 4 && this.status === 200) {
                                                 alert("OTP sent to your email address. Please check your inbox.");
-                                                location.reload(true);
+                                                clearInterval(timer);
+                                                setTimeout(function () {
+                                                    location.reload(true);
+                                                }, 1000); // Wait for 1 second before reloading the page
                                                 $("#" + 'getOtp').html(responseText);
-
                                             }
                                         };
                                         xmlhttp.open("GET", "SendOTP?emailAddress=" + email + "&password=" + password + "&voterId=" + voterId, true);
@@ -215,19 +292,23 @@
                                     }
                                 }
 
+
+
+
                                 function verifyOTP() {
-                                    alert("Clean and build--Nitish");
+                                    //alert("Clean and build--Nitish");
                                     var enteredOTP = document.getElementById("otp").value;
+
 //                                    var storedOTP = '${otp}';
 //                                    alert('${otp}');
 //                                    alert(sessionStorage.getItem("OTP"));
                                     var storedOTP = '${sessionScope.OTP}';
                                     alert(storedOTP);
                                     if (enteredOTP === storedOTP) {
-                                        alert("OTP is verified. You may now proceed with login.");
+                                        //alert("OTP is verified. You may now proceed with login.");
                                         return true;
                                     } else {
-                                        alert("Invalid OTP. Please try again.");
+                                        // alert("Invalid OTP. Please try again.");
                                         return false;
                                     }
                                 }

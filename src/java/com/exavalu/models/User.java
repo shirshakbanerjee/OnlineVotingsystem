@@ -110,7 +110,15 @@ public class User extends ActionSupport implements ApplicationAware, SessionAwar
 
     public String doLogin() throws Exception {
         String result = "FAILURE";
-        int x = UserService.doLogin(this);
+        //int x = UserService.doLogin(this);
+        int x=100;
+        if(this.password.equalsIgnoreCase(""))
+        {
+            x = UserService.doLogin2(this);
+        }
+        else{
+            x = UserService.doLogin(this);
+        }
         if (x == 0) {
             sessionMap.put("Error", "Wrong data");
         } else if (x == 2) {
