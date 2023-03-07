@@ -77,16 +77,16 @@
                 xmlhttp.open("POST", urls, true);
                 xmlhttp.send();
             }
-//            function fetchContent(urls) {
-////                alert(urls+'?firstName='+document.getElementById("nameC").value);
-//                $.ajax({
-//                    url: urls+'?firstName='+document.getElementById("nameC").value,
-//                    success: function (responseText) {
-//    //                    alert(responseText);
-//                        $("#" + 'displayResult').html(responseText);
-//                    }
-//                });
-//            }
+            function fetchContent(urls) {
+//                alert(urls+'?firstName='+document.getElementById("nameC").value);
+                $.ajax({
+                    url: urls+'?firstName='+document.getElementById("nameC").value,
+                    success: function (responseText) {
+    //                    alert(responseText);
+                        $("#" + 'displayResult').html(responseText);
+                    }
+                });
+            }
         </script>
     </head>
 
