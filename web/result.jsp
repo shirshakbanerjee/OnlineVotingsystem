@@ -8,8 +8,171 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="icon" href="favicon.ico" type="image/x-icon"> <!-- Favicon-->
+        <!-- project css file  -->
+        <link rel="stylesheet" href="assets/css/men.css">
 
-        <style>
+        
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
+    </head>
+    <body>
+        <h1>Hello World!</h1>
+        
+        <div class="sidebar px-4 py-4 py-md-5 me-0" style="background-color:#191970; height: 600px">
+                <div class="d-flex flex-column h-100">
+                    <a href="index.html" class="mb-0 brand-icon">
+                        <span class="logo-icon">
+                            <svg  width="35" height="35" fill="currentColor" class="bi bi-clipboard-check" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
+                            <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                            <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+                            </svg>
+                        </span>
+                        <span class="logo-text">Summary</span>
+                    </a>
+                    <!-- Menu: main ul -->
+
+                    <ul class="menu-list flex-grow-1 mt-3">
+                        <li class="collapsed">
+                            <a class="m-link" data-bs-toggle="collapse" data-bs-target="#dashboard-Components" >
+                                <i class="icofont-home fs-5"></i> <span>Voters Summary</span></a>
+                            <!-- Menu: Sub menu ul -->
+                            <ul class="sub-menu collapse show" id="dashboard-Components">
+                                <li><a class="ms-link" > <span>Total Voters - 432</span></a></li>
+                                <li><a class="ms-link" > <span>Approved - 200</span></a></li>
+                                <li><a class="ms-link" > <span>Pending - 200</span></a></li>
+                                <li><a class="ms-link" > <span>Rejected - 200</span></a></li>
+                            </ul>
+                        </li>
+                        <li class="collapsed">
+                            <a class="m-link" data-bs-toggle="collapse" data-bs-target="#dashboard-Components" >
+                                <i class="icofont-home fs-5"></i> <span>Election Summary</span></a>
+                            <!-- Menu: Sub menu ul -->
+                            <ul class="sub-menu collapse show" id="dashboard-Components">
+                                <li><a class="ms-link" > <span>Voted - 432</span></a></li>
+                                <li><a class="ms-link" > <span>Not Voted - 200</span></a></li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        
+ <c:forEach items="${CandidateList}" var="candidateList">
+        <div class="container">
+            <!-- DONUT CHART BLOCK (LEFT-CONTAINER) --> 
+            <div class="donut-chart-block block"> 
+                <h2 class="titular">OS AUDIENCE STATS</h2>
+                <div class="donut-chart">
+                    <!-- PORCIONES GRAFICO CIRCULAR
+                         ELIMINADO #donut-chart
+                         MODIFICADO CSS de .donut-chart -->
+                    <div id="porcion1" class="recorte"><div class="quesito ios" data-rel="21"></div></div>
+                    <div id="porcion2" class="recorte"><div class="quesito mac" data-rel="39"></div></div>
+                    <div id="porcion3" class="recorte"><div class="quesito win" data-rel="31"></div></div>
+                    <div id="porcionFin" class="recorte"><div class="quesito linux" data-rel="9"></div></div>
+                    <!-- FIN AÑADIDO GRÄFICO -->
+                    <p class="center-date">JUNE<br><span class="scnd-font-color">2013</span></p>        
+                </div>
+                <ul class="os-percentages horizontal-list">
+                    <li>
+                        <p class="ios os scnd-font-color">iOS</p>
+                        <p class="os-percentage">21<sup>%</sup></p>
+                    </li>
+                    <li>
+                        <p class="mac os scnd-font-color">Mac</p>
+                        <p class="os-percentage">39<sup>%</sup></p>
+                    </li>
+                    <li>
+                        <p class="linux os scnd-font-color">Linux</p>
+                        <p class="os-percentage">9<sup>%</sup></p>
+                    </li>
+                    <li>
+                        <p class="win os scnd-font-color">Win</p>
+                        <p class="os-percentage">31<sup>%</sup></p>
+                    </li>
+                </ul>
+            </div>
+            <!-- LINE CHART BLOCK (LEFT-CONTAINER) -->
+            <div class="line-chart-block block">
+                <div class="line-chart">
+                    <div class='grafico'>
+                        <ul class='eje-y'>
+                            <li data-ejeY='30'></li>
+                            <li data-ejeY='20'></li>
+                            <li data-ejeY='10'></li>
+                            <li data-ejeY='0'></li>
+                        </ul>
+                        <ul class='eje-x'>
+                            <li>Apr</li>
+                            <li>May</li>
+                            <li>Jun</li>
+                        </ul>
+                        <span data-valor='25'>
+                            <span data-valor='8'>
+                                <span data-valor='13'>
+                                    <span data-valor='5'>   
+                                        <span data-valor='23'>   
+                                            <span data-valor='12'>
+                                                <span data-valor='15'>
+                                                </span></span></span></span></span></span></span>
+                    </div>
+
+                </div>
+                <ul class="time-lenght horizontal-list">
+                    <li><a class="time-lenght-btn" href="#14">Week</a></li>
+                    <li><a class="time-lenght-btn" href="#15">Month</a></li>
+                    <li><a class="time-lenght-btn" href="#16">Year</a></li>
+                </ul>
+                <ul class="month-data clear">
+                    <li>
+                        <p>APR<span class="scnd-font-color"> 2013</span></p>
+                        <p><span class="entypo-plus increment"> </span>21<sup>%</sup></p>
+                    </li>
+                    <li>
+                        <p>MAY<span class="scnd-font-color"> 2013</span></p>
+                        <p><span class="entypo-plus increment"> </span>48<sup>%</sup></p>
+                    </li>
+                    <li>
+                        <p>JUN<span class="scnd-font-color"> 2013</span></p>
+                        <p><span class="entypo-plus increment"> </span>35<sup>%</sup></p>
+                    </li>
+                </ul>
+            </div>
+
+
+
+            <div class="bar-chart-block block">
+                <h2 class='titular'>By Country <span>*1000</span></h2>
+                <div class='grafico bar-chart'>
+                    <ul class='eje-y'>
+                        <li data-ejeY='60'></li>
+                        <li data-ejeY='45'></li>
+                        <li data-ejeY='30'></li>
+                        <li data-ejeY='15'></li>
+                        <li data-ejeY='0'></li>
+                    </ul>
+                    <ul class='eje-x'>
+                        <li data-ejeX='37'><i>España</i></li>
+                        <li data-ejeX='56'><i>Portugal</i></li>
+                        <li data-ejeX='25'><i>Italia</i></li>
+                        <li data-ejeX='18'><i>Grecia</i></li>
+                        <li data-ejeX='45'><i>EE.UU</i></li>
+                        <li data-ejeX='50'><i>México</i></li>
+                        <li data-ejeX='33'><i>Chile</i></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <p class='nota-final'>Este pen es sólo para que <strong>@jlalovi</strong> complemente con los gráficos <a href='https://codepen.io/jlalovi/details/bIyAr'>el suyo</a>.</p>
+
+        
+        
+    </body>
+    
+    <style>
             @import url(https://fonts.googleapis.com/css?family=Ubuntu:400,700);
             * {
                 -webkit-box-sizing: border-box;
@@ -428,124 +591,6 @@
                 height: 520%;
             }
         </style>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-        <h1>Hello World!</h1>
-        
- <c:forEach items="${CandidateList}" var="candidateList">
-        <div class="container">
-            <!-- DONUT CHART BLOCK (LEFT-CONTAINER) --> 
-            <div class="donut-chart-block block"> 
-                <h2 class="titular">OS AUDIENCE STATS</h2>
-                <div class="donut-chart">
-                    <!-- PORCIONES GRAFICO CIRCULAR
-                         ELIMINADO #donut-chart
-                         MODIFICADO CSS de .donut-chart -->
-                    <div id="porcion1" class="recorte"><div class="quesito ios" data-rel="21"></div></div>
-                    <div id="porcion2" class="recorte"><div class="quesito mac" data-rel="39"></div></div>
-                    <div id="porcion3" class="recorte"><div class="quesito win" data-rel="31"></div></div>
-                    <div id="porcionFin" class="recorte"><div class="quesito linux" data-rel="9"></div></div>
-                    <!-- FIN AÑADIDO GRÄFICO -->
-                    <p class="center-date">JUNE<br><span class="scnd-font-color">2013</span></p>        
-                </div>
-                <ul class="os-percentages horizontal-list">
-                    <li>
-                        <p class="ios os scnd-font-color">iOS</p>
-                        <p class="os-percentage">21<sup>%</sup></p>
-                    </li>
-                    <li>
-                        <p class="mac os scnd-font-color">Mac</p>
-                        <p class="os-percentage">39<sup>%</sup></p>
-                    </li>
-                    <li>
-                        <p class="linux os scnd-font-color">Linux</p>
-                        <p class="os-percentage">9<sup>%</sup></p>
-                    </li>
-                    <li>
-                        <p class="win os scnd-font-color">Win</p>
-                        <p class="os-percentage">31<sup>%</sup></p>
-                    </li>
-                </ul>
-            </div>
-            <!-- LINE CHART BLOCK (LEFT-CONTAINER) -->
-            <div class="line-chart-block block">
-                <div class="line-chart">
-                    <div class='grafico'>
-                        <ul class='eje-y'>
-                            <li data-ejeY='30'></li>
-                            <li data-ejeY='20'></li>
-                            <li data-ejeY='10'></li>
-                            <li data-ejeY='0'></li>
-                        </ul>
-                        <ul class='eje-x'>
-                            <li>Apr</li>
-                            <li>May</li>
-                            <li>Jun</li>
-                        </ul>
-                        <span data-valor='25'>
-                            <span data-valor='8'>
-                                <span data-valor='13'>
-                                    <span data-valor='5'>   
-                                        <span data-valor='23'>   
-                                            <span data-valor='12'>
-                                                <span data-valor='15'>
-                                                </span></span></span></span></span></span></span>
-                    </div>
-
-                </div>
-                <ul class="time-lenght horizontal-list">
-                    <li><a class="time-lenght-btn" href="#14">Week</a></li>
-                    <li><a class="time-lenght-btn" href="#15">Month</a></li>
-                    <li><a class="time-lenght-btn" href="#16">Year</a></li>
-                </ul>
-                <ul class="month-data clear">
-                    <li>
-                        <p>APR<span class="scnd-font-color"> 2013</span></p>
-                        <p><span class="entypo-plus increment"> </span>21<sup>%</sup></p>
-                    </li>
-                    <li>
-                        <p>MAY<span class="scnd-font-color"> 2013</span></p>
-                        <p><span class="entypo-plus increment"> </span>48<sup>%</sup></p>
-                    </li>
-                    <li>
-                        <p>JUN<span class="scnd-font-color"> 2013</span></p>
-                        <p><span class="entypo-plus increment"> </span>35<sup>%</sup></p>
-                    </li>
-                </ul>
-            </div>
-
-
-
-            <div class="bar-chart-block block">
-                <h2 class='titular'>By Country <span>*1000</span></h2>
-                <div class='grafico bar-chart'>
-                    <ul class='eje-y'>
-                        <li data-ejeY='60'></li>
-                        <li data-ejeY='45'></li>
-                        <li data-ejeY='30'></li>
-                        <li data-ejeY='15'></li>
-                        <li data-ejeY='0'></li>
-                    </ul>
-                    <ul class='eje-x'>
-                        <li data-ejeX='37'><i>España</i></li>
-                        <li data-ejeX='56'><i>Portugal</i></li>
-                        <li data-ejeX='25'><i>Italia</i></li>
-                        <li data-ejeX='18'><i>Grecia</i></li>
-                        <li data-ejeX='45'><i>EE.UU</i></li>
-                        <li data-ejeX='50'><i>México</i></li>
-                        <li data-ejeX='33'><i>Chile</i></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <p class='nota-final'>Este pen es sólo para que <strong>@jlalovi</strong> complemente con los gráficos <a href='https://codepen.io/jlalovi/details/bIyAr'>el suyo</a>.</p>
-
-        
-        
-    </body>
     
     
 </html>

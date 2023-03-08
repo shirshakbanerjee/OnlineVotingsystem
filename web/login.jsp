@@ -36,10 +36,11 @@
         <link rel="stylesheet" type="text/css" href="assets/css/login2.css">
         <link rel="stylesheet" type="text/css" href="assets/css/login1.css">
         <!--===============================================================================================-->
+        <jsp:include page="menu.jsp"></jsp:include>
     </head>
     <body>
 
-        <jsp:include page="menu.jsp"></jsp:include>
+        
 
 
             <div class="limiter">

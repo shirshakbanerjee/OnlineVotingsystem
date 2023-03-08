@@ -117,6 +117,17 @@ public class User extends ActionSupport implements ApplicationAware, SessionAwar
             sessionMap.put("PartyList", partyList);
             ArrayList voterList = VoterService.getAllVoters();
             sessionMap.put("VoterList", voterList);
+            sessionMap.put("totalVoters",voterList.size());
+            int verification = VoterService.dogetApproveVoter();
+            sessionMap.put("Verification",verification);
+            int rejected = VoterService.dogetRejectedVoter();
+            sessionMap.put("Rejected",rejected);
+            int pending = VoterService.dogetPendingVoter();
+            sessionMap.put("Pending",pending);
+            int voted = VoterService.dogetVoted();
+            sessionMap.put("Voted",voted);
+            int notVoted = VoterService.dogetNotVoted();
+            sessionMap.put("NotVoted",notVoted);
         } else if (x == 1 && !this.voterId.equalsIgnoreCase("")) {
             result = "VOTER";
             Voter voter = VoterService.getVoter2(this.voterId,this.emailAddress);
@@ -151,5 +162,6 @@ public class User extends ActionSupport implements ApplicationAware, SessionAwar
 
         return result;
     }
+    
 
 }

@@ -322,4 +322,124 @@ public class VoterService {
 
         return result;
     }
+
+    public static int dogetApproveVoter() {
+        int count = -500;
+        Connection con = JDBCConnectionManager.getConnection();
+
+        String sql = "SELECT COUNT(*) as Count FROM voters WHERE adminStatus = '1'";
+        try {
+
+            PreparedStatement preparedStatement = con.prepareStatement(sql);
+            
+
+            ResultSet rs = preparedStatement.executeQuery();
+
+            while(rs.next()){
+                count = rs.getInt("Count");
+            }
+
+        } catch (SQLException ex) {
+
+            ex.printStackTrace();
+
+        }
+        return count;
+    }
+    
+    public static int dogetRejectedVoter() {
+        int countR = -500;
+        Connection con = JDBCConnectionManager.getConnection();
+
+        String sql = "SELECT COUNT(*) as Count FROM voters WHERE adminStatus = '2'";
+        try {
+
+            PreparedStatement preparedStatement = con.prepareStatement(sql);
+            
+
+            ResultSet rs = preparedStatement.executeQuery();
+
+            while(rs.next()){
+                countR = rs.getInt("Count");
+            }
+
+        } catch (SQLException ex) {
+
+            ex.printStackTrace();
+
+        }
+        return countR;
+    }
+    
+    public static int dogetPendingVoter() {
+        int countP = -500;
+        Connection con = JDBCConnectionManager.getConnection();
+
+        String sql = "SELECT COUNT(*) as Count FROM voters WHERE adminStatus = '0'";
+        try {
+
+            PreparedStatement preparedStatement = con.prepareStatement(sql);
+            
+
+            ResultSet rs = preparedStatement.executeQuery();
+
+            while(rs.next()){
+                countP = rs.getInt("Count");
+            }
+
+        } catch (SQLException ex) {
+
+            ex.printStackTrace();
+
+        }
+        return countP;
+    }
+    
+    public static int dogetVoted() {
+        int countV = -500;
+        Connection con = JDBCConnectionManager.getConnection();
+
+        String sql = "SELECT COUNT(*) as count FROM voters WHERE votingStatus = '1'";
+        try {
+
+            PreparedStatement preparedStatement = con.prepareStatement(sql);
+            
+
+            ResultSet rs = preparedStatement.executeQuery();
+
+            while(rs.next()){
+                countV = rs.getInt("Count");
+            }
+
+        } catch (SQLException ex) {
+
+            ex.printStackTrace();
+
+        }
+        return countV;
+    }
+    
+    public static int dogetNotVoted() {
+        int countN = -500;
+        Connection con = JDBCConnectionManager.getConnection();
+
+        String sql = "SELECT COUNT(*) as count FROM voters WHERE votingStatus = '0'";
+        try {
+
+            PreparedStatement preparedStatement = con.prepareStatement(sql);
+            
+
+            ResultSet rs = preparedStatement.executeQuery();
+
+            while(rs.next()){
+                countN = rs.getInt("Count");
+            }
+
+        } catch (SQLException ex) {
+
+            ex.printStackTrace();
+
+        }
+        return countN;
+    }
 }

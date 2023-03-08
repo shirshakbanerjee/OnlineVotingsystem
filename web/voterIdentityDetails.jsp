@@ -4,7 +4,7 @@
 <body>
     <c:set var="voterAPI" value="${VoterAPI}"></c:set>
     <div class="row" style="position: relative;width: 100%">
-      <div class="col-md-6 ms-auto" style="width: 100%;margin-bottom: 118px;">
+      <div class="col-md-6 ms-auto" style="width: 100%;margin-bottom: 115px;">
             <table class="table table-striped table-bordered"  >
                 <th>Details of voter identity:</th>
                 <tr>

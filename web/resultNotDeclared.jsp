@@ -11,12 +11,12 @@
         <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
         <meta name="viewport" content="width=device-width,initial-scale=1.0">
         <title>Coming Soon</title>
-    <nav><button class="btn btn-secondary" ><a href="landingPage.jsp" style="color: white">Back</a></button></nav>
+    <nav><button class="btn btn-outline-secondary" ><a href="landingPage.jsp" style="color: white">Back</a></button></nav>
     </head>
     <body>
         <div class="container" >            
 
-            <div class="waviy" style="-webkit-text-stroke: 2px black;">
+            <div class="waviy" style="-webkit-text-stroke: 3px white;">
                 <span style="--i:1">R</span>
                 <span style="--i:2">E</span>
                 <span style="--i:3">S</span>
@@ -32,7 +32,7 @@
                 <br>
                 <span style="--i:10">I</span>
                 <span style="--i:10">N</span>
-                <span style="--i:10".E</span>
+<!--                <span style="--i:10">E</span>-->
                     <span style="--i:10">.</span>
 
                     <span style="--i:10">.</span>
@@ -41,14 +41,14 @@
 
             <div class="launch-time" >
                 <div>
-                    <p id="days" style="-webkit-text-stroke: 2px black;"><b>00</b></p>
+                    <p id="days" style="-webkit-text-stroke: 2px white;"><b>00</b></p>
                     <span style="color:ghostwhite">
                         <b>Days</b>
                     </span>
                 </div>
 
                 <div>
-                    <p id="hours" style="-webkit-text-stroke: 2px black;"><b>00</b></p>
+                    <p id="hours" style="-webkit-text-stroke: 2px white;"><b>00</b></p>
                     <span style="color:ghostwhite">
                         <b>HOURS</b>
                     </span>
@@ -56,7 +56,7 @@
                 </div>
 
                 <div>
-                    <p id="minutes" style="-webkit-text-stroke: 2px black;"><b>00</b></p>
+                    <p id="minutes" style="-webkit-text-stroke: 2px white;"><b>00</b></p>
                     <span style="color:ghostwhite">
                         <b>DAYS</b>
                     </span>
@@ -64,7 +64,7 @@
                 </div>
 
                 <div>
-                    <p id="seconds" style="-webkit-text-stroke: 2px black;"><b>00</b></p>
+                    <p id="seconds" style="-webkit-text-stroke: 2px white;"><b>00</b></p>
                     <span style="color:ghostwhite">
                         <b>SECONDS</b>
                     </span>
@@ -103,7 +103,7 @@
                 font-family: 'Alfa Slab One', cursive;
                 position: relative;
                 display: inline-block;
-                color: yellow;
+/*                color: yellow;*/
                 text-transform: uppercase;
                 animation: waviy 1s infinite;
                 animation-delay: calc(.1s * var(--i));
