@@ -32,7 +32,7 @@
                 <br>
                 <span style="--i:10">I</span>
                 <span style="--i:10">N</span>
-                <span style="--i:10".E</span>
+                <span style="--i:10">E</span>
                     <span style="--i:10">.</span>
 
                     <span style="--i:10">.</span>
@@ -120,7 +120,7 @@
         </style>
 
     <script>
-        var countDownDate = new Date("MAR 04, 2023 00:00:00").getTime();
+        var countDownDate = new Date("MAR 10, 2023 00:00:00").getTime();
         var x = setInterval(function () {
             var now = new Date().getTime();
             var distance = countDownDate - now;

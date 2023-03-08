@@ -206,7 +206,7 @@ public class Result extends ActionSupport implements ApplicationAware, SessionAw
             while (itr.hasNext()) {
                 Candidate candidate = (Candidate) itr.next();
                 System.out.println(candidate.getCandidateEmail());
-                Email.sendEmailToCandidate(candidate.getCandidateEmail());
+                Email.sendEmailToCandidate(candidate.getCandidateEmail(),candidate.getFirstName(),candidate.getLastName());
             }
             result = "SUCCESS";
         }
