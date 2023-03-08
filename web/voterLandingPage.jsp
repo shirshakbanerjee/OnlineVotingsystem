@@ -21,9 +21,9 @@
         <meta content="" name="keywords">
 
         <!-- Favicons -->
-        <link href="assets/img/favicon1.png" rel="icon">
-        <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
+        <!--        <link href="assets/img/favicon1.png" rel="icon">
+                <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">-->
+        <link rel="shortcut icon" type="image/x-icon" href="assets/img/vote-icon.png">
         <!-- Google Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
@@ -83,78 +83,78 @@
                 <div class="container" data-aos="fade-up" style="margin-top: 50px;">
 
 
-                    
+
                     <div class="row">
                         <c:forEach var="candidate" items="${CandidateList}">
                             <!--<div class="row">-->  
-                                <div class="col">
-                                    <div class="col-md-6 col-lg-12 d-flex align-items-stretch mb-5 mb-lg-0">
-                                        <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
-                                            <img src="data:image/png;base64,${candidate.imageData}" style="max-width: 150px; max-height: 150px;">
-                                            <h4 class="title">${candidate.getFirstName()} ${candidate.getLastName()}</h4>
-                                            <h4 class="title">Party: ${candidate.getPartyName()}</h4>
-                                            <button type="button" class="btn btn-danger"<c:if test="${voter.getVotingStatus()==1}">disabled</c:if>>
+                            <div class="col">
+                                <div class="col-md-6 col-lg-12 d-flex align-items-stretch mb-5 mb-lg-0">
+                                    <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
+                                        <img src="data:image/png;base64,${candidate.imageData}" style="max-width: 150px; max-height: 150px;">
+                                        <h4 class="title">${candidate.getFirstName()} ${candidate.getLastName()}</h4>
+                                        <h4 class="title">Party: ${candidate.getPartyName()}</h4>
+                                        <button type="button" class="btn btn-danger"<c:if test="${voter.getVotingStatus()==1}">disabled</c:if>>
 
-                                                        <a href="VoteAction?voterId=${voter.getVoterId()}&candidateId=${candidate.getCandidateId()}&state=${voter.getState()}">VOTE</a>
-                                            </button>
-                                        </div>
-                                        <br>
+                                                <a href="VoteAction?voterId=${voter.getVoterId()}&candidateId=${candidate.getCandidateId()}&state=${voter.getState()}">VOTE</a>
+                                        </button>
                                     </div>
+                                    <br>
+                                </div>
                                 <!--</div>-->
                             </div>
                         </c:forEach>
-                      
-<!--                        <div class="col">
-                            <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
 
-                                <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
-
-                                    <img src="assets/img/nm-1177027-1672590352.jpg"> comment 
-                                    <h4 class="title"><a href="">CANDIDATE-1</a></h4>
-
-                                    <button type="button" class="btn btn-danger">VOTE</button>
-                                </div>
-                                <br>
-
-                            </div>
-                        </div>
-
-
-                        <div class="col">
-                            <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-                                <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
-                                    <img src="assets/img/nm-1177027-1672590352.jpg"> comment 
-                                    <h4 class="title"><a href="">CANDIDATE-2</a></h4>
-                                    <button type="button" class="btn btn-danger">VOTE</button>
-
-
-                            </div>
-                        </div>
-                        </div>
-                    </div>
-
-
-
-                        <div class="col"> 
-                            <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-                                <div class="icon-box" data-aos="fade-up" data-aos-delay="400">                                    
-                                    <img src="assets/img/nm-1177027-1672590352.jpg"> comment 
-                                    <h4 class="title"><a href="">CANDIDATE-3</a></h4>
-                                    <button type="button" class="btn btn-danger">VOTE</button>
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col"> 
-                            <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-                                <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
-                                    <img src="assets/img/nm-1177027-1672590352.jpg"> comment 
-                                    <h4 class="title"><a href="">CANDIDATE-4</a></h4>
-                                    <button type="button" class="btn btn-danger">VOTE</button>
-                                </div>
-                            </div>  
-                        </div>     -->
+                        <!--                        <div class="col">
+                                                    <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+                        
+                                                        <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
+                        
+                                                            <img src="assets/img/nm-1177027-1672590352.jpg"> comment 
+                                                            <h4 class="title"><a href="">CANDIDATE-1</a></h4>
+                        
+                                                            <button type="button" class="btn btn-danger">VOTE</button>
+                                                        </div>
+                                                        <br>
+                        
+                                                    </div>
+                                                </div>
+                        
+                        
+                                                <div class="col">
+                                                    <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+                                                        <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
+                                                            <img src="assets/img/nm-1177027-1672590352.jpg"> comment 
+                                                            <h4 class="title"><a href="">CANDIDATE-2</a></h4>
+                                                            <button type="button" class="btn btn-danger">VOTE</button>
+                        
+                        
+                                                    </div>
+                                                </div>
+                                                </div>
+                                            </div>
+                        
+                        
+                        
+                                                <div class="col"> 
+                                                    <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+                                                        <div class="icon-box" data-aos="fade-up" data-aos-delay="400">                                    
+                                                            <img src="assets/img/nm-1177027-1672590352.jpg"> comment 
+                                                            <h4 class="title"><a href="">CANDIDATE-3</a></h4>
+                                                            <button type="button" class="btn btn-danger">VOTE</button>
+                        
+                                                        </div>
+                                                    </div>
+                                                </div>
+                        
+                                                <div class="col"> 
+                                                    <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+                                                        <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
+                                                            <img src="assets/img/nm-1177027-1672590352.jpg"> comment 
+                                                            <h4 class="title"><a href="">CANDIDATE-4</a></h4>
+                                                            <button type="button" class="btn btn-danger">VOTE</button>
+                                                        </div>
+                                                    </div>  
+                                                </div>     -->
 
 
 

@@ -5,9 +5,9 @@
 
     <head>
         <!-- Favicons -->
-        <link href="assets/img/favicon1.png" rel="icon">
-        <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
+        <!--        <link href="assets/img/favicon1.png" rel="icon">
+                <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">-->
+        <link rel="shortcut icon" type="image/x-icon" href="assets/img/vote-icon.png">
         <!-- Google Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
@@ -40,7 +40,7 @@
 
                     <ul>
                         <li><a class="nav-link scrollto active text-white" href="#hero">HOME</a></li>
-                        
+
                         <li><a class="nav-link scrollto text-white" > WELCOME: ${voter.firstName}  ${voter.lastName}</a></li>
                         <li><a class="nav-link scrollto text-white" href="logout.jsp">LOGOUT</a></li>
 
@@ -92,7 +92,7 @@
                             </ul>
                         </li>
 
-                        
+
                         <li><a class="nav-link scrollto text-white" > WELCOME: ${admin.firstName}</a></li>
 
                         <li><a class="nav-link scrollto text-white" href="logout.jsp">LOGOUT</a></li>                

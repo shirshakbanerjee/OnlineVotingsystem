@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="assets/css/docs.min.css">
         <link rel="stylesheet" href="assets/css/index.css">
         <link rel="stylesheet" href="assets/css/customstyle.css" >
-
+        <link rel="shortcut icon" type="image/x-icon" href="assets/img/vote-icon.png">
         <link href="assets/vendor/aos/aos.css" rel="stylesheet">
         <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
@@ -47,7 +47,7 @@
                 width: 100%;
                 height: 200px;
                 overflow-x: hidden;
-/*                overflow-y: auto;*/
+                /*                overflow-y: auto;*/
                 text-align: justify-all;
                 padding: 20px;
             }
@@ -147,139 +147,139 @@
     </c:if>
 
     <jsp:include page="menu.jsp"></jsp:include>
-<!--        <div id="adminLanding">
-            <div>-->
+        <!--        <div id="adminLanding">
+                    <div>-->
 
-            <c:if test="${UpdateMsg != null}">
-                <div class="alert alert-success" role="alert">
-                    ${UpdateMsg}
-                </div>
-            </c:if>
+    <c:if test="${UpdateMsg != null}">
+        <div class="alert alert-success" role="alert">
+            ${UpdateMsg}
+        </div>
+    </c:if>
 
 
-<!--        </div><div class="columns columns-right btn-group float-right"><div class="keep-open btn-group" title="Columns">
-                <div class="dropdown-menu dropdown-menu-right" style=""><label class="dropdown-item dropdown-item-marker"><input type="checkbox" data-field="id" value="0" checked="checked"> <span>ID</span></label><label class="dropdown-item dropdown-item-marker"><input type="checkbox" data-field="name" value="1" checked="checked"> <span>Item Name</span></label><label class="dropdown-item dropdown-item-marker"><input type="checkbox" data-field="price" value="2" checked="checked"> <span>Item Price</span></label></div></div></div></div>
-    <div>-->
-        <div class="table-wrapper-scroll-y"> 
-            <table class="table table-responsive table-striped " id="example" data-virtual-scroll="true" style="background-color:#DDFBFE">
-                <thead>
-                    <c:choose>
-                        <c:when test = "${requestScope.noData != null}">
-                            <tr>
-                                <td colspan="5">
-                                    <h2 style="border:2px solid rgb(255, 99, 71); background-color:rgba(255, 99, 71, 0.5); font-size:15px;">
-                                        <c:out value="${requestScope.noData}"> </c:out>
-                                        </h2>
-                                    </td>
-                                </tr>
-                        </c:when>
-                    </c:choose>
-                    <tr style="background-color:#B4F8E6">
-                        <th>VOTER ID</th>
-                        <th>Email ADDRESS</th>
-                        <th>FIRST NAME</th>
-                        <th>LAST NAME</th>
-                        <th>AGE</th>
-                        <th>DOB</th>
-                        <th>GENDER</th>
-                        <th>STATE</th>
-                        <th>VOTING STATUS</th>
-                        <th>ADMIN STATUS</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody style="font-family:verdana"">
-
-                    <c:forEach items="${VoterList}" var="voterList">
-
-                        <tr data-index="0">
-                            <td>${voterList.voterId}</td>
-                            <td>${voterList.emailAddress}</td>
-                            <td>${voterList.firstName}</td>
-                            <td>${voterList.lastName}</td>
-                            <td>${voterList.age}</td>
-                            <td>${voterList.dob }</td>
-                            <td>${voterList.gender}</td>
-                            <td>${voterList.state}</td>
-                            <td><c:if test="${voterList.getVotingStatus()==1}">
-                                    <p  style="color:#13F048">Voted</p></c:if>
-                                <c:if test="${voterList.getVotingStatus()==0}">
-                                    <p  style="color:#AD1FE8">Not Voted</p></c:if></td>
-                                <td>
-                                <c:if test="${voterList.getAdminStatus()==1}">
-                                    <p  style="color:blue">Approved</p></c:if>
-                                <c:if test="${voterList.getAdminStatus()==2}">
-                                    <p  style="color:red">Rejected </p></c:if>
-                                <c:if test="${voterList.getAdminStatus()==0}">
-                                    <p  style="color:blue">Pending</p></c:if>
+    <!--        </div><div class="columns columns-right btn-group float-right"><div class="keep-open btn-group" title="Columns">
+                    <div class="dropdown-menu dropdown-menu-right" style=""><label class="dropdown-item dropdown-item-marker"><input type="checkbox" data-field="id" value="0" checked="checked"> <span>ID</span></label><label class="dropdown-item dropdown-item-marker"><input type="checkbox" data-field="name" value="1" checked="checked"> <span>Item Name</span></label><label class="dropdown-item dropdown-item-marker"><input type="checkbox" data-field="price" value="2" checked="checked"> <span>Item Price</span></label></div></div></div></div>
+        <div>-->
+    <div class="table-wrapper-scroll-y"> 
+        <table class="table table-responsive table-striped " id="example" data-virtual-scroll="true" style="background-color:#DDFBFE">
+            <thead>
+                <c:choose>
+                    <c:when test = "${requestScope.noData != null}">
+                        <tr>
+                            <td colspan="5">
+                                <h2 style="border:2px solid rgb(255, 99, 71); background-color:rgba(255, 99, 71, 0.5); font-size:15px;">
+                                    <c:out value="${requestScope.noData}"> </c:out>
+                                    </h2>
                                 </td>
-                                <td>
+                            </tr>
+                    </c:when>
+                </c:choose>
+                <tr style="background-color:#B4F8E6">
+                    <th>VOTER ID</th>
+                    <th>Email ADDRESS</th>
+                    <th>FIRST NAME</th>
+                    <th>LAST NAME</th>
+                    <th>AGE</th>
+                    <th>DOB</th>
+                    <th>GENDER</th>
+                    <th>STATE</th>
+                    <th>VOTING STATUS</th>
+                    <th>ADMIN STATUS</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody style="font-family:verdana"">
+
+                <c:forEach items="${VoterList}" var="voterList">
+
+                    <tr data-index="0">
+                        <td>${voterList.voterId}</td>
+                        <td>${voterList.emailAddress}</td>
+                        <td>${voterList.firstName}</td>
+                        <td>${voterList.lastName}</td>
+                        <td>${voterList.age}</td>
+                        <td>${voterList.dob }</td>
+                        <td>${voterList.gender}</td>
+                        <td>${voterList.state}</td>
+                        <td><c:if test="${voterList.getVotingStatus()==1}">
+                                <p  style="color:#13F048">Voted</p></c:if>
+                            <c:if test="${voterList.getVotingStatus()==0}">
+                                <p  style="color:#AD1FE8">Not Voted</p></c:if></td>
+                            <td>
+                            <c:if test="${voterList.getAdminStatus()==1}">
+                                <p  style="color:blue">Approved</p></c:if>
+                            <c:if test="${voterList.getAdminStatus()==2}">
+                                <p  style="color:red">Rejected </p></c:if>
+                            <c:if test="${voterList.getAdminStatus()==0}">
+                                <p  style="color:blue">Pending</p></c:if>
+                            </td>
+                            <td>
 <!--                                            <button type="button" class="btn btn-warning" onclick="fetchContent(${voterList.voterId})">View</button>-->
-                                <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="fetchContent(${voterList.voterId})">
-                                    View
-                                </button>
+                            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="fetchContent(${voterList.voterId})">
+                                View
+                            </button>
 
-                                <!-- Modal -->
-                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-lg">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Details of Voter</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <table id="tableId" class="table-borderless">
-                                                    <td>
-                                                        <div id="onclickViewVoter">
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Details of Voter</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <table id="tableId" class="table-borderless">
+                                                <td>
+                                                    <div id="onclickViewVoter">
 
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div id="voterIdentityDetails">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div id="voterIdentityDetails">
 
 
-                                                        </div>
-                                                    </td></table>
+                                                    </div>
+                                                </td></table>
 
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                <!--                                                        <button type="button" class="btn btn-primary">Save changes</button>-->
-                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <!--                                                        <button type="button" class="btn btn-primary">Save changes</button>-->
                                         </div>
                                     </div>
                                 </div>
-                            </td>
-                        </tr>
-                    </c:forEach>
+                            </div>
+                        </td>
+                    </tr>
+                </c:forEach>
 
 
-                </tbody>
-            </table>
-        </div>
-
-
+            </tbody>
+        </table>
     </div>
-    <!-- Button trigger modal -->
 
-    <!--<div class="scroll">-->
 
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
-    <script>
+</div>
+<!-- Button trigger modal -->
+
+<!--<div class="scroll">-->
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
+<script>
 //                                    $(document).ready(function () {
 //                                        $('#example').DataTable();
 //                                    });
 
-                                    $(document).ready(function () {
-                                        $('#example').DataTable({
-                                            "paging": true,
-                                            "pageLength": 10,
-                                            "lengthMenu": [[5, 10, 25, -1], [5, 10, 25, "All"]]
-                                        });
+                                $(document).ready(function () {
+                                    $('#example').DataTable({
+                                        "paging": true,
+                                        "pageLength": 10,
+                                        "lengthMenu": [[5, 10, 25, -1], [5, 10, 25, "All"]]
                                     });
-    </script>
+                                });
+</script>
 </div>
 
 </div>

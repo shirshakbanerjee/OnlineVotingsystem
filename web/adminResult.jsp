@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="assets/css/docs.min.css">
         <link rel="stylesheet" href="assets/css/index.css">
         <link rel="stylesheet" href="assets/css/customstyle.css" >
-
+        <link rel="shortcut icon" type="image/x-icon" href="assets/img/vote-icon.png">
         <link href="assets/vendor/aos/aos.css" rel="stylesheet">
         <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
@@ -66,7 +66,7 @@
         <script>
             function newfetchContent(urls)
             {
-                alert(urls+'?firstName='+document.getElementById("nameC").value);
+                alert(urls + '?firstName=' + document.getElementById("nameC").value);
                 var xmlhttp = new XMLHttpRequest();
                 xmlhttp.onreadystatechange = function ()
                 {
@@ -80,9 +80,9 @@
             function fetchContent(urls) {
 //                alert(urls+'?firstName='+document.getElementById("nameC").value);
                 $.ajax({
-                    url: urls+'?firstName='+document.getElementById("nameC").value,
+                    url: urls + '?firstName=' + document.getElementById("nameC").value,
                     success: function (responseText) {
-    //                    alert(responseText);
+                        //                    alert(responseText);
                         $("#" + 'displayResult').html(responseText);
                     }
                 });
@@ -135,54 +135,54 @@
 </div>-->
         <div class="align-content-center bg-light" style="padding: 50px">
             <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-            
+
             <div class="card" style="padding-bottom: 20px;margin-left: 100px;margin-right: 100px">
-            <div><h3 style="text-align: center; padding: 50px">Party Based Analysis Chart</h3></div>
-            <div class="text-center d-flex align-items-center">
-                <canvas id="lineChart" style="width: 800px"></canvas>
+                <div><h3 style="text-align: center; padding: 50px">Party Based Analysis Chart</h3></div>
+                <div class="text-center d-flex align-items-center">
+                    <canvas id="lineChart" style="width: 800px"></canvas>
+                </div>
             </div>
-            </div>
-            
+
             <p></p>
-            
+
             <div class="card" style="padding-bottom: 20px; margin: 20px;margin-left: 100px;margin-right: 100px">
                 <div><h3 class="card-title" style="text-align: center; padding: 50px">Candidate Vote Chart</h3></div>
                 <div class="text-center d-flex align-items-center">
-                <canvas style="width: 800px" id="myChart"></canvas>
+                    <canvas style="width: 800px" id="myChart"></canvas>
+                </div>
             </div>
-            </div>
-            
+
             <div class="card" style="padding-bottom: 20px;margin-left: 100px;margin-right: 100px">
-            <div><h3 style="text-align: center; padding: 50px">State Vote Chart</h3></div>
-            <div class="text-center d-flex align-items-center">
-                <canvas id="pieChart"></canvas>
-            </div>
+                <div><h3 style="text-align: center; padding: 50px">State Vote Chart</h3></div>
+                <div class="text-center d-flex align-items-center">
+                    <canvas id="pieChart"></canvas>
+                </div>
             </div>
             <p></p>
-            
+
             <div class="card" style="padding-bottom: 20px;margin-left: 100px;margin-right: 100px">
-            <div><h3 style="text-align: center; padding: 50px">Time Chart</h3></div>
-            <div class="text-center d-flex align-items-center">
-                <canvas id="timeLineChart" style="width: 800px"></canvas>
+                <div><h3 style="text-align: center; padding: 50px">Time Chart</h3></div>
+                <div class="text-center d-flex align-items-center">
+                    <canvas id="timeLineChart" style="width: 800px"></canvas>
+                </div>
             </div>
-            </div>
-            
+
             <p></p>
             <div class="card" style="padding-bottom: 20px;margin-left: 100px;margin-right: 100px">
-            <div>
-                <h3 style="text-align: center; padding: 20px">State Analysis Of Particular Candidate</h3>
-                <select class="form-control text-center" id="nameC" onchange="fetchContent('CandidateResult')" style="width: 500px; margin: 0 auto">
-                    <option value="">Select Candidate</option>
-                    <c:forEach var="results" items="${ResultList}">
-                        <option value="${results.getFirstName()}">
-                            ${results.getFirstName()} ${results.getLastName()}
-                        </option>
-                    </c:forEach>
-                </select>
-            </div>
-            <div id="displayResult">
-                
-            </div>
+                <div>
+                    <h3 style="text-align: center; padding: 20px">State Analysis Of Particular Candidate</h3>
+                    <select class="form-control text-center" id="nameC" onchange="fetchContent('CandidateResult')" style="width: 500px; margin: 0 auto">
+                        <option value="">Select Candidate</option>
+                        <c:forEach var="results" items="${ResultList}">
+                            <option value="${results.getFirstName()}">
+                                ${results.getFirstName()} ${results.getLastName()}
+                            </option>
+                        </c:forEach>
+                    </select>
+                </div>
+                <div id="displayResult">
+
+                </div>
             </div>
             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -329,10 +329,10 @@
                     options: {
                         responsive: true,
                         scales: {
-                        y: {
-                            beginAtZero: true
+                            y: {
+                                beginAtZero: true
+                            }
                         }
-                    }
                     }
                 });
             </script>
@@ -345,7 +345,7 @@
                 new Chart(btlt, {
                     type: 'line',
                     data: {
-                        labels: ["6am - 8am","8am - 10am","10am - 12pm","12pm - 2pm","2pm - 4pm","4pm - 6pm"],
+                        labels: ["6am - 8am", "8am - 10am", "10am - 12pm", "12pm - 2pm", "2pm - 4pm", "4pm - 6pm"],
                         datasets: [{
                                 label: 'Number of Votes to States',
                                 data: times,
@@ -373,7 +373,7 @@
                     },
                     options: {
                         responsive: true
-                        
+
                     }
                 });
             </script>

@@ -35,7 +35,7 @@
         <!-- Template Main CSS File -->
         <link href="assets/css/style.css" rel="stylesheet">
         <link href="assets/css/signup.css" rel="stylesheet">
-
+        <link rel="shortcut icon" type="image/x-icon" href="assets/img/vote-icon.png">
         <!-- <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
         <!--===============================================================================================-->
         <link rel="stylesheet" type="text/css" href="assets/vendor/bootstrap/css/bootstrap.min.css"> 
@@ -58,7 +58,7 @@
         <link rel="stylesheet" type="text/css" href="assets/css/login1.css">
         <!--===============================================================================================-->
     </head>
- <script>
+    <script>
         function previewImage(event) {
             var input = event.target;
             if (input.files && input.files[0]) {
@@ -73,11 +73,11 @@
     </script>
     <header>
         <jsp:include page="menu.jsp"></jsp:include>
-    </header>
-    <body style="overflow-x:hidden;">
-        
-            
-            
+        </header>
+        <body style="overflow-x:hidden;">
+
+
+
 
             <!--
                <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
@@ -117,75 +117,75 @@
 
 
 
-<!--            <div class="jumbotron"  ">
-
-                <div class="container" >  
-                    <h1 class="display-3">Welcome! Come Be a Voter!</h1>
-                    <p>This is a responsibility.</p>
-                </div>
-            </div>-->
+            <!--            <div class="jumbotron"  ">
+            
+                            <div class="container" >  
+                                <h1 class="display-3">Welcome! Come Be a Voter!</h1>
+                                <p>This is a responsibility.</p>
+                            </div>
+                        </div>-->
 
             <div class="container">
                 <!-- Example row of columns -->
 
                 <div class="row">
                     <div class="col-md-6" style="width: 550px">
-                        <c:set var="candidate" value="${Candidate}"/>
-                        <h2 class="h2 mb-3 fw-normal" style="text-align: center;">Edit Candidate Details</h2>
-                        <main class="form-signin w-100 m-auto" >
-                            <div class="bordered">
-                                <table>
-                                    <tr>
-                                    <form enctype="multipart/form-data" action="SaveCandidate" method="post"> 
-                                       <div class="form-floating text-center"> 
-                                           <img src="data:image/png;base64,${candidate.imageData}" style="max-width: 150px; max-height: 150px;">
+                    <c:set var="candidate" value="${Candidate}"/>
+                    <h2 class="h2 mb-3 fw-normal" style="text-align: center;">Edit Candidate Details</h2>
+                    <main class="form-signin w-100 m-auto" >
+                        <div class="bordered">
+                            <table>
+                                <tr>
+                                <form enctype="multipart/form-data" action="SaveCandidate" method="post"> 
+                                    <div class="form-floating text-center"> 
+                                        <img src="data:image/png;base64,${candidate.imageData}" style="max-width: 150px; max-height: 150px;">
                                         <input type="file" id="image-file" name="image" onchange="previewImage(event)" >
                                         <br>
                                         <img id="image-preview" style="max-width: 200px; max-height: 200px;">
                                     </div>
-                                       
-                                         <div class="form-floating">
-                                            <input type="text" class="form-control" id="candidateEmail" placeholder="candidateEmail" name="candidateEmail" value="${candidate.getCandidateEmail()}" readonly>
-                                            <label for="candidateEmail">Email</label>
-                                        </div>
-                                        
-                                        <div class="form-floating">
-                                            <input type="text" class="form-control" id="candidateId" placeholder="candidateId" name="candidateId" value="${candidate.getCandidateId()}" readonly>
-                                            <label for="aadhar">Candidate Id</label>
-                                        </div>
-                                        
 
-                                        <div class="form-floating">
-                                            <input type="text" class="form-control" id="floatingInput" placeholder="firstName" name="firstName" value="${candidate.getFirstName()}" >
-                                            <label for="floatingInput">First Name</label>
-                                        </div>
-                                            <div class="form-floating">
-                                            <input type="text" class="form-control" id="floatingInput" placeholder="lastName" name="lastName" value="${candidate.getLastName()}" >
-                                            <label for="floatingInput">Last Name</label>
-                                        </div>
-                                        
-                                        <div class="form-floating">
-                                            <input type="text" class="form-control" id="age" placeholder="age" name="age" value="${candidate.getAge()}" >
-                                            <label for="firstName">Age</label>
-                                        </div>
-                                        <div class="form-floating">
-                                            <input type="text" class="form-control" id="gender" placeholder="gender" name="gender" value="${candidate.getGender()}" >
-                                            <label for="firstName">Gender</label>
-                                        </div>
-                                          
-                                            <div class="form-floating">
-                                         <input type="text" class="form-control" id="partyName" placeholder="partyName" name="partyName" value="${candidate.getPartyName()}" >  
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="candidateEmail" placeholder="candidateEmail" name="candidateEmail" value="${candidate.getCandidateEmail()}" readonly>
+                                        <label for="candidateEmail">Email</label>
+                                    </div>
+
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="candidateId" placeholder="candidateId" name="candidateId" value="${candidate.getCandidateId()}" readonly>
+                                        <label for="aadhar">Candidate Id</label>
+                                    </div>
+
+
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="floatingInput" placeholder="firstName" name="firstName" value="${candidate.getFirstName()}" >
+                                        <label for="floatingInput">First Name</label>
+                                    </div>
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="floatingInput" placeholder="lastName" name="lastName" value="${candidate.getLastName()}" >
+                                        <label for="floatingInput">Last Name</label>
+                                    </div>
+
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="age" placeholder="age" name="age" value="${candidate.getAge()}" >
+                                        <label for="firstName">Age</label>
+                                    </div>
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="gender" placeholder="gender" name="gender" value="${candidate.getGender()}" >
+                                        <label for="firstName">Gender</label>
+                                    </div>
+
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="partyName" placeholder="partyName" name="partyName" value="${candidate.getPartyName()}" >  
                                         <label for="floatingInput">Party Name</label>
                                     </div>
 
 
-                                        <div class="form-floating">
-                                         <input type="text" class="form-control" id="region" placeholder="region" name="region" value="${candidate.getRegion()}" >  
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="region" placeholder="region" name="region" value="${candidate.getRegion()}" >  
                                         <label for="floatingInput">State Name</label>
                                     </div>
-                                        
-                                        
-                                      
+
+
+
 
 
                                     <button class="w-100 btn btn-lg btn-info mb-2" type="submit">Save</button>
