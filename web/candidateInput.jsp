@@ -36,7 +36,7 @@
         <link href="assets/css/style.css" rel="stylesheet">
         <link href="assets/css/signup.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <!-- <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+        <link rel="shortcut icon" type="image/x-icon" href="assets/img/vote-icon.png">
         <!--===============================================================================================-->
         <link rel="stylesheet" type="text/css" href="assets/vendor/bootstrap/css/bootstrap.min.css"> 
         <!--===============================================================================================-->

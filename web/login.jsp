@@ -14,7 +14,7 @@
 
         <!-- Template Main CSS File -->
         <link href="assets/css/style.css" rel="stylesheet">
-
+        <link rel="shortcut icon" type="image/x-icon" href="assets/img/vote-icon.png">
         <!-- <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
         <!--===============================================================================================-->
         <link rel="stylesheet" type="text/css" href="assets/vendor/bootstrap/css/bootstrap.min.css"> 
@@ -159,78 +159,98 @@
                                     <label for="floatingInput2">Voter Id</label>
                                 </div>
                                 <br>
-                                <!--                                <div class="form-floating">
-                                                                    <input name="password" type="password" class="form-control" id="password" placeholder="Password" value="${user.password}" >
-                                                                    <label for="floatingPassword">Password</label>
-                                                                </div>
-                                                                <br>
-                                                                
-                                                                <div class="form-check form-switch">
-                                                                    <input class="form-check-input" type="checkbox" id="otpCheckbox" name="otpCheckbox" value="true">
-                                                                    <label class="form-check-label" for="otpCheckbox">Login with OTP</label>
-                                                                </div>
-                                                                <br>
-                                                                <div class="form-floating otp-input" style="display: none;">
-                                                                    <input name="otp" type="number" class="form-control" id="otp" placeholder="OTP">
-                                                                    <label for="floatingInput3">One-time password</label>
-                                                                    <button class="btn btn-lg btn-block btn-outline-warning" type="button" onclick="sendOTP()">Send OTP</button>
-                                                                    <p id="timer"></p>
-                                                                    <p></p>
-                                                                </div>
-                                
-                                                                <script>
-                                                                    const otpCheckbox = document.getElementById('otpCheckbox');
-                                                                    const otpInput = document.querySelector('.otp-input');
-                                
-                                                                    otpCheckbox.addEventListener('change', function () {
-                                                                        if (otpCheckbox.checked) {
-                                                                            otpInput.style.display = 'block';
-                                                                        } else {
-                                                                            otpInput.style.display = 'none';
-                                                                        }
-                                                                    });
-                                                                </script>                               -->
-                                <div class="form-group">
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="loginOption" id="passwordOption" value="password" checked>
-                                        <label class="form-check-label" for="passwordOption">Password</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="loginOption" id="otpOption" value="otp">
-                                        <label class="form-check-label" for="otpOption">OTP</label>
-                                    </div>
+
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="togglePasswordOTP" name="togglePasswordOTP">
+                                    <label class="form-check-label" for="togglePasswordOTP">
+                                        <div class="toggle-button">
+                                            <div class="slider"></div>
+                                            <div class="toggle-button-label">Password</div>
+                                        </div>
+                                    </label>
                                 </div>
-                                <br>
-                                <div class="form-group password-input">
-                                    <div class="form-floating">
-                                        <input name="password" type="password" class="form-control" id="password" placeholder="Password">
-                                        <label for="password">Password</label>
-                                    </div>
+
+                                <div class="form-floating password-input">
+                                    <input name="password" type="password" class="form-control" id="password" placeholder="Password">
+                                    <label for="password">Password</label>
                                 </div>
-                                <div class="form-group otp-input" style="display: none;">
-                                    <div class="form-floating">
-                                        <input name="otp" type="number" class="form-control" id="otp" placeholder="OTP">
-                                        <label for="otp">One-time password</label>
-                                        <button class="btn btn-lg btn-block btn-outline-warning" type="button" onclick="sendOTP()">Send OTP</button>
-                                        <p id="timer"></p>
-                                        <p></p>
-                                    </div>
+
+                                <div class="form-floating otp-input" style="display: none;">
+                                    <input name="otp" type="number" class="form-control" id="otp" placeholder="OTP">
+                                    <label for="otp">One-time password</label>
+                                    <button class="btn btn-lg btn-block btn-outline-warning" type="button" onclick="sendOTP()">Send OTP</button>
+                                    <p id="timer"></p>
+                                    <p></p>
                                 </div>
+
+                                <style>
+                                    .toggle-button {
+                                        position: relative;
+                                        width: 120px;
+                                        height: 32px;
+                                        border-radius: 20px;
+                                        background-color: #ccc;
+                                        cursor: pointer;
+                                        user-select: none;
+                                    }
+
+                                    .toggle-button-label {
+                                        position: absolute;
+                                        top: 0;
+                                        left: 0;
+                                        right: 0;
+                                        bottom: 0;
+                                        margin: auto;
+                                        text-align: center;
+                                        font-size: 14px;
+                                        font-weight: bold;
+                                        color: #333;
+                                    }
+
+                                    .slider {
+                                        position: absolute;
+                                        top: 4px;
+                                        left: 4px;
+                                        width: 60px;
+                                        height: 24px;
+                                        border-radius: 12px;
+                                        background-color: #fff;
+                                        box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
+                                        transition: all 0.2s ease-in-out;
+                                    }
+
+                                    #togglePasswordOTP:checked + .form-check-label .slider {
+                                        transform: translateX(56px);
+                                    }
+
+                                    .password-input {
+                                        margin-top: 20px;
+                                    }
+
+                                    .otp-input {
+                                        margin-top: 20px;
+                                    }
+                                </style>
 
                                 <script>
-                                    const passwordOption = document.getElementById('passwordOption');
+                                    const togglePasswordOTP = document.getElementById('togglePasswordOTP');
                                     const passwordInput = document.querySelector('.password-input');
-                                    const otpOption = document.getElementById('otpOption');
                                     const otpInput = document.querySelector('.otp-input');
+                                    const slider = document.querySelector('.slider');
+                                    const toggleButtonLabel = document.querySelector('.toggle-button-label');
 
-                                    passwordOption.addEventListener('click', function () {
-                                        passwordInput.style.display = 'block';
-                                        otpInput.style.display = 'none';
-                                    });
-
-                                    otpOption.addEventListener('click', function () {
-                                        otpInput.style.display = 'block';
-                                        passwordInput.style.display = 'none';
+                                    togglePasswordOTP.addEventListener('change', function () {
+                                        if (togglePasswordOTP.checked) {
+                                            passwordInput.style.display = 'none';
+                                            otpInput.style.display = 'block';
+                                            slider.style.backgroundColor = '#ff9800';
+                                            toggleButtonLabel.textContent = 'OTP';
+                                        } else {
+                                            passwordInput.style.display = 'block';
+                                            otpInput.style.display = 'none';
+                                            slider.style.backgroundColor = '#fff';
+                                            toggleButtonLabel.textContent = 'Password';
+                                        }
                                     });
                                 </script>
                                 <br>
