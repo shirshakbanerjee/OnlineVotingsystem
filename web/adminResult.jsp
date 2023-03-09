@@ -345,7 +345,7 @@
                 new Chart(btlt, {
                     type: 'line',
                     data: {
-                        labels: ["6am - 8am","8am - 10am","10am - 12pm","12pm - 2pm","2pm - 4pm","4pm - 6pm"],
+                        labels: ["6am - 7am","7am - 8am","8am - 9pm","9pm - 10pm","10am - 11am","11am - 12pm","12pm - 1pm","1pm - 2pm","2pm - 3pm","3pm - 4pm","4pm - 5pm","5pm - 6pm"],
                         datasets: [{
                                 label: 'Number of Votes to States',
                                 data: times,

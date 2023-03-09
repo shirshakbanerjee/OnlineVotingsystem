@@ -153,13 +153,19 @@ public class Result extends ActionSupport implements ApplicationAware, SessionAw
         ArrayList partyList = ResultService.calculateParty();
         Iterator itr3=partyList.iterator();
         ArrayList timeList = new ArrayList();
-        timeList.add(ResultService.calculateTime("06:00:00","08:00:00"));
-        timeList.add(ResultService.calculateTime("08:00:00","10:00:00"));
-        timeList.add(ResultService.calculateTime("10:00:00","12:00:00"));
-        timeList.add(ResultService.calculateTime("12:00:00","14:00:00"));
-        timeList.add(ResultService.calculateTime("14:00:00","16:00:00"));
-        timeList.add(ResultService.calculateTime("16:00:00","18:00:00"));
-        
+        timeList.add(ResultService.calculateTime("06:00:00", "07:00:00"));
+        timeList.add(ResultService.calculateTime("07:00:00", "08:00:00"));
+        timeList.add(ResultService.calculateTime("08:00:00", "09:00:00"));
+        timeList.add(ResultService.calculateTime("09:00:00", "10:00:00"));
+        timeList.add(ResultService.calculateTime("10:00:00", "11:00:00"));
+        timeList.add(ResultService.calculateTime("11:00:00", "12:00:00"));
+        timeList.add(ResultService.calculateTime("12:00:00", "13:00:00"));
+        timeList.add(ResultService.calculateTime("13:00:00", "14:00:00"));
+        timeList.add(ResultService.calculateTime("14:00:00", "15:00:00"));
+        timeList.add(ResultService.calculateTime("15:00:00", "16:00:00"));
+        timeList.add(ResultService.calculateTime("16:00:00", "17:00:00"));
+        timeList.add(ResultService.calculateTime("17:00:00", "18:00:00"));
+
         Iterator itr4 = timeList.iterator();
         if(itr.hasNext() && itr2.hasNext() && itr3.hasNext() && itr4.hasNext())
         {
