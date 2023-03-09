@@ -3,10 +3,13 @@
     Created on : 03-Mar-2023, 8:54:26 am
     Author     : ASUS
 --%>
-
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-
+<c:set var='voter' value='${Voter}'/>
+        <c:if test = "${voter == null}">  
+            <c:redirect url = "login.jsp"/>
+        </c:if>
 <html>
     <head>
         <jsp:include page="menu.jsp"></jsp:include>
@@ -142,11 +145,18 @@
                 }
             }
         </style>
+        <script>
+            $("#feedback").submit(function (event) {
+                alert("Handler for .submit() called.");
+//                event.preventDefault();
+                window.location = "http://localhost:8080/OnlineVotingSystem/logout.jsp";
+            });
+        </script>
     </head>
     <body>
         <div class="main-block">
             <h1 style="color: black"><b>Please Rate Us!!</b></h1>
-            <form action="https://formspree.io/f/xknabjna" method="POST">
+            <form action="https://formspree.io/f/xknabjna" method="POST" id="feedback">
                 <div class="info">
                     <div class="info-item">
                         <label class="icon" for="name"><i class="fas fa-user"></i></label>
@@ -191,7 +201,7 @@
                 <h3>Please Comment on Your Rating</h3>
                 <textarea rows="4"></textarea>
 
-                <button type="submit" href="landingPage.jsp">Submit</button>    
+                <button type="submit" href="landingPage.jsp">Submit</button>  
 
 
             </form>

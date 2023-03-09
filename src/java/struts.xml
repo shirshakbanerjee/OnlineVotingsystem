@@ -81,6 +81,9 @@
         <action name="SendOTP" class="com.exavalu.models.User" method="sendOtp">
             <result name="SUCCESS">login.jsp</result>            
         </action>
+        <action name="VoterLanding" class="com.exavalu.models.User" method="showVoter">
+            <result name="SUCCESS">voterList.jsp</result>            
+        </action>
     </package>
 </struts>
 

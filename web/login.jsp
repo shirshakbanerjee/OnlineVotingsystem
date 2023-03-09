@@ -36,7 +36,19 @@
         <link rel="stylesheet" type="text/css" href="assets/css/login2.css">
         <link rel="stylesheet" type="text/css" href="assets/css/login1.css">
         <!--===============================================================================================-->
-        <jsp:include page="menu.jsp"></jsp:include>
+        <link rel="shortcut icon" type="image/x-icon" href="assets/img/vote-icon.png">
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+        <!-- Vendor CSS Files -->
+        <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+        <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+        <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+        <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+        <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+        <link href="assets/css/style.css" rel="stylesheet">
+        <%--<jsp:include page="menu.jsp"></jsp:include>--%>
     </head>
     <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous">
     </script>
@@ -155,12 +167,6 @@
                                     <label for="floatingInput">Email address</label>
                                 </div>
                                 <br>
-                                <div class="form-floating">
-                                    <input name="voterId" type="number" class="form-control" id="voterId" placeholder="VoterId" value="${user.voterId}">
-                                    <label for="floatingInput2">Voter Id [Only for voters, otherwise leave blank]</label>
-                                </div>
-                                <br>
-
                                 <div class="form-check form-switch">
                                     <input class="form-check-input" type="checkbox" id="togglePasswordOTP" name="togglePasswordOTP" style="visibility: hidden;">
                                     <label class="form-check-label" for="togglePasswordOTP">
@@ -255,6 +261,11 @@
                                     });
                                 </script>
                                 <br>
+                                <div class="form-floating">
+                                    <input name="voterId" type="number" class="form-control" id="voterId" placeholder="VoterId" value="${user.voterId}">
+                                    <label for="floatingInput2">Voter Id [Only for voters]</label>
+                                </div>
+                                <br>
                                 <c:set var='error' value='${Error}'/>
                                 <c:if  test="${error!=null}">
                                     <div class="alert-danger text-center btn-outline-dark bg-danger" style="color: #ccffff; border-radius: 10px; padding: 20px">
@@ -262,7 +273,7 @@
                                     </div>
                                 </c:if>
                                 <br>
-                                <button class="w-100 btn btn-lg btn-face btn-outline-dark text-center " type="submit" onclick="return verifyForm();">Sign in</button>
+                                <button class="w-100 btn btn-lg btn-face btn-outline-dark text-center " type="submit" onclick="return verifyOTP();">Sign in</button>
                                 <p></p>
                                 <a href="logout.jsp">
                                     <button type="button" class="w-100 btn btn-lg btn-secondary">Cancel</button>
@@ -300,12 +311,13 @@
                                         var xmlhttp = new XMLHttpRequest();
                                         xmlhttp.onreadystatechange = function () {
                                             if (this.readyState === 4 && this.status === 200) {
-                                                alert("OTP sent to your email address. Please check your inbox.");
-                                                clearInterval(timer);
-                                                setTimeout(function () {
-                                                    location.reload(true);
-                                                }, 1000); // Wait for 1 second before reloading the page
-                                                $("#" + 'getOtp').html(responseText);
+//                                                alert("OTP sent to your email address. Please check your inbox.");
+//                                                clearInterval(timer);
+//                                                setTimeout(function () {
+//                                                    location.reload(true);
+//                                                }, 1000); // Wait for 1 second before reloading the page
+//                                                $("#" + 'getOtp').html(responseText);
+                                                window.location.replace("http://localhost:8080/OnlineVotingSystem/login.jsp");
                                             }
                                         };
                                         xmlhttp.open("GET", "SendOTP?emailAddress=" + email + "&password=" + password + "&voterId=" + voterId, true);
@@ -318,18 +330,19 @@
 
                                 function verifyOTP() {
                                     //alert("Clean and build--Nitish");
+//                                    alert(sessionStorage.getItem('OTP'));
                                     var enteredOTP = document.getElementById("otp").value;
 
 //                                    var storedOTP = '${otp}';
 //                                    alert('${otp}');
 //                                    alert(sessionStorage.getItem("OTP"));
                                     var storedOTP = '${sessionScope.OTP}';
-                                    alert(storedOTP);
+//                                    alert(storedOTP);
                                     if (enteredOTP === storedOTP) {
                                         //alert("OTP is verified. You may now proceed with login.");
                                         return true;
                                     } else {
-                                        // alert("Invalid OTP. Please try again.");
+                                         alert("Invalid OTP. Please try again.");
                                         return false;
                                     }
                                 }

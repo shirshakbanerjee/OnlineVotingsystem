@@ -7,17 +7,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@taglib uri="/struts-tags" prefix="s"%>
-<!--<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-        <h1>Hello World!</h1>
-    </body>
-</html>
--->
 
 <!doctype html>
 
@@ -30,7 +19,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Sign Up</title>
+        <title>Add Candidate</title>
 
         <link href="assets/vendor/aos/aos.css" rel="stylesheet">
         <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -93,95 +82,12 @@
                 reader.readAsDataURL(input.files[0]);
             }
         }
-
-//        function fetchCandidateApi()
-//        {
-////            alert(document.getElementById("candidateEmail").value);
-//            var xmlhttp = new XMLHttpRequest();
-//            xmlhttp.onreadystatechange = function ()
-//            {
-//                document.getElementById("candidateIdentityDetails").innerHTML = xmlhttp.responseText;
-//            };
-//
-//
-//            xmlhttp.open("POST", "FetchCandidateApi?candidateEmail=" + document.getElementById("candidateEmail").value, true);
-//            xmlhttp.send();
-//            //FetchApi
-//        }
-
-//        function functionCandidateApprove(candidateEmail)
-//        {
-//            //alert(fnolId);
-//            var xmlhttp = new XMLHttpRequest();
-//            xmlhttp.onreadystatechange = function ()
-//            {
-//                document.getElementById("onclickViewVoter").innerHTML = xmlhttp.responseText;
-//            };
-//
-//
-//            xmlhttp.open("POST", "AdminAprove?candidateEmail=" + candidateEmail, true);
-//            xmlhttp.send();
-//        }
-//        function functionCandidateReject(candidateEmail)
-//        {
-//            //alert(fnolId);
-//            var xmlhttp = new XMLHttpRequest();
-//            xmlhttp.onreadystatechange = function ()
-//            {
-//                document.getElementById("onclickViewVoter").innerHTML = xmlhttp.responseText;
-//            };
-//
-//
-//            xmlhttp.open("POST", "AdminCandidateRejected?voterId=" + candidateEmail, true);
-//            xmlhttp.send();
-//        }
     </script>
 
     <header>
         <jsp:include page="menu.jsp"></jsp:include>
         </header>
         <body style="overflow-x:hidden;">
-
-
-
-
-            <!--
-               <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-                 <a class="navbar-brand" href="#">Navbar</a>
-                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-                   <span class="navbar-toggler-icon"></span>
-                 </button>
-           
-                 <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-                   <ul class="navbar-nav mr-auto">
-                     <li class="nav-item active">
-                       <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                     </li>
-                     <li class="nav-item">
-                       <a class="nav-link" href="#">Link</a>
-                     </li>
-                     <li class="nav-item">
-                       <a class="nav-link disabled" href="#">Disabled</a>
-                     </li>
-                     <li class="nav-item dropdown">
-                       <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                       <div class="dropdown-menu" aria-labelledby="dropdown01">
-                         <a class="dropdown-item" href="#">Action</a>
-                         <a class="dropdown-item" href="#">Another action</a>
-                         <a class="dropdown-item" href="#">Something else here</a>
-                       </div>
-                     </li>
-                   </ul>
-                   <form class="form-inline my-2 my-lg-0">
-                     <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                   </form>
-                 </div>
-               </nav>
-                 Main jumbotron for a primary marketing message or call to action -->
-
-
-
             <div class="jumbotron"  >
 
                 <div class="container" >  

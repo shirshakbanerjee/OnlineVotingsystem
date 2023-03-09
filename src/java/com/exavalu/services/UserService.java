@@ -24,7 +24,7 @@ public class UserService {
 
     public static int doLogin(User user) {
         
-        int success = 0;
+        int success = 100;
         
         String sql = "Select * from users where emailAddress=? and password=?";
         
