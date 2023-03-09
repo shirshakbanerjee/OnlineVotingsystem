@@ -39,7 +39,7 @@
                                         </b></h1>-->
 
                     <ul>
-                        <li><a class="nav-link scrollto active text-white" href="#hero">HOME</a></li>
+<!--                        <li><a class="nav-link scrollto active text-white" href="#hero">HOME</a></li>-->
 
                         <li><a class="nav-link scrollto text-white" > WELCOME: ${voter.firstName}  ${voter.lastName}</a></li>
                         <li><a class="nav-link scrollto text-white" href="logout.jsp">LOGOUT</a></li>
