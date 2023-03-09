@@ -64,8 +64,8 @@
                 width: 500px;
             }
             .sidebar .menu-list .m-link:hover,.sidebar .menu-list .m-link.active,.sidebar .menu-list .ms-link:hover,.sidebar .menu-list .ms-link.active{
-    color:#f19828;
-}
+                color:#f19828;
+            }
         </style>
         <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous">
         </script>
@@ -132,6 +132,14 @@
                         <!-- Menu: main ul -->
 
                         <ul class="menu-list flex-grow-1 mt-3">
+                             <li class="collapsed">
+                                <a class="m-link" data-bs-toggle="collapse" data-bs-target="#dashboard-Components" href="#candidateVote">
+                                    <i class="icofont-home fs-5"></i> <span>Party Based Analysis</span></a>
+                                <!-- Menu: Sub menu ul -->
+                                <ul class="sub-menu collapse show" id="dashboard-Components">
+
+                                </ul>
+                            </li>
                             <li class="collapsed">
                                 <a class="m-link" data-bs-toggle="collapse" data-bs-target="#dashboard-Components" href="#candidateVote">
                                     <i class="icofont-home fs-5"></i> <span>Candidate Vote Chart</span></a>
@@ -149,9 +157,9 @@
                                 </ul>
                             </li>
                             <li class="collapsed">
-                                <a class="m-link" data-bs-toggle="collapse" data-bs-target="#dashboard-Components" href="#partyVote">
-                                    <i class="icofont-home fs-5"></i> <span>Party Based Analysis</span></a>
-                                <!-- Menu: Sub menu ul -->
+                                <a class="m-link" data-bs-toggle="collapse" data-bs-target="#dashboard-Components" href="#timebasedVote">
+                                    <i class="icofont-home fs-5"></i> <span>Time Based Analysis</span></a>
+<!--                                 Menu: Sub menu ul -->
                                 <ul class="sub-menu collapse show" id="dashboard-Components">
 
                                 </ul>
@@ -170,238 +178,222 @@
                 </div>
             </nav>
 
+<!--            <div class="align-content-center bg-light" style="padding: 50px">
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>-->
+                
 
-                <td>
-            ${result.getCandidateId()}
-        </td>
-        <td>
 
-            <c:out value='${result.getCandidateName()}'/>
-        </td>
-        <td>
-            <c:out value='${result.getVotes()}'/>
+                <div class="align-content-center bg-light" style="margin-top: 10px;">
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+                    <section id="partyVote" style="padding:0px">
+                    <div class="card" style="padding-bottom: 20px;margin-left: 300px;margin-top: 10px;">
+                        <div><h3 style="text-align: center; padding: 50px">Party Based Analysis Chart</h3></div>
+                        <div class="text-center d-flex align-items-center">
+                            <canvas id="lineChart" style="width: 800px"></canvas>
+                        </div>
+                    </div>
 
-        </td>
+                    <p></p>
+                </section>
+
+                    <section id="candidateVote" style="padding:0px">
+                        <div class="card" style="padding-bottom: 20px;margin-left: 300px;margin-top: 10px;">
+                            <div><h3 class="card-title" style="text-align: center; padding: 50px">Candidate Vote Chart</h3></div>
+                            <div class="text-center d-flex align-items-center">
+                                <canvas style="width: 800px" id="myChart"></canvas>
+                            </div>
+                            <canvas style="width: 800px" id="myChart"></canvas>
+                        </div>
+                </div>
+            </section>
+
+            <section id="stateVote">
+                <div class="card" style="padding-bottom: 20px;margin-left: 300px;">
+                    <div><h3 style="text-align: center; padding: 50px">State Vote Chart</h3></div>
+                    <div class="text-center d-flex align-items-center">
+                        <canvas id="pieChart"></canvas>
+                    </div>
+                </div>
+            </section>
+            <section id="timebasedVote">
+                <div class="card" style="padding-bottom: 20px;margin-left: 300px;">
+                    <div><h3 style="text-align: center; padding: 50px">Time Based Analysis Chart</h3></div>
+                    <div class="text-center d-flex align-items-center">
+<!--                        <canvas id="lineChart" style="width: 800px"></canvas>-->
+                    </div>
+                </div>
+            </section>
+
+            <section id="stateAnalysis">  
+                <div class="card" style="padding-bottom: 20px;margin-left: 300px;">
+                    <div>
+                        <h3 style="text-align: center; padding: 20px">State Analysis Of Particular Candidate</h3>
+                        <select class="form-control text-center" id="nameC" onchange="fetchContent('CandidateResult')" style="width: 500px; margin: 0 auto">
+                            <option value="">Select Candidate</option>
+                        <c:forEach var="results" items="${ResultList}">
+                            <option value="${results.getFirstName()}">
+                                ${results.getFirstName()} ${results.getLastName()}
+                            </option>
+                        </c:forEach>
+                    </select>
+                </div>
+                <div id="displayResult">
+
+                </div>
+            </div>
+        </section>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+                Chart.defaults.font.size = 17;
+                const names = [];
+                const votes = [];
+        <c:forEach items='${ResultList}' var='results'>
+                names.push("${results.getCandidateName()}");
+                votes.push("${results.getVotes()}");
         </c:forEach>
-    </tr>
-</table>
-</div>-->
-        <div class="align-content-center bg-light" style="padding: 50px">
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-
-            <div class="card" style="padding-bottom: 20px;margin-left: 100px;margin-right: 100px">
-                <div><h3 style="text-align: center; padding: 50px">Party Based Analysis Chart</h3></div>
-                <div class="text-center d-flex align-items-center">
-                    <canvas id="lineChart" style="width: 800px"></canvas>
-                </div>
-            </div>
-
-            <p></p>
-
-            <div class="card" style="padding-bottom: 20px; margin: 20px;margin-left: 100px;margin-right: 100px">
-        </tr>
-    </table>
-
-    <div class="align-content-center bg-light" style="margin-top: 10px;">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-        <section id="candidateVote" style="padding:0px">
-            <div class="card" style="padding-bottom: 20px;margin-left: 300px;margin-top: 10px;">
-                <div><h3 class="card-title" style="text-align: center; padding: 50px">Candidate Vote Chart</h3></div>
-                <div class="text-center d-flex align-items-center">
-                    <canvas style="width: 800px" id="myChart"></canvas>
-                </div>
-                    <canvas style="width: 800px" id="myChart"></canvas>
-                </div>
-            </div>
-        </section>
-
-        <section id="stateVote">
-            <div class="card" style="padding-bottom: 20px;margin-left: 300px;">
-                <div><h3 style="text-align: center; padding: 50px">State Vote Chart</h3></div>
-                <div class="text-center d-flex align-items-center">
-                    <canvas id="pieChart"></canvas>
-                </div>
-            </div>
-        </section>
-        <section id="partyVote">
-            <div class="card" style="padding-bottom: 20px;margin-left: 300px;">
-                <div><h3 style="text-align: center; padding: 50px">Party Based Analysis Chart</h3></div>
-                <div class="text-center d-flex align-items-center">
-                    <canvas id="lineChart" style="width: 800px"></canvas>
-                </div>
-            </div>
-        </section>
-
-        <section id="stateAnalysis">  
-            <div class="card" style="padding-bottom: 20px;margin-left: 300px;">
-                <div>
-                    <h3 style="text-align: center; padding: 20px">State Analysis Of Particular Candidate</h3>
-                    <select class="form-control text-center" id="nameC" onchange="fetchContent('CandidateResult')" style="width: 500px; margin: 0 auto">
-                        <option value="">Select Candidate</option>
-                    <c:forEach var="results" items="${ResultList}">
-                        <option value="${results.getFirstName()}">
-                            ${results.getFirstName()} ${results.getLastName()}
-                        </option>
-                    </c:forEach>
-                </select>
-            </div>
-            <div id="displayResult">
-
-            </div>
-        </div>
-    </section>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-<script>
-            Chart.defaults.font.size = 17;
-            const names = [];
-            const votes = [];
-    <c:forEach items='${ResultList}' var='results'>
-            names.push("${results.getCandidateName()}");
-            votes.push("${results.getVotes()}");
-    </c:forEach>
-            let delayed;
-            const ctx = document.getElementById('myChart');
-            new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: names,
-                    datasets: [{
-                            label: 'Number of Votes to candidates',
-                            data: votes,
-                            backgroundColor: [
-                                'rgba(255, 99, 132, 0.2)',
-                                'rgba(255, 159, 64, 0.2)',
-                                'rgba(255, 205, 86, 0.2)',
-                                'rgba(75, 192, 192, 0.2)',
-                                'rgba(54, 162, 235, 0.2)',
-                                'rgba(153, 102, 255, 0.2)',
-                                'rgba(201, 203, 207, 0.2)'
-                            ],
-                            borderColor: [
-                                'rgb(255, 99, 132)',
-                                'rgb(255, 159, 64)',
-                                'rgb(255, 205, 86)',
-                                'rgb(75, 192, 192)',
-                                'rgb(54, 162, 235)',
-                                'rgb(153, 102, 255)',
-                                'rgb(201, 203, 207)'
-                            ],
-                            borderWidth: 2,
-                            borderRadius: 20
-                        }]
-                },
-                options: {
-                    responsive: true,
-                    animation: {
-                        onComplete: () => {
-                            delayed = true;
-                        },
-                        delay: (context) => {
-                            let delay = 0;
-                            if (context.type === 'data' && context.mode === 'default' && !delayed) {
-                                delay = context.dataIndex * 300 + context.datasetIndex * 100;
-                            }
-                            return delay;
-                        }
+                let delayed;
+                const ctx = document.getElementById('myChart');
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: names,
+                        datasets: [{
+                                label: 'Number of Votes to candidates',
+                                data: votes,
+                                backgroundColor: [
+                                    'rgba(255, 99, 132, 0.2)',
+                                    'rgba(255, 159, 64, 0.2)',
+                                    'rgba(255, 205, 86, 0.2)',
+                                    'rgba(75, 192, 192, 0.2)',
+                                    'rgba(54, 162, 235, 0.2)',
+                                    'rgba(153, 102, 255, 0.2)',
+                                    'rgba(201, 203, 207, 0.2)'
+                                ],
+                                borderColor: [
+                                    'rgb(255, 99, 132)',
+                                    'rgb(255, 159, 64)',
+                                    'rgb(255, 205, 86)',
+                                    'rgb(75, 192, 192)',
+                                    'rgb(54, 162, 235)',
+                                    'rgb(153, 102, 255)',
+                                    'rgb(201, 203, 207)'
+                                ],
+                                borderWidth: 2,
+                                borderRadius: 20
+                            }]
                     },
-                    scales: {
-                        y: {
-                            beginAtZero: true
+                    options: {
+                        responsive: true,
+                        animation: {
+                            onComplete: () => {
+                                delayed = true;
+                            },
+                            delay: (context) => {
+                                let delay = 0;
+                                if (context.type === 'data' && context.mode === 'default' && !delayed) {
+                                    delay = context.dataIndex * 300 + context.datasetIndex * 100;
+                                }
+                                return delay;
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
                         }
                     }
-                }
-            });
-</script>
-<script>
-    const states = [];
-    const counts = [];
-    <c:forEach items='${StateList}' var='states'>
-    states.push("${states.getStates()}");
-    counts.push("${states.getCount()}");
-    </c:forEach>
-    const btx = document.getElementById('pieChart');
-    new Chart(btx, {
-        type: 'pie',
-        data: {
-            labels: states,
-            datasets: [{
-                    label: 'Number of Votes to States',
-                    data: counts,
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(255, 159, 64, 0.2)',
-                        'rgba(255, 205, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(201, 203, 207, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgb(255, 99, 132)',
-                        'rgb(255, 159, 64)',
-                        'rgb(255, 205, 86)',
-                        'rgb(75, 192, 192)',
-                        'rgb(54, 162, 235)',
-                        'rgb(153, 102, 255)',
-                        'rgb(201, 203, 207)'
-                    ],
-                    borderWidth: 2,
-                    borderRadius: 10
-                }]
-        },
-        options: {
-            responsive: true
-        }
-    });
-</script>
-<script>
-    const parties = [];
-    const countss = [];
-    <c:forEach items='${PartyList}' var='party'>
-    parties.push("${party.getPartyName()}");
-    countss.push("${party.getCount()}");
-    </c:forEach>
-    const btl = document.getElementById('lineChart');
-    new Chart(btl, {
-        type: 'line',
-        data: {
-            labels: parties,
-            datasets: [{
-                    label: 'Number of Votes to States',
-                    data: countss,
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(255, 159, 64, 0.2)',
-                        'rgba(255, 205, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(201, 203, 207, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgb(255, 99, 132)',
-                        'rgb(255, 159, 64)',
-                        'rgb(255, 205, 86)',
-                        'rgb(75, 192, 192)',
-                        'rgb(54, 162, 235)',
-                        'rgb(153, 102, 255)',
-                        'rgb(201, 203, 207)'
-                    ],
-                    borderWidth: 2,
-                    borderRadius: 10
-                }]
-        },
-        options: {
-            responsive: true,
-            scales: {
-                y: {
-                    beginAtZero: true
+                });
+    </script>
+    <script>
+        const states = [];
+        const counts = [];
+        <c:forEach items='${StateList}' var='states'>
+        states.push("${states.getStates()}");
+        counts.push("${states.getCount()}");
+        </c:forEach>
+        const btx = document.getElementById('pieChart');
+        new Chart(btx, {
+            type: 'pie',
+            data: {
+                labels: states,
+                datasets: [{
+                        label: 'Number of Votes to States',
+                        data: counts,
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(255, 159, 64, 0.2)',
+                            'rgba(255, 205, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(201, 203, 207, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgb(255, 99, 132)',
+                            'rgb(255, 159, 64)',
+                            'rgb(255, 205, 86)',
+                            'rgb(75, 192, 192)',
+                            'rgb(54, 162, 235)',
+                            'rgb(153, 102, 255)',
+                            'rgb(201, 203, 207)'
+                        ],
+                        borderWidth: 2,
+                        borderRadius: 10
+                    }]
+            },
+            options: {
+                responsive: true
+            }
+        });
+    </script>
+    <script>
+        const parties = [];
+        const countss = [];
+        <c:forEach items='${PartyList}' var='party'>
+        parties.push("${party.getPartyName()}");
+        countss.push("${party.getCount()}");
+        </c:forEach>
+        const btl = document.getElementById('lineChart');
+        new Chart(btl, {
+            type: 'bar',
+            data: {
+                labels: parties,
+                datasets: [{
+                        label: 'Number of Votes to States',
+                        data: countss,
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(255, 159, 64, 0.2)',
+                            'rgba(255, 205, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(201, 203, 207, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgb(255, 99, 132)',
+                            'rgb(255, 159, 64)',
+                            'rgb(255, 205, 86)',
+                            'rgb(75, 192, 192)',
+                            'rgb(54, 162, 235)',
+                            'rgb(153, 102, 255)',
+                            'rgb(201, 203, 207)'
+                        ],
+                        borderWidth: 2,
+                        borderRadius: 10
+                    }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
                 }
             }
-        }
-    });
-</script>
+        });
+    </script>
 </div>
 </body>
