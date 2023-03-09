@@ -396,4 +396,4 @@
             <script src="../js/template.js"></script>
             <script src="../js/page/hr.js"></script>
     </body>
-</html> 
+</html>
