@@ -23,14 +23,15 @@ import org.apache.log4j.Logger;
  */
 public class Email {
 
-    static String fromEmail = "electioncommisionind@gmail.com";
-    static String password = "jbibglbzxwogndjc";
-    static String userName = "electioncommisionind";
+  static String fromEmail = "electionindia1@gmail.com";
+    static String password = "xpzuioulpcdnlxdq";
+    static String userName = "electionindia1";
     
     public static void sendEmailToRegisterUser(String toEmail, String first, String last) {
-        String message = "Dear " + first.toUpperCase() + " " + last.toUpperCase() + ",\n" +" We would like to extend our warmest congratulations and gratitude to you for exercising your right to vote.\n"
+        String message = "Dear "+first.toUpperCase()+ " " +last.toUpperCase()+ ",\n" +" We would like to extend our warmest congratulations and gratitude to you for exercising your right to vote.\n"
                 + " Your vote is a vital contribution to the democratic process,"
-                + " and we appreciate your participation in shaping our community's future.";
+                + " and we appreciate your participation in shaping our community's future.\n\n"
+                + "Regards,\nelectionindia1";
         try {
             Properties props = new Properties();
             props.put("mail.smtp.host", "smtp.gmail.com");
@@ -73,7 +74,8 @@ public class Email {
                 + "We want to express my appreciation for your efforts and commitment to your cause."
                 + " While the outcome may or may not have been in your favor,\n"
                 + "We hope that you will continue to stay engaged and active in your communities, "
-                + "and use this experience as a stepping stone towards future success.\nGo check it out:http://localhost:8080/OnlineVotingSystem/ShowResult";
+                + "and use this experience as a stepping stone towards future success.\nGo check it out:http://localhost:8080/OnlineVotingSystem/ShowResult \n"
+                + "Regards,\nelectionindia1";
         try {
             Properties props = new Properties();
             props.put("mail.smtp.host", "smtp.gmail.com");
@@ -137,7 +139,7 @@ public class Email {
             mailMessage.setFrom(new InternetAddress(fromEmail));
             mailMessage.setRecipients(Message.RecipientType.TO,
                     InternetAddress.parse(toEmail));
-            mailMessage.setSubject("Vote Confirmation");
+            mailMessage.setSubject("OTP");
             mailMessage.setText("Your OTP is: " + otp);
             
             Transport.send(mailMessage);
