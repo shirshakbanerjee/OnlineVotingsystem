@@ -187,7 +187,7 @@ public class CandidateAPI extends ActionSupport implements ApplicationAware, Ses
     public String dofetchCandidateApi() throws Exception {
         String result = "SUCCESS";
         JDBCUtility jdbcUtility = JDBCUtility.getInstanceOfJDBCUtility();
-        String apiUrl = "https://mocki.io/v1/86e4d49f-796a-4ee5-bf7d-66493c9d812d";
+        String apiUrl = "https://mocki.io/v1/2fd2b26a-854a-49e1-8f13-e830f4a7253b";
 
         URL obj = new URL(apiUrl);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
