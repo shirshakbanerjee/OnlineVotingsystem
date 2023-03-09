@@ -167,7 +167,12 @@ public class Result extends ActionSupport implements ApplicationAware, SessionAw
         timeList.add(ResultService.calculateTime("17:00:00", "18:00:00"));
 
         Iterator itr4 = timeList.iterator();
-        if(itr.hasNext() && itr2.hasNext() && itr3.hasNext() && itr4.hasNext())
+        while(itr4.hasNext())
+        {
+            System.out.println(itr4.next());
+        }
+        System.out.println("TimeTravel Size: "+timeList.size());
+        if(itr.hasNext() && itr2.hasNext() && itr3.hasNext())
         {
             System.out.println("Returning success from results!!");
             sessionMap.put("ResultList", resultList);
