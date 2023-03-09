@@ -85,32 +85,32 @@
         </script>-->
     <body>
 
-        
 
 
-            <div class="limiter">
-                <div class="container-login100" style="background-image: url('assets/img/newlanding.png');">
-                    <div class="col-md-6">
-                        <div class="wrap-login100 p-l-110 p-r-110 p-t-62 p-b-33" style="opacity: 0.9;">
 
-                            <main class="form-signin w-100 m-auto ">
+        <div class="limiter">
+            <div class="container-login100" style="background-image: url('assets/img/newlanding.png');">
+                <div class="col-md-6">
+                    <div class="wrap-login100 p-l-110 p-r-110 p-t-62 p-b-33" style="opacity: 0.9;">
 
-                                <!--                                <form action="Login" method="post">
-                                
-                                                                    <h1 class="h3 mb-3 fw-normal " style="text-align: center;" >Please sign in</h1>
-                                                                    <div class="row">
-                                                                        <a href="#" class="btn-face m-b-20">
-                                                                            <i class="fa fa-facebook-official"></i>
-                                                                            Facebook
-                                                                        </a>
-                                
-                                                                        <a href="#" class="btn-google m-b-20">
-                                                                            <img src="assets/img/login/icons/icon-google.png" alt="GOOGLE">
-                                                                            Google
-                                                                        </a>
-                                                                    </div>
-                                
-                                                                    <div class="alert-danger" style="color: red">
+                        <main class="form-signin w-100 m-auto ">
+
+                            <!--                                <form action="Login" method="post">
+                            
+                                                                <h1 class="h3 mb-3 fw-normal " style="text-align: center;" >Please sign in</h1>
+                                                                <div class="row">
+                                                                    <a href="#" class="btn-face m-b-20">
+                                                                        <i class="fa fa-facebook-official"></i>
+                                                                        Facebook
+                                                                    </a>
+                            
+                                                                    <a href="#" class="btn-google m-b-20">
+                                                                        <img src="assets/img/login/icons/icon-google.png" alt="GOOGLE">
+                                                                        Google
+                                                                    </a>
+                                                                </div>
+                            
+                                                                <div class="alert-danger" style="color: red">
                             <c:set var='error' value='${Error}'/>
                             ${error}
                         </div>
@@ -238,7 +238,6 @@
                                         margin-top: 20px;
                                     }
                                 </style>
-
                                 <script>
                                     const togglePasswordOTP = document.getElementById('togglePasswordOTP');
                                     const passwordInput = document.querySelector('.password-input');
@@ -258,6 +257,38 @@
                                             slider.style.backgroundColor = '#fff';
                                             toggleButtonLabel.textContent = 'Password';
                                         }
+                                    });
+                                </script>
+                                <script>
+                                    document.addEventListener('DOMContentLoaded', function () {
+                                        const togglePasswordOTP = document.getElementById('togglePasswordOTP');
+                                        const passwordInput = document.querySelector('.password-input');
+                                        const otpInput = document.querySelector('.otp-input');
+                                        const slider = document.querySelector('.slider');
+                                        const toggleButtonLabel = document.querySelector('.toggle-button-label');
+
+                                        // Check if OTP is not null
+                                        if (${OTP} !== null) {
+                                            togglePasswordOTP.checked = true;
+                                            passwordInput.style.display = 'none';
+                                            otpInput.style.display = 'block';
+                                            slider.style.backgroundColor = '#ff9800';
+                                            toggleButtonLabel.textContent = 'OTP';
+                                        }
+
+                                        togglePasswordOTP.addEventListener('change', function () {
+                                            if (togglePasswordOTP.checked) {
+                                                passwordInput.style.display = 'none';
+                                                otpInput.style.display = 'block';
+                                                slider.style.backgroundColor = '#ff9800';
+                                                toggleButtonLabel.textContent = 'OTP';
+                                            } else {
+                                                passwordInput.style.display = 'block';
+                                                otpInput.style.display = 'none';
+                                                slider.style.backgroundColor = '#fff';
+                                                toggleButtonLabel.textContent = 'Password';
+                                            }
+                                        });
                                     });
                                 </script>
                                 <br>
@@ -299,7 +330,6 @@
                                             document.getElementById("timer").innerHTML = "Time's up! Please request a new OTP.";
                                         }
                                     }, 1000);
-
                                     var email = document.getElementById("emailAddress").value;
                                     var password = document.getElementById("password").value;
                                     var voterId = document.getElementById("voterId").value;
@@ -332,7 +362,6 @@
                                     //alert("Clean and build--Nitish");
 //                                    alert(sessionStorage.getItem('OTP'));
                                     var enteredOTP = document.getElementById("otp").value;
-
 //                                    var storedOTP = '${otp}';
 //                                    alert('${otp}');
 //                                    alert(sessionStorage.getItem("OTP"));
@@ -342,7 +371,7 @@
                                         //alert("OTP is verified. You may now proceed with login.");
                                         return true;
                                     } else {
-                                         alert("Invalid OTP. Please try again.");
+                                        alert("Invalid OTP. Please try again.");
                                         return false;
                                     }
                                 }
