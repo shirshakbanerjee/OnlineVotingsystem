@@ -210,9 +210,11 @@ public class Voter extends ActionSupport implements ApplicationAware, SessionAwa
     public String doVote() {
         String result = "FAILURE";
         boolean success = VoterService.doVoteService(this);
-        User user = UserService.getUser(this.voterId);
+//        User user = UserService.getUser(this.voterId);
+        Voter voter2=VoterService.getVoter(String.valueOf(this.voterId));
         if (success) {
-            Email.sendEmailToRegisterUser(user.getEmailAddress());
+            Email.sendEmailToRegisterUser(voter2.getEmailAddress(),voter2.getFirstName(),voter2.getLastName());
+            System.out.println("firstName"+voter2.getFirstName());
             VoterService.voted(this.voterId);
             Voter voter = VoterService.getVoter(String.valueOf(this.voterId));
             sessionMap.put("Voter", voter);
@@ -229,11 +231,6 @@ public class Voter extends ActionSupport implements ApplicationAware, SessionAwa
         boolean verification = VoterService.doVerification(String.valueOf(this.voterId));
         if (verification) {
 
-            //String updateMsg = "FNOL ID =" + this.fnolId + "::processed successfully";
-            //sessionMap.put("UpdateMsg", updateMsg);
-//            sessionMap.put("ApiResultMsg",null);
-//            sessionMap.put("HideAnchorTag", null);
-//            sessionMap.put("RejectionMsg", null);
             Voter voter = new Voter();
             voter = VoterService.getVoter(String.valueOf(this.voterId));
             sessionMap.put("PVoter", voter);
@@ -249,11 +246,6 @@ public class Voter extends ActionSupport implements ApplicationAware, SessionAwa
         boolean verification = VoterService.doAdminReject(String.valueOf(this.voterId));
         if (verification) {
 
-            //String updateMsg = "FNOL ID =" + this.fnolId + "::processed successfully";
-            //sessionMap.put("UpdateMsg", updateMsg);
-//            sessionMap.put("ApiResultMsg",null);
-//            sessionMap.put("HideAnchorTag", null);
-//            sessionMap.put("RejectionMsg", null);
             Voter voter = new Voter();
             voter = VoterService.getVoter(String.valueOf(this.voterId));
             sessionMap.put("PVoter", voter);
@@ -262,5 +254,7 @@ public class Voter extends ActionSupport implements ApplicationAware, SessionAwa
         //this.dogetAllFNOL();
         return result;
     }
+    
 
+    
 }

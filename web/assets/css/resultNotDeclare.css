@@ -15,7 +15,7 @@ body{
     overflow: hidden;
     width: 100vw;
     height: 100vh;
-    background-image: url("../img/votePic.jpg");
+    background-image: url("../img/1234.jpg");
     background-position: center;
    background-size: 100% 100%;
    object-fit: cover;
@@ -24,7 +24,7 @@ body{
    height: 100%;   
 }
 .container{
-    padding: 15%;
+    padding: 10%;
 }
 .logo{
     width:120px;
@@ -43,7 +43,7 @@ body{
     font-weight: 600;
 }
 .content h1 span{
-    color: yellow;
+/*    color: yellow;*/
     
 }
 .launch-time{
@@ -57,7 +57,7 @@ body{
     font-size: 60px;
     margin-bottom: -14px;
     padding-left: 50px;
-    color:#40F724;
+/*    color:#40F724;*/
 	-webkit-text-stroke: 2px white;
     
 }

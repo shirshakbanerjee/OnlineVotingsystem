@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="assets/css/docs.min.css">
         <link rel="stylesheet" href="assets/css/index.css">
         <link rel="stylesheet" href="assets/css/customstyle.css" >
-
+        <link rel="shortcut icon" type="image/x-icon" href="assets/img/vote-icon.png">
         <link href="assets/vendor/aos/aos.css" rel="stylesheet">
         <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
@@ -69,7 +69,7 @@
 
     <body style="overflow: visible">
 
-<!--        <div><h3 style="text-align: center; padding: 50px;text-decoration: underline">Candidate got vote from states:</h3></div>-->
+        <!--        <div><h3 style="text-align: center; padding: 50px;text-decoration: underline">Candidate got vote from states:</h3></div>-->
         <div class="text-center d-flex align-items-center">
             <canvas id="pieChart2"></canvas>
         </div>

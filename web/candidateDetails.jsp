@@ -10,7 +10,7 @@
 <html>
     <head>
 
-     
+
         <meta charset="utf-8">
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -19,9 +19,9 @@
         <meta content="" name="keywords">
 
         <!-- Favicons -->
-        <link href="assets/img/favicon.png" rel="icon">
-        <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
+        <!--        <link href="assets/img/favicon.png" rel="icon">
+                <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">-->
+        <link rel="shortcut icon" type="image/x-icon" href="assets/img/vote-icon.png">
         <!-- Google Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
@@ -76,17 +76,17 @@
                                 <div class="col-md-6 col-lg-12 d-flex align-items-stretch mb-5 mb-lg-0">
                                     <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
                                         <h4 class="title">Candidate ID: ${candidate.getCandidateId()}</h4>
-                                        
+
                                         <img src="data:image/png;base64,${candidate.imageData}" style="max-width: 150px; max-height: 150px;">
-                                        
+
                                         <h4 class="title">${candidate.getFirstName()} ${candidate.getLastName()}</h4>
-                                        
+
                                         <h5 class="title">Party: ${candidate.getPartyName()}</h5>
-                                        
+
                                         <h5 class="title">Gender: ${candidate.getGender()}</h5>
-                                        
+
                                         <h5 class="title">State: ${candidate.getRegion()}</h5>                                                                                                                    
-                                        
+
                                         <button class="btn btn-info" onclick="editCandidate(${candidate.getCandidateId()})"><i class="fa fa-pencil"></i></button>
                                         <button class="btn btn-danger" onclick="deleteCandidate(${candidate.getCandidateId()})"><i class="fa fa-trash"></i></button>
                                         <!--<button type="button" class="btn btn-info" > <i class="fa fa-pencil"></i></button>-->
@@ -157,32 +157,32 @@
 
         </div>
         <script>
-        function editCandidate(candidateId) {
-            alert(candidateId);
-        window.location.href = `EditCandidate?candidateId=`+candidateId;
-        }
-        function deleteCandidate(candidateId) {
-            alert(candidateId);
-        window.location.href = `DeleteCandidate?candidateId=`+candidateId;
-        }
-    </script>
-   
+            function editCandidate(candidateId) {
+                alert(candidateId);
+                window.location.href = `EditCandidate?candidateId=` + candidateId;
+            }
+            function deleteCandidate(candidateId) {
+                alert(candidateId);
+                window.location.href = `DeleteCandidate?candidateId=` + candidateId;
+            }
+        </script>
 
 
 
 
 
-</body>
-<script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-<script src="assets/vendor/aos/aos.js"></script>
-<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-<script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-<script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-<script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-<script src="assets/vendor/php-email-form/validate.js"></script>
+
+    </body>
+    <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+    <script src="assets/vendor/aos/aos.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+    <script src="assets/vendor/php-email-form/validate.js"></script>
 
 
-<script src="assets/js/main.js"></script>
+    <script src="assets/js/main.js"></script>
 
 </html>
