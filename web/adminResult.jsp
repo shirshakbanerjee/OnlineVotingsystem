@@ -70,6 +70,17 @@
         <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous">
         </script>
         <script>
+            function fetchContent(urls) {
+//                alert(urls+'?firstName='+document.getElementById("nameC").value);
+                $.ajax({
+                    url: urls + '?firstName=' + document.getElementById("nameC").value,
+                    success: function (responseText) {
+                        //                    alert(responseText);
+                        $("#" + 'displayResult').html(responseText);
+                    }
+                });
+            }
+            
             function newfetchContent(urls)
             {
                 alert(urls + '?firstName=' + document.getElementById("nameC").value);
@@ -133,7 +144,7 @@
 
                         <ul class="menu-list flex-grow-1 mt-3">
                              <li class="collapsed">
-                                <a class="m-link" data-bs-toggle="collapse" data-bs-target="#dashboard-Components" href="#candidateVote">
+                                <a class="m-link" data-bs-toggle="collapse" data-bs-target="#dashboard-Components" href="#partyVote">
                                     <i class="icofont-home fs-5"></i> <span>Party Based Analysis</span></a>
                                 <!-- Menu: Sub menu ul -->
                                 <ul class="sub-menu collapse show" id="dashboard-Components">
@@ -230,7 +241,7 @@
                         <h3 style="text-align: center; padding: 20px">State Analysis Of Particular Candidate</h3>
                         <select class="form-control text-center" id="nameC" onchange="fetchContent('CandidateResult')" style="width: 500px; margin: 0 auto">
                             <option value="">Select Candidate</option>
-                        <c:forEach var="results" items="${ResultList}">
+                        <c:forEach var="results" items="${ResultList}">                            
                             <option value="${results.getFirstName()}">
                                 ${results.getFirstName()} ${results.getLastName()}
                             </option>
