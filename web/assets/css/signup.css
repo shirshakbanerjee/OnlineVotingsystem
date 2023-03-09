@@ -16,6 +16,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 .display-3{
     margin: 0;
 }
+.container{
+    display: flex;
+}
 .jumbotron{
     display: flex;
     border-bottom: 10px;

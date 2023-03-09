@@ -231,11 +231,6 @@ public class Voter extends ActionSupport implements ApplicationAware, SessionAwa
         boolean verification = VoterService.doVerification(String.valueOf(this.voterId));
         if (verification) {
 
-            //String updateMsg = "FNOL ID =" + this.fnolId + "::processed successfully";
-            //sessionMap.put("UpdateMsg", updateMsg);
-//            sessionMap.put("ApiResultMsg",null);
-//            sessionMap.put("HideAnchorTag", null);
-//            sessionMap.put("RejectionMsg", null);
             Voter voter = new Voter();
             voter = VoterService.getVoter(String.valueOf(this.voterId));
             sessionMap.put("PVoter", voter);
@@ -251,11 +246,6 @@ public class Voter extends ActionSupport implements ApplicationAware, SessionAwa
         boolean verification = VoterService.doAdminReject(String.valueOf(this.voterId));
         if (verification) {
 
-            //String updateMsg = "FNOL ID =" + this.fnolId + "::processed successfully";
-            //sessionMap.put("UpdateMsg", updateMsg);
-//            sessionMap.put("ApiResultMsg",null);
-//            sessionMap.put("HideAnchorTag", null);
-//            sessionMap.put("RejectionMsg", null);
             Voter voter = new Voter();
             voter = VoterService.getVoter(String.valueOf(this.voterId));
             sessionMap.put("PVoter", voter);
@@ -264,5 +254,7 @@ public class Voter extends ActionSupport implements ApplicationAware, SessionAwa
         //this.dogetAllFNOL();
         return result;
     }
+    
 
+    
 }

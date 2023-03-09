@@ -36,6 +36,7 @@
         <link rel="stylesheet" type="text/css" href="assets/css/login2.css">
         <link rel="stylesheet" type="text/css" href="assets/css/login1.css">
         <!--===============================================================================================-->
+        <jsp:include page="menu.jsp"></jsp:include>
     </head>
     <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous">
     </script>
@@ -72,7 +73,7 @@
         </script>-->
     <body>
 
-        <jsp:include page="menu.jsp"></jsp:include>
+        
 
 
             <div class="limiter">
