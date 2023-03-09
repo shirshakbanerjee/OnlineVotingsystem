@@ -14,6 +14,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 /**
@@ -224,8 +225,8 @@ public class VoterService {
         boolean result = false;
         Connection con = JDBCConnectionManager.getConnection();
 
-        String sql = "INSERT INTO votes(voterId,state,candidateId)"
-                + "VALUES(? ,? ,? );";
+        String sql = "INSERT INTO votes(voterId,state,candidateId,time)"
+                + "VALUES(? ,? ,?, ? );";
 
         try {
 
@@ -233,6 +234,7 @@ public class VoterService {
             preparedStatement.setInt(1, voter.getVoterId());
             preparedStatement.setString(2, voter.getState());
             preparedStatement.setString(3, voter.getCandidateId());
+            preparedStatement.setObject(4, LocalDateTime.now());
 
             int rs = preparedStatement.executeUpdate();
 

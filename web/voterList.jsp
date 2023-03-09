@@ -299,6 +299,7 @@
                 height: 200px;
                 overflow-x: hidden;
                 /*                overflow-y: auto;*/
+                /*                overflow-y: auto;*/
                 text-align: justify-all;
                 padding: 20px;
             }

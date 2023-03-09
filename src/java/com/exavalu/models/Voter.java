@@ -13,6 +13,7 @@ import com.exavalu.services.VoterService;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Map;
 import org.apache.struts2.dispatcher.ApplicationMap;
@@ -24,7 +25,7 @@ import org.apache.struts2.interceptor.SessionAware;
  *
  * @author Admin
  */
-public class Voter extends ActionSupport implements ApplicationAware, SessionAware, Serializable{
+public class Voter extends ActionSupport implements ApplicationAware, SessionAware, Serializable {
 
     private int voterId;
     private String emailAddress;
@@ -40,11 +41,12 @@ public class Voter extends ActionSupport implements ApplicationAware, SessionAwa
     private String stateCode;
     private String stateName;
     private String candidateId;
-    
+    private LocalDateTime voteTime;
+
     private SessionMap<String, Object> sessionMap = (SessionMap) ActionContext.getContext().getSession();
 
     private ApplicationMap map = (ApplicationMap) ActionContext.getContext().getApplication();
-    
+
     @Override
     public void setApplication(Map<String, Object> application) {
         map = (ApplicationMap) application;
@@ -54,7 +56,7 @@ public class Voter extends ActionSupport implements ApplicationAware, SessionAwa
     public void setSession(Map<String, Object> session) {
         sessionMap = (SessionMap) session;
     }
-    
+
     public int getVoterId() {
         return voterId;
     }
@@ -166,58 +168,64 @@ public class Voter extends ActionSupport implements ApplicationAware, SessionAwa
     public void setCandidateId(String candidateId) {
         this.candidateId = candidateId;
     }
-    
+
+    public LocalDateTime getVoteTime() {
+        return voteTime;
+    }
+
+    public void setVoteTime(LocalDateTime voteTime) {
+        this.voteTime = voteTime;
+    }
+
     public String doPreSignup() throws Exception {
         String result = "SUCCESS";
         ArrayList stateList = VoterService.getStates();
         sessionMap.put("StateList", stateList);
-        
+
         return result;
     }
-    
+
     public String doSignup() throws Exception {
         String result = "FAILURE";
-        
+
         Voter voter = VoterService.getVoter(String.valueOf(this.voterId));
-        if(voter.getFirstName()!=null)
-        {
+        if (voter.getFirstName() != null) {
             System.out.println("returning Failure from doSignup method");
             return "FAILURE";
         }
-        boolean success = VoterService.doSignup1(this.emailAddress,this.password,this.firstName,this.lastName,1,this.voterId);
+        boolean success = VoterService.doSignup1(this.emailAddress, this.password, this.firstName, this.lastName, 1, this.voterId);
         boolean success1 = VoterService.doSignup2(this);
 
         if (success && success1) {
             System.out.println("returning Success from doSignup method");
             result = "SUCCESS";
-            
+
         } else {
             System.out.println("returning Failure from doSignup method");
         }
 
         return result;
     }
-    
-    public String doVote()
-    {
-        String result="FAILURE";
+
+    public String doVote() {
+        String result = "FAILURE";
         boolean success = VoterService.doVoteService(this);
-        User user=UserService.getUser(this.voterId);
-        if(success)
-        {
-            Email.sendEmailToRegisterUser(user.getEmailAddress());
+//        User user = UserService.getUser(this.voterId);
+        Voter voter2=VoterService.getVoter(String.valueOf(this.voterId));
+        if (success) {
+            Email.sendEmailToRegisterUser(voter2.getEmailAddress(),voter2.getFirstName(),voter2.getLastName());
+            System.out.println("firstName"+voter2.getFirstName());
             VoterService.voted(this.voterId);
-            Voter voter=VoterService.getVoter(String.valueOf(this.voterId));
+            Voter voter = VoterService.getVoter(String.valueOf(this.voterId));
             sessionMap.put("Voter", voter);
             sessionMap.put("VoteMsg", "Your vote has been registered");
-            result="SUCCESS";
-        }
-        else{
+            result = "SUCCESS";
+        } else {
             sessionMap.put("VoteMsg", "Some Problem has Occured");
         }
         return result;
     }
-    
+
     public String doVerifiedByAdmin() {
         String result = "FAILURE";
         boolean verification = VoterService.doVerification(String.valueOf(this.voterId));
@@ -232,13 +240,14 @@ public class Voter extends ActionSupport implements ApplicationAware, SessionAwa
         //this.dogetAllFNOL();
         return result;
     }
+
     public String doRejectByAdmin() {
         String result = "FAILURE";
         boolean verification = VoterService.doAdminReject(String.valueOf(this.voterId));
         if (verification) {
 
             Voter voter = new Voter();
-           voter = VoterService.getVoter(String.valueOf(this.voterId));
+            voter = VoterService.getVoter(String.valueOf(this.voterId));
             sessionMap.put("PVoter", voter);
             result = "SUCCESS";
         }

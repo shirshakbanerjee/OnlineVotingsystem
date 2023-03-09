@@ -34,7 +34,7 @@
         <!-- Template Main CSS File -->
         <link href="assets/css/style.css" rel="stylesheet">
         <link href="assets/css/signup.css" rel="stylesheet">
-
+        <link rel="shortcut icon" type="image/x-icon" href="assets/img/vote-icon.png">
         <!-- <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
         <!--===============================================================================================-->
         <link rel="stylesheet" type="text/css" href="assets/vendor/bootstrap/css/bootstrap.min.css"> 

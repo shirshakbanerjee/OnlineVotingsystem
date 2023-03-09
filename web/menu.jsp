@@ -5,9 +5,9 @@
 
     <head>
         <!-- Favicons -->
-        <link href="assets/img/favicon1.png" rel="icon">
-        <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
+        <!--        <link href="assets/img/favicon1.png" rel="icon">
+                <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">-->
+        <link rel="shortcut icon" type="image/x-icon" href="assets/img/vote-icon.png">
         <!-- Google Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
@@ -39,9 +39,10 @@
                                         </b></h1>-->
 
                     <ul>
-                        <li><a class="nav-link scrollto active text-white" href="#hero">Home</a></li>
-                        <li><a class="nav-link scrollto text-white" href="#electionresult">Election Result</a></li>
-                        <li><a class="nav-link scrollto text-white" href="logout.jsp">Logout</a></li>
+                        <li><a class="nav-link scrollto active text-white" href="#hero">HOME</a></li>
+
+                        <li><a class="nav-link scrollto text-white" > WELCOME: ${voter.firstName}  ${voter.lastName}</a></li>
+                        <li><a class="nav-link scrollto text-white" href="logout.jsp">LOGOUT</a></li>
 
                     </ul>
                     <i class="bi bi-list mobile-nav-toggle"></i>
@@ -51,11 +52,11 @@
                 <c:if test="${voter==null && admin==null}">
 
                     <ul>
-                        <li><a class="nav-link scrollto active text-white" href="landingPage.jsp">Home</a></li>
-                        <li><a class="nav-link scrollto text-white" href="login.jsp">Login</a></li>
+                        <li><a class="nav-link scrollto active text-white" href="landingPage.jsp">HOME</a></li>
+                        <li><a class="nav-link scrollto text-white" href="login.jsp">LOGIN</a></li>
                         <!--<li><a class="nav-link scrollto text-white" href="PreSignup">Sign-up</a></li>-->
-                        <li><a class="nav-link scrollto text-white" href="ShowResult">Declare Result</a></li>  
-                        <li class="dropdown text-white"><a href="#"><span class="text-white">About us</span> <i class="bi bi-chevron-down"></i></a>
+                        <li><a class="nav-link scrollto text-white" href="ShowResult">ELECTION RESULT</a></li>  
+                        <li class="dropdown text-white"><a href="#"><span class="text-white">ABOUT US</span> <i class="bi bi-chevron-down"></i></a>
                             <ul>
                                 <li><a href="#services">Services</a></li>
                                 <li class="dropdown"><a href="#"><span>Team</span> <i class="bi bi-chevron-right"></i></a>
@@ -68,10 +69,10 @@
                                         <li><a href="#Shouvik">Shouvik Samaddar</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="#">Portfolio</a></li>              
+                                <li><a href="#">PORTFOLIO</a></li>              
                             </ul>
                         </li>
-                        <li><a class="nav-link scrollto text-white" href="#contact">Contact</a></li>
+                        <li><a class="nav-link scrollto text-white" href="#contact">CONTACT</a></li>
                     </ul>
                     <i class="bi bi-list mobile-nav-toggle"></i>
                 </c:if>
@@ -82,18 +83,19 @@
                     <ul>
 
                         <li><a class="nav-link scrollto text-white" href="voterList.jsp">SHOW VOTERS</a></li>
-                         <li><a class="nav-link scrollto text-white" href="PreInsertCandidate">ADD CANDIDATE</a></li>    
+                        <li><a class="nav-link scrollto text-white" href="PreInsertCandidate">ADD CANDIDATE</a></li>    
                         <li><a class="nav-link scrollto text-white" href="candidateDetails.jsp">SHOW CANDIDATES</a></li>
-                        <li class="dropdown text-white"><a href="#"><span class="text-white">Election Control</span> <i class="bi bi-chevron-down"></i></a>
+                        <li class="dropdown text-white"><a href="#"><span class="text-white">ELECTION CONTROL</span> <i class="bi bi-chevron-down"></i></a>
                             <ul>
                                 <li><a href="StartElection">Start Election</a></li>
                                 <li><a href="EndElection">End Election and Declare Result</a></li>              
                             </ul>
                         </li>
 
-                        <!--<li><a class="nav-link scrollto text-white" onclick="newfetchContent('AddCandidate')">ADD CANDIDATE</a></li>--> 
 
-                        <li><a class="nav-link scrollto text-white" href="logout.jsp">Logout</a></li>                
+                        <li><a class="nav-link scrollto text-white" > WELCOME: ${admin.firstName}</a></li>
+
+                        <li><a class="nav-link scrollto text-white" href="logout.jsp">LOGOUT</a></li>                
                     </ul>
                     <i class="bi bi-list mobile-nav-toggle"></i>
                 </c:if>    

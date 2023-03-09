@@ -73,6 +73,7 @@
             function newfetchContent(urls)
             {
                 alert(urls + '?firstName=' + document.getElementById("nameC").value);
+                alert(urls + '?firstName=' + document.getElementById("nameC").value);
                 var xmlhttp = new XMLHttpRequest();
                 xmlhttp.onreadystatechange = function ()
                 {
@@ -170,6 +171,34 @@
             </nav>
 
 
+                <td>
+            ${result.getCandidateId()}
+        </td>
+        <td>
+
+            <c:out value='${result.getCandidateName()}'/>
+        </td>
+        <td>
+            <c:out value='${result.getVotes()}'/>
+
+        </td>
+        </c:forEach>
+    </tr>
+</table>
+</div>-->
+        <div class="align-content-center bg-light" style="padding: 50px">
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+            <div class="card" style="padding-bottom: 20px;margin-left: 100px;margin-right: 100px">
+                <div><h3 style="text-align: center; padding: 50px">Party Based Analysis Chart</h3></div>
+                <div class="text-center d-flex align-items-center">
+                    <canvas id="lineChart" style="width: 800px"></canvas>
+                </div>
+            </div>
+
+            <p></p>
+
+            <div class="card" style="padding-bottom: 20px; margin: 20px;margin-left: 100px;margin-right: 100px">
         </tr>
     </table>
 
@@ -179,6 +208,8 @@
             <div class="card" style="padding-bottom: 20px;margin-left: 300px;margin-top: 10px;">
                 <div><h3 class="card-title" style="text-align: center; padding: 50px">Candidate Vote Chart</h3></div>
                 <div class="text-center d-flex align-items-center">
+                    <canvas style="width: 800px" id="myChart"></canvas>
+                </div>
                     <canvas style="width: 800px" id="myChart"></canvas>
                 </div>
             </div>
