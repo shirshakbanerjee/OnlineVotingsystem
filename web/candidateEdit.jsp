@@ -189,7 +189,7 @@
 
 
                                     <button class="w-100 btn btn-lg btn-info mb-2" type="submit">Save</button>
-                                    <a href="Logout">
+                                    <a href="logout.jsp">
                                         <button type="button" class="w-100 btn btn-lg btn-secondary">Cancel</button>
                                     </a>
                                 </form>

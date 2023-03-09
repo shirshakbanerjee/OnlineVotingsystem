@@ -124,8 +124,8 @@
                                     <tr>
                                     <form action="Signup" method="post"> 
                                         <div class="form-floating">
-                                            <input type="text" class="form-control" id="aadhar" placeholder="AadharNumber" name="voterId">
-                                            <label for="aadhar">Aadhar Card Number</label>
+                                            <input type="text" class="form-control" id="aadhar" placeholder="Voter ID" name="voterId">
+                                            <label for="aadhar">Voter ID</label>
                                         </div>
                                         <p></p>
 
