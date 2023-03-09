@@ -316,6 +316,45 @@
                         }
                     }
                 });
+            </script>
+            <script>
+                const times = [];
+                <c:forEach items='${TimeList}' var='time'>
+                times.push("${time}");
+                </c:forEach>
+                const btlt = document.getElementById('timeLineChart');
+                new Chart(btlt, {
+                    type: 'line',
+                    data: {
+                        labels: ["6am - 7am","7am - 8am","8am - 9pm","9pm - 10pm","10am - 11am","11am - 12pm","12pm - 1pm","1pm - 2pm","2pm - 3pm","3pm - 4pm","4pm - 5pm","5pm - 6pm"],
+                        datasets: [{
+                                label: 'Number of Votes to States',
+                                data: times,
+                                backgroundColor: [
+                                    'rgba(255, 99, 132, 0.2)',
+                                    'rgba(255, 159, 64, 0.2)',
+                                    'rgba(255, 205, 86, 0.2)',
+                                    'rgba(75, 192, 192, 0.2)',
+                                    'rgba(54, 162, 235, 0.2)',
+                                    'rgba(153, 102, 255, 0.2)',
+                                    'rgba(201, 203, 207, 0.2)'
+                                ],
+                                borderColor: [
+                                    'rgb(255, 99, 132)',
+                                    'rgb(255, 159, 64)',
+                                    'rgb(255, 205, 86)',
+                                    'rgb(75, 192, 192)',
+                                    'rgb(54, 162, 235)',
+                                    'rgb(153, 102, 255)',
+                                    'rgb(201, 203, 207)'
+                                ],
+                                borderWidth: 2,
+                                borderRadius: 10
+                            }]
+                    },
+                    options: {
+                        responsive: true
+                        
     </script>
     <script>
         const states = [];
@@ -401,6 +440,7 @@
                 scales: {
                     y: {
                         beginAtZero: true
+
                     }
                 }
             }
