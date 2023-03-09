@@ -156,12 +156,12 @@
                                 <br>
                                 <div class="form-floating">
                                     <input name="voterId" type="number" class="form-control" id="voterId" placeholder="VoterId" value="${user.voterId}">
-                                    <label for="floatingInput2">Voter Id</label>
+                                    <label for="floatingInput2">Voter Id [Only for voters, otherwise leave blank]</label>
                                 </div>
                                 <br>
 
                                 <div class="form-check form-switch">
-                                    <input class="form-check-input" type="checkbox" id="togglePasswordOTP" name="togglePasswordOTP">
+                                    <input class="form-check-input" type="checkbox" id="togglePasswordOTP" name="togglePasswordOTP" style="visibility: hidden;">
                                     <label class="form-check-label" for="togglePasswordOTP">
                                         <div class="toggle-button">
                                             <div class="slider"></div>
@@ -178,7 +178,7 @@
                                 <div class="form-floating otp-input" style="display: none;">
                                     <input name="otp" type="number" class="form-control" id="otp" placeholder="OTP">
                                     <label for="otp">One-time password</label>
-                                    <button class="btn btn-lg btn-block btn-outline-warning" type="button" onclick="sendOTP()">Send OTP</button>
+                                    <button class="btn btn-lg btn-block btn-outline-warning position-absolute end-0 top-50 translate-middle-y " type="button" onclick="sendOTP()">Send OTP</button>
                                     <p id="timer"></p>
                                     <p></p>
                                 </div>

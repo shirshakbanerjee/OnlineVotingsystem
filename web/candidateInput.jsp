@@ -20,6 +20,12 @@
 -->
 
 <!doctype html>
+
+<c:set var='admin' value='${Admin}'/>
+<c:if test = "${admin == null && voter == null}">  
+    <c:redirect url = "login.jsp"/>
+</c:if>
+
 <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -59,6 +65,21 @@
         <!--===============================================================================================-->
     </head>
 
+    <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous">
+    </script>
+    <script>
+        function fetchCandidateApi() {
+            alert(document.getElementById("candidateEmail").value);
+            $.ajax({
+                url: "FetchCandidateApi?candidateEmail=" + document.getElementById("candidateEmail").value,
+                success: function (responseText) {
+//                    alert(responseText);
+                    $("#" + "candidateIdentityDetails").html(responseText);
+//                    $('#' + "candidateIdentityDetails").replaceWith(responseText);
+                }
+            });
+        }
+    </script>
 
     <script>
         function previewImage(event) {
@@ -73,47 +94,47 @@
             }
         }
 
-        function fetchCandidateApi()
-        {
-            alert(document.getElementById("candidateEmail").value);
-            var xmlhttp = new XMLHttpRequest();
-            xmlhttp.onreadystatechange = function ()
-            {
-                document.getElementById("candidateIdentityDetails").innerHTML = xmlhttp.responseText;
-            };
+//        function fetchCandidateApi()
+//        {
+////            alert(document.getElementById("candidateEmail").value);
+//            var xmlhttp = new XMLHttpRequest();
+//            xmlhttp.onreadystatechange = function ()
+//            {
+//                document.getElementById("candidateIdentityDetails").innerHTML = xmlhttp.responseText;
+//            };
+//
+//
+//            xmlhttp.open("POST", "FetchCandidateApi?candidateEmail=" + document.getElementById("candidateEmail").value, true);
+//            xmlhttp.send();
+//            //FetchApi
+//        }
 
-
-            xmlhttp.open("POST", "FetchCandidateApi?candidateEmail=" + document.getElementById("candidateEmail").value, true);
-            xmlhttp.send();
-            //FetchApi
-        }
-
-        function functionCandidateApprove(candidateEmail)
-        {
-            //alert(fnolId);
-            var xmlhttp = new XMLHttpRequest();
-            xmlhttp.onreadystatechange = function ()
-            {
-                document.getElementById("onclickViewVoter").innerHTML = xmlhttp.responseText;
-            };
-
-
-            xmlhttp.open("POST", "AdminAprove?candidateEmail=" + candidateEmail, true);
-            xmlhttp.send();
-        }
-        function functionCandidateReject(candidateEmail)
-        {
-            //alert(fnolId);
-            var xmlhttp = new XMLHttpRequest();
-            xmlhttp.onreadystatechange = function ()
-            {
-                document.getElementById("onclickViewVoter").innerHTML = xmlhttp.responseText;
-            };
-
-
-            xmlhttp.open("POST", "AdminCandidateRejected?voterId=" + candidateEmail, true);
-            xmlhttp.send();
-        }
+//        function functionCandidateApprove(candidateEmail)
+//        {
+//            //alert(fnolId);
+//            var xmlhttp = new XMLHttpRequest();
+//            xmlhttp.onreadystatechange = function ()
+//            {
+//                document.getElementById("onclickViewVoter").innerHTML = xmlhttp.responseText;
+//            };
+//
+//
+//            xmlhttp.open("POST", "AdminAprove?candidateEmail=" + candidateEmail, true);
+//            xmlhttp.send();
+//        }
+//        function functionCandidateReject(candidateEmail)
+//        {
+//            //alert(fnolId);
+//            var xmlhttp = new XMLHttpRequest();
+//            xmlhttp.onreadystatechange = function ()
+//            {
+//                document.getElementById("onclickViewVoter").innerHTML = xmlhttp.responseText;
+//            };
+//
+//
+//            xmlhttp.open("POST", "AdminCandidateRejected?voterId=" + candidateEmail, true);
+//            xmlhttp.send();
+//        }
     </script>
 
     <header>
@@ -176,25 +197,15 @@
 
                         <main class="form-signin w-100 m-auto" >
                             <div class="bordered">
-                                <table>
-                                    <tr>
-                                    <form  enctype="multipart/form-data" action="AddCandidate" method="post"> 
-                                        <div class="form-floating text-center">    
-                                            <br>
-                                            <input type="file" class="form-control" placeholder="Image" id="image-file" name="image" onchange="previewImage(event)">
-                                            <label for="floatingInput">Upload photo</label>
-                                            <p> </p>
-                                            <br>
-                                            <img id="image-preview" style="max-width: 200px; max-height: 200px;">
-                                        </div>
-                                        <p></p>
+                                <div id="candidateIdentityDetails">
+                                    <form  enctype="multipart/form-data" action="AddCandidate" method="post" id="formSubmit">
                                         <div class="form-floating position-relative">
                                             <input type="text" class="form-control" id="candidateEmail" placeholder="Email Address" name="candidateEmail">
                                             <label for="floatingInput">Email Address</label>                                            
-                                            <button type="button" id="verifyButton" class="btn btn-primary position-absolute end-0 top-50 translate-middle-y btn-danger" onclick="fetchCandidateApi(); document.getElementById('submitButton').disabled = false; "> Verify</button>
+                                            <button type="button" id="verifyButton" class="btn btn-primary position-absolute end-0 top-50 translate-middle-y btn-danger" onclick="fetchCandidateApi(); document.getElementById('submitButton').disabled = false;"> Verify</button>
                                         </div>
 
-
+                                        <!--<div id="candidateIdentityDetails">-->
                                         <p></p>
                                         <div class="form-floating">
                                             <input type="text" class="form-control" id="floatingInput" placeholder="First Name" name="firstName">
@@ -225,7 +236,7 @@
                                             <option value="" hidden>Select Gender</option>
                                             <option value="male"> Male  </option>
                                             <option value="female"> Female  </option>
-                                        </select>
+                                        </select><label for="floatingInput">Gender</label>
                                     </div>
                                     <p></p>
                                     <div class="form-floating">
@@ -238,21 +249,31 @@
                                             </c:forEach>
                                         </select><label for="floatingInput">State Name</label>
                                     </div>
+                                    <!--</div>-->
 
                                     <p></p>
-
+                                    <div class="form-floating text-center">    
+                                        <br>
+                                        <input type="file" class="form-control" placeholder="Image" id="image-file" name="image" onchange="previewImage(event)" required>
+                                        <label for="floatingInput">Upload photo</label>
+                                        <p> </p>
+                                        <br>
+                                        <img id="image-preview" style="max-width: 200px; max-height: 200px;">
+                                    </div>
+                                    <p></p>
                                     <p></p>
                                     <button class="w-100 btn btn-lg btn-info mb-2" id="submitButton" type="submit" disabled>Submit</button>
+
+
                                     <!--                                    <a href="Logout">
                                                                             <button type="button" class="w-100 btn btn-lg btn-secondary">Cancel</button>
                                                                         </a>-->
                                 </form>
-                                </tr>
-                            </table>
+                            </div>
                         </div>
                     </main>
                 </div>
-                <div class="col-md-6" style="float: right;  background-size: cover; object-fit: none; background-image: url(https://cdn-eaekd.nitrocdn.com/CxTeoSPKdjdqTSxLEEGaKiGroHlKASqH/assets/mobile/optimized/rev-27fb8ed/6QqafditRy1VJCNIi5OmNgG8MUn6ZnYlaMjbjy1obKuuwxKeb8EVmZ_NiPk3HjjQa8QVbUpdQWaemGSNCMUDHm9IXrUO7FE8lEyZmGnnIltGisKG6ccLV_2xeXo67S2dNm23UlHsIPRGk7zo4FNhEVYraeu68ov1dkL-7i2O3Ju0Wq9gZkfNGrlLGg); " id="candidateIdentityDetails">                    
+                <div class="col-md-6" style="width: 55%; float: right;  background-size: cover; object-fit: none; background-image: url(https://cdn-eaekd.nitrocdn.com/CxTeoSPKdjdqTSxLEEGaKiGroHlKASqH/assets/mobile/optimized/rev-27fb8ed/6QqafditRy1VJCNIi5OmNgG8MUn6ZnYlaMjbjy1obKuuwxKeb8EVmZ_NiPk3HjjQa8QVbUpdQWaemGSNCMUDHm9IXrUO7FE8lEyZmGnnIltGisKG6ccLV_2xeXo67S2dNm23UlHsIPRGk7zo4FNhEVYraeu68ov1dkL-7i2O3Ju0Wq9gZkfNGrlLGg); ">                    
                     <!--<img src="https://cdn-eaekd.nitrocdn.com/CxTeoSPKdjdqTSxLEEGaKiGroHlKASqH/assets/mobile/optimized/rev-27fb8ed/6QqafditRy1VJCNIi5OmNgG8MUn6ZnYlaMjbjy1obKuuwxKeb8EVmZ_NiPk3HjjQa8QVbUpdQWaemGSNCMUDHm9IXrUO7FE8lEyZmGnnIltGisKG6ccLV_2xeXo67S2dNm23UlHsIPRGk7zo4FNhEVYraeu68ov1dkL-7i2O3Ju0Wq9gZkfNGrlLGg" style="height: 694px; opacity :0.6;" >-->
                 </div>
 
@@ -287,8 +308,8 @@
             <!-- Bootstrap core JavaScript
             ================================================== -->
             <!-- Placed at the end of the document so the pages load faster -->
-            <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-        <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+            <!--            <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+                    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>-->
             <script src="../../assets/js/vendor/popper.min.js"></script>
             <script src="../../dist/js/bootstrap.min.js"></script>
     </body>

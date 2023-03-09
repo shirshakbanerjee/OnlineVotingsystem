@@ -187,7 +187,7 @@ public class CandidateAPI extends ActionSupport implements ApplicationAware, Ses
     public String dofetchCandidateApi() throws Exception {
         String result = "SUCCESS";
         JDBCUtility jdbcUtility = JDBCUtility.getInstanceOfJDBCUtility();
-        String apiUrl = "https://retoolapi.dev/PLn26f/data";
+        String apiUrl = "https://mocki.io/v1/86e4d49f-796a-4ee5-bf7d-66493c9d812d";
 
         URL obj = new URL(apiUrl);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
@@ -228,6 +228,15 @@ public class CandidateAPI extends ActionSupport implements ApplicationAware, Ses
 
             if (candidateAPI.getCandidateEmail().equals(this.getCandidateEmail())) {
                 getSessionMap().put("CandidateAPI", candidateAPI);
+                getSessionMap().put("InsertCandidateError", "0");
+                System.out.println("In if condition"+candidateAPI.getCandidateEmail());
+                return result;
+            }
+            else
+            {
+                getSessionMap().remove("CandidateAPI");
+                System.out.println("In else condition");
+                getSessionMap().put("InsertCandidateError", "1");
             }
         }
         System.out.println(getSessionMap());

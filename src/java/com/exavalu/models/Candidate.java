@@ -222,7 +222,8 @@ public class Candidate extends ActionSupport implements ApplicationAware, Sessio
         String result = "SUCCESS";
         ArrayList stateList = VoterService.getStates();
         sessionMap.put("StateList", stateList);
-        
+        ArrayList partyList = PartyService.getAllParty();
+        sessionMap.put("PartyList", partyList);
         return result;
     }
 }

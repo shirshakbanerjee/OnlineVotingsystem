@@ -6,39 +6,85 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="candidateAPI" value="${CandidateAPI}"></c:set>
-<div>
-    <h4>Details of Candidate </h4>
-    <table class="table table-sm  " >
-    
-    <tr>
-        <td>EMAIL ADDRESS : </td>
-        <td><input class="form-control" name="candidateEmail" type="text" class="form-control" id="candidateEmail" placeholder="candidateEmail" readonly value="${candidateAPI.candidateEmail}"></td>
-    </tr>
-    <tr>
-        <td>FIRST NAME  : </td>
-        <td><input class="form-control" name="firstName" type="text" class="form-control" id="firstName" placeholder="firstName" readonly value="${candidateAPI.firstName}"></td>
-    </tr>
-    <tr>
-        <td>LAST NAME : </td>
-        <td><input class="form-control" name="lastName" type="text" class="form-control" id="lastName" placeholder="lastName" readonly value="${candidateAPI.lastName}"></td>
-    </tr>
-     <tr>
-        <td>GENDER : </td>
-        <td><input class="form-control" name="gender" type="text" class="form-control" id="gender" placeholder="gender" readonly value="${candidateAPI.gender}"></td>
-    </tr>
-    <tr>
-        <td>PARTY NAME : </td>
-        <td><input class="form-control" name="partyName" type="text" class="form-control" id="partyName" placeholder="partyName" readonly value="${candidateAPI.partyName}"></td>
-    </tr>
-   
-    <tr>
-        <td>AGE : </td>
-        <td><input class="form-control" name="age" type="text" class="form-control" id="age" placeholder="age" readonly value="${candidateAPI.age}"></td>
-    </tr>
-    <tr>
-        <td>REGION : </td>
-        <td><input class="form-control" name="region" type="text" class="form-control" id="region" placeholder="region" readonly value="${candidateAPI.region}"></td>
-    </tr>
-</table>
-    </div>
 
+<form  enctype="multipart/form-data" action="AddCandidate" method="post" id="formSubmit"> 
+
+    <div class="form-floating position-relative">
+        <input type="text" class="form-control" id="candidateEmail" placeholder="Email Address" name="candidateEmail" value="${candidateAPI.candidateEmail}">
+        <label for="floatingInput">Email Address</label>                                            
+        <button type="button" id="verifyButton" class="btn btn-primary position-absolute end-0 top-50 translate-middle-y btn-danger" onclick="fetchCandidateApi(); document.getElementById('submitButton').disabled = false;"> Verify</button>
+    </div>
+    <p></p>
+    <div class="form-floating">
+        <input type="text" class="form-control" id="floatingInput" placeholder="First Name" name="firstName" value="${candidateAPI.firstName}">
+        <label for="floatingInput">First Name</label>
+    </div>
+    <p></p>
+    <div class="form-floating">
+        <input type="text" class="form-control" id="floatingPassword" placeholder="Last Name" name="lastName" value="${candidateAPI.lastName}">
+        <label for="floatingPassword">Last Name</label>
+    </div>
+    <p></p>
+    <div class="form-floating">
+        <select name="partyName" class="form-control" id="partyName" required>
+            <option value="" hidden> Select your Party</option>
+            <c:forEach var="party" items="${PartyList}">
+                <option value="${party.getPartyName()}" <c:if test="${candidateAPI.partyName == party.getPartyName()}">selected</c:if>> ${party.getPartyName()}  </option>
+            </c:forEach>
+        </select><label for="floatingInput">Party Name</label>
+    </div>
+    <p></p>
+    <div class="form-floating">
+        <input type="text" class="form-control" id="age" placeholder="Age" name="age" value="${candidateAPI.age}">
+        <label for="age">Age</label>
+    </div>
+    <p></p>
+    <div class="form-floating">
+        <select name="gender" class="form-control" id="gender" required>
+            <option value="" hidden>Select Gender</option>
+            <option value="male" <c:if test="${candidateAPI.gender == 'male'}">selected</c:if>>Male</option>
+            <option value="female"  <c:if test="${candidateAPI.gender == 'female'}">selected</c:if>> Female  </option>
+            </select><label for="floatingInput">Gender</label>
+        </div>
+        <p></p>
+        <div class="form-floating">
+            <select name="region" class="form-control " id="stateName" value="${candidateAPI.region}">
+            <option value="">Select State</option>
+            <c:forEach var="state" items="${StateList}">
+                <option value="${state.getStateName()}" <c:if test="${candidateAPI.region == state.getStateName()}">selected</c:if>>
+                    ${state.getStateName()}
+                </option>
+            </c:forEach>
+        </select><label for="floatingInput">State Name</label>
+    </div>
+    <div class="form-floating text-center">    
+        <br>
+        <input type="file" class="form-control" placeholder="Image" id="image-file" name="image" onchange="previewImage(event)" required>
+        <label for="floatingInput">Upload photo</label>
+        <p> </p>
+        <br>
+        <img id="image-preview" style="max-width: 200px; max-height: 200px;">
+    </div>
+    <p></p>
+    <br>
+    <c:set var='error' value='${InsertCandidateError}'/>
+    <c:if  test="${error!=null}">
+        <c:if test="${error==1}">
+            <div class="alert-danger text-center btn-outline-dark bg-danger" style="color: #ccffff; border-radius: 10px; padding: 20px">
+                Candidate Data Not Found!!
+            </div>
+        </c:if>
+        <c:if test="${error==0}">
+            <div class="alert-danger text-center btn-outline-dark bg-primary" style="color: #ccffff; border-radius: 10px; padding: 20px">
+                Candidate Data Found!!
+            </div>
+        </c:if>
+    </c:if>
+    <p></p>
+    <button class="w-100 btn btn-lg btn-info mb-2" id="submitButton" type="submit">Submit</button>
+
+
+    <!--                                    <a href="Logout">
+                                            <button type="button" class="w-100 btn btn-lg btn-secondary">Cancel</button>
+                                        </a>-->
+</form>
