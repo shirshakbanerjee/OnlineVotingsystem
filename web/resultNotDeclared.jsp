@@ -121,7 +121,7 @@
         </style>
 
     <script>
-        var countDownDate = new Date("MAR 10, 2023 00:00:00").getTime();
+        var countDownDate = new Date("MAR 20, 2023 00:00:00").getTime();
         var x = setInterval(function () {
             var now = new Date().getTime();
             var distance = countDownDate - now;
