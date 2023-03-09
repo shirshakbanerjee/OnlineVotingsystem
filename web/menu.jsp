@@ -82,7 +82,7 @@
 
                     <ul>
 
-                        <li><a class="nav-link scrollto text-white" href="voterList.jsp">SHOW VOTERS</a></li>
+                        <li><a class="nav-link scrollto text-white" href="VoterLanding">SHOW VOTERS</a></li>
                         <li><a class="nav-link scrollto text-white" href="PreInsertCandidate">ADD CANDIDATE</a></li>    
                         <li><a class="nav-link scrollto text-white" href="candidateDetails.jsp">SHOW CANDIDATES</a></li>
                         <li class="dropdown text-white"><a href="#"><span class="text-white">ELECTION CONTROL</span> <i class="bi bi-chevron-down"></i></a>

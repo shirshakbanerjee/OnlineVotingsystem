@@ -111,15 +111,15 @@ public class User extends ActionSupport implements ApplicationAware, SessionAwar
     public String doLogin() throws Exception {
         String result = "FAILURE";
         //int x = UserService.doLogin(this);
-        int x=100;
-        if(this.password.equalsIgnoreCase(""))
-        {
+        int x = 100;
+        if (this.password.equalsIgnoreCase("") && sessionMap.get("OTP") != null) {
             x = UserService.doLogin2(this);
-        }
-        else{
+        } else {
             x = UserService.doLogin(this);
+            System.out.print("In else");
+            sessionMap.clear();
         }
-        if (x == 0) {
+        if (x == 100) {
             sessionMap.put("Error", "Wrong data");
         } else if (x == 2) {
             result = "ADMIN";
@@ -135,17 +135,17 @@ public class User extends ActionSupport implements ApplicationAware, SessionAwar
             sessionMap.put("PartyList", partyList);
             ArrayList voterList = VoterService.getAllVoters();
             sessionMap.put("VoterList", voterList);
-            sessionMap.put("totalVoters",voterList.size());
+            sessionMap.put("totalVoters", voterList.size());
             int verification = VoterService.dogetApproveVoter();
-            sessionMap.put("Verification",verification);
+            sessionMap.put("Verification", verification);
             int rejected = VoterService.dogetRejectedVoter();
-            sessionMap.put("Rejected",rejected);
+            sessionMap.put("Rejected", rejected);
             int pending = VoterService.dogetPendingVoter();
-            sessionMap.put("Pending",pending);
+            sessionMap.put("Pending", pending);
             int voted = VoterService.dogetVoted();
-            sessionMap.put("Voted",voted);
+            sessionMap.put("Voted", voted);
             int notVoted = VoterService.dogetNotVoted();
-            sessionMap.put("NotVoted",notVoted);
+            sessionMap.put("NotVoted", notVoted);
         } else if (x == 1 && !this.voterId.equalsIgnoreCase("")) {
             result = "VOTER";
             Voter voter = VoterService.getVoter2(this.voterId, this.emailAddress);
@@ -185,13 +185,12 @@ public class User extends ActionSupport implements ApplicationAware, SessionAwar
 
         return result;
     }
-    
 
     public String sendOtp() {
         Random random = new Random();
         int otp1 = random.nextInt(999999);
 
-        Email.getInstance().sendOTPToRegisterUser(this.emailAddress,otp1);
+        Email.getInstance().sendOTPToRegisterUser(this.emailAddress, otp1);
         //int otp = Email.getInstance().getOTP();
         System.out.println("send OTP Triggered");
         System.out.println("OTP " + otp1);
@@ -199,6 +198,28 @@ public class User extends ActionSupport implements ApplicationAware, SessionAwar
         sessionMap.put("User", this);
 
         return "SUCCESS";
+    }
+
+    public String showVoter() {
+        String result = "SUCCESS";
+        ArrayList candidateList = CandidateService.getAllCandidates();
+        ArrayList partyList = PartyService.getAllParty();
+        sessionMap.put("CandidateList", candidateList);
+        sessionMap.put("PartyList", partyList);
+        ArrayList voterList = VoterService.getAllVoters();
+        sessionMap.put("VoterList", voterList);
+        sessionMap.put("totalVoters", voterList.size());
+        int verification = VoterService.dogetApproveVoter();
+        sessionMap.put("Verification", verification);
+        int rejected = VoterService.dogetRejectedVoter();
+        sessionMap.put("Rejected", rejected);
+        int pending = VoterService.dogetPendingVoter();
+        sessionMap.put("Pending", pending);
+        int voted = VoterService.dogetVoted();
+        sessionMap.put("Voted", voted);
+        int notVoted = VoterService.dogetNotVoted();
+        sessionMap.put("NotVoted", notVoted);
+        return result;
     }
 
 }
