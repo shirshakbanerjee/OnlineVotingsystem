@@ -104,59 +104,17 @@
                             </div>
                         </c:forEach>
 
-                        <!--                        <div class="col">
-                                                    <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-                        
-                                                        <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
-                        
-                                                            <img src="assets/img/nm-1177027-1672590352.jpg"> comment 
-                                                            <h4 class="title"><a href="">CANDIDATE-1</a></h4>
-                        
-                                                            <button type="button" class="btn btn-danger">VOTE</button>
-                                                        </div>
-                                                        <br>
-                        
-                                                    </div>
-                                                </div>
-                        
-                        
-                                                <div class="col">
-                                                    <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-                                                        <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
-                                                            <img src="assets/img/nm-1177027-1672590352.jpg"> comment 
-                                                            <h4 class="title"><a href="">CANDIDATE-2</a></h4>
-                                                            <button type="button" class="btn btn-danger">VOTE</button>
-                        
-                        
-                                                    </div>
-                                                </div>
-                                                </div>
-                                            </div>
-                        
-                        
-                        
-                                                <div class="col"> 
-                                                    <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-                                                        <div class="icon-box" data-aos="fade-up" data-aos-delay="400">                                    
-                                                            <img src="assets/img/nm-1177027-1672590352.jpg"> comment 
-                                                            <h4 class="title"><a href="">CANDIDATE-3</a></h4>
-                                                            <button type="button" class="btn btn-danger">VOTE</button>
-                        
-                                                        </div>
-                                                    </div>
-                                                </div>
-                        
-                                                <div class="col"> 
-                                                    <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-                                                        <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
-                                                            <img src="assets/img/nm-1177027-1672590352.jpg"> comment 
-                                                            <h4 class="title"><a href="">CANDIDATE-4</a></h4>
-                                                            <button type="button" class="btn btn-danger">VOTE</button>
-                                                        </div>
-                                                    </div>  
-                                                </div>     -->
+                            <div style="margin-top: 50px; font-size: 17px">
+                        <h4>Instructions for Voter</h4>
+                        <ul>
+                            <li><p>You can vote only once. So choose your vote wisely.</p></li>
+                            <li><p>After your vote has been casted, the voting button will be disabled.</p></li>
+                            <li><p>We appreciate that you understand the power of one vote can make the difference.</p></li>
+                            <li><p>After voting you need to wait for the results. Don't worry you will be notified by email when the
+                                results are declared.</p></li>
+                        </ul>
 
-
+                        </div>
 
                         </section><!-- End Featured Services Section -->
 
