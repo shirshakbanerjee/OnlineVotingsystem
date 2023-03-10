@@ -61,6 +61,20 @@
     <header>
         <jsp:include page="menu.jsp"></jsp:include>
         </header>
+        <script>
+            function validateForm(event) {
+                // Get the password and verify_password fields
+                var password = document.getElementById("floatingPassword").value;
+                var verify_password = document.getElementById("floatingPassword2").value;
+
+                // Compare the two values
+                if (password !== verify_password) {
+                    // If they don't match, prevent the form from submitting
+                    event.preventDefault();
+                    alert("Passwords don't match. Please try again.");
+                }
+            }
+        </script>
         <body style="overflow-x:hidden;">
 
 
@@ -108,7 +122,7 @@
 
                 <div class="container" >  
                     <h1 class="display-3">Welcome! Come Be a Voter!</h1>
-                    <p>This is a responsibility.</p>
+                    <!--                    <p>This is a responsibility.</p>-->
                 </div>
             </div>
 
@@ -122,9 +136,9 @@
                             <div class="bordered">
                                 <table>
                                     <tr>
-                                    <form action="Signup" method="post"> 
+                                    <form action="Signup" method="post" onsubmit="validateForm(event)"> 
                                         <div class="form-floating">
-                                            <input type="text" class="form-control" id="aadhar" placeholder="Voter ID" name="voterId">
+                                            <input type="text" class="form-control" id="aadhar" placeholder="Voter ID" name="voterId" pattern="[0-9]{5}" title="Should have five numbers only" >
                                             <label for="aadhar">Voter ID</label>
                                         </div>
                                         <p></p>
@@ -134,18 +148,28 @@
                                             <label for="floatingInput">Email address</label>
                                         </div>
                                         <p></p>
-                                        <div class="form-floating">
-                                            <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password">
+
+
+                                        <div class="form-floating" >
+                                            <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"  title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters">
                                             <label for="floatingPassword">Password</label>
                                         </div>
                                         <p></p>
                                         <div class="form-floating">
-                                            <input type="text" class="form-control" id="firstName" placeholder="first name" name="firstName" >
-                                            <label for="firstName">First Name</label>
+                                            <input type="password" class="form-control" id="floatingPassword2" placeholder="Password" name="password2">
+                                            <label for="floatingPassword">Confirm Password</label>
                                         </div>
                                         <p></p>
+
+
                                         <div class="form-floating">
-                                            <input type="text" class="form-control" id="lastName" placeholder="last name" name="lastName" >
+                                            <input type="text" class="form-control" id="firstName" placeholder="First Name" name="firstName" pattern="[A-Z][a-zA-Z]*" required title ="should start with uppercase">
+                                            <label for="firstName">First Name</label>
+                                        </div>
+
+                                        <p></p>
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control" id="lastName" placeholder="last name" name="lastName" pattern="[A-Z][a-zA-Z]*" required   title ="should start with uppercase">
                                             <label for="firstName">Last Name</label>
                                         </div>
                                         <p></p>
@@ -163,8 +187,8 @@
                                         </div>
                                         <p></p>
                                         <div class="form-floating">
-                                            <input type="text" class="form-control" id="age" placeholder="Age" name="age">
-                                            <label for="age">Age</label>
+                                            <input type="number" class="form-control" id="age" placeholder="Age" name="age" min="18">
+                                            <label for="age">Age </label>
                                         </div>
                                         <p></p>
 
