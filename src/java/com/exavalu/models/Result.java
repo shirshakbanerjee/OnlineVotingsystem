@@ -8,6 +8,7 @@ import com.exavalu.services.CandidateService;
 import com.exavalu.services.ResultService;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import java.io.File;
 import java.io.Serializable;
 import java.sql.Time;
 import java.time.LocalDateTime;
@@ -37,6 +38,7 @@ public class Result extends ActionSupport implements ApplicationAware, SessionAw
     private ArrayList stateVote;
     private String partyName;
     private Time voteTime;
+    private File image;
     
     private SessionMap<String, Object> sessionMap = (SessionMap) ActionContext.getContext().getSession();
 
@@ -140,6 +142,24 @@ public class Result extends ActionSupport implements ApplicationAware, SessionAw
         this.voteTime = voteTime;
     }
     
+     public File getImage() {
+        return image;
+    }
+
+    public void setImage(File image) {
+        this.image = image;
+    }
+
+    private String imageData;
+
+    public void setImageData(String imageData) {
+        this.imageData = imageData;
+    }
+
+    public String getImageData() {
+        return imageData;
+    }
+    
     public String getResult()
     {
         String result="FAILURE";
@@ -165,13 +185,7 @@ public class Result extends ActionSupport implements ApplicationAware, SessionAw
         timeList.add(ResultService.calculateTime("15:00:00", "16:00:00"));
         timeList.add(ResultService.calculateTime("16:00:00", "17:00:00"));
         timeList.add(ResultService.calculateTime("17:00:00", "18:00:00"));
-
-        Iterator itr4 = timeList.iterator();
-        while(itr4.hasNext())
-        {
-            System.out.println(itr4.next());
-        }
-        System.out.println("TimeTravel Size: "+timeList.size());
+        
         if(itr.hasNext() && itr2.hasNext() && itr3.hasNext())
         {
             System.out.println("Returning success from results!!");
@@ -179,6 +193,48 @@ public class Result extends ActionSupport implements ApplicationAware, SessionAw
             sessionMap.put("StateList", stateList);
             sessionMap.put("PartyList", partyList);
             sessionMap.put("TimeList",timeList);
+            
+            //Calculating The Winner
+            ArrayList allCandidates = ResultService.calculateResult();
+            Iterator itrC=allCandidates.iterator();
+            ArrayList allParty = ResultService.calculateParty();
+            Iterator itrP=allParty.iterator();
+            String wName="",wParty="",wpName="",images="";
+            int wVotes=-1,wpVotes=-1;
+            while(itrC.hasNext())
+            {
+                Result candidate = (Result) itrC.next();
+                if(Integer.parseInt(candidate.getVotes())>=wVotes)
+                {
+                    wName = candidate.getFirstName() + " " + candidate.getLastName();
+                    wParty = candidate.getPartyName();
+                    wVotes = Integer.parseInt(candidate.getVotes());
+                    images = candidate.getImageData();
+                }
+            }
+            Result winnerCandidate = new Result();
+            winnerCandidate.setFirstName(wName);
+            winnerCandidate.setPartyName(wParty);
+            winnerCandidate.setVotes(String.valueOf(wVotes));
+            winnerCandidate.setImageData(images);
+            System.out.println("Winner is "+winnerCandidate.getFirstName());
+            sessionMap.put("WinnerCandidate", winnerCandidate);
+            
+            while(itrP.hasNext())
+            {
+                Result party = (Result) itrP.next();
+                if(Integer.parseInt(party.getCount())>=wpVotes)
+                {
+                    wpName = party.getPartyName();
+                    wpVotes = Integer.parseInt(party.getCount());
+                }
+            }
+            Result winnerParty = new Result();
+            winnerParty.setPartyName(wpName);
+            winnerParty.setVotes(String.valueOf(wpVotes));
+            System.out.println("Winner is "+winnerParty.getPartyName());
+            sessionMap.put("WinnerParty", winnerParty);
+            
             result="SUCCESS";
         }
         else{

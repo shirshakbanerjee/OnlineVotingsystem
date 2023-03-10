@@ -3,12 +3,15 @@ package com.exavalu.utils;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import org.apache.log4j.Logger;
 
 /**
  *
  * @author Avijit Chattopadhyay
  */
 public class JDBCConnectionManager {
+    
+    static Logger log = Logger.getLogger(JDBCConnectionManager.class.getName());
 
     public static Connection connection = null;
 
@@ -27,6 +30,7 @@ public class JDBCConnectionManager {
                 connection = DriverManager.getConnection(url + dbNname, user, password);
 
         } catch (ClassNotFoundException | SQLException ex) {
+            log.error("Faulty in JDBCConnectionManager contents "+ex);
         }
 
         return connection;

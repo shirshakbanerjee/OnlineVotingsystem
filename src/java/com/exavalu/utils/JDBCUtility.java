@@ -8,12 +8,15 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
+import org.apache.log4j.Logger;
 
 /**
  *
  * @author Avijit Chattopadhyay
  */
 public class JDBCUtility {
+    
+    static Logger log = Logger.getLogger(JDBCUtility.class.getName());
 
     public static JDBCUtility jdbcUtility = null;
 
@@ -37,6 +40,7 @@ public class JDBCUtility {
 
         } catch (IOException e) {
             // TODO Auto-generated catch block
+            log.error("Faulty in getPropertyValue contents "+e);
         }
 
         return value;

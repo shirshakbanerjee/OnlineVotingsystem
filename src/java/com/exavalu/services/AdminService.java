@@ -11,13 +11,16 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import org.apache.log4j.Logger;
 
 /**
  *
  * @author Admin
  */
 public class AdminService {
-
+    
+    static Logger log = Logger.getLogger(AdminService.class.getName());
+    
     public static Admin getAdmin(String emailAddress) {
         Admin admin = new Admin();
 
@@ -42,6 +45,7 @@ public class AdminService {
 
         } catch (SQLException ex) {
             ex.printStackTrace();
+            log.error("Error in getAdmin sql statement "+ex);
         }
         return admin;
     }
@@ -65,7 +69,8 @@ public class AdminService {
             }
 
         } catch (SQLException ex) {
-            //logger.error(ex.getMessage());
+            ex.printStackTrace();
+            log.error("Error in getAdmin sql statement "+ex);
         }
 
         return result;

@@ -15,12 +15,15 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import org.apache.log4j.Logger;
 
 /**
  *
  * @author Admin
  */
 public class UserService {
+    
+    static Logger log = Logger.getLogger(AdminService.class.getName());
 
     public static int doLogin(User user) {
         
@@ -45,6 +48,7 @@ public class UserService {
             
         } catch (SQLException ex) {
             ex.printStackTrace();
+            log.error("Error in doLogin sql statement "+ex);
         }
         
         
@@ -73,6 +77,7 @@ public class UserService {
             
         } catch (SQLException ex) {
             ex.printStackTrace();
+            log.error("Error in getUser sql statement "+ex);
         }
         
         
@@ -102,6 +107,7 @@ public class UserService {
             
         } catch (SQLException ex) {
             ex.printStackTrace();
+            log.error("Error in doLogin2 sql statement "+ex);
         }
         
         

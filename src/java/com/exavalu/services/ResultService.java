@@ -6,6 +6,7 @@ package com.exavalu.services;
 
 import com.exavalu.models.Result;
 import com.exavalu.utils.JDBCConnectionManager;
+import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,17 +14,21 @@ import java.sql.SQLException;
 import java.sql.Time;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.Iterator;
+import org.apache.log4j.Logger;
 
 /**
  *
  * @author Admin
  */
 public class ResultService {
-
+    
+    static Logger log = Logger.getLogger(ResultService.class.getName());
+    
     public static ArrayList calculateResult() {
         ArrayList resultList = new ArrayList();
-        String sql = "SELECT V.candidateId,C.firstName,C.lastName,count(*) as votes FROM onlinevotingdb.votes as V,onlinevotingdb.candidates as C "
+        String sql = "SELECT V.candidateId,C.firstName,C.lastName,C.partyName,C.image,count(*) as votes FROM onlinevotingdb.votes as V,onlinevotingdb.candidates as C "
                 + "where V.candidateId=C.candidateId group by V.candidateId order by C.candidateId";
         try {
             Connection con = JDBCConnectionManager.getConnection();
@@ -40,6 +45,14 @@ public class ResultService {
                 result.setLastName(lastName);
                 result.setCandidateName(firstName+" "+lastName);
                 result.setVotes(String.valueOf(rs.getInt("votes")));
+                result.setPartyName(rs.getString("partyName"));
+                
+                Blob imageBlob = rs.getBlob("image");
+                if (imageBlob != null) {
+                    byte[] imageBytes = imageBlob.getBytes(1, (int) imageBlob.length());
+                    String imageString = Base64.getEncoder().encodeToString(imageBytes);
+                    result.setImageData(imageString);
+                }
                 
 
                 resultList.add(result);
@@ -47,6 +60,7 @@ public class ResultService {
 
         } catch (SQLException ex) {
             ex.printStackTrace();
+            log.error("Error in calculateResult sql statement "+ex);
         }
         System.err.println("Total rows:" + resultList.size());
         return resultList;
@@ -72,6 +86,7 @@ public class ResultService {
 
         } catch (SQLException ex) {
             ex.printStackTrace();
+            log.error("Error in calculateState sql statement "+ex);
         }
         System.err.println("Total rows:" + stateList.size());
         return stateList;
@@ -97,6 +112,7 @@ public class ResultService {
 
         } catch (SQLException ex) {
             ex.printStackTrace();
+            log.error("Error in calculateParty sql statement "+ex);
         }
         System.err.println("Total rows:" + partyList.size());
         return partyList;
@@ -125,6 +141,7 @@ public class ResultService {
 
         } catch (SQLException ex) {
             ex.printStackTrace();
+            log.error("Error in candidateResult sql statement "+ex);
         }
         Iterator itr = candidateResult.getStateNames().iterator();
         System.out.println();
@@ -155,6 +172,7 @@ public class ResultService {
         } catch (SQLException ex) {
 
             ex.printStackTrace();
+            log.error("Error in setAdminStatus sql statement "+ex);
 
         }
 
@@ -180,6 +198,7 @@ public class ResultService {
         } catch (SQLException ex) {
 
             ex.printStackTrace();
+            log.error("Error in setAdminResultStatus sql statement "+ex);
 
         }
 
@@ -206,6 +225,7 @@ public class ResultService {
         } catch (SQLException ex) {
 
             ex.printStackTrace();
+            log.error("Error in getAdminResultStatus sql statement "+ex);
 
         }
 
@@ -231,6 +251,7 @@ public class ResultService {
 
         } catch (SQLException ex) {
             ex.printStackTrace();
+            log.error("Error in calculateTime sql statement "+ex);
         }
         System.err.println("Total rows:" + time);
         return time;

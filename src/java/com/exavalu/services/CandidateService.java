@@ -15,15 +15,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Base64;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import org.apache.log4j.Logger;
 
 /**
  *
  * @author Admin
  */
 public class CandidateService {
-
+    
+    static Logger log = Logger.getLogger(CandidateService.class.getName());
+    
     public static ArrayList getAllCandidates() {
         ArrayList candidateList = new ArrayList();
         String sql = "Select * from candidates where candidateStatus=0";
@@ -57,6 +58,7 @@ public class CandidateService {
 
         } catch (SQLException ex) {
             ex.printStackTrace();
+            log.error("Error in getAllCandidates sql statement "+ex);
         }
 
         System.err.println("Total rows:" + candidateList.size());
@@ -93,10 +95,12 @@ public class CandidateService {
         } catch (SQLException ex) {
 
             ex.printStackTrace();
+            log.error("Error in doSaveCandidate sql statement "+ex);
 
         } catch (FileNotFoundException ex) {
             //Logger.getLogger(CandidateService.class.getName()).log(Level.SEVERE, null, ex);
             ex.printStackTrace();
+            log.error("Error in doSaveCandidate image problem "+ex);
         }
 
         return result;
@@ -131,8 +135,8 @@ public class CandidateService {
             }
 
         } catch (SQLException ex) {
-
-            //logger.error("An error occurred for function getEmployee: ", ex);
+            ex.printStackTrace();
+            log.error("Error in getCandidateById sql statement "+ex);
         }
         return candidate;
     }
@@ -166,8 +170,10 @@ public class CandidateService {
         } catch (SQLException ex) {
             //logger.error("An error occurred for function updateEmployee: ", ex);
             ex.printStackTrace();
+            log.error("Error in updateCandidate sql statement "+ex);
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(CandidateService.class.getName()).log(Level.SEVERE, null, ex);
+//            Logger.getLogger(CandidateService.class.getName()).log(Level.SEVERE, null, ex);
+            log.error("Error in updateCandidate image upload "+ex);
         }
         return result;
     }
@@ -197,7 +203,7 @@ public class CandidateService {
             }
 
         } catch (SQLException ex) {
-            //logger.error("An error occurred for function updateEmployee: ", ex);
+            log.error("An error occurred for function updateCandidate2: ", ex);
             ex.printStackTrace();
         }
 
@@ -222,6 +228,7 @@ public class CandidateService {
             }
 
         } catch (SQLException ex) {
+            log.error("An error occurred for function deleteCandidate: ", ex);
         }
         return result;
     }

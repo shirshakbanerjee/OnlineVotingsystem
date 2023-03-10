@@ -16,7 +16,7 @@ public class Log4jDemo {
     
     public static void main(String[] args)
     {
-        logger.error("error message");  
-        logger.info("info message");  
+//        logger.error("error message");  
+//        logger.info("info message");  
     }
 }

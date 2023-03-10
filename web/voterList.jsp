@@ -318,7 +318,7 @@
 
             function fetchContent(voterId)
             {
-                alert(voterId);
+//                alert(voterId);
                 var xmlhttp = new XMLHttpRequest();
                 xmlhttp.onreadystatechange = function ()
                 {
