@@ -11,12 +11,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import org.apache.log4j.Logger;
 
 /**
  *
  * @author SHIRSHAK
  */
 public class PartyService {
+    
+    static Logger log = Logger.getLogger(PartyService.class.getName());
     
     public static ArrayList getAllParty() {
         ArrayList partyList = new ArrayList();
@@ -32,6 +35,7 @@ public class PartyService {
                 partyList.add(party);
             }
         } catch (SQLException ex) {
+            log.error("Error in getAllParty sql statement "+ex);
         }
         
             System.out.println("Party List:" + partyList.size());
