@@ -6,13 +6,25 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="candidateAPI" value="${CandidateAPI}"></c:set>
+<c:set var='error' value='${InsertCandidateError}'/>
 
 <form  enctype="multipart/form-data" action="AddCandidate" method="post" id="formSubmit"> 
 
     <div class="form-floating position-relative">
         <input type="text" class="form-control" id="candidateEmail" placeholder="Email Address" name="candidateEmail" value="${candidateAPI.candidateEmail}">
         <label for="floatingInput">Email Address</label>                                            
-        <button type="button" id="verifyButton" class="btn btn-primary position-absolute end-0 top-50 translate-middle-y btn-danger" onclick="fetchCandidateApi(); document.getElementById('submitButton').disabled = false;"> Verify</button>
+        <!--<button type="button" id="verifyButton" class="btn btn-primary position-absolute end-0 top-50 translate-middle-y btn-danger" onclick="fetchCandidateApi(); document.getElementById('submitButton').disabled = false;"> Verify</button>-->
+        <c:if  test="${error!=null}">
+            <c:if test="${error==1}">
+                <button type="button" id="verifyButton" class="btn btn-primary position-absolute end-0 top-50 translate-middle-y btn-danger" onclick="fetchCandidateApi(); document.getElementById('submitButton').disabled = false;">Verify</button>
+            </c:if>
+            <c:if test="${error==0}">
+                <!--<button type="button" id="verifyButton" class="btn btn-primary position-absolute end-0 top-50 translate-middle-y" onclick="fetchCandidateApi(); document.getElementById('submitButton').disabled = false;">Verified</button>-->
+                <button type="button" id="verifyButton" class="btn btn-success position-absolute end-0 top-50 translate-middle-y" onclick="fetchCandidateApi(); document.getElementById('submitButton').disabled = false;">
+                    <i class="bi bi-check-circle"></i> Verified
+                </button>
+            </c:if>
+        </c:if>
     </div>
     <p></p>
     <div class="form-floating">
@@ -67,7 +79,6 @@
     </div>
     <p></p>
     <br>
-    <c:set var='error' value='${InsertCandidateError}'/>
     <c:if  test="${error!=null}">
         <c:if test="${error==1}">
             <div class="alert-danger text-center btn-outline-dark bg-danger" style="color: #ccffff; border-radius: 10px; padding: 20px">
