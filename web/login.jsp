@@ -48,8 +48,24 @@
         <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
         <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
         <link href="assets/css/style.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" crossorigin="anonymous">
         <%--<jsp:include page="menu.jsp"></jsp:include>--%>
     </head>
+
+    <style>
+        .form-floating.password-input {
+            position: relative;
+        }
+
+        .form-floating.password-input i {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            cursor: pointer;
+            z-index: 2;
+        }
+    </style>
     <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous">
     </script>
     <!--    <script>
@@ -83,6 +99,21 @@
                 }
             }
         </script>-->
+    <script>
+        function toggleLoginPasswordVisibility(inputId, iconId) {
+            const input = document.getElementById(inputId);
+            const icon = document.getElementById(iconId);
+            if (input.type === "password") {
+                input.type = "text";
+                icon.classList.remove("fa-eye-slash");
+                icon.classList.add("fa-eye");
+            } else {
+                input.type = "password";
+                icon.classList.remove("fa-eye");
+                icon.classList.add("fa-eye-slash");
+            }
+        }
+    </script>
     <body>
 
 
@@ -177,10 +208,14 @@
                                     </label>
                                 </div>
 
+
                                 <div class="form-floating password-input">
                                     <input name="password" type="password" class="form-control" id="password" placeholder="Password">
                                     <label for="password">Password</label>
+                                    <i class="far fa-eye-slash" id="password-toggle" onclick="toggleLoginPasswordVisibility('password', 'password-toggle')"></i>
                                 </div>
+
+
 
                                 <div class="form-floating otp-input" style="display: none;">
                                     <input name="otp" type="number" class="form-control" id="otp" placeholder="OTP">
