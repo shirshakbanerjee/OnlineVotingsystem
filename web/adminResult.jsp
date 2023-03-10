@@ -523,7 +523,7 @@
                             <div class="flip-card-inner">
                                 <div class="flip-card-front">
                                     <div class="text-center align-items-center">
-                                        <img src="data:image/png;base64,${WinnerCandidate.imageData}" style="margin-top: 20px;margin-bottom: 20px;max-width: 200px; max-height: 200px;">
+                                        <img src="data:image/png;base64,${WinnerCandidate.imageData}" style="margin-top: 10px;margin-bottom: 10px;max-width: 200px; max-height: 200px;">
                                     <div style="font-size:20px; font-weight: bold">
                                         ${WinnerCandidate.firstName} won the election!!<br>
                                     </div>
