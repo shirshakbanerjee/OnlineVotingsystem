@@ -47,6 +47,11 @@
         * License: https://bootstrapmade.com/license/
         ======================================================== -->
     </head>
+    <style>
+        .icon-box:hover .title {
+            color: #fff;
+        }
+    </style>
 
 
     <body>
