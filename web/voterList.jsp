@@ -44,7 +44,7 @@
 
                     <ul class="menu-list flex-grow-1 mt-3">
                         <li class="collapsed">
-                            
+
                             <a class="m-link" data-bs-toggle="collapse" data-bs-target="#dashboard-Components" >
                                 <i class="icofont-home fs-5"></i> <span>Voters Summary</span></a>
                             <!-- Menu: Sub menu ul -->
@@ -122,11 +122,11 @@
                                                                     </div> Row End 
                                                                 </div>-->
 
-                                
+
 
                                 <div class="dropdown user-profile ml-2 ml-sm-3 d-flex align-items-end zindex-popover" style="margin-left:1000px">
                                     <div class="u-info me-2">
-                                        <p class="mb-0 text-end line-height-sm "><span class="font-weight-bold">Admin</span></p>
+                                        <p class="mb-0 text-end line-height-sm "><span class="font-weight-bold">Election Commission</span></p>
                                         <small>Admin Profile</small>
                                     </div>
                                     <a class="nav-link dropdown-toggle pulse p-0" href="#" role="button" data-bs-toggle="dropdown" data-bs-display="static">
@@ -138,8 +138,8 @@
                                                 <div class="d-flex py-1">
                                                     <img class="avatar rounded-circle" src="assets/img/profile_av.png" alt="profile">
                                                     <div class="flex-fill ms-3">
-                                                        <p class="mb-0"><span class="font-weight-bold">Admin </span></p>
-                                                        <small class="">admin@gmail.com</small>
+                                                        <p class="mb-0"><span class="font-weight-bold">Admin</span></p>
+                                                        <small class="">electioncommisionind@gmail.com</small>
                                                     </div>
                                                 </div>
 
@@ -189,65 +189,66 @@
                             <tbody style="font-family:verdana"">
 
                                 <c:forEach items="${VoterList}" var="voterList">
+                                    <c:if test="${voterList.getAdminStatus()!=2}">
+                                        <tr data-index="0">
+                                            <td>${voterList.voterId}</td>
+                                            <td>${voterList.emailAddress}</td>
+                                            <td>${voterList.firstName}</td>
+                                            <td>${voterList.lastName}</td>
+                                            <td>${voterList.age}</td>
+                                            <td>${voterList.dob }</td>
+                                            <td>${voterList.gender}</td>
+                                            <td>${voterList.state}</td>
+                                            <td><c:if test="${voterList.getVotingStatus()==1}">
+                                                    <p  style="color:#50B450">Voted</p></c:if>
+                                                <c:if test="${voterList.getVotingStatus()==0}">
+                                                    <p  style="color:red">Not Voted</p></c:if></td>
+                                                <td>
+                                                <c:if test="${voterList.getAdminStatus()==1}">
+                                                    <p  style="color:green">Approved</p></c:if>
+                                                <c:if test="${voterList.getAdminStatus()==2}">
+                                                    <p  style="color:red">Rejected </p></c:if>
+                                                <c:if test="${voterList.getAdminStatus()==0}">
+                                                    <p  style="color:blue">Pending</p></c:if>
+                                                </td>
+                                                <td>
+                                                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="fetchContent(${voterList.voterId})">
+                                                    View
+                                                </button>
 
-                                    <tr data-index="0">
-                                        <td>${voterList.voterId}</td>
-                                        <td>${voterList.emailAddress}</td>
-                                        <td>${voterList.firstName}</td>
-                                        <td>${voterList.lastName}</td>
-                                        <td>${voterList.age}</td>
-                                        <td>${voterList.dob }</td>
-                                        <td>${voterList.gender}</td>
-                                        <td>${voterList.state}</td>
-                                        <td><c:if test="${voterList.getVotingStatus()==1}">
-                                                <p  style="color:#50B450">Voted</p></c:if>
-                                            <c:if test="${voterList.getVotingStatus()==0}">
-                                                <p  style="color:red">Not Voted</p></c:if></td>
-                                            <td>
-                                            <c:if test="${voterList.getAdminStatus()==1}">
-                                                <p  style="color:maroon">Approved</p></c:if>
-                                            <c:if test="${voterList.getAdminStatus()==2}">
-                                                <p  style="color:red">Rejected </p></c:if>
-                                            <c:if test="${voterList.getAdminStatus()==0}">
-                                                <p  style="color:blue">Pending</p></c:if>
-                                            </td>
-                                            <td>
-                                                <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="fetchContent(${voterList.voterId})">
-                                                View
-                                            </button>
+                                                <!-- Modal -->
+                                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog modal-lg">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLabel">Details of Voter</h5>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <table id="tableId" class="table-borderless">
+                                                                    <td>
+                                                                        <div id="onclickViewVoter">
 
-                                            <!-- Modal -->
-                                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog modal-lg">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">Details of Voter</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <table id="tableId" class="table-borderless">
-                                                                <td>
-                                                                    <div id="onclickViewVoter">
-
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div id="voterIdentityDetails">
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <div id="voterIdentityDetails">
 
 
-                                                                    </div>
-                                                                </td></table>
+                                                                        </div>
+                                                                    </td></table>
 
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="refreshModal()">Close</button>
-                                                            
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="refreshModal()">Close</button>
+
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                            </td>
+                                        </tr>
+                                    </c:if>
                                 </c:forEach>
 
 
@@ -264,17 +265,17 @@
         <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
         <script>
-                                                    //                                    $(document).ready(function () {
-                                                    //                                        $('#example').DataTable();
-                                                    //                                    });
+                                                                    //                                    $(document).ready(function () {
+                                                                    //                                        $('#example').DataTable();
+                                                                    //                                    });
 
-                                                    $(document).ready(function () {
-                                                        $('#example').DataTable({
-                                                            "paging": true,
-                                                            "pageLength": 5,
-                                                            "lengthMenu": [[5, 10, 25, -1], [5, 10, 25, "All"]]
-                                                        });
-                                                    });
+                                                                    $(document).ready(function () {
+                                                                        $('#example').DataTable({
+                                                                            "paging": true,
+                                                                            "pageLength": 5,
+                                                                            "lengthMenu": [[5, 10, 25, -1], [5, 10, 25, "All"]]
+                                                                        });
+                                                                    });
         </script>
         <style>
             #table {
@@ -358,6 +359,17 @@
                 xmlhttp.open("POST", "AdminVerified?voterId=" + voterId, true);
                 xmlhttp.send();
             }
+            function rejectConfirm(voterId)
+            {
+                if (confirm('Are you sure you want to reject the voter?')) {
+                    // Save it!
+                    functionReject(voterId);
+                    alert('Voter was Rejected!');
+                } else {
+                    // Do nothing!
+                    alert('Action Cancelled!');
+                }
+            }
             function functionReject(voterId)
             {
                 //alert(fnolId);
@@ -384,8 +396,8 @@
                 xmlhttp.open("POST", urls, true);
                 xmlhttp.send();
             }
-            
-            function refreshModal(){
+
+            function refreshModal() {
                 location.reload(true);
             }
 

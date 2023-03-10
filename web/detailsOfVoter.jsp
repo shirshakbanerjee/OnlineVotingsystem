@@ -56,7 +56,7 @@
             <tr>                
                 <td>
                     <button type="button" class="btn btn-success text-light mt-2 btn-sm" onclick="functionApprove(${PVoter.voterId})">Approve&checkmark;</button>
-                    <button type="button" class="btn btn-danger text-light mt-2 btn-sm" onclick="functionReject(${PVoter.voterId})">Reject&cross;</button>
+                    <button type="button" class="btn btn-danger text-light mt-2 btn-sm" onclick="rejectConfirm(${PVoter.voterId})">Reject&cross;</button>
                 </td>
             </tr>
         </table>
