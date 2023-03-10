@@ -179,44 +179,25 @@
                         </div>
                     </main>
                 </div>
-                <div class="col-md-6" style="width: 55%; float: right;  background-size: cover; object-fit: none; background-image: url(https://cdn-eaekd.nitrocdn.com/CxTeoSPKdjdqTSxLEEGaKiGroHlKASqH/assets/mobile/optimized/rev-27fb8ed/6QqafditRy1VJCNIi5OmNgG8MUn6ZnYlaMjbjy1obKuuwxKeb8EVmZ_NiPk3HjjQa8QVbUpdQWaemGSNCMUDHm9IXrUO7FE8lEyZmGnnIltGisKG6ccLV_2xeXo67S2dNm23UlHsIPRGk7zo4FNhEVYraeu68ov1dkL-7i2O3Ju0Wq9gZkfNGrlLGg); ">                    
-                    <!--<img src="https://cdn-eaekd.nitrocdn.com/CxTeoSPKdjdqTSxLEEGaKiGroHlKASqH/assets/mobile/optimized/rev-27fb8ed/6QqafditRy1VJCNIi5OmNgG8MUn6ZnYlaMjbjy1obKuuwxKeb8EVmZ_NiPk3HjjQa8QVbUpdQWaemGSNCMUDHm9IXrUO7FE8lEyZmGnnIltGisKG6ccLV_2xeXo67S2dNm23UlHsIPRGk7zo4FNhEVYraeu68ov1dkL-7i2O3Ju0Wq9gZkfNGrlLGg" style="height: 694px; opacity :0.6;" >-->
+                <div class="col-md-6" style="width: 55%; float: right;  background-size: cover; object-fit: none; ">                    
+                    <img src="https://cdn-eaekd.nitrocdn.com/CxTeoSPKdjdqTSxLEEGaKiGroHlKASqH/assets/mobile/optimized/rev-27fb8ed/6QqafditRy1VJCNIi5OmNgG8MUn6ZnYlaMjbjy1obKuuwxKeb8EVmZ_NiPk3HjjQa8QVbUpdQWaemGSNCMUDHm9IXrUO7FE8lEyZmGnnIltGisKG6ccLV_2xeXo67S2dNm23UlHsIPRGk7zo4FNhEVYraeu68ov1dkL-7i2O3Ju0Wq9gZkfNGrlLGg" 
+                         style="height: 727px; opacity :1;" >
                 </div>
 
-            </div>
-
-
-            <!-- <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-             <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-           
-           <div class="col-md-4">
-             <h2>Heading</h2>
-             <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-             <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-           </div>
-           <div class="col-md-4">
-             <h2>Heading</h2>
-             <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-             <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-           </div>
-         
- 
-         <hr>
- 
-       </div>  /container -->
-
-
-
-            <footer class="container" style="text-align: center;">
-                <p> &copy;Vote india   2017-2018</p>
-            </footer>
-
-            <!-- Bootstrap core JavaScript
-            ================================================== -->
-            <!-- Placed at the end of the document so the pages load faster -->
-            <!--            <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-                    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>-->
-            <script src="../../assets/js/vendor/popper.min.js"></script>
-            <script src="../../dist/js/bootstrap.min.js"></script>
+                </div>
+                </div>
     </body>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!--            <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+            <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>-->
+    <script src="../../assets/js/vendor/popper.min.js"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+
+    <footer style="text-align: center;">
+        <p> &copy;Vote india   2017-2018</p>
+    </footer>
 </html>
