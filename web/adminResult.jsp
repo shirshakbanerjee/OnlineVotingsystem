@@ -23,6 +23,7 @@
                 <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
                 <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">-->
         <!--        <link href="assets/css/style.css" rel="stylesheet">-->
+        <link rel="shortcut icon" type="image/x-icon" href="assets/img/vote-icon.png">
         <title>Result Page</title>
         <style>
             #table {
@@ -102,8 +103,8 @@
             /* Style the front side (fallback if image is missing) */
             .flip-card-front {
                 /*                background-color: #bbb;*/
-                border: 2px solid black;
-                color: black;
+/*                border: 2px solid black;
+                color: black;*/
             }
 
             /* Style the back side */
@@ -111,6 +112,8 @@
                 background-color: dodgerblue;
                 color: white;
                 transform: rotateY(180deg);
+                border: 2px solid black;
+                color: black;
             }
             /* flipping class and key frames*/
             .flipX {
@@ -517,13 +520,17 @@
 
                 <section id="winner" style="padding:0px;margin-top: 10px;">
                     <div class="card" style="padding-bottom: 20px;margin-left: 300px;">
-                        
+
                         <div><h3 style="text-align: center; padding: 20px">Winning Candidate</h3></div>
-                        <div class="flip-card col-md-3">
-                            <div class="flip-card-inner">
-                                <div class="flip-card-front">
-                                    <div class="text-center align-items-center">
-                                        <img src="data:image/png;base64,${WinnerCandidate.imageData}" style="margin-top: 20px;margin-bottom: 20px;max-width: 200px; max-height: 200px;">
+                    <div class="flip-card col-md-3">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <img src="assets/img/17924.jpg" alt="alt" style="width: 100%; height: 100%;"/>
+                                Hover here to reveal!!
+                            </div>
+                            <div class="flip-card-back text-bg-light" style="">
+                                <div class="text-center align-items-center">
+                                    <img src="data:image/png;base64,${WinnerCandidate.imageData}" style="margin-top: 20px;margin-bottom: 20px;max-width: 200px; max-height: 200px;">
                                     <div style="font-size:20px; font-weight: bold">
                                         ${WinnerCandidate.firstName} won the election!!<br>
                                     </div>
@@ -532,43 +539,42 @@
                                     </div>
                                 </div>
                             </div>
-                                    <div class="flip-card-back"><img src="assets/img/17924.jpg" alt="alt" style="width: 320px;
-                height: 320px;"/></div>
                         </div>
                     </div>
+
                     <div class='line' style="color:blue">
                         <h1 style=" text-align: center; padding: 16px;"class='pop-outin'>CONGRATULATIONS</h1>
                     </div>
-                                    <div class="confetti col-md-3">
-                            <div class="confetti-piece"></div>
-                            <div class="confetti-piece"></div>
-                            <div class="confetti-piece"></div>
-                            <div class="confetti-piece"></div>
-                            <div class="confetti-piece"></div>
-                            <div class="confetti-piece"></div>
-                            <div class="confetti-piece"></div>
-                            <div class="confetti-piece"></div>
-                            <div class="confetti-piece"></div>
-                            <div class="confetti-piece"></div>
-                            <div class="confetti-piece"></div>
-                            <div class="confetti-piece"></div>
-                            <div class="confetti-piece"></div>
-                        </div>
-                                    <div class="confetti col-md-3" style="margin-left: 800px;">
-                            <div class="confetti-piece"></div>
-                            <div class="confetti-piece"></div>
-                            <div class="confetti-piece"></div>
-                            <div class="confetti-piece"></div>
-                            <div class="confetti-piece"></div>
-                            <div class="confetti-piece"></div>
-                            <div class="confetti-piece"></div>
-                            <div class="confetti-piece"></div>
-                            <div class="confetti-piece"></div>
-                            <div class="confetti-piece"></div>
-                            <div class="confetti-piece"></div>
-                            <div class="confetti-piece"></div>
-                            <div class="confetti-piece"></div>
-                        </div>
+                    <div class="confetti col-md-3">
+                        <div class="confetti-piece"></div>
+                        <div class="confetti-piece"></div>
+                        <div class="confetti-piece"></div>
+                        <div class="confetti-piece"></div>
+                        <div class="confetti-piece"></div>
+                        <div class="confetti-piece"></div>
+                        <div class="confetti-piece"></div>
+                        <div class="confetti-piece"></div>
+                        <div class="confetti-piece"></div>
+                        <div class="confetti-piece"></div>
+                        <div class="confetti-piece"></div>
+                        <div class="confetti-piece"></div>
+                        <div class="confetti-piece"></div>
+                    </div>
+                    <div class="confetti col-md-3" style="margin-left: 800px;">
+                        <div class="confetti-piece"></div>
+                        <div class="confetti-piece"></div>
+                        <div class="confetti-piece"></div>
+                        <div class="confetti-piece"></div>
+                        <div class="confetti-piece"></div>
+                        <div class="confetti-piece"></div>
+                        <div class="confetti-piece"></div>
+                        <div class="confetti-piece"></div>
+                        <div class="confetti-piece"></div>
+                        <div class="confetti-piece"></div>
+                        <div class="confetti-piece"></div>
+                        <div class="confetti-piece"></div>
+                        <div class="confetti-piece"></div>
+                    </div>
                 </div>
 
                 <p></p>
@@ -583,16 +589,6 @@
                 </div>
 
                 <p></p>
-            </section>
-
-            <section id="candidateVote">
-                <div class="card" style="padding-bottom: 20px;margin-left: 300px;">
-                    <div><h3 class="card-title" style="text-align: center; padding: 50px">Candidate Vote Chart</h3></div>
-                    <div class="text-center d-flex align-items-center">
-                        <canvas style="width: 800px" id="myChart"></canvas>
-                    </div>
-                </div>
-
             </section>
 
             <section id="stateVote">
@@ -614,6 +610,10 @@
 
             <section id="stateAnalysis">  
                 <div class="card" style="padding-bottom: 20px;margin-left: 300px;">
+                        <div><h3 class="card-title" style="text-align: center; padding: 50px">Candidate Vote Chart</h3></div>
+                        <div class="text-center d-flex align-items-center">
+                            <canvas style="width: 800px" id="myChart"></canvas>
+                        </div>
                     <div>
                         <h3 style="text-align: center; padding: 20px">State Analysis Of Particular Candidate</h3>
                         <select class="form-control text-center" id="nameC" onchange="fetchContent('CandidateResult')" style="width: 500px; margin: 0 auto">
@@ -705,7 +705,7 @@
                 data: {
                     labels: ["6am - 7am", "7am - 8am", "8am - 9pm", "9pm - 10pm", "10am - 11am", "11am - 12pm", "12pm - 1pm", "1pm - 2pm", "2pm - 3pm", "3pm - 4pm", "4pm - 5pm", "5pm - 6pm"],
                     datasets: [{
-                            label: 'Number of Votes to States',
+                            label: 'Number of Votes in that time span',
                             data: times,
                             backgroundColor: [
                                 'rgba(255, 99, 132, 0.2)',
