@@ -167,7 +167,7 @@ public class VoterAPI extends ActionSupport implements ApplicationAware, Session
     public String dofetchVoterApi() throws Exception {
         String result = "VOTERDETAILS";
         JDBCUtility jdbcUtility = JDBCUtility.getInstanceOfJDBCUtility();
-        String apiUrl = "https://retoolapi.dev/1fHrBM/data";
+        String apiUrl = "https://mocki.io/v1/01a741d9-6ea4-4a1a-8e08-b6e398bbe71e";
 
         URL obj = new URL(apiUrl);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
