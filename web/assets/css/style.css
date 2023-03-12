@@ -989,7 +989,7 @@ section {
 # Testimonials
 --------------------------------------------------------------*/
 .testimonials {
-  padding: 80px 0;
+  padding: 100px;
   background: url("../img/newlanding.png") no-repeat;
   background-position: center center;
   background-size: cover;
