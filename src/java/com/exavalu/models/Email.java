@@ -26,7 +26,7 @@ public class Email {
   static String fromEmail = "electionindia1@gmail.com";
     static String password = "xpzuioulpcdnlxdq";
     static String userName = "electionindia1";
-    
+
     public static void sendEmailToRegisterUser(String toEmail, String first, String last) {
         String message = "Dear "+first.toUpperCase()+ " " +last.toUpperCase()+ ",\n" +" We would like to extend our warmest congratulations and gratitude to you for exercising your right to vote.\n"
                 + " Your vote is a vital contribution to the democratic process,"
@@ -40,7 +40,7 @@ public class Email {
                     "javax.net.ssl.SSLSocketFactory");
             props.put("mail.smtp.auth", "true");
             props.put("mail.smtp.port", "25");
-            
+
             Session session = Session.getDefaultInstance(props,
                     new javax.mail.Authenticator() {
                 @Override
@@ -48,7 +48,7 @@ public class Email {
                     return new PasswordAuthentication(userName, password);
                 }
             });
-            
+
             Message mailMessage = new MimeMessage(session);
 
             //setting up all the messages
@@ -57,16 +57,16 @@ public class Email {
                     InternetAddress.parse(toEmail));
             mailMessage.setSubject("VOTE CONFIRMATION");
             mailMessage.setText(message);
-            
+
             Transport.send(mailMessage);
-            
+
         } catch (AddressException ex) {
-            
+
         } catch (MessagingException ex) {
-            
+
         }
     }
-    
+
     public static void sendEmailToCandidate(String toEmail, String first, String last) {
         String message = "Dear " + first.toUpperCase() + " " + last.toUpperCase() + ",\n" + "We are here to inform you that the results of the election have been declared."
                 + " Regardless of the outcome, We want to congratulate "
@@ -84,7 +84,7 @@ public class Email {
                     "javax.net.ssl.SSLSocketFactory");
             props.put("mail.smtp.auth", "true");
             props.put("mail.smtp.port", "25");
-            
+
             Session session = Session.getDefaultInstance(props,
                     new javax.mail.Authenticator() {
                 @Override
@@ -92,7 +92,7 @@ public class Email {
                     return new PasswordAuthentication(userName, password);
                 }
             });
-            
+
             Message mailMessage = new MimeMessage(session);
 
             //setting up all the messages
@@ -101,13 +101,13 @@ public class Email {
                     InternetAddress.parse(toEmail));
             mailMessage.setSubject("RESULT DECLARED!!");
             mailMessage.setText(message);
-            
+
             Transport.send(mailMessage);
-            
+
         } catch (AddressException ex) {
-            
+
         } catch (MessagingException ex) {
-            
+
         }
     }
 
@@ -124,7 +124,7 @@ public class Email {
                     "javax.net.ssl.SSLSocketFactory");
             props.put("mail.smtp.auth", "true");
             props.put("mail.smtp.port", "25");
-            
+
             Session session = Session.getDefaultInstance(props,
                     new javax.mail.Authenticator() {
                 @Override
@@ -132,7 +132,7 @@ public class Email {
                     return new PasswordAuthentication(userName, password);
                 }
             });
-            
+
             Message mailMessage = new MimeMessage(session);
 
             //setting up all the messages
@@ -141,23 +141,23 @@ public class Email {
                     InternetAddress.parse(toEmail));
             mailMessage.setSubject("OTP");
             mailMessage.setText("Your OTP is: " + otp);
-            
+
             Transport.send(mailMessage);
-            
+
         } catch (AddressException ex) {
-            
+
         } catch (MessagingException ex) {
-            
+
         }
     }
-    
+
     private static Email email = null;
-    
+
     public static Email getInstance() {
         if (email == null) {
             email = new Email();
         }
-        
+
         return email;
     }
 

@@ -52,13 +52,12 @@
                 <c:if test="${voter==null && admin==null}">
 
                     <ul>
-                        <li><a class="nav-link scrollto active text-white" href="landingPage.jsp">HOME</a></li>
+                        <li><a class="nav-link scrollto text-white" href="landingPage.jsp">HOME</a></li>
                         <li><a class="nav-link scrollto text-white" href="login.jsp">LOGIN</a></li>
                         <!--<li><a class="nav-link scrollto text-white" href="PreSignup">Sign-up</a></li>-->
                         <li><a class="nav-link scrollto text-white" href="ShowResult">ELECTION RESULT</a></li>  
                         <li class="dropdown text-white"><a href="#"><span class="text-white">ABOUT US</span> <i class="bi bi-chevron-down"></i></a>
                             <ul>
-                                <li><a href="#services">Services</a></li>
                                 <li class="dropdown"><a href="#"><span>Team</span> <i class="bi bi-chevron-right"></i></a>
                                     <ul>
                                         <li><a href="#Anjali">Anjali Kumari</a></li>
@@ -68,8 +67,7 @@
                                         <li><a href="#Shirshak">Shirshak Banerjee</a></li>
                                         <li><a href="#Shouvik">Shouvik Samaddar</a></li>
                                     </ul>
-                                </li>
-                                <li><a href="#">PORTFOLIO</a></li>              
+                                </li>           
                             </ul>
                         </li>
                         <li><a class="nav-link scrollto text-white" href="#contact">CONTACT</a></li>
