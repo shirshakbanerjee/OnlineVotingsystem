@@ -4,10 +4,7 @@
  */
 package com.exavalu.models;
 
-/**
- *
- * @author SHIRSHAK
- */
+
 import com.exavalu.services.AdminService;
 import com.exavalu.services.CandidateService;
 import com.exavalu.services.PartyService;
@@ -26,7 +23,7 @@ import org.apache.struts2.interceptor.SessionAware;
 
 /**
  *
- * @author Admin
+ * This model is used for user login.
  */
 public class User extends ActionSupport implements ApplicationAware, SessionAware, Serializable {
 

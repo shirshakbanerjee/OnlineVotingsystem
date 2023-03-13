@@ -23,7 +23,7 @@ import org.apache.struts2.interceptor.SessionAware;
 
 /**
  *
- * @author Admin
+ This model is used for getting election results.
  */
 public class Result extends ActionSupport implements ApplicationAware, SessionAware, Serializable{
     

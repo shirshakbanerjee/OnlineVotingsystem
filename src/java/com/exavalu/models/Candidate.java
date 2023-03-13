@@ -4,10 +4,7 @@
  */
 package com.exavalu.models;
 
-/**
- *
- * @author SHIRSHAK
- */
+
 import com.exavalu.services.CandidateService;
 import com.exavalu.services.PartyService;
 import com.exavalu.services.VoterService;
@@ -22,6 +19,10 @@ import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.ApplicationAware;
 import org.apache.struts2.interceptor.SessionAware;
 
+/**
+ *
+ * This model performs candidate functionalities like editing details, adding and deleting.
+ */
 public class Candidate extends ActionSupport implements ApplicationAware, SessionAware, Serializable {
 
     private int candidateId;
