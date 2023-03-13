@@ -4,10 +4,6 @@
  */
 package com.exavalu.services;
 
-/**
- *
- * @author SHIRSHAK
- */
 
 import com.exavalu.models.User;
 import com.exavalu.utils.JDBCConnectionManager;
@@ -19,7 +15,7 @@ import org.apache.log4j.Logger;
 
 /**
  *
- * @author Admin
+ * This is Candidate Service
  */
 public class UserService {
     

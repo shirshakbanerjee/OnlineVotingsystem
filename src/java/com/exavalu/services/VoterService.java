@@ -4,10 +4,7 @@
  */
 package com.exavalu.services;
 
-/**
- *
- * @author SHIRSHAK
- */
+
 import com.exavalu.models.Voter;
 import com.exavalu.utils.JDBCConnectionManager;
 import java.sql.Connection;
@@ -19,8 +16,8 @@ import java.util.ArrayList;
 import org.apache.log4j.Logger;
 
 /**
- *
- * @author Admin
+ * This is a Service for voters to get details of voter and cast vote.
+ * 
  */
 public class VoterService {
     

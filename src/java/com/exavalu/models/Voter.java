@@ -4,10 +4,7 @@
  */
 package com.exavalu.models;
 
-/**
- *
- * @author SHIRSHAK
- */
+
 import com.exavalu.services.UserService;
 import com.exavalu.services.VoterService;
 import com.opensymphony.xwork2.ActionContext;
@@ -22,8 +19,7 @@ import org.apache.struts2.interceptor.ApplicationAware;
 import org.apache.struts2.interceptor.SessionAware;
 
 /**
- *
- * @author Admin
+ * This model gets details of voter and cast vote. .
  */
 public class Voter extends ActionSupport implements ApplicationAware, SessionAware, Serializable {
 

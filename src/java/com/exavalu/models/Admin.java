@@ -18,7 +18,7 @@ import org.apache.struts2.interceptor.SessionAware;
 
 /**
  *
- * @author SHIRSHAK
+ * This model performs admin operations like adding,verifying candidates and voters.
  */
 public class Admin extends ActionSupport implements ApplicationAware, SessionAware, Serializable {
 

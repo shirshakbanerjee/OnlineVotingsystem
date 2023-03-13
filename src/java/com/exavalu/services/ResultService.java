@@ -20,7 +20,7 @@ import org.apache.log4j.Logger;
 
 /**
  *
- * @author Admin
+ * This is Result Service
  */
 public class ResultService {
     

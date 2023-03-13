@@ -19,7 +19,7 @@ import org.apache.log4j.Logger;
 
 /**
  *
- * @author Admin
+ *This is Candidate Service
  */
 public class CandidateService {
     

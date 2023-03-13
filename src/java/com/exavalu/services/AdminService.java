@@ -15,7 +15,7 @@ import org.apache.log4j.Logger;
 
 /**
  *
- * @author Admin
+ * This is admin service
  */
 public class AdminService {
     

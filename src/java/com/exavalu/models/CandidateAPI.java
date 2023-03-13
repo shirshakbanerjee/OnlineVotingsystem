@@ -24,7 +24,7 @@ import org.json.simple.parser.JSONParser;
 
 /**
  *
- * @author ANKIT
+ * This model fetches API..
  */
 public class CandidateAPI extends ActionSupport implements ApplicationAware, SessionAware, Serializable {
 

@@ -6,7 +6,7 @@ package com.exavalu.models;
 
 /**
  *
- * @author SHIRSHAK
+ * This model is used for getting Party details
  */
 public class Party {
     

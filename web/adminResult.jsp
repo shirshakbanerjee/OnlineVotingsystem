@@ -517,7 +517,7 @@
 
                 <section id="winner" style="padding:0px;margin-top: 10px;">
                     <div class="card" style="padding-bottom: 20px;margin-left: 300px;">
-                        
+
                         <div><h3 style="text-align: center; padding: 20px">Winning Candidate</h3></div>
                         <div class="flip-card col-md-3">
                             <div class="flip-card-inner">
@@ -532,43 +532,43 @@
                                     </div>
                                 </div>
                             </div>
-                                    <div class="flip-card-back"><img src="assets/img/17924.jpg" alt="alt" style="width: 320px;
-                height: 320px;"/></div>
+                            <div class="flip-card-back"><img src="assets/img/17924.jpg" alt="alt" style="width: 320px;
+                                                             height: 320px;"/></div>
                         </div>
                     </div>
                     <div class='line' style="color:blue">
                         <h1 style=" text-align: center; padding: 16px;"class='pop-outin'>CONGRATULATIONS</h1>
                     </div>
-                                    <div class="confetti col-md-3">
-                            <div class="confetti-piece"></div>
-                            <div class="confetti-piece"></div>
-                            <div class="confetti-piece"></div>
-                            <div class="confetti-piece"></div>
-                            <div class="confetti-piece"></div>
-                            <div class="confetti-piece"></div>
-                            <div class="confetti-piece"></div>
-                            <div class="confetti-piece"></div>
-                            <div class="confetti-piece"></div>
-                            <div class="confetti-piece"></div>
-                            <div class="confetti-piece"></div>
-                            <div class="confetti-piece"></div>
-                            <div class="confetti-piece"></div>
-                        </div>
-                                    <div class="confetti col-md-3" style="margin-left: 800px;">
-                            <div class="confetti-piece"></div>
-                            <div class="confetti-piece"></div>
-                            <div class="confetti-piece"></div>
-                            <div class="confetti-piece"></div>
-                            <div class="confetti-piece"></div>
-                            <div class="confetti-piece"></div>
-                            <div class="confetti-piece"></div>
-                            <div class="confetti-piece"></div>
-                            <div class="confetti-piece"></div>
-                            <div class="confetti-piece"></div>
-                            <div class="confetti-piece"></div>
-                            <div class="confetti-piece"></div>
-                            <div class="confetti-piece"></div>
-                        </div>
+                    <div class="confetti col-md-3">
+                        <div class="confetti-piece"></div>
+                        <div class="confetti-piece"></div>
+                        <div class="confetti-piece"></div>
+                        <div class="confetti-piece"></div>
+                        <div class="confetti-piece"></div>
+                        <div class="confetti-piece"></div>
+                        <div class="confetti-piece"></div>
+                        <div class="confetti-piece"></div>
+                        <div class="confetti-piece"></div>
+                        <div class="confetti-piece"></div>
+                        <div class="confetti-piece"></div>
+                        <div class="confetti-piece"></div>
+                        <div class="confetti-piece"></div>
+                    </div>
+                    <div class="confetti col-md-3" style="margin-left: 800px;">
+                        <div class="confetti-piece"></div>
+                        <div class="confetti-piece"></div>
+                        <div class="confetti-piece"></div>
+                        <div class="confetti-piece"></div>
+                        <div class="confetti-piece"></div>
+                        <div class="confetti-piece"></div>
+                        <div class="confetti-piece"></div>
+                        <div class="confetti-piece"></div>
+                        <div class="confetti-piece"></div>
+                        <div class="confetti-piece"></div>
+                        <div class="confetti-piece"></div>
+                        <div class="confetti-piece"></div>
+                        <div class="confetti-piece"></div>
+                    </div>
                 </div>
 
                 <p></p>
@@ -599,7 +599,7 @@
                 <div class="card" style="padding-bottom: 20px;margin-left: 300px;">
                     <div><h3 style="text-align: center; padding: 50px">State Vote Chart</h3></div>
                     <div class="text-center d-flex align-items-center">
-                        <canvas id="pieChart"></canvas>
+                        <canvas id="pieChart" style="width: 750px"></canvas>
                     </div>
                 </div>
             </section>
@@ -750,25 +750,88 @@
                             label: 'Number of Votes to States',
                             data: counts,
                             backgroundColor: [
-                                'rgba(255, 99, 132, 0.2)',
-                                'rgba(255, 159, 64, 0.2)',
-                                'rgba(255, 205, 86, 0.2)',
-                                'rgba(75, 192, 192, 0.2)',
-                                'rgba(54, 162, 235, 0.2)',
-                                'rgba(153, 102, 255, 0.2)',
-                                'rgba(201, 203, 207, 0.2)'
+                                'rgb(255, 0, 0,0.5)',
+                                'rgb(0, 255, 0,0.5)',
+                                'rgb(0, 0, 255,0.5)',
+                                'rgb(255, 255, 0,0.5)',
+                                'rgb(255, 0, 255,0.5)',
+                                'rgb(0, 255, 255,0.5)',
+                                'rgb(128, 0, 0,0.5)',
+                                'rgb(0, 128, 0,0.5)',
+                                'rgb(0, 0, 128,0.5)',
+                                'rgb(128, 128, 0,0.5)',
+                                'rgb(128, 0, 128,0.5)',
+                                'rgb(0, 128, 128,0.5)',
+                                'rgb(128, 128, 128,0.5)',
+                                'rgb(255, 128, 0,0.5)',
+                                'rgb(255, 0, 128,0.5)',
+                                'rgb(128, 255, 0,0.5)',
+                                'rgb(0, 128, 255,0.5)',
+                                'rgb(255, 128, 128,0.5)',
+                                'rgb(128, 255, 128,0.5)',
+                                'rgb(128, 128, 255,0.5)',
+                                'rgb(255, 255, 128,0.5)',
+                                'rgb(255, 128, 255,0.5)',
+                                'rgb(128, 255, 255,0.5)',
+                                'rgb(192, 0, 0,0.5)',
+                                'rgb(0, 192, 0,0.5)',
+                                'rgb(0, 0, 192,0.5)',
+                                'rgb(192, 192, 0,0.5)',
+                                'rgb(192, 0, 192,0.5)',
+                                'rgb(0, 192, 192,0.5)',
+                                'rgb(192, 192, 192,0.5)',
+                                'rgb(255, 192, 0,0.5)',
+                                'rgb(255, 0, 192,0.5)',
+                                'rgb(192, 255, 0,0.5)',
+                                'rgb(0, 192, 255,0.5)',
+                                'rgb(255, 192, 192,0.5)',
+                                'rgb(192, 255, 192,0.5)',
+                                'rgb(192, 192, 255,0.5)',
+                                'rgb(255, 255, 192,0.5)',
                             ],
                             borderColor: [
-                                'rgb(255, 99, 132)',
-                                'rgb(255, 159, 64)',
-                                'rgb(255, 205, 86)',
-                                'rgb(75, 192, 192)',
-                                'rgb(54, 162, 235)',
-                                'rgb(153, 102, 255)',
-                                'rgb(201, 203, 207)'
+                                'rgb(255, 0, 0)',
+                                'rgb(0, 255, 0)',
+                                'rgb(0, 0, 255)',
+                                'rgb(255, 255, 0)',
+                                'rgb(255, 0, 255)',
+                                'rgb(0, 255, 255)',
+                                'rgb(128, 0, 0)',
+                                'rgb(0, 128, 0)',
+                                'rgb(0, 0, 128)',
+                                'rgb(128, 128, 0)',
+                                'rgb(128, 0, 128)',
+                                'rgb(0, 128, 128)',
+                                'rgb(128, 128, 128)',
+                                'rgb(255, 128, 0)',
+                                'rgb(255, 0, 128)',
+                                'rgb(128, 255, 0)',
+                                'rgb(0, 128, 255)',
+                                'rgb(255, 128, 128)',
+                                'rgb(128, 255, 128)',
+                                'rgb(128, 128, 255)',
+                                'rgb(255, 255, 128)',
+                                'rgb(255, 128, 255)',
+                                'rgb(128, 255, 255)',
+                                'rgb(192, 0, 0)',
+                                'rgb(0, 192, 0)',
+                                'rgb(0, 0, 192)',
+                                'rgb(192, 192, 0)',
+                                'rgb(192, 0, 192)',
+                                'rgb(0, 192, 192)',
+                                'rgb(192, 192, 192)',
+                                'rgb(255, 192, 0)',
+                                'rgb(255, 0, 192)',
+                                'rgb(192, 255, 0)',
+                                'rgb(0, 192, 255)',
+                                'rgb(255, 192, 192)',
+                                'rgb(192, 255, 192)',
+                                'rgb(192, 192, 255)',
+                                'rgb(255, 255, 192)',
                             ],
+                            
                             borderWidth: 2,
-                            borderRadius: 10
+                            borderRadius: 0
                         }]
                 },
                 options: {

@@ -15,7 +15,7 @@ import org.apache.log4j.Logger;
 
 /**
  *
- * @author SHIRSHAK
+ * This is Party Service
  */
 public class PartyService {
     

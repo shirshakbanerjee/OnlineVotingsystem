@@ -19,7 +19,7 @@ import org.apache.log4j.Logger;
 
 /**
  *
- * @author ASUS
+ * This model is used for email integration
  */
 public class Email {
 
