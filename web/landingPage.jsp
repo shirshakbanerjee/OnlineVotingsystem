@@ -243,23 +243,23 @@
                             <div class="col-lg-3 col-md-6">
                                 <div class="count-box">
                                     <i class="bi bi-emoji-smile"></i>
-                                    <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
-                                    <p>VOTE COUNT</p>
+                                    <span data-purecounter-start="0" data-purecounter-end="6" data-purecounter-duration="1" class="purecounter"></span>
+                                    <p>VOTE STARTS(Hrs)</p>
                                 </div>
                             </div>
 
                             <div class="col-lg-3 col-md-6 mt-5 mt-md-0">
                                 <div class="count-box">
                                     <i class="bi bi-journal-richtext"></i>
-                                    <span data-purecounter-start="0" data-purecounter-end="12" data-purecounter-duration="1" class="purecounter"></span>
-                                    <p>VOTING END</p>
+                                    <span data-purecounter-start="0" data-purecounter-end="18" data-purecounter-duration="1" class="purecounter"></span>
+                                    <p>VOTING END(Hrs)</p>
                                 </div>
                             </div>
 
                             <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
                                 <div class="count-box">
                                     <i class="bi bi-headset"></i>
-                                    <span data-purecounter-start="0" data-purecounter-end="14" data-purecounter-duration="1" class="purecounter"></span>
+                                    <span data-purecounter-start="0" data-purecounter-end="12" data-purecounter-duration="1" class="purecounter"></span>
                                     <p>Hours Of VOTING</p>
                                 </div>
                             </div>
@@ -344,7 +344,7 @@
                 </section><!-- End Services Section -->
 
                 <!-- ======= Testimonials Section ======= -->
-                <section id="testimonials" class="testimonials">
+                <section id="testimonials" class="testimonials" style="height: 400px; width: 100%;">
                     <div class="container" data-aos="zoom-in">
 
                         <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
@@ -359,13 +359,8 @@
                                         </div>
                                     </div>
 
-                                    <div class="testimonial-item">
-                                        <img src="assets/img/assets/img/nitish.jpeg" class="testimonial-img" alt="">
-                                        <h3>Saul Goodman</h3>
-                                        <h4>Developer</h4>
-
-                                    </div>
-                                </div><!-- End testimonial item -->
+                                </div> 
+                               
 
                                 <div class="swiper-slide">
                                     <div class="testimonial-item">
@@ -375,13 +370,21 @@
 
                                     </div>
                                 </div><!-- End testimonial item -->
+                                <div class="swiper-slide">
+                                    <div class="testimonial-item">
+                                        <img src="assets/img/shouvik.jpeg" class="testimonial-img" alt="">
+                                        <h3>Shouvik Samadder</h3>
+                                        <h4>Developer</h4>
+
+                                    </div>
+                                </div><!-- End testimonial item -->
 
                                 <!-- End testimonial item -->
 
                                 <div class="swiper-slide">
                                     <div class="testimonial-item">
-                                        <img src="assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
-                                        <h3>Matt Brandon</h3>
+                                        <img src="assets/img/priyanka.jpeg" class="testimonial-img" alt="">
+                                        <h3>Priyanka Jiaswal</h3>
                                         <h4>Developer</h4>
 
                                     </div>
@@ -389,12 +392,20 @@
 
                                 <div class="swiper-slide">
                                     <div class="testimonial-item">
-                                        <img src="assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
-                                        <h3>John Larson</h3>
+                                        <img src="assets/img/shirshak.jpeg" class="testimonial-img" alt="">
+                                        <h3>Shirshak Banerjee</h3>
                                         <h4>Developer</h4>
 
                                     </div>
-                                </div><!-- End testimonial item -->
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="testimonial-item">
+                                        <img src="assets/img/anjali.jpeg" class="testimonial-img" alt="">
+                                        <h3>Anjali Kumari</h3>
+                                        <h4>Developer</h4>
+
+                                    </div><!-- comment -->
+                                </div>
 
                             </div>
                             <div class="swiper-pagination"></div>
