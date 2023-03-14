@@ -118,6 +118,19 @@
 
 
             </script>
+            <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    const dobInput = document.getElementById("dateofbirth");
+                    const ageInput = document.getElementById("age");
+
+                    dobInput.addEventListener("change", function () {
+                        const dob = new Date(this.value);
+                        const ageInMilliseconds = Date.now() - dob.getTime();
+                        const ageInYears = ageInMilliseconds / (1000 * 60 * 60 * 24 * 365.25);
+                        ageInput.value = Math.floor(ageInYears);
+                    });
+                });
+            </script>
 
             <body style="overflow-x:hidden;">
 
@@ -137,92 +150,85 @@
                         <div class="col-md-6" style="width: 550px">
                                 <h2 class="h2 mb-3 fw-normal" style="text-align: center;">Voter Sign-up</h2>
                             <main class="form-signin w-100 m-auto" >
-                                <div class="bordered">
-                                    <table>
-                                        <tr>
-                                        <form action="Signup" method="post" onsubmit="validateForm(event)"> 
-                                            <div class="form-floating">
-                                                <input type="text" class="form-control" id="aadhar" placeholder="Voter ID" name="voterId" pattern="[0-9]{5}" title="Should have five numbers only" >
-                                                <label for="aadhar">Voter ID</label>
-                                            </div>
-                                            <p></p>
+                                <form action="Signup" method="post" onsubmit="validateForm(event)"> 
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="aadhar" placeholder="Voter ID" name="voterId" pattern="[0-9]{5}" title="Should have five numbers only" required>
+                                        <label for="aadhar">Voter ID</label>
+                                    </div>
+                                    <p></p>
 
-                                            <div class="form-floating">
-                                                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="emailAddress">
-                                                <label for="floatingInput">Email address</label>
-                                            </div>
-                                            <p></p>
-                                            <div class="form-floating">
-                                                <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
-                                                <label for="floatingPassword">Password</label>
-                                                <span><i class="fas fa-eye-slash" id="togglePassword" onclick="togglePasswordVisibility('floatingPassword', 'togglePassword')"></i></span>
-                                            </div>
+                                    <div class="form-floating">
+                                        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="emailAddress" required>
+                                        <label for="floatingInput">Email address</label>
+                                    </div>
+                                    <p></p>
+                                    <div class="form-floating">
+                                        <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+                                        <label for="floatingPassword">Password</label>
+                                        <span><i class="fas fa-eye-slash" id="togglePassword" onclick="togglePasswordVisibility('floatingPassword', 'togglePassword')"></i></span>
+                                    </div>
 
-                                            <p></p>
-                                            <div class="form-floating">
-                                                <input type="password" class="form-control" id="floatingPassword2" placeholder="Password" name="password2">
-                                                <label for="floatingPassword2">Confirm Password</label>
-                                                <i class="far fa-eye-slash" id="password2-toggle" onclick="togglePasswordVisibility('floatingPassword2', 'password2-toggle')"></i>
-                                            </div>
-                                            <p></p>
+                                    <p></p>
+                                    <div class="form-floating">
+                                        <input type="password" class="form-control" id="floatingPassword2" placeholder="Password" name="password2">
+                                        <label for="floatingPassword2">Confirm Password</label>
+                                        <i class="far fa-eye-slash" id="password2-toggle" onclick="togglePasswordVisibility('floatingPassword2', 'password2-toggle')"></i>
+                                    </div>
+                                    <p></p>
 
 
-                                            <p></p>
+                                    <p></p>
 
 
-                                            <div class="form-floating">
-                                                <input type="text" class="form-control" id="firstName" placeholder="First Name" name="firstName" pattern="[A-Z][a-zA-Z]*" required title ="should start with uppercase">
-                                                <label for="firstName">First Name</label>
-                                            </div>
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="firstName" placeholder="First Name" name="firstName" pattern="[A-Z][a-zA-Z]*" required title ="should start with uppercase">
+                                        <label for="firstName">First Name</label>
+                                    </div>
 
-                                            <p></p>
-                                            <div class="form-floating">
-                                                <input type="text" class="form-control" id="lastName" placeholder="last name" name="lastName" pattern="[A-Z][a-zA-Z]*" required   title ="should start with uppercase">
-                                                <label for="firstName">Last Name</label>
-                                            </div>
-                                            <p></p>
-                                            <div class="form-floating">
-                                                <input class="form-control" name="dob" type="date" id="dateofbirth" placeholder="dd/mm/yyyy">
-                                                <label for="address">DOB</label>
-                                            </div>
-                                            <p></p>
-                                            <div class="form-floating">
-                                                <select name="gender" class="form-control" id="gender" required>
-                                                    <option value="" hidden>Select Gender</option>
-                                                    <option value="male"> Male  </option>
-                                                    <option value="female"> Female  </option>
-                                                </select>
-                                            </div>
-                                            <p></p>
-                                            <div class="form-floating">
-                                                <input type="number" class="form-control" id="age" placeholder="Age" name="age" min="18">
-                                                <label for="age">Age </label>
-                                            </div>
-                                            <p></p>
+                                    <p></p>
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="lastName" placeholder="last name" name="lastName" pattern="[A-Z][a-zA-Z]*" required   title ="should start with uppercase">
+                                        <label for="firstName">Last Name</label>
+                                    </div>
+                                    <p></p>
+                                    <div class="form-floating">
+                                        <select name="gender" class="form-control" id="gender" required>
+                                            <option value="" hidden>Select Gender</option>
+                                            <option value="male"> Male  </option>
+                                            <option value="female"> Female  </option>
+                                        </select>
+                                    </div>
+                                    <p></p>
+                                    <div class="form-floating">
+                                        <input class="form-control" name="dob" type="date" id="dateofbirth" placeholder="dd/mm/yyyy">
+                                        <label for="address">DOB</label>
+                                    </div>
+                                    <p></p>
+                                    <div class="form-floating">
+                                        <input type="number" class="form-control" id="age" placeholder="Age" name="age" min="18" >
+                                        <label for="age">Age </label>
+                                    </div>
+                                    <p></p>
+                                    <div class="form-floating">
+                                        <select name="state" class="form-control" id="stateName">
+                                            <option value="">Select State</option>
+                                        <c:forEach var="state" items="${StateList}">
+                                            <option value="${state.getStateName()}">
+                                                ${state.getStateName()}
+                                            </option>
+                                        </c:forEach>
+                                    </select>
+                                    <label for="floatingInput">State Name</label>
+                                </div>
+                                <p></p>
 
-                                            <div class="form-floating">
-                                                <select name="state" class="form-control" id="stateName">
-                                                    <option value="">Select State</option>
-                                                <c:forEach var="state" items="${StateList}">
-                                                    <option value="${state.getStateName()}">
-                                                        ${state.getStateName()}
-                                                    </option>
-                                                </c:forEach>
-                                            </select>
-                                            <label for="floatingInput">State Name</label>
-                                        </div>
-                                        <p></p>
 
-
-                                        <button class="w-100 btn btn-lg btn-info mb-2" type="submit">Sign Up</button>
-                                        <p></p>
-                                        <a href="logout.jsp">
-                                            <button type="button" class="w-100 btn btn-lg btn-secondary">Cancel</button>
-                                        </a>
-                                    </form>
-                                    </tr>
-                                </table>
-                            </div>
+                                <button class="w-100 btn btn-lg btn-info mb-2" type="submit">Sign Up</button>
+                                <p></p>
+                                <a href="logout.jsp">
+                                    <button type="button" class="w-100 btn btn-lg btn-secondary">Cancel</button>
+                                </a>
+                            </form>
                         </main>
                     </div>
                     <div class="col-md-6" style="padding-left: 50px;
@@ -264,7 +270,7 @@
             ================================================== -->
             <!-- Placed at the end of the document so the pages load faster -->
             <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-            <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+            <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>');</script>
             <script src="../../assets/js/vendor/popper.min.js"></script>
             <script src="../../dist/js/bootstrap.min.js"></script>
         </body>
