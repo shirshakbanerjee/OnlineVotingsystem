@@ -7,10 +7,14 @@ package com.exavalu.services;
 
 import com.exavalu.models.User;
 import com.exavalu.utils.JDBCConnectionManager;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
 import org.apache.log4j.Logger;
 
 /**
@@ -28,10 +32,24 @@ public class UserService {
         String sql = "Select * from users where emailAddress=? and password=?";
         
         try {
+            MessageDigest md = MessageDigest.getInstance("MD5");
+
+            // digest() method is called to calculate message digest
+            // of an input digest() return array of byte
+            byte[] messageDigest = md.digest(user.getPassword().getBytes());
+
+            // Convert byte array into signum representation
+            BigInteger no = new BigInteger(1, messageDigest);
+
+            // Convert message digest into hex value
+            String hashtext = no.toString(16);
+            while (hashtext.length() < 32) {
+                hashtext = "0" + hashtext;
+            }
             Connection con = JDBCConnectionManager.getConnection();
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, user.getEmailAddress());
-            ps.setString(2, user.getPassword());
+            ps.setString(2, hashtext);
             
             System.out.println("LoginService :: "+ps);
             
@@ -45,6 +63,8 @@ public class UserService {
         } catch (SQLException ex) {
             ex.printStackTrace();
             log.error("Error in doLogin sql statement "+ex);
+        } catch (NoSuchAlgorithmException ex) {
+            java.util.logging.Logger.getLogger(UserService.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         
@@ -55,6 +75,7 @@ public class UserService {
          String sql = "Select * from users where voterId=? ";
         User user = new User();
         try {
+            
             Connection con = JDBCConnectionManager.getConnection();
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, voterId);
@@ -87,6 +108,7 @@ public class UserService {
         String sql = "Select * from users where emailAddress=?";
         
         try {
+            
             Connection con = JDBCConnectionManager.getConnection();
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, user.getEmailAddress());
