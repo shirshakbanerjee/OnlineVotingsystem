@@ -11,8 +11,8 @@ import java.util.Properties;
 import org.apache.log4j.Logger;
 
 /**
+ * This class reads the property file for database name, passwords driverNames etc.
  *
- * @author Avijit Chattopadhyay
  */
 public class JDBCUtility {
     

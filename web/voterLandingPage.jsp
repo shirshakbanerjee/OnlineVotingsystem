@@ -71,20 +71,34 @@
 
         <div class="bg-container">
 
-            <c:set var="error" value="${VoteMsg}"/>
-            <c:if test="${error!=null}">
-                <div class="error-message" style="color: skyblue">
-                    ${error}
-                </div>
-            </c:if>
-            <c:if test="${error==null && voter.getVotingStatus()==1}">
-                <div class="error-message" style="color: skyblue">
-                    You have already voted!!
-                </div>
-            </c:if>
+
             <section id="featured-services" class="featured-services">
 
+                <c:set var="error" value="${VoteMsg}"/>
+                <c:if test="${error!=null}">
+                    <div class="error-message" style="color: blue">
+                        <h3>${error}</h3>
+                    </div>
+                </c:if>
+                <c:if test="${error==null && voter.getVotingStatus()==1}">
+                    <div class="alert-danger text-center btn-outline-dark bg-danger" style="color: #ccffff; border-radius: 10px; margin: 0 40%; font-size: 24px; animation: move 12s linear infinite;">
+                        You have already Voted!!
+                    </div>
 
+                    <style>
+                        @keyframes move {
+                            0% {
+                                transform: translateX(-100%);
+                            }
+                            50% {
+                                transform: translateX(100%);
+                            }
+                            100% {
+                                transform: translateX(-100%);
+                            }
+                        }
+                    </style>
+                </c:if>
                 <div class="container" data-aos="fade-up" style="margin-top: 50px;">
 
 
@@ -109,15 +123,15 @@
                             </div>
                         </c:forEach>
 
-                            <div style="margin-top: 50px; font-size: 17px">
-                        <h4>Instructions for Voter</h4>
-                        <ul>
-                            <li><p>You can vote only once. So choose your vote wisely.</p></li>
-                            <li><p>After your vote has been casted, the voting button will be disabled.</p></li>
-                            <li><p>We appreciate that you understand the power of one vote can make the difference.</p></li>
-                            <li><p>After voting you need to wait for the results. Don't worry you will be notified by email when the
-                                results are declared.</p></li>
-                        </ul>
+                        <div style="margin-top: 50px; font-size: 17px">
+                            <h4>Instructions for Voter</h4>
+                            <ul>
+                                <li><p>You can vote only once. So choose your vote wisely.</p></li>
+                                <li><p>After your vote has been casted, the voting button will be disabled.</p></li>
+                                <li><p>We appreciate that you understand the power of one vote can make the difference.</p></li>
+                                <li><p>After voting you need to wait for the results. Don't worry you will be notified by email when the
+                                        results are declared.</p></li>
+                            </ul>
 
                         </div>
 
