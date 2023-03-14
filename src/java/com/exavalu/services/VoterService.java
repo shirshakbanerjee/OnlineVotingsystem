@@ -4,23 +4,26 @@
  */
 package com.exavalu.services;
 
-
 import com.exavalu.models.Voter;
 import com.exavalu.utils.JDBCConnectionManager;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.logging.Level;
 import org.apache.log4j.Logger;
 
 /**
  * This is a Service for voters to get details of voter and cast vote.
- * 
+ *
  */
 public class VoterService {
-    
+
     static Logger log = Logger.getLogger(AdminService.class.getName());
 
     public static Voter getVoter(String voterId) {
@@ -54,11 +57,11 @@ public class VoterService {
 
         } catch (SQLException ex) {
             ex.printStackTrace();
-            log.error("Error in getVoter sql statement "+ex);
+            log.error("Error in getVoter sql statement " + ex);
         }
         return voter;
     }
-    
+
     public static Voter getVoter2(String voterId, String emailAddress) {
         Voter voter = new Voter();
 
@@ -90,7 +93,7 @@ public class VoterService {
 
         } catch (SQLException ex) {
             ex.printStackTrace();
-            log.error("Error in getVoter2 sql statement "+ex);
+            log.error("Error in getVoter2 sql statement " + ex);
         }
         return voter;
     }
@@ -118,7 +121,7 @@ public class VoterService {
 
         } catch (SQLException ex) {
             ex.printStackTrace();
-            log.error("Error in getStates sql statement "+ex);
+            log.error("Error in getStates sql statement " + ex);
         }
 
         return stateList;
@@ -132,12 +135,25 @@ public class VoterService {
                 + "VALUES(? ,? ,? ,? ,? ,? );";
 
         try {
+            MessageDigest md = MessageDigest.getInstance("MD5");
 
+            // digest() method is called to calculate message digest
+            // of an input digest() return array of byte
+            byte[] messageDigest = md.digest(password.getBytes());
+
+            // Convert byte array into signum representation
+            BigInteger no = new BigInteger(1, messageDigest);
+
+            // Convert message digest into hex value
+            String hashtext = no.toString(16);
+            while (hashtext.length() < 32) {
+                hashtext = "0" + hashtext;
+            }
             PreparedStatement preparedStatement = con.prepareStatement(sql);
             preparedStatement.setString(1, emailAddress);
             preparedStatement.setString(2, firstName);
             preparedStatement.setString(3, lastName);
-            preparedStatement.setString(4, password);
+            preparedStatement.setString(4, hashtext);
             preparedStatement.setInt(5, roleId);
             preparedStatement.setInt(6, voterId);
 
@@ -150,14 +166,16 @@ public class VoterService {
         } catch (SQLException ex) {
 
             ex.printStackTrace();
-            log.error("Error in doSignup1 sql statement "+ex);
+            log.error("Error in doSignup1 sql statement " + ex);
 
+        } catch (NoSuchAlgorithmException ex) {
+            java.util.logging.Logger.getLogger(VoterService.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         return result;
     }
 
-    public static boolean doSignup2(Voter voter) {
+    public static boolean doSignup2(Voter voter) throws NoSuchAlgorithmException {
         boolean result = false;
         Connection con = JDBCConnectionManager.getConnection();
 
@@ -165,13 +183,26 @@ public class VoterService {
                 + "VALUES(? ,? ,? ,? ,? ,?, ?, ?, ?);";
 
         try {
+            MessageDigest md = MessageDigest.getInstance("MD5");
 
+            // digest() method is called to calculate message digest
+            // of an input digest() return array of byte
+            byte[] messageDigest = md.digest(voter.getPassword().getBytes());
+
+            // Convert byte array into signum representation
+            BigInteger no = new BigInteger(1, messageDigest);
+
+            // Convert message digest into hex value
+            String hashtext = no.toString(16);
+            while (hashtext.length() < 32) {
+                hashtext = "0" + hashtext;
+            }
             PreparedStatement preparedStatement = con.prepareStatement(sql);
             preparedStatement.setInt(1, voter.getVoterId());
             preparedStatement.setString(2, voter.getFirstName());
             preparedStatement.setString(3, voter.getLastName());
             preparedStatement.setString(4, voter.getEmailAddress());
-            preparedStatement.setString(5, voter.getPassword());
+            preparedStatement.setString(5, hashtext);
             preparedStatement.setString(6, voter.getAge());
             preparedStatement.setString(7, voter.getDob());
             preparedStatement.setString(8, voter.getGender());
@@ -186,7 +217,7 @@ public class VoterService {
         } catch (SQLException ex) {
 
             ex.printStackTrace();
-            log.error("Error in doSignup2 sql statement "+ex);
+            log.error("Error in doSignup2 sql statement " + ex);
 
         }
 
@@ -221,7 +252,7 @@ public class VoterService {
 
         } catch (SQLException ex) {
             ex.printStackTrace();
-            log.error("Error in getAllVoters sql statement "+ex);
+            log.error("Error in getAllVoters sql statement " + ex);
         }
         System.err.println("Total rows:" + voterList.size());
         return voterList;
@@ -251,7 +282,7 @@ public class VoterService {
         } catch (SQLException ex) {
 
             ex.printStackTrace();
-            log.error("Error in doVoteService sql statement "+ex);
+            log.error("Error in doVoteService sql statement " + ex);
 
         }
 
@@ -276,7 +307,7 @@ public class VoterService {
 
         } catch (SQLException ex) {
             ex.printStackTrace();
-            log.error("Error in doVerification sql statement "+ex);
+            log.error("Error in doVerification sql statement " + ex);
         }
 
         return result;
@@ -302,7 +333,7 @@ public class VoterService {
 
         } catch (SQLException ex) {
             ex.printStackTrace();
-            log.error("Error in doAdminReject sql statement "+ex);
+            log.error("Error in doAdminReject sql statement " + ex);
         }
         return result;
     }
@@ -328,7 +359,7 @@ public class VoterService {
         } catch (SQLException ex) {
 
             ex.printStackTrace();
-            log.error("Error in voted sql statement "+ex);
+            log.error("Error in voted sql statement " + ex);
 
         }
 
@@ -343,23 +374,22 @@ public class VoterService {
         try {
 
             PreparedStatement preparedStatement = con.prepareStatement(sql);
-            
 
             ResultSet rs = preparedStatement.executeQuery();
 
-            while(rs.next()){
+            while (rs.next()) {
                 count = rs.getInt("Count");
             }
 
         } catch (SQLException ex) {
 
             ex.printStackTrace();
-            log.error("Error in dogetApproveVoter sql statement "+ex);
+            log.error("Error in dogetApproveVoter sql statement " + ex);
 
         }
         return count;
     }
-    
+
     public static int dogetRejectedVoter() {
         int countR = -500;
         Connection con = JDBCConnectionManager.getConnection();
@@ -368,23 +398,22 @@ public class VoterService {
         try {
 
             PreparedStatement preparedStatement = con.prepareStatement(sql);
-            
 
             ResultSet rs = preparedStatement.executeQuery();
 
-            while(rs.next()){
+            while (rs.next()) {
                 countR = rs.getInt("Count");
             }
 
         } catch (SQLException ex) {
 
             ex.printStackTrace();
-            log.error("Error in dogetRejectedVoter sql statement "+ex);
+            log.error("Error in dogetRejectedVoter sql statement " + ex);
 
         }
         return countR;
     }
-    
+
     public static int dogetPendingVoter() {
         int countP = -500;
         Connection con = JDBCConnectionManager.getConnection();
@@ -393,23 +422,22 @@ public class VoterService {
         try {
 
             PreparedStatement preparedStatement = con.prepareStatement(sql);
-            
 
             ResultSet rs = preparedStatement.executeQuery();
 
-            while(rs.next()){
+            while (rs.next()) {
                 countP = rs.getInt("Count");
             }
 
         } catch (SQLException ex) {
 
             ex.printStackTrace();
-            log.error("Error in dogetPendingVoter sql statement "+ex);
+            log.error("Error in dogetPendingVoter sql statement " + ex);
 
         }
         return countP;
     }
-    
+
     public static int dogetVoted() {
         int countV = -500;
         Connection con = JDBCConnectionManager.getConnection();
@@ -418,23 +446,22 @@ public class VoterService {
         try {
 
             PreparedStatement preparedStatement = con.prepareStatement(sql);
-            
 
             ResultSet rs = preparedStatement.executeQuery();
 
-            while(rs.next()){
+            while (rs.next()) {
                 countV = rs.getInt("Count");
             }
 
         } catch (SQLException ex) {
 
             ex.printStackTrace();
-            log.error("Error in dogetVoted sql statement "+ex);
+            log.error("Error in dogetVoted sql statement " + ex);
 
         }
         return countV;
     }
-    
+
     public static int dogetNotVoted() {
         int countN = -500;
         Connection con = JDBCConnectionManager.getConnection();
@@ -443,18 +470,17 @@ public class VoterService {
         try {
 
             PreparedStatement preparedStatement = con.prepareStatement(sql);
-            
 
             ResultSet rs = preparedStatement.executeQuery();
 
-            while(rs.next()){
+            while (rs.next()) {
                 countN = rs.getInt("Count");
             }
 
         } catch (SQLException ex) {
 
             ex.printStackTrace();
-            log.error("Error in dogetNotVoted sql statement "+ex);
+            log.error("Error in dogetNotVoted sql statement " + ex);
 
         }
         return countN;
