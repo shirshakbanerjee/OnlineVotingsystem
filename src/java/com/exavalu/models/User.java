@@ -176,7 +176,7 @@ public class User extends ActionSupport implements ApplicationAware, SessionAwar
 
         if (voter != null) {
             sessionMap.put("PVoter", voter);
-//            System.out.println("fnolid from underwrier if fnol!= null = " + this.voterId);
+
             result = "DETAILSOFVOTER";
         }
 

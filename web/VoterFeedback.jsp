@@ -200,10 +200,7 @@
                 </div>
                 <h3>Please Comment on Your Rating</h3>
                 <textarea rows="4"></textarea>
-
                 <button type="submit" href="landingPage.jsp">Submit</button>  
-
-
             </form>
         </div>
     </body>

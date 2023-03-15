@@ -23,9 +23,9 @@ import org.apache.log4j.Logger;
  */
 public class Email {
 
-  static String fromEmail = "electionindia1@gmail.com";
-    static String password = "xpzuioulpcdnlxdq";
-    static String userName = "electionindia1";
+ static String fromEmail = "nitishsah02@gmail.com";
+    static String password = "dopuncolmlxiocua";
+    static String userName = "nitishsah02";
 
     public static void sendEmailToRegisterUser(String toEmail, String first, String last) {
         String message = "Dear "+first.toUpperCase()+ " " +last.toUpperCase()+ ",\n" +" We would like to extend our warmest congratulations and gratitude to you for exercising your right to vote.\n"

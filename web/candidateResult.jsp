@@ -63,13 +63,7 @@
         </style>
     </head>
 
-
-
-    <!-- I want to check my session before showing any content to the user -->
-
     <body style="overflow: visible">
-
-        <!--        <div><h3 style="text-align: center; padding: 50px;text-decoration: underline">Candidate got vote from states:</h3></div>-->
         <div class="text-center d-flex align-items-center">
             <canvas id="pieChart2" style="width: 750px"></canvas>
         </div>
