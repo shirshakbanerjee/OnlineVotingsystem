@@ -6,8 +6,8 @@ import java.sql.SQLException;
 import org.apache.log4j.Logger;
 
 /**
+ * The Connection Manager (CM), which pools and manages connections within an application server.
  *
- * @author Avijit Chattopadhyay
  */
 public class JDBCConnectionManager {
     
