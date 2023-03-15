@@ -3,31 +3,16 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <!--        <link href="css/header.css" rel="stylesheet">-->
-        <!--        <link rel="stylesheet" href="assets/css/all.min.css">
-                <link rel="stylesheet" href="assets/css/reset-min.css">
-                <link rel="stylesheet" href="assets/css/algolia-min.css">-->
-        <!--        <link rel="stylesheet" href="assets/css/header.css">
-                <link rel="stylesheet" href="assets/css/docs.min.css">
-                <link rel="stylesheet" href="assets/css/index.css">
-                <link rel="stylesheet" href="assets/css/customstyle.css" >-->
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">       
         <link rel="icon" href="favicon.ico" type="image/x-icon"> <!-- Favicon-->
         <!-- project css file  -->
-        <link rel="stylesheet" href="assets/css/men.css">
-        <!--
-                <link href="assets/vendor/aos/aos.css" rel="stylesheet">-->
+        <link rel="stylesheet" href="assets/css/men.css">    
         <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-        <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-        <!--        <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-                <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-                <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">-->
-        <!--        <link href="assets/css/style.css" rel="stylesheet">-->
+        <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">      
         <link rel="shortcut icon" type="image/x-icon" href="assets/img/vote-icon.png">
         <title>Result Page</title>
         <style>
-            #table {
-                /*                display: block;*/
+            #table {               
                 height: 400px;
                 width: 100%;
                 overflow-y: scroll;

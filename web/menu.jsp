@@ -3,10 +3,7 @@
 <!doctype html>
 <html lang="en">
 
-    <head>
-        <!-- Favicons -->
-        <!--        <link href="assets/img/favicon1.png" rel="icon">
-                <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">-->
+    <head>      
         <link rel="shortcut icon" type="image/x-icon" href="assets/img/vote-icon.png">
         <!-- Google Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -25,36 +22,21 @@
 
     <body>
         <header id="header" class="d-flex align-items-center" >
-
-
-
-
             <nav id="navbar" class="navbar">
                 <h1 class="logo"><a href="index.html">Vote<span>India</span></a></h1>
                 <c:set value="${Voter}" var="voter"/>
                 <c:set value="${Admin}" var="admin"/>
                 <c:if test="${voter!=null}">
-
-                    <!--                <h1><b>VOTE<span>INDIA </span>
-                                        </b></h1>-->
-
                     <ul>
-<!--                        <li><a class="nav-link scrollto active text-white" href="#hero">HOME</a></li>-->
-
                         <li><a class="nav-link scrollto text-white" > WELCOME: ${voter.firstName}  ${voter.lastName}</a></li>
                         <li><a class="nav-link scrollto text-white" href="logout.jsp">LOGOUT</a></li>
-
                     </ul>
                     <i class="bi bi-list mobile-nav-toggle"></i>
                 </c:if>
-
-
                 <c:if test="${voter==null && admin==null}">
-
                     <ul>
                         <li><a class="nav-link scrollto text-white" href="landingPage.jsp">HOME</a></li>
-                        <li><a class="nav-link scrollto text-white" href="login.jsp">LOGIN</a></li>
-                        <!--<li><a class="nav-link scrollto text-white" href="PreSignup">Sign-up</a></li>-->
+                        <li><a class="nav-link scrollto text-white" href="login.jsp">LOGIN</a></li>                       
                         <li><a class="nav-link scrollto text-white" href="ShowResult">ELECTION RESULT</a></li>  
                         <li class="dropdown text-white"><a href="#"><span class="text-white">ABOUT US</span> <i class="bi bi-chevron-down"></i></a>
                             <ul>

@@ -92,10 +92,5 @@
         </c:if>
     </c:if>
     <p></p>
-    <button class="w-100 btn btn-lg btn-info mb-2" id="submitButton" type="submit">Submit</button>
-
-
-    <!--                                    <a href="Logout">
-                                            <button type="button" class="w-100 btn btn-lg btn-secondary">Cancel</button>
-                                        </a>-->
+    <button class="w-100 btn btn-lg btn-info mb-2" id="submitButton" type="submit">Submit</button>   
 </form>
