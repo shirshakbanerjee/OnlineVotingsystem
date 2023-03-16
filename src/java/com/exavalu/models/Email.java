@@ -4,9 +4,8 @@
  */
 package com.exavalu.models;
 
+import java.util.Locale;
 import java.util.Properties;
-import java.util.Random;
-import java.util.logging.Level;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
@@ -23,12 +22,14 @@ import org.apache.log4j.Logger;
  */
 public class Email {
 
- static String fromEmail = "nitishsah02@gmail.com";
+    static Logger log = Logger.getLogger(Email.class.getName());
+    static String fromEmail = "cleanandbuild@gmail.com";
     static String password = "dopuncolmlxiocua";
     static String userName = "nitishsah02";
-
+    
+    @SuppressWarnings("PMD")
     public static void sendEmailToRegisterUser(String toEmail, String first, String last) {
-        String message = "Dear "+first.toUpperCase()+ " " +last.toUpperCase()+ ",\n" +" We would like to extend our warmest congratulations and gratitude to you for exercising your right to vote.\n"
+        String message = "Dear " + first.toUpperCase(Locale.US) + " " + last.toUpperCase(Locale.US) + ",\n" + " We would like to extend our warmest congratulations and gratitude to you for exercising your right to vote.\n"
                 + " Your vote is a vital contribution to the democratic process,"
                 + " and we appreciate your participation in shaping our community's future.\n\n"
                 + "Regards,\nelectionindia1";
@@ -60,15 +61,16 @@ public class Email {
 
             Transport.send(mailMessage);
 
-        } catch (AddressException ex) {
-
+        }catch (AddressException ex) {
+            log.error("Error in Email " + ex);
         } catch (MessagingException ex) {
-
+            log.error("Error in Email " + ex);
         }
     }
-
+    
+    @SuppressWarnings("PMD")
     public static void sendEmailToCandidate(String toEmail, String first, String last) {
-        String message = "Dear " + first.toUpperCase() + " " + last.toUpperCase() + ",\n" + "We are here to inform you that the results of the election have been declared."
+        String message = "Dear " + first.toUpperCase(Locale.US) + " " + last.toUpperCase(Locale.US) + ",\n" + "We are here to inform you that the results of the election have been declared."
                 + " Regardless of the outcome, We want to congratulate "
                 + " you for putting yourselves forward as candidates and for participating in the democratic process.\n"
                 + "We want to express my appreciation for your efforts and commitment to your cause."
@@ -105,15 +107,13 @@ public class Email {
             Transport.send(mailMessage);
 
         } catch (AddressException ex) {
-
+            log.error("Error in sendEmailToCandidate " + ex);
         } catch (MessagingException ex) {
-
+            log.error("Error in sendEmailToCandidate " + ex);
         }
     }
-
-//    Random random = new Random(); 
-//     int otp = random.nextInt(999999);
-// 
+    
+    @SuppressWarnings("PMD")
     public void sendOTPToRegisterUser(String toEmail, int otp) {
         System.out.println("OTP" + otp);
         try {
@@ -145,14 +145,19 @@ public class Email {
             Transport.send(mailMessage);
 
         } catch (AddressException ex) {
-
+            if (log.isDebugEnabled()) {
+                log.error("Error in sendOTPToRegisterUser " + ex);
+            }
         } catch (MessagingException ex) {
-
+            if (log.isDebugEnabled()) {
+                log.error("Error in sendOTPToRegisterUser " + ex);
+            }
         }
     }
 
     private static Email email = null;
-
+    
+    @SuppressWarnings("PMD")
     public static Email getInstance() {
         if (email == null) {
             email = new Email();

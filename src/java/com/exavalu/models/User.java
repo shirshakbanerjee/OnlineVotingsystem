@@ -16,16 +16,14 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.Random;
-import org.apache.struts2.dispatcher.ApplicationMap;
 import org.apache.struts2.dispatcher.SessionMap;
-import org.apache.struts2.interceptor.ApplicationAware;
 import org.apache.struts2.interceptor.SessionAware;
 
 /**
  *
  * This model is used for user login.
  */
-public class User extends ActionSupport implements ApplicationAware, SessionAware, Serializable {
+public class User extends ActionSupport implements SessionAware, Serializable {
 
     private String emailAddress;
     private String firstName;
@@ -36,13 +34,6 @@ public class User extends ActionSupport implements ApplicationAware, SessionAwar
     private int otp;
 
     private SessionMap<String, Object> sessionMap = (SessionMap) ActionContext.getContext().getSession();
-
-    private ApplicationMap map = (ApplicationMap) ActionContext.getContext().getApplication();
-
-    @Override
-    public void setApplication(Map<String, Object> application) {
-        map = (ApplicationMap) application;
-    }
 
     @Override
     public void setSession(Map<String, Object> session) {
@@ -104,7 +95,8 @@ public class User extends ActionSupport implements ApplicationAware, SessionAwar
     public void setOtp(int otp) {
         this.otp = otp;
     }
-
+    
+    @SuppressWarnings("PMD")
     public String doLogin() throws Exception {
         String result = "FAILURE";
         //int x = UserService.doLogin(this);
@@ -146,7 +138,6 @@ public class User extends ActionSupport implements ApplicationAware, SessionAwar
         } else if (x == 1 && !this.voterId.equalsIgnoreCase("")) {
             result = "VOTER";
             Voter voter = VoterService.getVoter2(this.voterId, this.emailAddress);
-            //Email.getInstance().sendOTPToRegisterUser(this.emailAddress);
             System.out.println(voter.getFirstName());
             if (voter.getFirstName() == null) {
                 sessionMap.put("Error", "Wrong data!!");
@@ -176,7 +167,6 @@ public class User extends ActionSupport implements ApplicationAware, SessionAwar
 
         if (voter != null) {
             sessionMap.put("PVoter", voter);
-
             result = "DETAILSOFVOTER";
         }
 
@@ -188,7 +178,6 @@ public class User extends ActionSupport implements ApplicationAware, SessionAwar
         int otp1 = random.nextInt(999999);
 
         Email.getInstance().sendOTPToRegisterUser(this.emailAddress, otp1);
-        //int otp = Email.getInstance().getOTP();
         System.out.println("send OTP Triggered");
         System.out.println("OTP " + otp1);
         sessionMap.put("OTP", otp1);
