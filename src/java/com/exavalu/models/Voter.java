@@ -5,7 +5,7 @@
 package com.exavalu.models;
 
 
-import com.exavalu.services.UserService;
+//import com.exavalu.services.UserService;
 import com.exavalu.services.VoterService;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -13,15 +13,15 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Map;
-import org.apache.struts2.dispatcher.ApplicationMap;
+//import org.apache.struts2.dispatcher.ApplicationMap;
 import org.apache.struts2.dispatcher.SessionMap;
-import org.apache.struts2.interceptor.ApplicationAware;
+//import org.apache.struts2.interceptor.ApplicationAware;
 import org.apache.struts2.interceptor.SessionAware;
 
 /**
  * This model gets details of voter and cast vote. .
  */
-public class Voter extends ActionSupport implements ApplicationAware, SessionAware, Serializable {
+public class Voter extends ActionSupport implements SessionAware, Serializable {
 
     private int voterId;
     private String emailAddress;
@@ -41,12 +41,12 @@ public class Voter extends ActionSupport implements ApplicationAware, SessionAwa
 
     private SessionMap<String, Object> sessionMap = (SessionMap) ActionContext.getContext().getSession();
 
-    private ApplicationMap map = (ApplicationMap) ActionContext.getContext().getApplication();
-
-    @Override
-    public void setApplication(Map<String, Object> application) {
-        map = (ApplicationMap) application;
-    }
+//    private ApplicationMap map = (ApplicationMap) ActionContext.getContext().getApplication();
+//
+//    @Override
+//    public void setApplication(Map<String, Object> application) {
+//        map = (ApplicationMap) application;
+//    }
 
     @Override
     public void setSession(Map<String, Object> session) {

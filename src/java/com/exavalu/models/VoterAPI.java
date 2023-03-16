@@ -4,7 +4,7 @@
  */
 package com.exavalu.models;
 
-import com.exavalu.utils.JDBCUtility;
+//import com.exavalu.utils.JDBCUtility;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.io.BufferedReader;
@@ -12,14 +12,14 @@ import java.io.InputStreamReader;
 import java.io.Serializable;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
+//import java.util.ArrayList;
 import java.util.Map;
 
-import org.apache.struts2.dispatcher.ApplicationMap;
+//import org.apache.struts2.dispatcher.ApplicationMap;
 import org.apache.struts2.dispatcher.SessionMap;
-import org.apache.struts2.interceptor.ApplicationAware;
+//import org.apache.struts2.interceptor.ApplicationAware;
 import org.apache.struts2.interceptor.SessionAware;
-import java.util.ArrayList;
+//import java.util.ArrayList;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -28,18 +28,23 @@ import org.json.simple.parser.JSONParser;
  *
  * This model fetches API.
  */
-public class VoterAPI extends ActionSupport implements ApplicationAware, SessionAware, Serializable {
+public class VoterAPI extends ActionSupport implements SessionAware, Serializable {
 
-    private String voterId, firstName, lastName, gender, dob, state;
+    private String voterId;
+    private String firstName;
+    private String lastName;
+    private String gender;
+    private String dob;
+    private String state;
 
     private SessionMap<String, Object> sessionMap = (SessionMap) ActionContext.getContext().getSession();
 
-    private ApplicationMap map = (ApplicationMap) ActionContext.getContext().getApplication();
-
-    @Override
-    public void setApplication(Map<String, Object> application) {
-        map = (ApplicationMap) application;
-    }
+//    private ApplicationMap map = (ApplicationMap) ActionContext.getContext().getApplication();
+//
+//    @Override
+//    public void setApplication(Map<String, Object> application) {
+//        map = (ApplicationMap) application;
+//    }
 
     @Override
     public void setSession(Map<String, Object> session) {
@@ -130,43 +135,10 @@ public class VoterAPI extends ActionSupport implements ApplicationAware, Session
         this.state = state;
     }
 
-//    public String dofetchVoterApi() throws Exception {
-//        List<VoterAPI> arrPersons = new ArrayList<VoterAPI>();
-//        String result = "VOTERDETAILS";
-//        System.out.println(this.voterId);
-//        String url = "https://retoolapi.dev/Xc0N4Z/data";
-//
-//        HttpRequest postRequest = HttpRequest.newBuilder().uri(new URI(url)).build();
-//
-//        //creating client object to send request
-//        HttpClient httpClient = HttpClient.newHttpClient();
-//
-//        HttpResponse<String> postResponse = httpClient.send(postRequest, HttpResponse.BodyHandlers.ofString());
-//        //to get body of response
-//        
-//        System.out.println(postResponse.body());
-//        
-//        Gson gson = new Gson();
-//        JsonElement element = gson.toJsonTree(arrPersons, new TypeToken<List<Person>>() {
-//        }.getType());
-//
-//        if (!element.isJsonArray()) {
-//// fail appropriately
-//            throw new Exception();
-//        }
-//
-//        JsonArray jsonArray = element.getAsJsonArray();
-//        VoterAPI voterapi = new VoterAPI();
-//        System.out.println(jsonArray.size());
-//        voterapi = gson.fromJson(postResponse.body(), VoterAPI.class);
-//        System.out.println(voterapi);
-//        sessionMap.put("VoterAPI", voterapi);
-////        mapping,object
-//        return result;
-//    }
+
     public String dofetchVoterApi() throws Exception {
         String result = "VOTERDETAILS";
-        JDBCUtility jdbcUtility = JDBCUtility.getInstanceOfJDBCUtility();
+        //JDBCUtility jdbcUtility = JDBCUtility.getInstanceOfJDBCUtility();
         String apiUrl = "https://mocki.io/v1/01a741d9-6ea4-4a1a-8e08-b6e398bbe71e";
 
         URL obj = new URL(apiUrl);
@@ -179,11 +151,12 @@ public class VoterAPI extends ActionSupport implements ApplicationAware, Session
         System.out.println(this.voterId);
         System.out.println("\nSending 'GET' request to URL : " + apiUrl);
         System.out.println("Response Code : " + responseCode);
+        @SuppressWarnings("PMD")
         BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
         String inputLine;
         StringBuffer response = new StringBuffer();
-        int c = 0;
-        ArrayList userList = new ArrayList<>();
+//        int c = 0;
+//        ArrayList userList = new ArrayList<>();
         JSONParser parse = new JSONParser();
 
         while ((inputLine = in.readLine()) != null) {

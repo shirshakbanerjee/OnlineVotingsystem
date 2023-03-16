@@ -4,7 +4,7 @@
  */
 package com.exavalu.models;
 
-import com.exavalu.utils.JDBCUtility;
+//import com.exavalu.utils.JDBCUtility;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.io.BufferedReader;
@@ -12,11 +12,11 @@ import java.io.InputStreamReader;
 import java.io.Serializable;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
+//import java.util.ArrayList;
 import java.util.Map;
-import org.apache.struts2.dispatcher.ApplicationMap;
+//import org.apache.struts2.dispatcher.ApplicationMap;
 import org.apache.struts2.dispatcher.SessionMap;
-import org.apache.struts2.interceptor.ApplicationAware;
+//import org.apache.struts2.interceptor.ApplicationAware;
 import org.apache.struts2.interceptor.SessionAware;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -26,18 +26,25 @@ import org.json.simple.parser.JSONParser;
  *
  * This model fetches API..
  */
-public class CandidateAPI extends ActionSupport implements ApplicationAware, SessionAware, Serializable {
+public class CandidateAPI extends ActionSupport implements SessionAware, Serializable {
 
-    private String candidateId, firstName, lastName, partyName, age, gender, region, candidateEmail;
+private String candidateId;
+private String firstName;
+private String lastName;
+private String partyName;
+private String age;
+private String gender;
+private String region;
+private String candidateEmail;
 
     private SessionMap<String, Object> sessionMap = (SessionMap) ActionContext.getContext().getSession();
 
-    private ApplicationMap map = (ApplicationMap) ActionContext.getContext().getApplication();
-
-    @Override
-    public void setApplication(Map<String, Object> application) {
-        setMap((ApplicationMap) application);
-    }
+//    private ApplicationMap map = (ApplicationMap) ActionContext.getContext().getApplication();
+//
+//    @Override
+//    public void setApplication(Map<String, Object> application) {
+//        setMap((ApplicationMap) application);
+//    }
 
     @Override
     public void setSession(Map<String, Object> session) {
@@ -170,23 +177,11 @@ public class CandidateAPI extends ActionSupport implements ApplicationAware, Ses
         this.sessionMap = sessionMap;
     }
 
-    /**
-     * @return the map
-     */
-    public ApplicationMap getMap() {
-        return map;
-    }
-
-    /**
-     * @param map the map to set
-     */
-    public void setMap(ApplicationMap map) {
-        this.map = map;
-    }
+   
 
     public String dofetchCandidateApi() throws Exception {
         String result = "SUCCESS";
-        JDBCUtility jdbcUtility = JDBCUtility.getInstanceOfJDBCUtility();
+        //JDBCUtility jdbcUtility = JDBCUtility.getInstanceOfJDBCUtility();
         String apiUrl = "https://mocki.io/v1/2fd2b26a-854a-49e1-8f13-e830f4a7253b";
 
         URL obj = new URL(apiUrl);
@@ -199,11 +194,12 @@ public class CandidateAPI extends ActionSupport implements ApplicationAware, Ses
         System.out.println(this.candidateEmail);
         System.out.println("\nSending 'GET' request to URL : " + apiUrl);
         System.out.println("Response Code : " + responseCode);
+        @SuppressWarnings("PMD")
         BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
         String inputLine;
         StringBuffer response = new StringBuffer();
-        int c = 0;
-        ArrayList userList = new ArrayList<>();
+//        int c = 0;
+//        ArrayList userList = new ArrayList<>();
         JSONParser parse = new JSONParser();
 
         while ((inputLine = in.readLine()) != null) {
