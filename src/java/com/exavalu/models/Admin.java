@@ -11,16 +11,14 @@ import com.opensymphony.xwork2.ActionSupport;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Map;
-import org.apache.struts2.dispatcher.ApplicationMap;
 import org.apache.struts2.dispatcher.SessionMap;
-import org.apache.struts2.interceptor.ApplicationAware;
 import org.apache.struts2.interceptor.SessionAware;
 
 /**
  *
  * This model performs admin operations like adding,verifying candidates and voters.
  */
-public class Admin extends ActionSupport implements ApplicationAware, SessionAware, Serializable {
+public class Admin extends ActionSupport implements SessionAware, Serializable {
 
     private int adminId;
     private String emailAddress;
@@ -88,12 +86,12 @@ public class Admin extends ActionSupport implements ApplicationAware, SessionAwa
 
     private SessionMap<String, Object> sessionMap = (SessionMap) ActionContext.getContext().getSession();
 
-    private ApplicationMap map = (ApplicationMap) ActionContext.getContext().getApplication();
-
-    @Override
-    public void setApplication(Map<String, Object> application) {
-        map = (ApplicationMap) application;
-    }
+//    private ApplicationMap map = (ApplicationMap) ActionContext.getContext().getApplication();
+//
+//    @Override
+//    public void setApplication(Map<String, Object> application) {
+//        map = (ApplicationMap) application;
+//    }
 
     @Override
     public void setSession(Map<String, Object> session) {
@@ -105,12 +103,6 @@ public class Admin extends ActionSupport implements ApplicationAware, SessionAwa
         boolean success = AdminService.approveVoter(this.adminStatus, this.voterId);
         if (success) {
             System.out.println("Returning Success from doVerifyVoter method");
-
-//            if (Integer.parseInt(this.getAdminStatus()) == 1) {           
-//                result = "APPROVED";
-//            } else if (Integer.parseInt(this.getAdminStatus()) == 2) {
-//                result = "FAILURE";
-//            }
             ArrayList voterList = VoterService.getAllVoters();
             sessionMap.put("VoterList", voterList);
             result = "SUCCESS";
