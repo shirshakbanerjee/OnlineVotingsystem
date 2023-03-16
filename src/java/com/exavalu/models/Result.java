@@ -14,6 +14,7 @@ import java.sql.Time;
 //import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 //import org.apache.struts2.dispatcher.ApplicationMap;
 import org.apache.struts2.dispatcher.SessionMap;
@@ -272,7 +273,7 @@ public class Result extends ActionSupport implements SessionAware, Serializable 
         if (success && success2) {
             System.out.println("Returning success from seclare results");
             sessionMap.put("DeclareResultMsg", "Result Declared!!");
-            ArrayList<Candidate> candidateEmail = CandidateService.getAllCandidates();
+            List<Candidate> candidateEmail = CandidateService.getAllCandidates();
             Iterator itr = candidateEmail.iterator();
             while (itr.hasNext()) {
                 Candidate candidate = (Candidate) itr.next();

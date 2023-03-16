@@ -14,6 +14,7 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import org.apache.struts2.dispatcher.SessionMap;
@@ -118,7 +119,7 @@ public class User extends ActionSupport implements SessionAware, Serializable {
                 return "FAILURE";
             }
             sessionMap.put("Admin", admin);
-            ArrayList candidateList = CandidateService.getAllCandidates();
+            List<Candidate> candidateList = CandidateService.getAllCandidates();
             ArrayList partyList = PartyService.getAllParty();
             sessionMap.put("CandidateList", candidateList);
             sessionMap.put("PartyList", partyList);
@@ -153,7 +154,7 @@ public class User extends ActionSupport implements SessionAware, Serializable {
                 return "FAILURE";
             }
             sessionMap.put("Voter", voter);
-            ArrayList candidateList = CandidateService.getAllCandidates();
+            List<Candidate> candidateList = CandidateService.getAllCandidates();
             sessionMap.put("CandidateList", candidateList);
         }
 
@@ -188,7 +189,7 @@ public class User extends ActionSupport implements SessionAware, Serializable {
 
     public String showVoter() {
         String result = "SUCCESS";
-        ArrayList candidateList = CandidateService.getAllCandidates();
+        List<Candidate> candidateList = CandidateService.getAllCandidates();
         ArrayList partyList = PartyService.getAllParty();
         sessionMap.put("CandidateList", candidateList);
         sessionMap.put("PartyList", partyList);
