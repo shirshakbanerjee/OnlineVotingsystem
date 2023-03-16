@@ -15,6 +15,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import org.apache.log4j.Logger;
 
@@ -24,7 +25,7 @@ import org.apache.log4j.Logger;
  */
 public class VoterService {
 
-    static Logger log = Logger.getLogger(AdminService.class.getName());
+    private static final Logger log = Logger.getLogger(AdminService.class.getName());
 
     public static Voter getVoter(String voterId) {
         Voter voter = new Voter();
@@ -34,30 +35,34 @@ public class VoterService {
             String sql = "select * from voters "
                     + "where voterId = ?";
 
-            PreparedStatement preparedStatement = con.prepareStatement(sql);
-            preparedStatement.setInt(1, Integer.parseInt(voterId));
+            try (PreparedStatement preparedStatement = con.prepareStatement(sql)) {
+                preparedStatement.setInt(1, Integer.parseInt(voterId));
 
-            ResultSet rs = preparedStatement.executeQuery();
+                try (ResultSet rs = preparedStatement.executeQuery()) {
 
-            if (rs.next()) {
+                    if (rs.next()) {
 
-                voter.setVoterId(rs.getInt("voterId"));
-                voter.setFirstName(rs.getString("firstName"));
-                voter.setLastName(rs.getString("lastName"));
-                voter.setPassword(rs.getString("password"));
-                voter.setAge(rs.getString("age"));
-                voter.setGender(rs.getString("gender"));
-                voter.setState(rs.getString("state"));
-                voter.setAdminStatus(rs.getString("adminStatus"));
-                voter.setVotingStatus(rs.getString("votingStatus"));
-                voter.setDob(rs.getString("dob"));
-                voter.setEmailAddress(rs.getString("emailAddress"));
-                System.out.println(voter.getVoterId() + " Found!!!");
+                        voter.setVoterId(rs.getInt("voterId"));
+                        voter.setFirstName(rs.getString("firstName"));
+                        voter.setLastName(rs.getString("lastName"));
+                        voter.setPassword(rs.getString("password"));
+                        voter.setAge(rs.getString("age"));
+                        voter.setGender(rs.getString("gender"));
+                        voter.setState(rs.getString("state"));
+                        voter.setAdminStatus(rs.getString("adminStatus"));
+                        voter.setVotingStatus(rs.getString("votingStatus"));
+                        voter.setDob(rs.getString("dob"));
+                        voter.setEmailAddress(rs.getString("emailAddress"));
+                        System.out.println(voter.getVoterId() + " Found!!!");
+                    }
+                }
             }
-
         } catch (SQLException ex) {
-            ex.printStackTrace();
-            log.error("Error in getVoter sql statement " + ex);
+//            ex.printStackTrace();
+//            log.error("Error in getVoter sql statement " + ex);
+            if (log.isEnabledFor(org.apache.log4j.Level.ERROR)) {
+                log.error("Error in getVoter sql statement ", ex);
+            }
         }
         return voter;
     }
@@ -70,58 +75,68 @@ public class VoterService {
             String sql = "select * from voters "
                     + "where voterId = ? and emailAddress = ?";
 
-            PreparedStatement preparedStatement = con.prepareStatement(sql);
-            preparedStatement.setInt(1, Integer.parseInt(voterId));
-            preparedStatement.setString(2, emailAddress);
-            ResultSet rs = preparedStatement.executeQuery();
+            try (PreparedStatement preparedStatement = con.prepareStatement(sql)) {
+                preparedStatement.setInt(1, Integer.parseInt(voterId));
+                preparedStatement.setString(2, emailAddress);
+                try (ResultSet rs = preparedStatement.executeQuery()) {
 
-            if (rs.next()) {
+                    if (rs.next()) {
 
-                voter.setVoterId(rs.getInt("voterId"));
-                voter.setFirstName(rs.getString("firstName"));
-                voter.setLastName(rs.getString("lastName"));
-                voter.setPassword(rs.getString("password"));
-                voter.setAge(rs.getString("age"));
-                voter.setGender(rs.getString("gender"));
-                voter.setState(rs.getString("state"));
-                voter.setAdminStatus(rs.getString("adminStatus"));
-                voter.setVotingStatus(rs.getString("votingStatus"));
-                voter.setDob(rs.getString("dob"));
-                voter.setEmailAddress(rs.getString("emailAddress"));
-                System.out.println(voter.getVoterId() + " Found!!!");
+                        voter.setVoterId(rs.getInt("voterId"));
+                        voter.setFirstName(rs.getString("firstName"));
+                        voter.setLastName(rs.getString("lastName"));
+                        voter.setPassword(rs.getString("password"));
+                        voter.setAge(rs.getString("age"));
+                        voter.setGender(rs.getString("gender"));
+                        voter.setState(rs.getString("state"));
+                        voter.setAdminStatus(rs.getString("adminStatus"));
+                        voter.setVotingStatus(rs.getString("votingStatus"));
+                        voter.setDob(rs.getString("dob"));
+                        voter.setEmailAddress(rs.getString("emailAddress"));
+                        System.out.println(voter.getVoterId() + " Found!!!");
+                    }
+                }
             }
-
         } catch (SQLException ex) {
-            ex.printStackTrace();
-            log.error("Error in getVoter2 sql statement " + ex);
+//            ex.printStackTrace();
+//            log.error("Error in getVoter2 sql statement " + ex);
+            if (log.isEnabledFor(org.apache.log4j.Level.ERROR)) {
+                log.error("Error in getVoter2 sql statement ", ex);
+            }
         }
         return voter;
     }
 
-    public static ArrayList getStates() {
-        ArrayList stateList = new ArrayList();
+    public static List getStates() {
+        List<Voter> stateList = new ArrayList<Voter>();
         try {
 
             Connection con = JDBCConnectionManager.getConnection();
 
             String sql = "Select * from states";
 
-            PreparedStatement preparedStatement = con.prepareStatement(sql);
-            ResultSet rs = preparedStatement.executeQuery();
+            try (PreparedStatement preparedStatement = con.prepareStatement(sql)) {
+                try (ResultSet rs = preparedStatement.executeQuery()) {
 
-            while (rs.next()) {
-                Voter voter = new Voter();
+                    while (rs.next()) {
+                        Voter voter = new Voter();
 
-                voter.setStateCode(rs.getString("stateCode"));
-                voter.setStateName(rs.getString("stateName"));
+                        voter.setStateCode(rs.getString("stateCode"));
+                        voter.setStateName(rs.getString("stateName"));
 
-                stateList.add(voter);
+                        stateList.add(voter);
 
+                    }
+                }
             }
 
         } catch (SQLException ex) {
-            ex.printStackTrace();
-            log.error("Error in getStates sql statement " + ex);
+//            ex.printStackTrace();
+//            log.error("Error in getStates sql statement " + ex);
+            if (log.isEnabledFor(org.apache.log4j.Level.ERROR)) {
+                log.error("Error in getStates sql statement ", ex);
+            }
+
         }
 
         return stateList;
@@ -149,25 +164,28 @@ public class VoterService {
             while (hashtext.length() < 32) {
                 hashtext = "0" + hashtext;
             }
-            PreparedStatement preparedStatement = con.prepareStatement(sql);
-            preparedStatement.setString(1, emailAddress);
-            preparedStatement.setString(2, firstName);
-            preparedStatement.setString(3, lastName);
-            preparedStatement.setString(4, hashtext);
-            preparedStatement.setInt(5, roleId);
-            preparedStatement.setInt(6, voterId);
+            try (PreparedStatement preparedStatement = con.prepareStatement(sql)) {
+                preparedStatement.setString(1, emailAddress);
+                preparedStatement.setString(2, firstName);
+                preparedStatement.setString(3, lastName);
+                preparedStatement.setString(4, hashtext);
+                preparedStatement.setInt(5, roleId);
+                preparedStatement.setInt(6, voterId);
 
-            int rs = preparedStatement.executeUpdate();
+                int rs = preparedStatement.executeUpdate();
 
-            if (rs != 0) {
-                result = true;
+                if (rs != 0) {
+                    result = true;
+                }
             }
 
         } catch (SQLException ex) {
 
-            ex.printStackTrace();
-            log.error("Error in doSignup1 sql statement " + ex);
-
+//            ex.printStackTrace();
+//            log.error("Error in doSignup1 sql statement " + ex);
+            if (log.isEnabledFor(org.apache.log4j.Level.ERROR)) {
+                log.error("Error in doSignup1 sql statement", ex);
+            }
         } catch (NoSuchAlgorithmException ex) {
             java.util.logging.Logger.getLogger(VoterService.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -197,62 +215,70 @@ public class VoterService {
             while (hashtext.length() < 32) {
                 hashtext = "0" + hashtext;
             }
-            PreparedStatement preparedStatement = con.prepareStatement(sql);
-            preparedStatement.setInt(1, voter.getVoterId());
-            preparedStatement.setString(2, voter.getFirstName());
-            preparedStatement.setString(3, voter.getLastName());
-            preparedStatement.setString(4, voter.getEmailAddress());
-            preparedStatement.setString(5, hashtext);
-            preparedStatement.setString(6, voter.getAge());
-            preparedStatement.setString(7, voter.getDob());
-            preparedStatement.setString(8, voter.getGender());
-            preparedStatement.setString(9, voter.getState());
+            try (PreparedStatement preparedStatement = con.prepareStatement(sql)) {
+                preparedStatement.setInt(1, voter.getVoterId());
+                preparedStatement.setString(2, voter.getFirstName());
+                preparedStatement.setString(3, voter.getLastName());
+                preparedStatement.setString(4, voter.getEmailAddress());
+                preparedStatement.setString(5, hashtext);
+                preparedStatement.setString(6, voter.getAge());
+                preparedStatement.setString(7, voter.getDob());
+                preparedStatement.setString(8, voter.getGender());
+                preparedStatement.setString(9, voter.getState());
 
-            int rs = preparedStatement.executeUpdate();
+                int rs = preparedStatement.executeUpdate();
 
-            if (rs != 0) {
-                result = true;
+                if (rs != 0) {
+                    result = true;
+                }
             }
 
         } catch (SQLException ex) {
 
-            ex.printStackTrace();
-            log.error("Error in doSignup2 sql statement " + ex);
-
+//            ex.printStackTrace();
+//            log.error("Error in doSignup2 sql statement " + ex);
+            if (log.isEnabledFor(org.apache.log4j.Level.ERROR)) {
+                log.error("Error in doSignup2 sql statement", ex);
+            }
         }
 
         return result;
     }
 
-    public static ArrayList getAllVoters() {
-        ArrayList voterList = new ArrayList();
+    public static List getAllVoters() {
+        List<Voter> voterList = new ArrayList<Voter>();
         String sql = "Select * from voters";
         try {
             Connection con = JDBCConnectionManager.getConnection();
-            PreparedStatement ps = con.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
+            try (PreparedStatement ps = con.prepareStatement(sql)) {
+                try (ResultSet rs = ps.executeQuery()) {
 
-            while (rs.next()) {
-                Voter voter = new Voter();
+                    while (rs.next()) {
+                        Voter voter = new Voter();
 
-                voter.setVoterId(rs.getInt("voterId"));
-                voter.setFirstName(rs.getString("firstName"));
-                voter.setLastName(rs.getString("lastName"));
-                voter.setEmailAddress(rs.getString("emailAddress"));
-                voter.setPassword(rs.getString("password"));
-                voter.setAge(rs.getString("age"));
-                voter.setGender(rs.getString("gender"));
-                voter.setState(rs.getString("state"));
-                voter.setAdminStatus(rs.getString("adminStatus"));
-                voter.setVotingStatus(rs.getString("votingStatus"));
-                voter.setDob(rs.getString("dob"));
+                        voter.setVoterId(rs.getInt("voterId"));
+                        voter.setFirstName(rs.getString("firstName"));
+                        voter.setLastName(rs.getString("lastName"));
+                        voter.setEmailAddress(rs.getString("emailAddress"));
+                        voter.setPassword(rs.getString("password"));
+                        voter.setAge(rs.getString("age"));
+                        voter.setGender(rs.getString("gender"));
+                        voter.setState(rs.getString("state"));
+                        voter.setAdminStatus(rs.getString("adminStatus"));
+                        voter.setVotingStatus(rs.getString("votingStatus"));
+                        voter.setDob(rs.getString("dob"));
 
-                voterList.add(voter);
+                        voterList.add(voter);
+                    }
+                }
             }
 
         } catch (SQLException ex) {
-            ex.printStackTrace();
-            log.error("Error in getAllVoters sql statement " + ex);
+//            ex.printStackTrace();
+//            log.error("Error in getAllVoters sql statement " + ex);
+            if (log.isEnabledFor(org.apache.log4j.Level.ERROR)) {
+                log.error("Error in getAllVoters sql statement", ex);
+            }
         }
         System.err.println("Total rows:" + voterList.size());
         return voterList;
@@ -267,22 +293,26 @@ public class VoterService {
 
         try {
 
-            PreparedStatement preparedStatement = con.prepareStatement(sql);
-            preparedStatement.setInt(1, voter.getVoterId());
-            preparedStatement.setString(2, voter.getState());
-            preparedStatement.setString(3, voter.getCandidateId());
-            preparedStatement.setObject(4, LocalDateTime.now());
+            try (PreparedStatement preparedStatement = con.prepareStatement(sql)) {
+                preparedStatement.setInt(1, voter.getVoterId());
+                preparedStatement.setString(2, voter.getState());
+                preparedStatement.setString(3, voter.getCandidateId());
+                preparedStatement.setObject(4, LocalDateTime.now());
 
-            int rs = preparedStatement.executeUpdate();
+                int rs = preparedStatement.executeUpdate();
 
-            if (rs != 0) {
-                result = true;
+                if (rs != 0) {
+                    result = true;
+                }
             }
 
         } catch (SQLException ex) {
 
-            ex.printStackTrace();
-            log.error("Error in doVoteService sql statement " + ex);
+//            ex.printStackTrace();
+//            log.error("Error in doVoteService sql statement " + ex);
+            if (log.isEnabledFor(org.apache.log4j.Level.ERROR)) {
+                log.error("Error in doVoteService sql statement", ex);
+            }
 
         }
 
@@ -295,19 +325,23 @@ public class VoterService {
             Connection con = JDBCConnectionManager.getConnection();
             String sql = "UPDATE voters SET adminStatus = 1 WHERE voterId = ?";
 
-            PreparedStatement preparedStatement = con.prepareStatement(sql);
+            try (PreparedStatement preparedStatement = con.prepareStatement(sql)) {
 
-            preparedStatement.setString(1, voterId);
+                preparedStatement.setString(1, voterId);
 
-            int row = preparedStatement.executeUpdate();
+                int row = preparedStatement.executeUpdate();
 
-            if (row == 1) {
-                result = true;
+                if (row == 1) {
+                    result = true;
+                }
             }
 
         } catch (SQLException ex) {
-            ex.printStackTrace();
-            log.error("Error in doVerification sql statement " + ex);
+//            ex.printStackTrace();
+//            log.error("Error in doVerification sql statement " + ex);
+            if (log.isEnabledFor(org.apache.log4j.Level.ERROR)) {
+                log.error("Error in doVerification sql statement  ", ex);
+            }
         }
 
         return result;
@@ -321,19 +355,23 @@ public class VoterService {
 
             String sql = "UPDATE voters SET adminStatus = 2 WHERE voterId = ?";
 
-            PreparedStatement preparedStatement = con.prepareStatement(sql);
+            try (PreparedStatement preparedStatement = con.prepareStatement(sql)) {
 
-            preparedStatement.setString(1, voterId);
+                preparedStatement.setString(1, voterId);
 
-            int row = preparedStatement.executeUpdate();
+                int row = preparedStatement.executeUpdate();
 
-            if (row == 1) {
-                result = true;
+                if (row == 1) {
+                    result = true;
+                }
             }
 
         } catch (SQLException ex) {
-            ex.printStackTrace();
-            log.error("Error in doAdminReject sql statement " + ex);
+//            ex.printStackTrace();
+//            log.error("Error in doAdminReject sql statement " + ex);
+            if (log.isEnabledFor(org.apache.log4j.Level.ERROR)) {
+                log.error("Error in doAdminReject sql statement ", ex);
+            }
         }
         return result;
     }
@@ -346,7 +384,7 @@ public class VoterService {
 
         try {
 
-            PreparedStatement preparedStatement = con.prepareStatement(sql);
+            try(PreparedStatement preparedStatement = con.prepareStatement(sql)){
             preparedStatement.setString(1, "1");
             preparedStatement.setInt(2, voterId);
 
@@ -355,12 +393,15 @@ public class VoterService {
             if (rs != 0) {
                 result = true;
             }
+            }
 
         } catch (SQLException ex) {
 
-            ex.printStackTrace();
-            log.error("Error in voted sql statement " + ex);
-
+//            ex.printStackTrace();
+//            log.error("Error in voted sql statement " + ex);
+            if (log.isEnabledFor(org.apache.log4j.Level.ERROR)) {
+                log.error("Error in voted sql statement", ex);
+            }
         }
 
         return result;
@@ -373,18 +414,23 @@ public class VoterService {
         String sql = "SELECT COUNT(*) as Count FROM voters WHERE adminStatus = '1'";
         try {
 
-            PreparedStatement preparedStatement = con.prepareStatement(sql);
+            try (PreparedStatement preparedStatement = con.prepareStatement(sql)) {
 
-            ResultSet rs = preparedStatement.executeQuery();
+                try (ResultSet rs = preparedStatement.executeQuery()) {
 
-            while (rs.next()) {
-                count = rs.getInt("Count");
+                    while (rs.next()) {
+                        count = rs.getInt("Count");
+                    }
+                }
             }
 
         } catch (SQLException ex) {
 
-            ex.printStackTrace();
-            log.error("Error in dogetApproveVoter sql statement " + ex);
+//            ex.printStackTrace();
+//            log.error("Error in dogetApproveVoter sql statement " + ex);
+            if (log.isEnabledFor(org.apache.log4j.Level.ERROR)) {
+                log.error("Error in dogetApproveVoter sql statement", ex);
+            }
 
         }
         return count;
@@ -397,18 +443,23 @@ public class VoterService {
         String sql = "SELECT COUNT(*) as Count FROM voters WHERE adminStatus = '2'";
         try {
 
-            PreparedStatement preparedStatement = con.prepareStatement(sql);
+            try (PreparedStatement preparedStatement = con.prepareStatement(sql)) {
 
-            ResultSet rs = preparedStatement.executeQuery();
+                try (ResultSet rs = preparedStatement.executeQuery()) {
 
-            while (rs.next()) {
-                countR = rs.getInt("Count");
+                    while (rs.next()) {
+                        countR = rs.getInt("Count");
+                    }
+                }
             }
 
         } catch (SQLException ex) {
 
-            ex.printStackTrace();
-            log.error("Error in dogetRejectedVoter sql statement " + ex);
+//            ex.printStackTrace();
+//            log.error("Error in dogetRejectedVoter sql statement " + ex);
+            if (log.isEnabledFor(org.apache.log4j.Level.ERROR)) {
+                log.error("Error in dogetRejectedVoter sql statement", ex);
+            }
 
         }
         return countR;
@@ -421,19 +472,23 @@ public class VoterService {
         String sql = "SELECT COUNT(*) as Count FROM voters WHERE adminStatus = '0'";
         try {
 
-            PreparedStatement preparedStatement = con.prepareStatement(sql);
+            try (PreparedStatement preparedStatement = con.prepareStatement(sql)) {
 
-            ResultSet rs = preparedStatement.executeQuery();
+                try (ResultSet rs = preparedStatement.executeQuery()) {
 
-            while (rs.next()) {
-                countP = rs.getInt("Count");
+                    while (rs.next()) {
+                        countP = rs.getInt("Count");
+                    }
+                }
             }
 
         } catch (SQLException ex) {
 
-            ex.printStackTrace();
-            log.error("Error in dogetPendingVoter sql statement " + ex);
-
+//            ex.printStackTrace();
+//            log.error("Error in dogetPendingVoter sql statement " + ex);
+            if (log.isEnabledFor(org.apache.log4j.Level.ERROR)) {
+                log.error("Error in dogetPendingVoter sql statement", ex);
+            }
         }
         return countP;
     }
@@ -445,18 +500,22 @@ public class VoterService {
         String sql = "SELECT COUNT(*) as count FROM voters WHERE votingStatus = '1'";
         try {
 
-            PreparedStatement preparedStatement = con.prepareStatement(sql);
+            try (PreparedStatement preparedStatement = con.prepareStatement(sql)) {
 
-            ResultSet rs = preparedStatement.executeQuery();
+                try (ResultSet rs = preparedStatement.executeQuery()) {
 
-            while (rs.next()) {
-                countV = rs.getInt("Count");
+                    while (rs.next()) {
+                        countV = rs.getInt("Count");
+                    }
+                }
             }
-
         } catch (SQLException ex) {
 
-            ex.printStackTrace();
-            log.error("Error in dogetVoted sql statement " + ex);
+//            ex.printStackTrace();
+//            log.error("Error in dogetVoted sql statement " + ex);
+            if (log.isEnabledFor(org.apache.log4j.Level.ERROR)) {
+                log.error("Error in dogetVoted sql statement ", ex);
+            }
 
         }
         return countV;
@@ -469,18 +528,23 @@ public class VoterService {
         String sql = "SELECT COUNT(*) as count FROM voters WHERE votingStatus = '0'";
         try {
 
-            PreparedStatement preparedStatement = con.prepareStatement(sql);
+            try (PreparedStatement preparedStatement = con.prepareStatement(sql)) {
 
-            ResultSet rs = preparedStatement.executeQuery();
+                try (ResultSet rs = preparedStatement.executeQuery()) {
 
-            while (rs.next()) {
-                countN = rs.getInt("Count");
+                    while (rs.next()) {
+                        countN = rs.getInt("Count");
+                    }
+                }
             }
 
         } catch (SQLException ex) {
 
-            ex.printStackTrace();
-            log.error("Error in dogetNotVoted sql statement " + ex);
+//            ex.printStackTrace();
+//            log.error("Error in dogetNotVoted sql statement " + ex);
+            if (log.isEnabledFor(org.apache.log4j.Level.ERROR)) {
+                log.error("Error in dogetNotVoted sql statement ", ex);
+            }
 
         }
         return countN;
