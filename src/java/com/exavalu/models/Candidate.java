@@ -120,7 +120,7 @@ public class Candidate extends ActionSupport implements SessionAware, Serializab
         if (success) {
             result = "SUCCESS";
             System.out.println("Returning success from doInsert candidate");
-            ArrayList candidateList = CandidateService.getAllCandidates();           
+            List<Candidate> candidateList = CandidateService.getAllCandidates();           
             sessionMap.put("CandidateList", candidateList);            
         } else {
             System.out.println("Returning failure from doInsert candidate");
@@ -148,7 +148,7 @@ public class Candidate extends ActionSupport implements SessionAware, Serializab
 
     public String showCandidate() throws Exception {
         String res = "FAILURE";
-        ArrayList candidate = CandidateService.getAllCandidates();
+        List<Candidate> candidate = CandidateService.getAllCandidates();
 
         if (!candidate.isEmpty()) {
             sessionMap.put("CandidateList", candidate);
@@ -174,7 +174,7 @@ public class Candidate extends ActionSupport implements SessionAware, Serializab
         String res = "FAILURE";
         boolean result = CandidateService.deleteCandidate(this.candidateId);
 
-        ArrayList candidateList = CandidateService.getAllCandidates();
+        List<Candidate> candidateList = CandidateService.getAllCandidates();
         System.out.println(result);
         if (result) {
             sessionMap.put("CandidateList", candidateList);
@@ -201,7 +201,7 @@ public class Candidate extends ActionSupport implements SessionAware, Serializab
         if (success) {
             System.out.println("returning Success from doSave method");
             result = "SUCCESS";
-            ArrayList candidateList = CandidateService.getAllCandidates();
+            List<Candidate> candidateList = CandidateService.getAllCandidates();
             sessionMap.put("CandidateList", candidateList);
         } else {
             System.out.println("returning Failure from doSave method");

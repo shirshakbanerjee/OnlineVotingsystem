@@ -119,8 +119,9 @@ public class User extends ActionSupport implements SessionAware, Serializable {
                 return "FAILURE";
             }
             sessionMap.put("Admin", admin);
-            ArrayList candidateList = CandidateService.getAllCandidates();
+            List<Candidate> candidateList = CandidateService.getAllCandidates();
             List<Party> partyList = PartyService.getAllParty();
+
             sessionMap.put("CandidateList", candidateList);
             sessionMap.put("PartyList", partyList);
             List<Voter> voterList = VoterService.getAllVoters();
@@ -154,7 +155,7 @@ public class User extends ActionSupport implements SessionAware, Serializable {
                 return "FAILURE";
             }
             sessionMap.put("Voter", voter);
-            ArrayList candidateList = CandidateService.getAllCandidates();
+            List<Candidate> candidateList = CandidateService.getAllCandidates();
             sessionMap.put("CandidateList", candidateList);
         }
 
@@ -189,8 +190,9 @@ public class User extends ActionSupport implements SessionAware, Serializable {
 
     public String showVoter() {
         String result = "SUCCESS";
-        ArrayList candidateList = CandidateService.getAllCandidates();
+        List<Candidate> candidateList = CandidateService.getAllCandidates();
         List<Party> partyList = PartyService.getAllParty();
+
         sessionMap.put("CandidateList", candidateList);
         sessionMap.put("PartyList", partyList);
         List<Voter> voterList = VoterService.getAllVoters();
