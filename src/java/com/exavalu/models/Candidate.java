@@ -13,6 +13,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import java.io.File;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 //import org.apache.struts2.dispatcher.ApplicationMap;
 import org.apache.struts2.dispatcher.SessionMap;
@@ -221,9 +222,9 @@ public class Candidate extends ActionSupport implements SessionAware, Serializab
     
     public String doPreInsertCandidate() throws Exception {
         String result = "SUCCESS";
-        ArrayList stateList = VoterService.getStates();
+        List<Voter> stateList = VoterService.getStates();
         sessionMap.put("StateList", stateList);
-        ArrayList partyList = PartyService.getAllParty();
+        List<Party> partyList = PartyService.getAllParty();
         sessionMap.put("PartyList", partyList);
         return result;
     }
