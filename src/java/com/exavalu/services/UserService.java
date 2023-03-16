@@ -4,7 +4,6 @@
  */
 package com.exavalu.services;
 
-
 import com.exavalu.models.User;
 import com.exavalu.utils.JDBCConnectionManager;
 import java.math.BigInteger;
@@ -22,15 +21,15 @@ import org.apache.log4j.Logger;
  * This is Candidate Service
  */
 public class UserService {
-    
-    static Logger log = Logger.getLogger(AdminService.class.getName());
+
+    private static final Logger log = Logger.getLogger(AdminService.class.getName());
 
     public static int doLogin(User user) {
-        
+
         int success = 100;
-        
+
         String sql = "Select * from users where emailAddress=? and password=?";
-        
+
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
 
@@ -47,89 +46,96 @@ public class UserService {
                 hashtext = "0" + hashtext;
             }
             Connection con = JDBCConnectionManager.getConnection();
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, user.getEmailAddress());
-            ps.setString(2, hashtext);
-            
-            System.out.println("LoginService :: "+ps);
-            
-            ResultSet rs = ps.executeQuery();
-            
-            if(rs.next())
-            {
-                success = rs.getInt("roleId");
+            try (PreparedStatement ps = con.prepareStatement(sql)) {
+                ps.setString(1, user.getEmailAddress());
+                ps.setString(2, hashtext);
+
+                System.out.println("LoginService :: " + ps);
+
+                try (ResultSet rs = ps.executeQuery()) {
+
+                    if (rs.next()) {
+                        success = rs.getInt("roleId");
+                    }
+                }
             }
-            
+
         } catch (SQLException ex) {
-            ex.printStackTrace();
-            log.error("Error in doLogin sql statement "+ex);
+            if (log.isEnabledFor(org.apache.log4j.Level.ERROR)) {
+                log.error("Error in doLogin sql statement", ex);
+            }
+//            ex.printStackTrace();
+//            log.error("Error in doLogin sql statement "+ex);
         } catch (NoSuchAlgorithmException ex) {
             java.util.logging.Logger.getLogger(UserService.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
+
         return success;
     }
 
     public static User getUser(int voterId) {
-         String sql = "Select * from users where voterId=? ";
+        String sql = "Select * from users where voterId=? ";
         User user = new User();
         try {
-            
+
             Connection con = JDBCConnectionManager.getConnection();
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, voterId);
-            
-            
-            System.out.println("LoginService :: "+ps);
-            
-            ResultSet rs = ps.executeQuery();
-            
-            if(rs.next())
-            {
-                
-                user.setEmailAddress(rs.getString("emailAddress"));
-                
+            try (PreparedStatement ps = con.prepareStatement(sql)) {
+                ps.setInt(1, voterId);
+
+                System.out.println("LoginService :: " + ps);
+
+                try (ResultSet rs = ps.executeQuery()) {
+
+                    if (rs.next()) {
+
+                        user.setEmailAddress(rs.getString("emailAddress"));
+
+                    }
+                }
             }
-            
+
         } catch (SQLException ex) {
-            ex.printStackTrace();
-            log.error("Error in getUser sql statement "+ex);
+            if (log.isEnabledFor(org.apache.log4j.Level.ERROR)) {
+                log.error("Error in getUser sql statement", ex);
+            }
+//            ex.printStackTrace();
+//            log.error("Error in getUser sql statement "+ex);
         }
-        
-        
+
         return user;
     }
-    
+
     public static int doLogin2(User user) {
-        
+
         int success = 0;
-        
+
         String sql = "Select * from users where emailAddress=?";
-        
+
         try {
-            
+
             Connection con = JDBCConnectionManager.getConnection();
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, user.getEmailAddress());
-           
-            
-            System.out.println("LoginService :: "+ps);
-            
-            ResultSet rs = ps.executeQuery();
-            
-            if(rs.next())
-            {
-                success = rs.getInt("roleId");
+            try (PreparedStatement ps = con.prepareStatement(sql)) {
+                ps.setString(1, user.getEmailAddress());
+
+                System.out.println("LoginService :: " + ps);
+
+                try (ResultSet rs = ps.executeQuery()) {
+
+                    if (rs.next()) {
+                        success = rs.getInt("roleId");
+                    }
+                }
             }
-            
+
         } catch (SQLException ex) {
-            ex.printStackTrace();
-            log.error("Error in doLogin2 sql statement "+ex);
+            if (log.isEnabledFor(org.apache.log4j.Level.ERROR)) {
+                log.error("Error in doLogin2 sql statement", ex);
+            }
+//            ex.printStackTrace();
+//            log.error("Error in doLogin2 sql statement "+ex);
         }
-        
-        
+
         return success;
     }
-    
+
 }

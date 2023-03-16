@@ -12,6 +12,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 //import org.apache.struts2.dispatcher.ApplicationMap;
 import org.apache.struts2.dispatcher.SessionMap;
@@ -175,7 +176,7 @@ public class Voter extends ActionSupport implements SessionAware, Serializable {
 
     public String doPreSignup() throws Exception {
         String result = "SUCCESS";
-        ArrayList stateList = VoterService.getStates();
+        List<Voter> stateList = VoterService.getStates();
         sessionMap.put("StateList", stateList);
 
         return result;

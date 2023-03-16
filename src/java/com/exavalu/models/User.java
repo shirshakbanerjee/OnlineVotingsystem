@@ -120,10 +120,11 @@ public class User extends ActionSupport implements SessionAware, Serializable {
             }
             sessionMap.put("Admin", admin);
             List<Candidate> candidateList = CandidateService.getAllCandidates();
-            ArrayList partyList = PartyService.getAllParty();
+            List<Party> partyList = PartyService.getAllParty();
+
             sessionMap.put("CandidateList", candidateList);
             sessionMap.put("PartyList", partyList);
-            ArrayList voterList = VoterService.getAllVoters();
+            List<Voter> voterList = VoterService.getAllVoters();
             sessionMap.put("VoterList", voterList);
             sessionMap.put("totalVoters", voterList.size());
             int verification = VoterService.dogetApproveVoter();
@@ -190,10 +191,11 @@ public class User extends ActionSupport implements SessionAware, Serializable {
     public String showVoter() {
         String result = "SUCCESS";
         List<Candidate> candidateList = CandidateService.getAllCandidates();
-        ArrayList partyList = PartyService.getAllParty();
+        List<Party> partyList = PartyService.getAllParty();
+
         sessionMap.put("CandidateList", candidateList);
         sessionMap.put("PartyList", partyList);
-        ArrayList voterList = VoterService.getAllVoters();
+        List<Voter> voterList = VoterService.getAllVoters();
         sessionMap.put("VoterList", voterList);
         sessionMap.put("totalVoters", voterList.size());
         int verification = VoterService.dogetApproveVoter();

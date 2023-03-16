@@ -222,9 +222,9 @@ public class Candidate extends ActionSupport implements SessionAware, Serializab
     
     public String doPreInsertCandidate() throws Exception {
         String result = "SUCCESS";
-        ArrayList stateList = VoterService.getStates();
+        List<Voter> stateList = VoterService.getStates();
         sessionMap.put("StateList", stateList);
-        ArrayList partyList = PartyService.getAllParty();
+        List<Party> partyList = PartyService.getAllParty();
         sessionMap.put("PartyList", partyList);
         return result;
     }

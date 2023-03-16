@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import org.apache.log4j.Logger;
 
 /**
@@ -18,29 +19,33 @@ import org.apache.log4j.Logger;
  * This is Party Service
  */
 public class PartyService {
-    
-    static Logger log = Logger.getLogger(PartyService.class.getName());
-    
-    public static ArrayList getAllParty() {
-        ArrayList partyList = new ArrayList();
-        try (Connection con = JDBCConnectionManager.getConnection()){
+
+    private static final Logger log = Logger.getLogger(PartyService.class.getName());
+
+    public static List getAllParty() {
+        List<Party> partyList = new ArrayList<Party>();
+        try (Connection con = JDBCConnectionManager.getConnection()) {
             String sql = "Select * from party";
-            PreparedStatement preparedStatement = con.prepareStatement(sql);
-            ResultSet rs = preparedStatement.executeQuery();
-            System.out.println("RS:" + rs);
-            while (rs.next()) {
-                Party party = new Party();
-                party.setPartyId(rs.getInt("partyId"));
-                party.setPartyName(rs.getString("partyName"));
-                partyList.add(party);
+            try (PreparedStatement preparedStatement = con.prepareStatement(sql)) {
+                try (ResultSet rs = preparedStatement.executeQuery()) {
+                    System.out.println("RS:" + rs);
+                    while (rs.next()) {
+                        Party party = new Party();
+                        party.setPartyId(rs.getInt("partyId"));
+                        party.setPartyName(rs.getString("partyName"));
+                        partyList.add(party);
+                    }
+                }
             }
         } catch (SQLException ex) {
-            log.error("Error in getAllParty sql statement "+ex);
+            if (log.isEnabledFor(org.apache.log4j.Level.ERROR)) {
+                log.error("Error in getAllParty sql statement ", ex);
+            }
         }
-        
-            System.out.println("Party List:" + partyList.size());
-            
-            return partyList;
+
+        System.out.println("Party List:" + partyList.size());
+
+        return partyList;
     }
-    
+
 }
