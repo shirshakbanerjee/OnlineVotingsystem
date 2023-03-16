@@ -9,7 +9,8 @@ import com.exavalu.services.VoterService;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.io.Serializable;
-import java.util.ArrayList;
+//import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.SessionAware;
@@ -103,7 +104,7 @@ public class Admin extends ActionSupport implements SessionAware, Serializable {
         boolean success = AdminService.approveVoter(this.adminStatus, this.voterId);
         if (success) {
             System.out.println("Returning Success from doVerifyVoter method");
-            ArrayList voterList = VoterService.getAllVoters();
+            List<Voter> voterList = VoterService.getAllVoters();
             sessionMap.put("VoterList", voterList);
             result = "SUCCESS";
 

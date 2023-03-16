@@ -14,6 +14,7 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import org.apache.struts2.dispatcher.SessionMap;
@@ -119,10 +120,10 @@ public class User extends ActionSupport implements SessionAware, Serializable {
             }
             sessionMap.put("Admin", admin);
             ArrayList candidateList = CandidateService.getAllCandidates();
-            ArrayList partyList = PartyService.getAllParty();
+            List<Party> partyList = PartyService.getAllParty();
             sessionMap.put("CandidateList", candidateList);
             sessionMap.put("PartyList", partyList);
-            ArrayList voterList = VoterService.getAllVoters();
+            List<Voter> voterList = VoterService.getAllVoters();
             sessionMap.put("VoterList", voterList);
             sessionMap.put("totalVoters", voterList.size());
             int verification = VoterService.dogetApproveVoter();
@@ -189,10 +190,10 @@ public class User extends ActionSupport implements SessionAware, Serializable {
     public String showVoter() {
         String result = "SUCCESS";
         ArrayList candidateList = CandidateService.getAllCandidates();
-        ArrayList partyList = PartyService.getAllParty();
+        List<Party> partyList = PartyService.getAllParty();
         sessionMap.put("CandidateList", candidateList);
         sessionMap.put("PartyList", partyList);
-        ArrayList voterList = VoterService.getAllVoters();
+        List<Voter> voterList = VoterService.getAllVoters();
         sessionMap.put("VoterList", voterList);
         sessionMap.put("totalVoters", voterList.size());
         int verification = VoterService.dogetApproveVoter();
