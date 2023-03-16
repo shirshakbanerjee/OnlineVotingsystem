@@ -14,16 +14,16 @@ import java.io.File;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Map;
-import org.apache.struts2.dispatcher.ApplicationMap;
+//import org.apache.struts2.dispatcher.ApplicationMap;
 import org.apache.struts2.dispatcher.SessionMap;
-import org.apache.struts2.interceptor.ApplicationAware;
+//import org.apache.struts2.interceptor.ApplicationAware;
 import org.apache.struts2.interceptor.SessionAware;
 
 /**
  *
  * This model performs candidate functionalities like editing details, adding and deleting.
  */
-public class Candidate extends ActionSupport implements ApplicationAware, SessionAware, Serializable {
+public class Candidate extends ActionSupport implements SessionAware, Serializable {
 
     private int candidateId;
     private String firstName;
@@ -37,12 +37,12 @@ public class Candidate extends ActionSupport implements ApplicationAware, Sessio
 
     private SessionMap<String, Object> sessionMap = (SessionMap) ActionContext.getContext().getSession();
 
-    private ApplicationMap map = (ApplicationMap) ActionContext.getContext().getApplication();
-
-    @Override
-    public void setApplication(Map<String, Object> application) {
-        map = (ApplicationMap) application;
-    }
+//    private ApplicationMap map = (ApplicationMap) ActionContext.getContext().getApplication();
+//
+//    @Override
+//    public void setApplication(Map<String, Object> application) {
+//        map = (ApplicationMap) application;
+//    }
 
     @Override
     public void setSession(Map<String, Object> session) {
@@ -189,12 +189,12 @@ public class Candidate extends ActionSupport implements ApplicationAware, Sessio
         boolean success=false;
         if(this.image!=null)
         {
-             System.out.println("IF____LORD SHOUVIK TEAM LEAD");
+             //System.out.println("IF____LORD SHOUVIK TEAM LEAD");
             success = CandidateService.updateCandidate(this, this.candidateId);
         }
         else
         {
-             System.out.println("ELSE_____LORD SHOUVIK TEAM LEAD");
+             //System.out.println("ELSE_____LORD SHOUVIK TEAM LEAD");
             success = CandidateService.updateCandidate2(this, this.candidateId);
         }
         if (success) {

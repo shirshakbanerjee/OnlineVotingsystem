@@ -11,22 +11,21 @@ import com.opensymphony.xwork2.ActionSupport;
 import java.io.File;
 import java.io.Serializable;
 import java.sql.Time;
-import java.time.LocalDateTime;
+//import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
-import org.apache.struts2.dispatcher.ApplicationMap;
+//import org.apache.struts2.dispatcher.ApplicationMap;
 import org.apache.struts2.dispatcher.SessionMap;
-import org.apache.struts2.interceptor.ApplicationAware;
+//import org.apache.struts2.interceptor.ApplicationAware;
 import org.apache.struts2.interceptor.SessionAware;
-
 
 /**
  *
- This model is used for getting election results.
+ * This model is used for getting election results.
  */
-public class Result extends ActionSupport implements ApplicationAware, SessionAware, Serializable{
-    
+public class Result extends ActionSupport implements SessionAware, Serializable {
+
     private String candidateId;
     private String candidateName;
     private String firstName;
@@ -34,21 +33,22 @@ public class Result extends ActionSupport implements ApplicationAware, SessionAw
     private String votes;
     private String states;
     private String count;
+    @SuppressWarnings("PMD")
     private ArrayList stateNames;
+    @SuppressWarnings("PMD")
     private ArrayList stateVote;
     private String partyName;
     private Time voteTime;
     private File image;
-    
+
     private SessionMap<String, Object> sessionMap = (SessionMap) ActionContext.getContext().getSession();
 
-    private ApplicationMap map = (ApplicationMap) ActionContext.getContext().getApplication();
-    
-    @Override
-    public void setApplication(Map<String, Object> application) {
-        map = (ApplicationMap) application;
-    }
-
+//    private ApplicationMap map = (ApplicationMap) ActionContext.getContext().getApplication();
+//    
+//    @Override
+//    public void setApplication(Map<String, Object> application) {
+//        map = (ApplicationMap) application;
+//    }
     @Override
     public void setSession(Map<String, Object> session) {
         sessionMap = (SessionMap) session;
@@ -110,18 +110,22 @@ public class Result extends ActionSupport implements ApplicationAware, SessionAw
         this.count = count;
     }
 
+    @SuppressWarnings("PMD")
     public ArrayList getStateNames() {
         return stateNames;
     }
 
+    @SuppressWarnings("PMD")
     public void setStateNames(ArrayList stateNames) {
         this.stateNames = stateNames;
     }
 
+    @SuppressWarnings("PMD")
     public ArrayList getStateVote() {
         return stateVote;
     }
 
+    @SuppressWarnings("PMD")
     public void setStateVote(ArrayList stateVote) {
         this.stateVote = stateVote;
     }
@@ -141,8 +145,8 @@ public class Result extends ActionSupport implements ApplicationAware, SessionAw
     public void setVoteTime(Time voteTime) {
         this.voteTime = voteTime;
     }
-    
-     public File getImage() {
+
+    public File getImage() {
         return image;
     }
 
@@ -159,20 +163,20 @@ public class Result extends ActionSupport implements ApplicationAware, SessionAw
     public String getImageData() {
         return imageData;
     }
-    
-    public String getResult()
-    {
-        String result="FAILURE";
+
+    public String getResult() {
+        String result = "FAILURE";
         int adminResultStatus = ResultService.getAdminResultStatus();
-        if(adminResultStatus == 1 || adminResultStatus == 999)
+        if (adminResultStatus == 1 || adminResultStatus == 999) {
             return "FAILURE";
-        ArrayList resultList = ResultService.calculateResult();
-        Iterator itr=resultList.iterator();
-        ArrayList stateList = ResultService.calculateState();
-        Iterator itr2=stateList.iterator();
-        ArrayList partyList = ResultService.calculateParty();
-        Iterator itr3=partyList.iterator();
-        ArrayList timeList = new ArrayList();
+        }
+        ArrayList<Result> resultList = ResultService.calculateResult();
+        Iterator itr = resultList.iterator();
+        ArrayList<Result> stateList = ResultService.calculateState();
+        Iterator itr2 = stateList.iterator();
+        ArrayList<Result> partyList = ResultService.calculateParty();
+        Iterator itr3 = partyList.iterator();
+        ArrayList<Integer> timeList = new ArrayList();
         timeList.add(ResultService.calculateTime("06:00:00", "07:00:00"));
         timeList.add(ResultService.calculateTime("07:00:00", "08:00:00"));
         timeList.add(ResultService.calculateTime("08:00:00", "09:00:00"));
@@ -185,27 +189,33 @@ public class Result extends ActionSupport implements ApplicationAware, SessionAw
         timeList.add(ResultService.calculateTime("15:00:00", "16:00:00"));
         timeList.add(ResultService.calculateTime("16:00:00", "17:00:00"));
         timeList.add(ResultService.calculateTime("17:00:00", "18:00:00"));
-        
-        if(itr.hasNext() && itr2.hasNext() && itr3.hasNext())
-        {
+
+        if (itr.hasNext() && itr2.hasNext() && itr3.hasNext()) {
             System.out.println("Returning success from results!!");
             sessionMap.put("ResultList", resultList);
             sessionMap.put("StateList", stateList);
             sessionMap.put("PartyList", partyList);
-            sessionMap.put("TimeList",timeList);
-            
+            sessionMap.put("TimeList", timeList);
+
             //Calculating The Winner
-            ArrayList allCandidates = ResultService.calculateResult();
-            Iterator itrC=allCandidates.iterator();
-            ArrayList allParty = ResultService.calculateParty();
-            Iterator itrP=allParty.iterator();
-            String wName="",wParty="",wpName="",images="";
-            int wVotes=-1,wpVotes=-1;
-            while(itrC.hasNext())
-            {
+            ArrayList<Result> allCandidates;
+            allCandidates = ResultService.calculateResult();
+            Iterator itrC;
+            itrC = allCandidates.iterator();
+            ArrayList<Result> allParty;
+            allParty = ResultService.calculateParty();
+            Iterator itrP;
+            itrP = allParty.iterator();
+            String wName = "";
+            String wParty = "";
+            String wpName = "";
+            String images = "";
+            int wVotes = -1;
+            int wpVotes = -1;
+
+            while (itrC.hasNext()) {
                 Result candidate = (Result) itrC.next();
-                if(Integer.parseInt(candidate.getVotes())>=wVotes)
-                {
+                if (Integer.parseInt(candidate.getVotes()) >= wVotes) {
                     wName = candidate.getFirstName() + " " + candidate.getLastName();
                     wParty = candidate.getPartyName();
                     wVotes = Integer.parseInt(candidate.getVotes());
@@ -217,14 +227,12 @@ public class Result extends ActionSupport implements ApplicationAware, SessionAw
             winnerCandidate.setPartyName(wParty);
             winnerCandidate.setVotes(String.valueOf(wVotes));
             winnerCandidate.setImageData(images);
-            System.out.println("Winner is "+winnerCandidate.getFirstName());
+            System.out.println("Winner is " + winnerCandidate.getFirstName());
             sessionMap.put("WinnerCandidate", winnerCandidate);
-            
-            while(itrP.hasNext())
-            {
+
+            while (itrP.hasNext()) {
                 Result party = (Result) itrP.next();
-                if(Integer.parseInt(party.getCount())>=wpVotes)
-                {
+                if (Integer.parseInt(party.getCount()) >= wpVotes) {
                     wpName = party.getPartyName();
                     wpVotes = Integer.parseInt(party.getCount());
                 }
@@ -232,35 +240,31 @@ public class Result extends ActionSupport implements ApplicationAware, SessionAw
             Result winnerParty = new Result();
             winnerParty.setPartyName(wpName);
             winnerParty.setVotes(String.valueOf(wpVotes));
-            System.out.println("Winner is "+winnerParty.getPartyName());
+            System.out.println("Winner is " + winnerParty.getPartyName());
             sessionMap.put("WinnerParty", winnerParty);
-            
-            result="SUCCESS";
-        }
-        else{
+
+            result = "SUCCESS";
+        } else {
             System.out.println("Some Error occured in results!!");
 //            sessionMap.put("VoteMsg", "Some Problem has Occured");
         }
         return result;
     }
-    
-    public String getCandidateResult()
-    {
-        String result="FAILURE";
+
+    public String getCandidateResult() {
+        String result = "FAILURE";
         Result candidateResult = ResultService.candidateResult(this.firstName);
-        if(candidateResult.getStateVote()!=null)
-        {
+        if (candidateResult.getStateVote() != null) {
             System.out.println("Returning success from Candidate results!!");
             sessionMap.put("CandidateResults", candidateResult);
-            result="SUCCESS";
-        }
-        else{
+            result = "SUCCESS";
+        } else {
             System.out.println("Some Error occured in Candidate results!!");
 //            sessionMap.put("VoteMsg", "Some Problem has Occured");
         }
         return result;
     }
-    
+
     public String declareResult() {
         String result = "FAILURE";
         boolean success = ResultService.setAdminStatus();
@@ -268,28 +272,26 @@ public class Result extends ActionSupport implements ApplicationAware, SessionAw
         if (success && success2) {
             System.out.println("Returning success from seclare results");
             sessionMap.put("DeclareResultMsg", "Result Declared!!");
-            ArrayList candidateEmail = CandidateService.getAllCandidates();
+            ArrayList<Candidate> candidateEmail = CandidateService.getAllCandidates();
             Iterator itr = candidateEmail.iterator();
             while (itr.hasNext()) {
                 Candidate candidate = (Candidate) itr.next();
                 System.out.println(candidate.getCandidateEmail());
-                Email.sendEmailToCandidate(candidate.getCandidateEmail(),candidate.getFirstName(),candidate.getLastName());
+                Email.sendEmailToCandidate(candidate.getCandidateEmail(), candidate.getFirstName(), candidate.getLastName());
             }
             result = "SUCCESS";
         }
         return result;
     }
-    
-    public String beginVoting()
-    {
-        String result="FAILURE";
+
+    public String beginVoting() {
+        String result = "FAILURE";
         boolean success = ResultService.setAdminResultStatus(1);
-        if(success)
-        {
+        if (success) {
             sessionMap.put("DeclareResultMsg", "Result Declared!!");
             result = "SUCCESS";
         }
         return result;
     }
-    
+
 }

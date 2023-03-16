@@ -13,8 +13,7 @@
             <br><!-- comment -->
             <th>Details of voter</th>
             <tr>
-                <td>
-                    <!--                <table>-->
+                <td>                
 
             <tr>
                 <td>VOTER ID : <strong>${PVoter.voterId}</strong></td>
@@ -44,13 +43,11 @@
                         <c:if test="${PVoter.adminStatus==2}">
                             <p  style="color:red">Rejected</p></c:if>
                         </strong></td>
-
                 </tr>
                 <tr>
-                    <td>
-                        
+                    <td>                        
                         <button type="button" class="btn btn-primary text-light mt-1 btn-lg " onclick="fetchVapi(${PVoter.voterId})">Check voter</button>
-                </td>       
+                </td>      
 
             </tr>
             <tr>                

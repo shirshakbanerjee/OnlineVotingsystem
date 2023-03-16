@@ -80,50 +80,7 @@
 
                             <!-- header rightbar icon -->
                             <div class="h-right d-flex align-items-center mr-5 mr-lg-0 order-1">
-                                <!--                                <div class="container-xxl">
-                                                                    <div class="row clearfix g-3">
-                                                                        <div class="col-xl-8 col-lg-12 col-md-12 flex-column">
-                                                                            <div class="row g-3" style="width: 1000px;">
-                                
-                                                                                <div class="col-lg-12" style="height: 20px">
-                                                                                    <div class="card">
-                                                                                        <div class="card-header py-3 d-flex justify-content-between bg-transparent border-bottom-0">
-                                                                                            <h6 class="mb-0 fw-bold ">Voter Summary</h6>
-                                                                                            <h6 class="mb-0 fw-bold ">Total Voters</h6>
-                                                                                            <h4 class="mb-0 fw-bold ">423</h4>
-                                                                                        </div>
-                                                                                        <div class="card-body" >
-                                                                                            <div class="row g-2 row-deck">
-                                                                                                <div class="col-md-6 col-sm-6">
-                                                                                                    <div class="card">
-                                                                                                        <div class="card-body ">
-                                                                                                            <h6 class="mt-3 mb-0 fw-bold small-14">Approved</h6>
-                                                                                                            <span class="text-muted">400</span>
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                                <div class="col-md-6 col-sm-6">
-                                                                                                    <div class="card">
-                                                                                                        <div class="card-body ">
-                                                                                                            <h6 class="mt-3 mb-0 fw-bold small-14">Rejected</h6>
-                                                                                                            <span class="text-muted">17</span>
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                </div>
-                                
-                                
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                
-                                                                            </div>
-                                                                        </div>
-                                                                    </div> Row End 
-                                                                </div>-->
-
-
-
+                             
                                 <div class="dropdown user-profile ml-2 ml-sm-3 d-flex align-items-end zindex-popover" style="margin-left:1000px">
                                     <div class="u-info me-2">
                                         <p class="mb-0 text-end line-height-sm "><span class="font-weight-bold">Election Commission</span></p>

@@ -6,18 +6,6 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
-<!--<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-        <h1>Hello World!</h1>
-    </body>
-</html>
--->
-
 <!doctype html>
 <html lang="en">
     <head>
@@ -34,31 +22,11 @@
         <!-- Template Main CSS File -->
         <link href="assets/css/style.css" rel="stylesheet">
         <link href="assets/css/signup.css" rel="stylesheet">
-        <link rel="shortcut icon" type="image/x-icon" href="assets/img/vote-icon.png">
-        <!-- <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
-        <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="assets/vendor/bootstrap/css/bootstrap.min.css"> 
-        <!--===============================================================================================-->
-        <!-- <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css"> -->
-        <!--===============================================================================================-->
-        <!-- <link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css"> -->
-        <!--===============================================================================================-->
-        <!-- <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css"> -->
-        <!--===============================================================================================-->	
-        <!-- <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css"> -->
-        <!--===============================================================================================-->
-        <!-- <link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css"> -->
-        <!--===============================================================================================-->
-        <!-- <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css"> -->
-        <!--===============================================================================================-->	
-        <!-- <link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css"> -->
-        <!--===============================================================================================-->
+        <link rel="shortcut icon" type="image/x-icon" href="assets/img/vote-icon.png">       
+        <link rel="stylesheet" type="text/css" href="assets/vendor/bootstrap/css/bootstrap.min.css">         
         <link rel="stylesheet" type="text/css" href="assets/css/login2.css">
         <link rel="stylesheet" type="text/css" href="assets/css/login1.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" crossorigin="anonymous">
-
-
-        <!--===============================================================================================-->
     </head>
 
     <header>
@@ -240,35 +208,9 @@
                 </div>
             </div>
 
-
-            <!-- <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-             <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-           
-           <div class="col-md-4">
-             <h2>Heading</h2>
-             <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-             <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-           </div>
-           <div class="col-md-4">
-             <h2>Heading</h2>
-             <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-             <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-           </div>
-         
-    
-         <hr>
-    
-       </div>  /container -->
-
-
-
             <footer class="container" style="text-align: center;">
                 <p> &copy;Vote india   2017-2018</p>
             </footer>
-
-            <!-- Bootstrap core JavaScript
-            ================================================== -->
-            <!-- Placed at the end of the document so the pages load faster -->
             <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
             <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>');</script>
             <script src="../../assets/js/vendor/popper.min.js"></script>

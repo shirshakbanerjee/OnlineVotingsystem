@@ -23,8 +23,7 @@ import org.apache.log4j.Logger;
 public class Email {
 
     static Logger log = Logger.getLogger(Email.class.getName());
-
-    static String fromEmail = "nitishsah02@gmail.com";
+    static String fromEmail = "cleanandbuild@gmail.com";
     static String password = "dopuncolmlxiocua";
     static String userName = "nitishsah02";
     

@@ -9,18 +9,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-
-
         <meta charset="utf-8">
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
         <title>ONLINE VOTING SYSTEM </title>
         <meta content="" name="description">
         <meta content="" name="keywords">
-
-        <!-- Favicons -->
-        <!--        <link href="assets/img/favicon.png" rel="icon">
-                <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">-->
         <link rel="shortcut icon" type="image/x-icon" href="assets/img/vote-icon.png">
         <!-- Google Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -36,14 +30,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <!-- Template Main CSS File -->
         <link href="assets/css/style.css" rel="stylesheet">
-        <link href="assets/css/voterLanding.css" rel="stylesheet">
-
-        <!-- =======================================================
-        * Template Name: BizLand - v3.10.0
-        * Template URL: https://bootstrapmade.com/bizland-bootstrap-business-template/
-        * Author: BootstrapMade.com
-        * License: https://bootstrapmade.com/license/
-        ======================================================== -->
+        <link href="assets/css/voterLanding.css" rel="stylesheet">       
     </head>
     <style>
         .icon-box:hover .title {
@@ -53,9 +40,6 @@
 
 
     <body>
-
-
-
         <!-- ======= Header ======= -->
 
         <header id="header" class="d-flex align-items-center" style="color:blue">       
@@ -93,70 +77,13 @@
                                         <h5 class="title">State: ${candidate.getRegion()}</h5>                                                                                                                    
 
                                         <button class="btn btn-info" onclick="editCandidate(${candidate.getCandidateId()})"><i class="fa fa-pencil"></i></button>
-                                        <button class="btn btn-danger" onclick="deleteCandidate(${candidate.getCandidateId()})"><i class="fa fa-trash"></i></button>
-                                        <!--<button type="button" class="btn btn-info" > <i class="fa fa-pencil"></i></button>-->
-                                        <!--<button type="button" class="btn btn-danger" ><i class="fa fa-trash"></i></button>-->
-
+                                        <button class="btn btn-danger" onclick="deleteCandidate(${candidate.getCandidateId()})"><i class="fa fa-trash"></i></button>                                       
                                     </div>
                                     <br>
-                                </div>
-                                <!--</div>-->
+                                </div>                               
                             </div>
                         </c:forEach>
                     </div>
-                    <!--                        <div class="col">
-                                                <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-                    
-                                                    <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
-                    
-                                                        <img src="assets/img/nm-1177027-1672590352.jpg"> comment 
-                                                        <h4 class="title"><a href="">CANDIDATE-1</a></h4>
-                    
-                                                        <button type="button" class="btn btn-danger">VOTE</button>
-                                                    </div>
-                                                    <br>
-                    
-                                                </div>
-                                            </div>
-                    
-                    
-                                            <div class="col">
-                                                <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-                                                    <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
-                                                        <img src="assets/img/nm-1177027-1672590352.jpg"> comment 
-                                                        <h4 class="title"><a href="">CANDIDATE-2</a></h4>
-                                                        <button type="button" class="btn btn-danger">VOTE</button>
-                    
-                    
-                                                </div>
-                                            </div>
-                                            </div>
-                                        </div>
-                    
-                    
-                    
-                                            <div class="col"> 
-                                                <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-                                                    <div class="icon-box" data-aos="fade-up" data-aos-delay="400">                                    
-                                                        <img src="assets/img/nm-1177027-1672590352.jpg"> comment 
-                                                        <h4 class="title"><a href="">CANDIDATE-3</a></h4>
-                                                        <button type="button" class="btn btn-danger">VOTE</button>
-                    
-                                                    </div>
-                                                </div>
-                                            </div>
-                    
-                                            <div class="col"> 
-                                                <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-                                                    <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
-                                                        <img src="assets/img/nm-1177027-1672590352.jpg"> comment 
-                                                        <h4 class="title"><a href="">CANDIDATE-4</a></h4>
-                                                        <button type="button" class="btn btn-danger">VOTE</button>
-                                                    </div>
-                                                </div>  
-                                            </div>     -->
-
-
 
             </section><!-- End Featured Services Section -->
 
@@ -174,9 +101,6 @@
 
 
 
-
-
-
     </body>
     <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
     <script src="assets/vendor/aos/aos.js"></script>
@@ -186,8 +110,6 @@
     <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
     <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
     <script src="assets/vendor/php-email-form/validate.js"></script>
-
-
     <script src="assets/js/main.js"></script>
 
 </html>

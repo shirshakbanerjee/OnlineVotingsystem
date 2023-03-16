@@ -10,9 +10,7 @@
     <head>
         <link rel="icon" href="favicon.ico" type="image/x-icon"> <!-- Favicon-->
         <!-- project css file  -->
-        <link rel="stylesheet" href="assets/css/men.css">
-
-        
+        <link rel="stylesheet" href="assets/css/men.css">        
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
@@ -54,7 +52,6 @@
                                 <li><a class="ms-link" > <span>Not Voted - 200</span></a></li>
                             </ul>
                         </li>
-
                     </ul>
                 </div>
             </div>
@@ -166,9 +163,7 @@
             </div>
         </div>
 
-        <p class='nota-final'>Este pen es sólo para que <strong>@jlalovi</strong> complemente con los gráficos <a href='https://codepen.io/jlalovi/details/bIyAr'>el suyo</a>.</p>
-
-        
+        <p class='nota-final'>Este pen es sólo para que <strong>@jlalovi</strong> complemente con los gráficos <a href='https://codepen.io/jlalovi/details/bIyAr'>el suyo</a>.</p>      
         
     </body>
     
@@ -594,38 +589,3 @@
     
     
 </html>
-
-<!--
-<!DOCTYPE html>
-<html>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-<body>
-
-<canvas id="myChart" style="width:100%;max-width:600px"></canvas>
-
-<script>
-var xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
-var yValues = [55, 49, 44, 24, 15];
-var barColors = ["red", "green","blue","orange","brown"];
-
-new Chart("myChart", {
-  type: "bar",
-  data: {
-    labels: xValues,
-    datasets: [{
-      backgroundColor: barColors,
-      data: yValues
-    }]
-  },
-  options: {
-    legend: {display: false},
-    title: {
-      display: true,
-      text: "World Wine Production 2018"
-    }
-  }
-});
-</script>
-
-</body>
-</html>-->
