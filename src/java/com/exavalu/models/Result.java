@@ -14,6 +14,7 @@ import java.sql.Time;
 //import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 //import org.apache.struts2.dispatcher.ApplicationMap;
 import org.apache.struts2.dispatcher.SessionMap;
@@ -170,11 +171,11 @@ public class Result extends ActionSupport implements SessionAware, Serializable 
         if (adminResultStatus == 1 || adminResultStatus == 999) {
             return "FAILURE";
         }
-        ArrayList<Result> resultList = ResultService.calculateResult();
+        List<Result> resultList = ResultService.calculateResult();
         Iterator itr = resultList.iterator();
-        ArrayList<Result> stateList = ResultService.calculateState();
+       List<Result> stateList = ResultService.calculateState();
         Iterator itr2 = stateList.iterator();
-        ArrayList<Result> partyList = ResultService.calculateParty();
+        List<Result> partyList = ResultService.calculateParty();
         Iterator itr3 = partyList.iterator();
         ArrayList<Integer> timeList = new ArrayList();
         timeList.add(ResultService.calculateTime("06:00:00", "07:00:00"));
@@ -198,11 +199,11 @@ public class Result extends ActionSupport implements SessionAware, Serializable 
             sessionMap.put("TimeList", timeList);
 
             //Calculating The Winner
-            ArrayList<Result> allCandidates;
+            List<Result> allCandidates;
             allCandidates = ResultService.calculateResult();
             Iterator itrC;
             itrC = allCandidates.iterator();
-            ArrayList<Result> allParty;
+            List<Result> allParty;
             allParty = ResultService.calculateParty();
             Iterator itrP;
             itrP = allParty.iterator();
