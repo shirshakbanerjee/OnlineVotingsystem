@@ -30,8 +30,8 @@ public class VoterService {
     public static Voter getVoter(String voterId) {
         Voter voter = new Voter();
 
-        try {
-            Connection con = JDBCConnectionManager.getConnection();
+        try(Connection con = JDBCConnectionManager.getConnection()) {
+            
             String sql = "select * from voters "
                     + "where voterId = ?";
 
@@ -70,8 +70,8 @@ public class VoterService {
     public static Voter getVoter2(String voterId, String emailAddress) {
         Voter voter = new Voter();
 
-        try {
-            Connection con = JDBCConnectionManager.getConnection();
+        try(Connection con = JDBCConnectionManager.getConnection()) {
+            
             String sql = "select * from voters "
                     + "where voterId = ? and emailAddress = ?";
 
@@ -108,10 +108,10 @@ public class VoterService {
     }
 
     public static List getStates() {
-        List<Voter> stateList = new ArrayList<Voter>();
-        try {
+        List<Voter> stateList = new ArrayList<>();
+        try(Connection con = JDBCConnectionManager.getConnection()) {
 
-            Connection con = JDBCConnectionManager.getConnection();
+            
 
             String sql = "Select * from states";
 
@@ -144,12 +144,12 @@ public class VoterService {
 
     public static boolean doSignup1(String emailAddress, String password, String firstName, String lastName, int roleId, int voterId) {
         boolean result = false;
-        Connection con = JDBCConnectionManager.getConnection();
+        
 
         String sql = "INSERT INTO users(emailAddress,firstName,lastName,password,roleId,voterId)"
                 + "VALUES(? ,? ,? ,? ,? ,? );";
 
-        try {
+        try(Connection con = JDBCConnectionManager.getConnection()) {
             MessageDigest md = MessageDigest.getInstance("MD5");
 
             // digest() method is called to calculate message digest
@@ -195,12 +195,12 @@ public class VoterService {
 
     public static boolean doSignup2(Voter voter) throws NoSuchAlgorithmException {
         boolean result = false;
-        Connection con = JDBCConnectionManager.getConnection();
+        
 
         String sql = "INSERT INTO voters(voterId,firstName,lastName,emailAddress,password,age,dob,gender,state)"
                 + "VALUES(? ,? ,? ,? ,? ,?, ?, ?, ?);";
 
-        try {
+        try(Connection con = JDBCConnectionManager.getConnection()) {
             MessageDigest md = MessageDigest.getInstance("MD5");
 
             // digest() method is called to calculate message digest
@@ -248,8 +248,8 @@ public class VoterService {
     public static List getAllVoters() {
         List<Voter> voterList = new ArrayList<Voter>();
         String sql = "Select * from voters";
-        try {
-            Connection con = JDBCConnectionManager.getConnection();
+        try(Connection con = JDBCConnectionManager.getConnection()) {
+            
             try (PreparedStatement ps = con.prepareStatement(sql)) {
                 try (ResultSet rs = ps.executeQuery()) {
 
@@ -286,12 +286,12 @@ public class VoterService {
 
     public static boolean doVoteService(Voter voter) {
         boolean result = false;
-        Connection con = JDBCConnectionManager.getConnection();
+        
 
         String sql = "INSERT INTO votes(voterId,state,candidateId,time)"
                 + "VALUES(? ,? ,?, ? );";
 
-        try {
+        try(Connection con = JDBCConnectionManager.getConnection()) {
 
             try (PreparedStatement preparedStatement = con.prepareStatement(sql)) {
                 preparedStatement.setInt(1, voter.getVoterId());
@@ -321,8 +321,8 @@ public class VoterService {
 
     public static boolean doVerification(String voterId) {
         boolean result = false;
-        try {
-            Connection con = JDBCConnectionManager.getConnection();
+        try(Connection con = JDBCConnectionManager.getConnection()) {
+            
             String sql = "UPDATE voters SET adminStatus = 1 WHERE voterId = ?";
 
             try (PreparedStatement preparedStatement = con.prepareStatement(sql)) {
@@ -350,8 +350,8 @@ public class VoterService {
     public static boolean doAdminReject(String voterId) {
 
         boolean result = false;
-        try {
-            Connection con = JDBCConnectionManager.getConnection();
+        try(Connection con = JDBCConnectionManager.getConnection()) {
+            
 
             String sql = "UPDATE voters SET adminStatus = 2 WHERE voterId = ?";
 
@@ -378,11 +378,11 @@ public class VoterService {
 
     public static boolean voted(int voterId) {
         boolean result = false;
-        Connection con = JDBCConnectionManager.getConnection();
+        
 
         String sql = "UPDATE voters SET votingStatus = ? WHERE voterId = ?";
 
-        try {
+        try(Connection con = JDBCConnectionManager.getConnection()) {
 
             try(PreparedStatement preparedStatement = con.prepareStatement(sql)){
             preparedStatement.setString(1, "1");
@@ -409,10 +409,10 @@ public class VoterService {
 
     public static int dogetApproveVoter() {
         int count = -500;
-        Connection con = JDBCConnectionManager.getConnection();
+        
 
         String sql = "SELECT COUNT(*) as Count FROM voters WHERE adminStatus = '1'";
-        try {
+        try(Connection con = JDBCConnectionManager.getConnection()) {
 
             try (PreparedStatement preparedStatement = con.prepareStatement(sql)) {
 
@@ -438,10 +438,10 @@ public class VoterService {
 
     public static int dogetRejectedVoter() {
         int countR = -500;
-        Connection con = JDBCConnectionManager.getConnection();
+        
 
         String sql = "SELECT COUNT(*) as Count FROM voters WHERE adminStatus = '2'";
-        try {
+        try(Connection con = JDBCConnectionManager.getConnection()) {
 
             try (PreparedStatement preparedStatement = con.prepareStatement(sql)) {
 
@@ -467,10 +467,10 @@ public class VoterService {
 
     public static int dogetPendingVoter() {
         int countP = -500;
-        Connection con = JDBCConnectionManager.getConnection();
+        
 
         String sql = "SELECT COUNT(*) as Count FROM voters WHERE adminStatus = '0'";
-        try {
+        try(Connection con = JDBCConnectionManager.getConnection()) {
 
             try (PreparedStatement preparedStatement = con.prepareStatement(sql)) {
 
@@ -495,10 +495,10 @@ public class VoterService {
 
     public static int dogetVoted() {
         int countV = -500;
-        Connection con = JDBCConnectionManager.getConnection();
+        
 
         String sql = "SELECT COUNT(*) as count FROM voters WHERE votingStatus = '1'";
-        try {
+        try(Connection con = JDBCConnectionManager.getConnection()) {
 
             try (PreparedStatement preparedStatement = con.prepareStatement(sql)) {
 
@@ -523,10 +523,10 @@ public class VoterService {
 
     public static int dogetNotVoted() {
         int countN = -500;
-        Connection con = JDBCConnectionManager.getConnection();
+       
 
         String sql = "SELECT COUNT(*) as count FROM voters WHERE votingStatus = '0'";
-        try {
+        try( Connection con = JDBCConnectionManager.getConnection()) {
 
             try (PreparedStatement preparedStatement = con.prepareStatement(sql)) {
 

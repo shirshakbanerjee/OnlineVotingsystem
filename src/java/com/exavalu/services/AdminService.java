@@ -4,7 +4,6 @@
  */
 package com.exavalu.services;
 
-
 import com.exavalu.models.Admin;
 import com.exavalu.utils.JDBCConnectionManager;
 import java.sql.Connection;
@@ -18,62 +17,67 @@ import org.apache.log4j.Logger;
  * This is admin service
  */
 public class AdminService {
-    
+
     static Logger log = Logger.getLogger(AdminService.class.getName());
-    
+
     public static Admin getAdmin(String emailAddress) {
         Admin admin = new Admin();
 
-        try {
-            Connection con = JDBCConnectionManager.getConnection();
+        try (Connection con = JDBCConnectionManager.getConnection()) {
+
             String sql = "select * from admins "
                     + "where emailAddress = ?";
 
-            PreparedStatement preparedStatement = con.prepareStatement(sql);
-            preparedStatement.setString(1, emailAddress);
+            try (PreparedStatement preparedStatement = con.prepareStatement(sql)) {
+                preparedStatement.setString(1, emailAddress);
 
-            ResultSet rs = preparedStatement.executeQuery();
+                try (ResultSet rs = preparedStatement.executeQuery()) {
 
-            if (rs.next()) {
+                    if (rs.next()) {
 
-                admin.setAdminId(rs.getInt("adminId"));
-                admin.setEmailAddress(rs.getString("emailAddress"));
-                admin.setFirstName(rs.getString("firstName"));
-                admin.setLastName(rs.getString("lastName"));
-                admin.setPassword(rs.getString("password"));
+                        admin.setAdminId(rs.getInt("adminId"));
+                        admin.setEmailAddress(rs.getString("emailAddress"));
+                        admin.setFirstName(rs.getString("firstName"));
+                        admin.setLastName(rs.getString("lastName"));
+                        admin.setPassword(rs.getString("password"));
+                    }
+                }
             }
 
         } catch (SQLException ex) {
-            ex.printStackTrace();
-            log.error("Error in getAdmin sql statement "+ex);
+
+            if (log.isEnabledFor(org.apache.log4j.Level.ERROR)) {
+                log.error("Error in getAdmin sql statement", ex);
+            }
+            //log.error("Error in getAdmin sql statement "+ex);
         }
         return admin;
     }
-    
-    public static boolean approveVoter(String status,String voterId) {
-        boolean result = false;
-        try {
 
-            Connection con = JDBCConnectionManager.getConnection();
+    public static boolean approveVoter(String status, String voterId) {
+        boolean result = false;
+        try (Connection con = JDBCConnectionManager.getConnection()) {
 
             String sql = "UPDATE voters SET adminStatus = ? WHERE (voterId = ?);";
 
-            PreparedStatement preparedStatement = con.prepareStatement(sql);
-            preparedStatement.setString(1, status);
-            preparedStatement.setString(2, voterId);
-            
+            try (PreparedStatement preparedStatement = con.prepareStatement(sql)) {
+                preparedStatement.setString(1, status);
+                preparedStatement.setString(2, voterId);
 
-            int row = preparedStatement.executeUpdate();
-            if (row == 1) {
-                result = true;
+                int row = preparedStatement.executeUpdate();
+                if (row == 1) {
+                    result = true;
+                }
             }
 
         } catch (SQLException ex) {
-            ex.printStackTrace();
-            log.error("Error in getAdmin sql statement "+ex);
+            //ex.printStackTrace();
+            if (log.isEnabledFor(org.apache.log4j.Level.ERROR)) {
+                log.error("Error in getAdmin sql statement", ex);
+            }
+            //log.error("Error in getAdmin sql statement "+ex);
         }
 
         return result;
     }
 }
-
