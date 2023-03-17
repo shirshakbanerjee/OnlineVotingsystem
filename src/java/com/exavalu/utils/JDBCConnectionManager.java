@@ -30,7 +30,11 @@ public class JDBCConnectionManager {
                 connection = DriverManager.getConnection(url + dbNname, user, password);
 
         } catch (ClassNotFoundException | SQLException ex) {
-            log.error("Faulty in JDBCConnectionManager contents "+ex);
+            
+             if (log.isEnabledFor(org.apache.log4j.Level.ERROR)) {
+                log.error("Faulty in JDBCConnectionManager contents ", ex);
+            }
+            //log.error("Faulty in JDBCConnectionManager contents "+ex);
         }
 
         return connection;

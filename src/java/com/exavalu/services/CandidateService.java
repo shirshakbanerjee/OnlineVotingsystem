@@ -27,10 +27,10 @@ public class CandidateService {
     private static final Logger log = Logger.getLogger(CandidateService.class.getName());
 
     public static List getAllCandidates() {
-        List<Candidate> candidateList = new ArrayList<Candidate>();
+        List<Candidate> candidateList = new ArrayList<>();
 
-        try {
-            Connection con = JDBCConnectionManager.getConnection();
+        try(Connection con = JDBCConnectionManager.getConnection()) {
+            
             String sql = "Select * from candidates where candidateStatus=0";
             try (PreparedStatement ps = con.prepareStatement(sql)) {
 
@@ -77,8 +77,8 @@ public class CandidateService {
     public static boolean doSaveCandidate(Candidate candidate) {
         boolean result = false;
 
-        try {
-            Connection con = JDBCConnectionManager.getConnection();
+        try(Connection con = JDBCConnectionManager.getConnection()) {
+            
 
             String sql = "INSERT INTO candidates(candidateId,firstName,lastName,partyName,age,gender,region,candidateStatus,image,candidateEmail)"
                     + "VALUES(? ,? ,? ,? ,? ,?, ?, ?,?,?);";
@@ -123,8 +123,8 @@ public class CandidateService {
 
     public static Candidate getCandidateById(int candidateId) {
         Candidate candidate = new Candidate();
-        try {
-            Connection con = JDBCConnectionManager.getConnection();
+        try(Connection con = JDBCConnectionManager.getConnection()) {
+            
             String sql = "Select * from candidates where candidateStatus=0 and candidateId=?";
 
             try (PreparedStatement preparedStatement = con.prepareStatement(sql)) {

@@ -30,7 +30,7 @@ public class UserService {
 
         String sql = "Select * from users where emailAddress=? and password=?";
 
-        try {
+        try(Connection con = JDBCConnectionManager.getConnection()) {
             MessageDigest md = MessageDigest.getInstance("MD5");
 
             // digest() method is called to calculate message digest
@@ -45,7 +45,7 @@ public class UserService {
             while (hashtext.length() < 32) {
                 hashtext = "0" + hashtext;
             }
-            Connection con = JDBCConnectionManager.getConnection();
+            
             try (PreparedStatement ps = con.prepareStatement(sql)) {
                 ps.setString(1, user.getEmailAddress());
                 ps.setString(2, hashtext);
@@ -76,9 +76,8 @@ public class UserService {
     public static User getUser(int voterId) {
         String sql = "Select * from users where voterId=? ";
         User user = new User();
-        try {
-
-            Connection con = JDBCConnectionManager.getConnection();
+        try(Connection con = JDBCConnectionManager.getConnection()) {
+         
             try (PreparedStatement ps = con.prepareStatement(sql)) {
                 ps.setInt(1, voterId);
 
@@ -111,9 +110,8 @@ public class UserService {
 
         String sql = "Select * from users where emailAddress=?";
 
-        try {
-
-            Connection con = JDBCConnectionManager.getConnection();
+        try(Connection con = JDBCConnectionManager.getConnection()) {
+            
             try (PreparedStatement ps = con.prepareStatement(sql)) {
                 ps.setString(1, user.getEmailAddress());
 

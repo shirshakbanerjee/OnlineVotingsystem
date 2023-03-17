@@ -30,6 +30,7 @@ public class JDBCUtility {
 
             String path = JDBCUtility.class.getClassLoader().getResource("settings.properties").getPath();
 
+            @SuppressWarnings("PMD")
             BufferedReader input = new BufferedReader(new FileReader(path));
 
             Properties prop = new Properties();
@@ -38,9 +39,12 @@ public class JDBCUtility {
 
             value = prop.getProperty(param);
 
-        } catch (IOException e) {
+        } catch (IOException ex) {
             // TODO Auto-generated catch block
-            log.error("Faulty in getPropertyValue contents "+e);
+             if (log.isEnabledFor(org.apache.log4j.Level.ERROR)) {
+                log.error("Faulty in getPropertyValue contents ", ex);
+            }
+            //log.error("Faulty in getPropertyValue contents "+e);
         }
 
         return value;

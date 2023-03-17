@@ -23,7 +23,7 @@ public class PartyService {
     private static final Logger log = Logger.getLogger(PartyService.class.getName());
 
     public static List getAllParty() {
-        List<Party> partyList = new ArrayList<Party>();
+        List<Party> partyList = new ArrayList<>();
         try (Connection con = JDBCConnectionManager.getConnection()) {
             String sql = "Select * from party";
             try (PreparedStatement preparedStatement = con.prepareStatement(sql)) {
