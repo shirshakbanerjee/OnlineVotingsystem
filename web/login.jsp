@@ -32,7 +32,7 @@
         <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
         <link href="assets/css/style.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" crossorigin="anonymous">
-       
+
     </head>
 
     <style>
@@ -67,18 +67,14 @@
             }
         }
     </script>
-    <body>        <div class="limiter">
+    <body>        
+        <div class="limiter">
             <div class="container-login100" style="background-image: url('assets/img/newlanding.png');">
                 <div class="col-md-6">
                     <div class="wrap-login100 p-l-110 p-r-110 p-t-62 p-b-33" style="opacity: 0.9;">
 
-                        <main class="form-signin w-100 m-auto ">
-                         
-                            <c:set var='error' value='${Error}'/>
-                            ${error}
-                   
-                            <c:set var="user" value="${User}" /> 
-
+                        <main class="form-signin w-100 m-auto ">                                                   
+                            <c:set var="user" value="${User}" />
                             <form action="Login" method="post">
                                 <h1 class="h3 mb-3 fw-normal" style="text-align: center;">Please sign in</h1>
                                 <p></p>
@@ -282,10 +278,10 @@
 
 
 
-                                function verifyOTP() {                                  
+                                function verifyOTP() {
                                     var enteredOTP = document.getElementById("otp").value;
-                                    var storedOTP = '${sessionScope.OTP}';                             
-                                    if (enteredOTP === storedOTP) {                                       
+                                    var storedOTP = '${sessionScope.OTP}';
+                                    if (enteredOTP === storedOTP) {
                                         return true;
                                     } else {
                                         alert("Invalid OTP. Please try again.");

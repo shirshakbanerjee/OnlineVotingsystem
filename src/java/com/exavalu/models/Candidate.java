@@ -190,12 +190,12 @@ public class Candidate extends ActionSupport implements SessionAware, Serializab
         boolean success=false;
         if(this.image!=null)
         {
-             //System.out.println("IF____LORD SHOUVIK TEAM LEAD");
+             System.out.println("IF____LORD SHOUVIK TEAM LEAD");
             success = CandidateService.updateCandidate(this, this.candidateId);
         }
         else
         {
-             //System.out.println("ELSE_____LORD SHOUVIK TEAM LEAD");
+             System.out.println("ELSE_____LORD SHOUVIK TEAM LEAD");
             success = CandidateService.updateCandidate2(this, this.candidateId);
         }
         if (success) {

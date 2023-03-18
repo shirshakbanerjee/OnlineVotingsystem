@@ -97,7 +97,7 @@ public class User extends ActionSupport implements SessionAware, Serializable {
         this.otp = otp;
     }
     
-    @SuppressWarnings("PMD")
+    //@SuppressWarnings("PMD")
     public String doLogin() throws Exception {
         String result = "FAILURE";
         //int x = UserService.doLogin(this);
@@ -137,7 +137,7 @@ public class User extends ActionSupport implements SessionAware, Serializable {
             sessionMap.put("Voted", voted);
             int notVoted = VoterService.dogetNotVoted();
             sessionMap.put("NotVoted", notVoted);
-        } else if (x == 1 && !this.voterId.equalsIgnoreCase("")) {
+        }else if (1 == x && !"".equalsIgnoreCase(this.voterId)) {
             result = "VOTER";
             Voter voter = VoterService.getVoter2(this.voterId, this.emailAddress);
             System.out.println(voter.getFirstName());

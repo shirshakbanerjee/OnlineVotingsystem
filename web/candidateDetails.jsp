@@ -90,11 +90,11 @@
         </div>
         <script>
             function editCandidate(candidateId) {
-                alert(candidateId);
+                //alert(candidateId);
                 window.location.href = `EditCandidate?candidateId=` + candidateId;
             }
             function deleteCandidate(candidateId) {
-                alert(candidateId);
+                //alert(candidateId);
                 window.location.href = `DeleteCandidate?candidateId=` + candidateId;
             }
         </script>
