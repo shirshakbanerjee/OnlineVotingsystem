@@ -23,9 +23,12 @@ import org.apache.log4j.Logger;
 public class Email {
 
     static Logger log = Logger.getLogger(Email.class.getName());
-    static String fromEmail = "cleanandbuild@gmail.com";
-    static String password = "dopuncolmlxiocua";
-    static String userName = "nitishsah02";
+//    static String fromEmail = "cleanandbuild@gmail.com";
+//    static String password = "dopuncolmlxiocua";
+//    static String userName = "nitishsah02";
+    static String fromEmail = "electioncommisionind@gmail.com";
+    static String password = "fxghizswynhbuifb";
+    static String userName = "electioncommisionind";
     
     @SuppressWarnings("PMD")
     public static void sendEmailToRegisterUser(String toEmail, String first, String last) {

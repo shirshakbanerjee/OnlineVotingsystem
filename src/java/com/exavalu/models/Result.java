@@ -34,10 +34,10 @@ public class Result extends ActionSupport implements SessionAware, Serializable 
     private String votes;
     private String states;
     private String count;
-    @SuppressWarnings("PMD")
-    private ArrayList stateNames;
-    @SuppressWarnings("PMD")
-    private ArrayList stateVote;
+    //@SuppressWarnings("PMD")
+    private List stateNames;
+    //@SuppressWarnings("PMD")
+    private List stateVote;
     private String partyName;
     private Time voteTime;
     private File image;
@@ -111,23 +111,23 @@ public class Result extends ActionSupport implements SessionAware, Serializable 
         this.count = count;
     }
 
-    @SuppressWarnings("PMD")
-    public ArrayList getStateNames() {
+    
+    public List getStateNames() {
         return stateNames;
     }
 
-    @SuppressWarnings("PMD")
-    public void setStateNames(ArrayList stateNames) {
+   
+    public void setStateNames(List stateNames) {
         this.stateNames = stateNames;
     }
 
-    @SuppressWarnings("PMD")
-    public ArrayList getStateVote() {
+    
+    public List getStateVote() {
         return stateVote;
     }
 
-    @SuppressWarnings("PMD")
-    public void setStateVote(ArrayList stateVote) {
+    
+    public void setStateVote(List stateVote) {
         this.stateVote = stateVote;
     }
 
