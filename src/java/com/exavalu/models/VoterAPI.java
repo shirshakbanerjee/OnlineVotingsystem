@@ -139,7 +139,7 @@ public class VoterAPI extends ActionSupport implements SessionAware, Serializabl
     public String dofetchVoterApi() throws Exception {
         String result = "VOTERDETAILS";
         //JDBCUtility jdbcUtility = JDBCUtility.getInstanceOfJDBCUtility();
-        String apiUrl = "https://mocki.io/v1/01a741d9-6ea4-4a1a-8e08-b6e398bbe71e";
+        String apiUrl = "https://mocki.io/v1/15376a74-e63d-488b-bf89-c960c9fb9881";
 
         URL obj = new URL(apiUrl);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
