@@ -80,7 +80,7 @@
                                 <p></p>
                                 <div class="form-floating">
                                     <input name="emailAddress" type="emailAddress" class="form-control" id="emailAddress" placeholder="name@example.com" value="${user.emailAddress}" required>
-                                    <label for="floatingInput">Email address</label>
+                                    <label for="floatingInput">Email address<span class="text-danger">*</span></label>
                                 </div>
                                 <br>
                                 <div class="form-check form-switch">
@@ -96,7 +96,7 @@
 
                                 <div class="form-floating password-input">
                                     <input name="password" type="password" class="form-control" id="password" placeholder="Password">
-                                    <label for="password">Password</label>
+                                    <label for="password">Password<span class="text-danger">*</span></label>
                                     <i class="far fa-eye-slash" id="password-toggle" onclick="toggleLoginPasswordVisibility('password', 'password-toggle')"></i>
                                 </div>
 
@@ -104,7 +104,7 @@
 
                                 <div class="form-floating otp-input" style="display: none;">
                                     <input name="otp" type="number" class="form-control" id="otp" placeholder="OTP">
-                                    <label for="otp">One-time password</label>
+                                    <label for="otp">One-time password<span class="text-danger">*</span></label>
                                     <button class="btn btn-lg btn-block btn-outline-warning position-absolute end-0 top-50 translate-middle-y " type="button" onclick="sendOTP()">Send OTP</button>
                                     <p id="timer"></p>
                                     <p></p>
